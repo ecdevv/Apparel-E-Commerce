@@ -1,0 +1,84 @@
+/****************** Carousel ******************/
+.carousel-container {
+  width: 100%;
+  height: 45rem;
+  position: relative;
+  background-color: rgba(var(--carousel-background-color));
+  overflow: hidden;
+}
+
+.carousel-image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* transform: translateX(-33.33%); Shift container to the left to hide the first buffer image */
+  position: absolute;
+}
+
+.carousel-image {
+  width: 33.33%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+}
+
+.carousel-left-arrow {
+  width: 50px;
+  height: 50px;
+  opacity: 50%;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  fill: rgba(var(--primary-button-color))
+}
+
+.carousel-right-arrow {
+  width: 50px;
+  height: 50px;
+  opacity: 50%;
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  fill: rgba(var(--primary-button-color))
+}
+
+
+/* Translate 33.33% left and right respectively since that the width of the images; NOT NEEDED:since there is a buffer image before the very "first one", the transitions start -33.33% to the left. */
+.slide-left-enter {
+  transform: translateX(33.33%);              /* Start translating the new element from the right */
+}
+
+.slide-left-enter-active {
+  transform: translateX(-0%);                 /* Position when it is done transitioning */
+  transition: transform 300ms ease-in-out;
+}
+
+.slide-left-exit {
+  transform: translateX(-0%);                 /* Starting position to start exiting */
+}
+
+.slide-left-exit-active {
+  transform: translateX(-33.33%);             /* Start translating the new element to the left */
+  transition: transform 300ms ease-in-out;
+}
+
+.slide-right-enter {
+  transform: translateX(-33.33%);             /* Start translating the new element from the left */
+}
+
+.slide-right-enter-active {
+  transform: translateX(-0%);                 /* Position when it is done transitioning */
+  transition: transform 300ms ease-in-out;
+}
+
+.slide-right-exit {
+  transform: translateX(-0%);                 /* Starting position to start exiting */
+}
+
+.slide-right-exit-active {
+  transform: translateX(33.33%);              /* Start translating the new element to the right */
+  transition: transform 300ms ease-in-out;
+}
