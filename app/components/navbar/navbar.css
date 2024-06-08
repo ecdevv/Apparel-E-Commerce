@@ -1,7 +1,7 @@
 /****************** Navbar ******************/
 .navbar {
   width: 100vw;
-  height: 7rem;
+  height: auto;
   background-color: rgba(var(--primary-color));
   z-index: 10;
   position: relative
@@ -12,37 +12,57 @@
   height: 100%;
   margin: auto;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-header {
+  width: 100%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 1.5rem;
+}
+
+.navbar-theme-icons-container {
+  width: 500px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-icons-container {
+  width: 500px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar-logo-container {
+  width: 750px;
+  height: 100%;
 }
 
 .navbar-logo {
-  width: 200px;
+  width: 150px;
   height: 100%;
+  margin: auto;
 }
 
 .navbar-navigation {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 6rem;
-  font-size: 18px
+  gap: 4rem;
+  padding-bottom: 1.5rem;
 }
 
-.navbar-icons-container {
-  width: 200px;
-  display: flex;
-  align-items: center;
-  gap: 5rem;
-}
-
-.navbar-icon-list {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.navbar-icon {
-  width: 30px;
-  height: 30px;
+.navbar-navigation-links {
+  font-family: var(--font-montserrat);
+  font-size: 18px;
+  font-weight: 500;
 }

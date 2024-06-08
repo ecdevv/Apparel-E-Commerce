@@ -1,0 +1,33 @@
+/****************** Search ******************/
+.search-content {
+  position: relative;
+  display: flex;
+  border-bottom-width: 1px;
+  border-color: rgba(var(--search-border-color));
+}
+
+.search-box {
+  width: 225px;
+  height: 30px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font: inherit;
+  outline: none;  /* TODO: Find replacement */
+  opacity: 0.66;
+  transition: opacity 100ms ease-in-out;
+  background-color: var(--primary-color);
+}
+
+.search-box:focus {
+  opacity: 1;
+}
+
+.search-icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 50%;
+  right: 0;
+  transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+}
