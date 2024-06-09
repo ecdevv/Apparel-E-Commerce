@@ -1,12 +1,4 @@
 /****************** Carousel ******************/
-.carousel-container {
-  width: 100%;
-  height: 45rem;
-  position: relative;
-  background-color: rgba(var(--carousel-background-color));
-  overflow: hidden;
-}
-
 .carousel-image-container {
   width: 100%;
   height: 100%;
@@ -23,30 +15,49 @@
   flex-shrink: 0;
 }
 
+.carousel-left-btn {
+  width: 75px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(1px);
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
+}
+
+.carousel-right-btn {
+  width: 75px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(1px);
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translateY(-50%);
+}
+
 .carousel-left-arrow {
   width: 50px;
   height: 50px;
-  opacity: 50%;
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  fill: rgba(var(--primary-button-color))
+  opacity: 80%;
+  fill: rgba(var(--secondary-button-color));
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 1));
+  margin: auto
 }
 
 .carousel-right-arrow {
   width: 50px;
   height: 50px;
-  opacity: 50%;
-  position: absolute;
-  top: 50%;
-  right: 10%;
-  transform: translateY(-50%);
-  fill: rgba(var(--primary-button-color))
+  opacity: 80%;
+  fill: rgba(var(--secondary-button-color));
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 1));
+  margin: auto
 }
 
-
-/* Translate 33.33% left and right respectively since that the width of the images; NOT NEEDED:since there is a buffer image before the very "first one", the transitions start -33.33% to the left. */
+/* Translate 33.33% left and right respectively since that the width of the images; NOT NEEDED: since there is a buffer image before the very "first one", the transitions start -33.33% to the left. */
 .slide-left-enter {
   transform: translateX(33.33%);              /* Start translating the new element from the right */
 }

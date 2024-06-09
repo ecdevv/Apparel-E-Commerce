@@ -17,36 +17,44 @@
 } */
 
 .light {
-  --primary-color: 255,255,255;
-  --secondary-color: 155,155,155;
+  --primary-color: 255, 255, 255;
+  --secondary-color: 35, 35, 35;
 
   --banner-color: 121, 190, 255;
   --banner-text-color: 50, 120, 225;
 
   --search-border-color: 10, 10, 10;
 
+  --login-menu-color: 100, 100, 100;
+
   --primary-text-color: 0, 0, 0;
+  --secondary-text-color: 255, 255, 255;
 
-  --primary-button-color: 100,100,100;
+  --primary-button-color: 35, 35, 35;
+  --secondary-button-color: 155, 155, 155;
 
-  --carousel-background-color: 50,50,50;
+  --carousel-background-color: 50, 50, 50;
   
 }
 
 .dark {
-  --primary-color: 55,55,55;
-  --secondary-color: 75,75,75;
+  --primary-color: 35, 35, 35;
+  --secondary-color: 100, 100, 100;
 
   --banner-color: 121, 190, 255;
   --banner-text-color: 50, 120, 225;
 
   --search-border-color: 245, 245, 245;
 
+  --login-menu-color: 100, 100, 100;
+
   --primary-text-color: 255, 255, 255;
+  --secondary-text-color: 0, 0, 0;
 
   --primary-button-color: 75, 75, 75;
+  --secondary-button-color: 155, 155, 155;
 
-  --carousel-background-color: 50,50,50;
+  --carousel-background-color: 50, 50, 50;
 }
 
 body {
@@ -60,8 +68,53 @@ body {
   }
 }
 
+h1 {
+  font-family: var(--font-montserrat);
+  font-weight: 500;
+  font-size: 32px;
+}
+
 .home {
   background-color: rgba(var(--primary-color));
   width: 100vw;
   height: 100rem;
+}
+
+.carousel-container {
+  width: 100%;
+  height: 45rem;
+  position: relative;
+  background-color: rgba(var(--carousel-background-color));
+  overflow: hidden;
+}
+
+.slide-content {
+  width: auto;
+  height: auto;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  
+}
+
+.slide-h1 {
+  color: rgba(var(--secondary-text-color));
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
+  border-radius: 1rem;
+}
+
+.slide-btn {
+  width: 250px;
+  background-color: rgba(var(--primary-button-color));
+  padding: 0.75rem;
+  border-radius: 5px;
+  font-family: var(--font-montserrat);
+  color: rgba(var(--secondary-text-color));
 }
