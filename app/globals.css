@@ -23,9 +23,9 @@
   --banner-color: 121, 190, 255;
   --banner-text-color: 50, 120, 225;
 
-  --search-border-color: 10, 10, 10;
+  --input-border-color: 10, 10, 10;
 
-  --login-menu-color: 100, 100, 100;
+  --login-menu-color: 55, 55, 55;
 
   --primary-text-color: 0, 0, 0;
   --secondary-text-color: 255, 255, 255;
@@ -46,13 +46,13 @@
 
   --search-border-color: 245, 245, 245;
 
-  --login-menu-color: 100, 100, 100;
+  --login-menu-color: 55, 55, 55;
 
   --primary-text-color: 255, 255, 255;
   --secondary-text-color: 0, 0, 0;
 
-  --primary-button-color: 75, 75, 75;
-  --secondary-button-color: 155, 155, 155;
+  --primary-button-color: 155, 155, 155;
+  --secondary-button-color: 35, 35, 35;
 
   --carousel-background-color: 50, 50, 50;
 }
@@ -82,7 +82,7 @@ h1 {
 
 .carousel-container {
   width: 100%;
-  height: 45rem;
+  height: 48rem;
   position: relative;
   background-color: rgba(var(--carousel-background-color));
   overflow: hidden;
@@ -92,29 +92,63 @@ h1 {
   width: auto;
   height: auto;
   position: absolute;
-  bottom: 20%;
+  bottom: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 0.5rem;
+  gap: 1rem;
   
 }
 
 .slide-h1 {
-  color: rgba(var(--secondary-text-color));
+  color: white;
   text-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
-  border-radius: 1rem;
+  position: relative;
+}
+
+.slide-h1::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 3px;
+  left: 1PX;
+  width: 100%;
+  height: 100%;
+  color: rgba(0, 0, 0, 0.33);
+  z-index: -1;
 }
 
 .slide-btn {
   width: 250px;
-  background-color: rgba(var(--primary-button-color));
+  background-color: #232323;
   padding: 0.75rem;
-  border-radius: 5px;
+  border-radius: 0px;
+  border-width: 1px;
+  border-color: black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
   font-family: var(--font-montserrat);
-  color: rgba(var(--secondary-text-color));
+  color: white;
+  transition: all 200ms ease-in-out;
+  font-size: 18px;
+  position: relative;
 }
+
+.slide-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+/* .slide-btn::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 98%;
+  height: 100%;
+  transform: translateX(-50%);
+  background-color: black;
+  z-index: -1;
+} */

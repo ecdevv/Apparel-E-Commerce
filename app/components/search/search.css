@@ -3,7 +3,7 @@
   position: relative;
   display: flex;
   border-bottom-width: 1px;
-  border-color: rgba(var(--search-border-color));
+  border-color: rgba(var(--input-border-color));
 }
 
 .search-box {
@@ -11,7 +11,7 @@
   height: 30px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  font: inherit;
+  font-family: var(--font-montserrat);
   outline: none;  /* TODO: Find replacement */
   opacity: 0.66;
   transition: opacity 100ms ease-in-out;
@@ -26,6 +26,7 @@
   position: absolute;
   width: 25px;
   height: 25px;
+  opacity: 0.66;
   top: 50%;
   right: 0;
   transform: translateX(-50%) translateY(-50%);

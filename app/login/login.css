@@ -1,0 +1,44 @@
+/****************** login ******************/
+.login-container {
+  width: 400px;
+  border-width: 1px;
+  margin: auto;
+  margin-top: 5rem;
+  font-family: var(--font-lora)
+}
+
+.login-container h1 {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.login-input-container {
+  display: block;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.login-input-field {
+  width: 100%;
+  outline: none; /* TODO: Replace this */
+  border-width: 1px;
+  border-color: rgba(var(--input-border-color), 0.8);
+  opacity: 0.8;
+  padding: 0.5rem;
+  font-family: var(--font-montserrat)
+}
+
+.login-btn {
+  display: block;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 3rem;
+  background-color: rgba(var(--primary-button-color));
+  border-width: 1px;
+  border-color: rgba(var(--input-border-color), 0.8);
+  padding: 0.5rem;
+  font-family: var(--font-montserrat);
+  color: rgba(var(--secondary-text-color));
+}

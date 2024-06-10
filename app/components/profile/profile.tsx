@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import {CSSTransition} from 'react-transition-group'
 import './profile.css'
 
 const profile = () => {
@@ -42,13 +43,17 @@ const profile = () => {
         </svg>
       </button>
 
-      {menuToggle 
-        ? <div className='profile-content'>
-            <Link onClick={handleClick} href='/login' aria-label='Login' className="profile-content-button">Login</Link>
-            <Link onClick={handleClick} href='/register' aria-label='register' className="profile-content-button">Register</Link>
-          </div>
-        : null
-      }
+      <CSSTransition
+        in={menuToggle}
+        timeout={100}
+        classNames='menu'
+        unmountOnExit
+      >
+        <div className='profile-menu'>
+          <Link onClick={handleClick} href='/login' aria-label='Login' className="profile-menu-link">Login</Link>
+          <Link onClick={handleClick} href='/register' aria-label='register' className="profile-menu-link">Register</Link>
+        </div>
+      </CSSTransition>
     </div>
   )
 }

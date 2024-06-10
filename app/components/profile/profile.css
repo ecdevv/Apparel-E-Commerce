@@ -7,28 +7,50 @@
   position: relative
 }
 
-.profile-content {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  top: 2rem;
-  background-color: rgba(var(--login-menu-color));
-  gap: 2vh;
-  padding: 4px;
-}
-
-.profile-content-button {
-  all: unset;
-  display: block;
-  padding: 24px;
-  border: 2px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: var(--font-montserrat);
-}
-
 .profile-icon {
   width: 30px;
   height: 30px;
 }
+
+.profile-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  top: 2rem;
+  right: 0;
+  background-color: rgba(var(--login-menu-color));
+  border-width: 1px;
+  border-color: black;
+  gap: 2vh;
+  overflow: hidden;
+  height: 175px;
+}
+
+.profile-menu-link {
+  padding: 24px;
+  cursor: pointer;
+  font-family: var(--font-montserrat);
+  color: rgba(var(--secondary-text-color));
+}
+
+/* CSS Transition */
+.menu-enter {
+  height: 0px;
+}
+
+.menu-enter-active {
+  height: 175px;
+  transition: all 100ms linear;
+}
+
+.menu-exit {
+  height: 175px;
+}
+
+.menu-exit-active {
+  height: 0px;
+  transition: all 100ms linear;
+}
+
