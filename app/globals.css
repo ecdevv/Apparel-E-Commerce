@@ -31,7 +31,10 @@
   --secondary-text-color: 255, 255, 255;
 
   --primary-button-color: 35, 35, 35;
-  --secondary-button-color: 155, 155, 155;
+  --secondary-button-color: 255, 255, 255;
+
+  --primary-hover-button-color: 255, 255, 255;
+  --secondary-hover-button-color: 65, 65, 65;
 
   --carousel-background-color: 50, 50, 50;
   
@@ -51,8 +54,11 @@
   --primary-text-color: 255, 255, 255;
   --secondary-text-color: 0, 0, 0;
 
-  --primary-button-color: 155, 155, 155;
+  --primary-button-color: 255, 255, 255;
   --secondary-button-color: 35, 35, 35;
+
+  --primary-hover-button-color: 35, 35, 35;
+  --secondary-hover-button-color: 255, 255, 255;
 
   --carousel-background-color: 50, 50, 50;
 }
@@ -71,7 +77,7 @@ body {
 h1 {
   font-family: var(--font-montserrat);
   font-weight: 500;
-  font-size: 32px;
+  font-size: 36px;
 }
 
 .home {
@@ -100,7 +106,7 @@ h1 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 1rem;
+  gap: 0.5rem;
   
 }
 
@@ -114,7 +120,7 @@ h1 {
   content: attr(data-text);
   position: absolute;
   top: 3px;
-  left: 1PX;
+  left: 1px;
   width: 100%;
   height: 100%;
   color: rgba(0, 0, 0, 0.33);
@@ -124,7 +130,7 @@ h1 {
 .slide-btn {
   width: 250px;
   background-color: #232323;
-  padding: 0.75rem;
+  padding: 0.66rem;
   border-radius: 0px;
   border-width: 1px;
   border-color: black;

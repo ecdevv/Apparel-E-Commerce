@@ -1,10 +1,16 @@
 /****************** login ******************/
+.login-section {
+  width: 100vw;
+  height: auto;
+  background-color: rgba(var(--primary-color));
+}
+
 .login-container {
   width: 400px;
   border-width: 1px;
   margin: auto;
-  margin-top: 5rem;
-  font-family: var(--font-lora)
+  margin-top: 7.5rem;
+  font-family: var(--font-montserrat);
 }
 
 .login-container h1 {
@@ -20,25 +26,107 @@
   margin-bottom: 2rem;
 }
 
+.login-input-container h2 {
+  margin-bottom: 0.5rem;
+}
+
+.login-input-wrapper {
+ position: relative;
+}
+
+.login-input-icon {
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  transform: translateY(-50%);
+  opacity: 0.25;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .login-input-field {
   width: 100%;
   outline: none; /* TODO: Replace this */
   border-width: 1px;
-  border-color: rgba(var(--input-border-color), 0.8);
+  border-color: rgba(var(--input-border-color), 0.45);
   opacity: 0.8;
   padding: 0.5rem;
-  font-family: var(--font-montserrat)
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 .login-btn {
   display: block;
   width: 80%;
   margin: auto;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   background-color: rgba(var(--primary-button-color));
   border-width: 1px;
-  border-color: rgba(var(--input-border-color), 0.8);
+  border-color: rgba(var(--input-border-color));
   padding: 0.5rem;
-  font-family: var(--font-montserrat);
   color: rgba(var(--secondary-text-color));
+  transition: all 200ms ease-in-out;
 }
+
+.login-btn:hover {
+  background-color: rgba(var(--primary-hover-button-color));
+  color: rgba(var(--primary-text-color));
+}
+
+.additional-actions {
+  width: 100%;
+  text-align: center;
+}
+
+.forgot-password {
+  display: inline-block;
+  position: relative;
+  margin: auto;
+  margin-bottom: 1rem;
+  transition: all 200ms ease-in-out;
+}
+
+.forgot-password:hover {
+  color: rgb(15, 127, 255);
+}
+
+.forgot-password::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(var(--primary-text-color));
+  transform: scaleX(0);
+  transition: transform 200ms ease-in-out;
+  transform-origin: bottom;
+}
+
+.forgot-password:hover::after {
+  background-color: rgba(15, 127, 255, 1);
+  transform: scaleX(1);
+  transform-origin: bottom;
+}
+
+.register-btn {
+  display: block;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 3rem;
+  background-color: rgba(var(--secondary-button-color));
+  border-width: 1px;
+  border-color: rgba(var(--input-border-color));
+  padding: 0.5rem;
+  color: rgba(var(--primary-text-color));
+  transition: all 200ms ease-in-out;
+}
+
+.register-btn:hover {
+  background-color: rgba(var(--secondary-hover-button-color));
+  color: rgba(var(--secondary-text-color))
+}
+
+
