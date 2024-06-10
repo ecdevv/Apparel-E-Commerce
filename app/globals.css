@@ -18,10 +18,13 @@
 
 .light {
   --primary-color: 255, 255, 255;
-  --secondary-color: 35, 35, 35;
+  --inverse-color: 35, 35, 35;
+  --secondary-color: 235, 235, 235;
 
   --banner-color: 121, 190, 255;
   --banner-text-color: 50, 120, 225;
+
+  --search-border-color: 10, 10, 10;
 
   --input-border-color: 10, 10, 10;
 
@@ -31,7 +34,7 @@
   --secondary-text-color: 255, 255, 255;
 
   --primary-button-color: 35, 35, 35;
-  --secondary-button-color: 255, 255, 255;
+  --secondary-button-color: 135, 135, 135;
 
   --primary-hover-button-color: 255, 255, 255;
   --secondary-hover-button-color: 65, 65, 65;
@@ -42,23 +45,26 @@
 
 .dark {
   --primary-color: 35, 35, 35;
-  --secondary-color: 100, 100, 100;
+  --inverse-color: 255, 255, 255;
+  --secondary-color: 55, 55, 55;
 
   --banner-color: 121, 190, 255;
   --banner-text-color: 50, 120, 225;
 
   --search-border-color: 245, 245, 245;
 
+  --input-border-color: 10, 10, 10;
+
   --login-menu-color: 55, 55, 55;
 
   --primary-text-color: 255, 255, 255;
   --secondary-text-color: 0, 0, 0;
 
-  --primary-button-color: 255, 255, 255;
-  --secondary-button-color: 35, 35, 35;
+  --primary-button-color: 35, 35, 35;
+  --secondary-button-color: 135, 135, 135;
 
-  --primary-hover-button-color: 35, 35, 35;
-  --secondary-hover-button-color: 255, 255, 255;
+  --primary-hover-button-color: 255, 255, 255;
+  --secondary-hover-button-color: 65, 65, 65;
 
   --carousel-background-color: 50, 50, 50;
 }

@@ -3,7 +3,7 @@
   position: relative;
   display: flex;
   border-bottom-width: 1px;
-  border-color: rgba(var(--input-border-color));
+  border-color: rgba(var(--search-border-color));
 }
 
 .search-box {

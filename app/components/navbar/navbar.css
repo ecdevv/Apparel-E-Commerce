@@ -63,7 +63,7 @@
   gap: 4rem;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  background-color: rgba(var(--secondary-color));
+  background-color: rgba(var(--inverse-color));
   color: rgba(var(--secondary-text-color));
 }
 

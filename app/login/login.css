@@ -7,9 +7,12 @@
 
 .login-container {
   width: 400px;
+  background-color: rgba(var(--secondary-color));
   border-width: 1px;
+  border-color: rgba(var(--input-border-color), 0.2);
+  border-radius: 1rem;
   margin: auto;
-  margin-top: 7.5rem;
+  margin-top: 5rem;
   font-family: var(--font-montserrat);
 }
 
@@ -31,7 +34,7 @@
 }
 
 .login-input-wrapper {
- position: relative;
+  position: relative;
 }
 
 .login-input-icon {
@@ -66,13 +69,13 @@
   border-width: 1px;
   border-color: rgba(var(--input-border-color));
   padding: 0.5rem;
-  color: rgba(var(--secondary-text-color));
+  color: white;
   transition: all 200ms ease-in-out;
 }
 
 .login-btn:hover {
   background-color: rgba(var(--primary-hover-button-color));
-  color: rgba(var(--primary-text-color));
+  color: black;
 }
 
 .additional-actions {
@@ -120,13 +123,13 @@
   border-width: 1px;
   border-color: rgba(var(--input-border-color));
   padding: 0.5rem;
-  color: rgba(var(--primary-text-color));
+  color: white;
   transition: all 200ms ease-in-out;
 }
 
 .register-btn:hover {
-  background-color: rgba(var(--secondary-hover-button-color));
-  color: rgba(var(--secondary-text-color))
+  background-color: rgba(var(--primary-hover-button-color));
+  color: black;
 }
 
 
