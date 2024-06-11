@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat, Lora } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/navbar/navbar";
-import Banner from "./components/banner/banner";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -29,12 +27,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <body className={`${inter.variable} ${montserrat.variable} ${lora.variable}`}>
-        <header><Banner/><Navbar/></header>
         <main>{children}</main>
-        <footer></footer>
       </body>
     </html>
   );

@@ -17,14 +17,25 @@
   align-items: center;
 }
 
-.navbar-header {
+.navbar-header, .navbar-header-logo {
   width: 80%;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   /* border-bottom-width: 1px; */
+}
+
+.navbar-header {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.navbar-header-logo {
+  padding-top: 5rem;
+  padding-bottom: 2rem;
 }
 
 .navbar-theme-icons-container {
@@ -44,14 +55,14 @@
 }
 
 .navbar-logo-container {
-  width: 750px;
+  max-width: 750px;
   height: 100%;
+  margin: auto;
 }
 
 .navbar-logo {
   width: 150px;
   height: 100%;
-  margin: auto;
 }
 
 .navbar-navigation {
@@ -91,4 +102,8 @@
 .navbar-navigation-links:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+.hidden-theme {
+  display: none;
 }

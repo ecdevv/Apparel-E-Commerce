@@ -118,7 +118,7 @@ h1 {
 
 .slide-h1 {
   color: white;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  /* text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); */
   position: relative;
 }
 

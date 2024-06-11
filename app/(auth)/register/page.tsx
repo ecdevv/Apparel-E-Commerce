@@ -1,13 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import './auth.css';
+import '../auth.css';
 
-const login = () => {
+const register = () => {
   return (
     <section className='auth-section'>
       <div className='auth-container'>
-        <h1>LOGIN</h1>
-        <form action='/auth' method='POST'>
+        <h1>REGISTER</h1>
+        <form action='/register' method='POST'>
           <div className='input-container'>
             <h2>Username</h2>
             <div className='input-wrapper'>
@@ -35,16 +35,16 @@ const login = () => {
               <input className='input-field' type="password" id="password" name="password" placeholder='Type Your Password' required/>
             </div>
           </div>
-          <button className='auth-btn' aria-label='auth' type="submit">Login</button>
+          <button className='auth-btn' aria-label='Register' type="submit">Register</button>
         </form>
         
         <div className="additional-actions">
-          <Link href="/forgot-password" aria-label='Forgot Password' className='auth-link'>Forgot Password?</Link>
-          <Link href="/register" aria-label='Register' className="other-btn">Register</Link>
+          <Link href="/login" aria-label='Login' className='auth-link2'>Already have an account? Sign in</Link>
+          {/* <Link href="/login" aria-label='Login' className="other-btn">Login</Link> */}
         </div>
       </div>
     </section>
   )  
 }
 
-export default login;
+export default register;
