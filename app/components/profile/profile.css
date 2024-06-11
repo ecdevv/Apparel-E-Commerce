@@ -19,8 +19,9 @@
   justify-content: center;
   text-align: center;
   top: 2rem;
-  right: 0;
-  background-color: rgba(var(--login-menu-color));
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(var(--secondary-color));
   border-width: 1px;
   border-color: black;
   gap: 2vh;
@@ -32,7 +33,7 @@
   padding: 24px;
   cursor: pointer;
   font-family: var(--font-montserrat);
-  color: rgba(var(--secondary-text-color));
+  color: rgba(var(--primary-text-color));
 }
 
 /* CSS Transition */

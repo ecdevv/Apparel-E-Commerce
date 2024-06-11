@@ -34,7 +34,7 @@
   --secondary-text-color: 255, 255, 255;
 
   --primary-button-color: 35, 35, 35;
-  --secondary-button-color: 135, 135, 135;
+  --secondary-button-color: 100, 100, 100;
 
   --primary-hover-button-color: 255, 255, 255;
   --secondary-hover-button-color: 65, 65, 65;
@@ -61,7 +61,7 @@
   --secondary-text-color: 0, 0, 0;
 
   --primary-button-color: 35, 35, 35;
-  --secondary-button-color: 135, 135, 135;
+  --secondary-button-color: 100, 100, 100;
 
   --primary-hover-button-color: 255, 255, 255;
   --secondary-hover-button-color: 65, 65, 65;
@@ -118,15 +118,15 @@ h1 {
 
 .slide-h1 {
   color: white;
-  text-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
   position: relative;
 }
 
 .slide-h1::after {
   content: attr(data-text);
   position: absolute;
-  top: 3px;
-  left: 1px;
+  top: 2px;
+  left: 0px;
   width: 100%;
   height: 100%;
   color: rgba(0, 0, 0, 0.33);

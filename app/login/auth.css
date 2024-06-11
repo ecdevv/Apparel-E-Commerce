@@ -1,13 +1,13 @@
-/****************** login ******************/
-.login-section {
+/****************** auth ******************/
+.auth-section {
   width: 100vw;
   height: auto;
   background-color: rgba(var(--primary-color));
 }
 
-.login-container {
+.auth-container {
   width: 400px;
-  background-color: rgba(var(--secondary-color));
+  /* background-color: rgba(var(--secondary-color)); */
   border-width: 1px;
   border-color: rgba(var(--input-border-color), 0.2);
   border-radius: 1rem;
@@ -16,28 +16,28 @@
   font-family: var(--font-montserrat);
 }
 
-.login-container h1 {
+.auth-container h1 {
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
-.login-input-container {
+.input-container {
   display: block;
   width: 80%;
   margin: auto;
   margin-bottom: 2rem;
 }
 
-.login-input-container h2 {
+.input-container h2 {
   margin-bottom: 0.5rem;
 }
 
-.login-input-wrapper {
+.input-wrapper {
   position: relative;
 }
 
-.login-input-icon {
+.input-icon {
   position: absolute;
   top: 50%;
   left: 4%;
@@ -49,7 +49,7 @@
   z-index: 1;
 }
 
-.login-input-field {
+.input-field {
   width: 100%;
   outline: none; /* TODO: Replace this */
   border-width: 1px;
@@ -60,7 +60,7 @@
   padding-right: 2.5rem;
 }
 
-.login-btn {
+.auth-btn {
   display: block;
   width: 80%;
   margin: auto;
@@ -73,7 +73,7 @@
   transition: all 200ms ease-in-out;
 }
 
-.login-btn:hover {
+.auth-btn:hover {
   background-color: rgba(var(--primary-hover-button-color));
   color: black;
 }
@@ -83,19 +83,26 @@
   text-align: center;
 }
 
-.forgot-password {
+.auth-link, .auth-link2 {
   display: inline-block;
   position: relative;
   margin: auto;
-  margin-bottom: 1rem;
   transition: all 200ms ease-in-out;
 }
 
-.forgot-password:hover {
+.auth-link {
+  margin-bottom: 1rem;
+}
+
+.auth-link2 {
+  margin-bottom: 3rem;
+}
+
+.auth-link:hover, .auth-link2:hover {
   color: rgb(15, 127, 255);
 }
 
-.forgot-password::after {
+.auth-link::after, .auth-link2::after {
   content: '';
   position: absolute;
   bottom: 0px;
@@ -108,13 +115,13 @@
   transform-origin: bottom;
 }
 
-.forgot-password:hover::after {
+.auth-link:hover::after, .auth-link2:hover::after {
   background-color: rgba(15, 127, 255, 1);
   transform: scaleX(1);
   transform-origin: bottom;
 }
 
-.register-btn {
+.other-btn {
   display: block;
   width: 80%;
   margin: auto;
@@ -127,7 +134,7 @@
   transition: all 200ms ease-in-out;
 }
 
-.register-btn:hover {
+.other-btn:hover {
   background-color: rgba(var(--primary-hover-button-color));
   color: black;
 }
