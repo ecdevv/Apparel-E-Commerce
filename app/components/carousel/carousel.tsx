@@ -10,12 +10,12 @@ import './carousel.css'
 
 const Images = [CarouselImage, CarouselImage2, CarouselImage3, CarouselImage4]; 
 
-// Helper function to get the wrapped images (so we can see the first and second image after the last image)
+// Helper function to get the wrapped images (first index here will correspond to the the image at currentIndex - 1)
 const getWrappedImages = (currentIndex:number, images:StaticImageData[], numberOfVisibleImages:number) => {
   const totalImages = images.length;
   const wrappedImages: StaticImageData[] = [];
 
-  for (let i = 0; i < numberOfVisibleImages; i++) {
+  for (let i = -1; i < numberOfVisibleImages - 1; i++) {
     const index = (currentIndex + i + totalImages) % totalImages; // Ensures index wraps around
     wrappedImages.push(images[index]);
   }
@@ -29,11 +29,11 @@ const carousel = () => {
   const [slideDirection, setSlideDirection] = useState('slide-left');
 
   const handlePrevClick = () => {
-    // Disable and then re-enable the button after 200 milliseconds
+    // Disable and then re-enable the button after 300 milliseconds
     setButtonDisabled(true);
     setTimeout(() => {
       setButtonDisabled(false);
-    }, 200);
+    }, 300);
 
     setSlideDirection('slide-right')
     setTimeout (() => {
@@ -42,11 +42,11 @@ const carousel = () => {
   }
 
   const handleNextClick = () => {
-    // Disable and then re-enable the button after 200 milliseconds
+    // Disable and then re-enable the button after 300 milliseconds
     setButtonDisabled(true);
     setTimeout(() => {
       setButtonDisabled(false);
-    }, 200);
+    }, 300);
 
     setSlideDirection('slide-left')
     setTimeout (() => {
@@ -59,7 +59,7 @@ const carousel = () => {
       <TransitionGroup component={null}>
         <CSSTransition
           key={currentIndex}
-          timeout={300}
+          timeout={400}
           classNames={slideDirection}
           unmountOnExit
         >
