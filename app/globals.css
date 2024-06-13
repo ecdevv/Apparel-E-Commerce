@@ -34,7 +34,7 @@
   --secondary-text-color: 255, 255, 255;
 
   --primary-button-color: 35, 35, 35;
-  --secondary-button-color: 100, 100, 100;
+  --secondary-button-color: 85, 85, 85;
 
   --primary-hover-button-color: 255, 255, 255;
   --secondary-hover-button-color: 65, 65, 65;
@@ -61,7 +61,7 @@
   --secondary-text-color: 0, 0, 0;
 
   --primary-button-color: 35, 35, 35;
-  --secondary-button-color: 100, 100, 100;
+  --secondary-button-color: 85, 85, 85;
 
   --primary-hover-button-color: 255, 255, 255;
   --secondary-hover-button-color: 65, 65, 65;
@@ -104,9 +104,9 @@ h1 {
   width: auto;
   height: auto;
   position: absolute;
-  bottom: 20%;
+  bottom: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(50%);
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -65,15 +65,17 @@ const carousel = () => {
         >
           <div className='carousel-image-container'>
             {getWrappedImages(currentIndex, Images, 3).map((image, index) => (
-              <Image
-                key={index}
-                src={image}
-                alt={`carousel-item${index + 1}`}
-                width='0'
-                height='0'
-                placeholder='blur'
-                className='carousel-image'
-              />
+              <div key={index} className='carousel-image-wrapper'>
+                <Image
+                  key={index}
+                  src={image}
+                  alt={`carousel-item${index + 1}`}
+                  width='0'
+                  height='0'
+                  placeholder='blur'
+                  className='carousel-image'
+                />
+              </div>
             ))}
           </div>
         </CSSTransition>
@@ -101,15 +103,10 @@ const carousel = () => {
   )
 
 
-
-
-  //Photo by <a href="https://unsplash.com/@domjewel?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Dom Hill</a> on <a href="https://unsplash.com/photos/woman-in-yellow-tracksuit-standing-on-basketball-court-side-nimElTcTNyY?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  //Photo by <a href="https://unsplash.com/@zinco?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Raul De Los Santos</a> on <a href="https://unsplash.com/photos/man-in-white-crew-neck-t-shirt-and-black-and-white-pants-standing-on-sidewalk-during-yf50syI_Dwg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
   //Photo by <a href="https://unsplash.com/@forcemajeure?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Force Majeure</a> on <a href="https://unsplash.com/photos/man-and-woman-in-white-and-gray-force-majeure-printed-crew-neck-t-shirts-standing-near-gray-concrete-wall-00tlC0Clfrs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  //Photo by <a href="https://unsplash.com/@demoya?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Michael DeMoya</a> on <a href="https://unsplash.com/photos/2-women-standing-near-wall-during-daytime-qI8xWRvfgGg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
   //Photo by <a href="https://unsplash.com/@jcgellidon?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">JC Gellidon</a> on <a href="https://unsplash.com/photos/woman-leaning-on-wall-OGy5tojr7x8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  //Photo by <a href="https://unsplash.com/@demoya?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Michael DeMoya</a> on <a href="https://unsplash.com/photos/man-in-white-crew-neck-t-shirt-standing-beside-woman-in-white-t-shirt-nrleaaHWOUw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  
-
+  //Photo by <a href="https://unsplash.com/@minusculemarie?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Marie-Michèle Bouchard</a> on <a href="https://unsplash.com/photos/man-in-white-shirt-and-pants-sitting-on-gray-concrete-floor-J_zYSwczKYA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
 }
 

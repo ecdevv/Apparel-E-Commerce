@@ -23,19 +23,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
   /* border-bottom-width: 1px; */
 }
 
 .navbar-header {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .navbar-header-logo {
   padding-top: 5rem;
-  padding-bottom: 2rem;
+  padding-bottom: 2.5rem;
 }
 
 .navbar-theme-icons-container {
@@ -71,9 +69,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  gap: 5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   background-color: rgba(var(--inverse-color));
   color: rgba(var(--secondary-text-color));
 }
