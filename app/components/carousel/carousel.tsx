@@ -7,6 +7,7 @@ import CarouselImage2 from '../../../public/images/carousel-item2.webp';
 import CarouselImage3 from '../../../public/images/carousel-item3.webp';
 import CarouselImage4 from '../../../public/images/carousel-item4.webp';
 import './carousel.css'
+import { url } from 'inspector';
 
 const Images = [CarouselImage, CarouselImage2, CarouselImage3, CarouselImage4]; 
 
@@ -26,7 +27,9 @@ const getWrappedImages = (currentIndex:number, images:StaticImageData[], numberO
 const carousel = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [difference, setDifference] = useState(0);
   const [slideDirection, setSlideDirection] = useState('slide-left');
+
 
   const handlePrevClick = () => {
     // Disable and then re-enable the button after 300 milliseconds
@@ -35,9 +38,10 @@ const carousel = () => {
       setButtonDisabled(false);
     }, 300);
 
-    setSlideDirection('slide-right')
+    setSlideDirection('slide-right');
+    setDifference(1);
     setTimeout (() => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + Images.length) % Images.length)
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + Images.length) % Images.length);
     }, 0)
   }
 
@@ -48,9 +52,30 @@ const carousel = () => {
       setButtonDisabled(false);
     }, 300);
 
-    setSlideDirection('slide-left')
+    setSlideDirection('slide-left');
+    setDifference(1);
     setTimeout (() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % Images.length)
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % Images.length);
+    }, 0)
+    // setDifference(Math.abs((currentIndex - prevIndex) % Images.length))
+  }
+
+  const handleDotClick = (index:number) => {
+    setButtonDisabled(true);
+    setTimeout(() => {
+      setButtonDisabled(false);
+    }, 300);
+    
+    if (index > currentIndex) {
+      setSlideDirection('slide-left');
+    }
+    else {
+      setSlideDirection('slide-right');
+    }
+    
+    setDifference(Math.abs((index - currentIndex) % Images.length));
+    setTimeout (() => {
+      setCurrentIndex(index);
     }, 0)
   }
 
@@ -61,6 +86,7 @@ const carousel = () => {
           key={currentIndex}
           timeout={400}
           classNames={slideDirection}
+          style={{'--index': difference} as React.CSSProperties}
           unmountOnExit
         >
           <div className='carousel-image-container'>
@@ -74,6 +100,7 @@ const carousel = () => {
                   height='0'
                   placeholder='blur'
                   className='carousel-image'
+                  // style={{translate: `${-100 * currentIndex}%`}}
                 />
               </div>
             ))}
@@ -99,6 +126,12 @@ const carousel = () => {
           <path d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z"/>
         </svg>
       </button>
+
+      <div className='carousel-dots-wrapper'>
+        {Images.map((_, index) => (
+          <button key={index} onClick={() => {handleDotClick(index)}} disabled={buttonDisabled} className='carousel-dot'>{index}</button>
+        ))}
+      </div>
     </>
   )
 

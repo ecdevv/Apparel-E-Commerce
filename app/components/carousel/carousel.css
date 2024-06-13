@@ -28,7 +28,7 @@
   position: absolute;
   width: 75%;
   height: 100%;
-  /* box-shadow: inset 0px 0px 0px 0px rgba(35, 35, 35, 1); */
+  /* box-shadow: inset 0px 0px 1px 1px rgba(255, 255, 255, 1); */
 }
 
 .carousel-left-btn, .carousel-right-btn {
@@ -36,7 +36,7 @@
   height: 100%;
   /* background-color: rgba(0, 0, 0, 0.1); */
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); */
-  backdrop-filter: blur(2px) grayscale(66.66%);
+  backdrop-filter: blur(5px) grayscale(66.66%);
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -46,7 +46,6 @@
 .carousel-left-btn {
   left: 0%;
 }
-
 
 .carousel-right-btn {
   right: 0%;
@@ -70,43 +69,58 @@
   transition: all 200ms ease-in-out;
 }
 
+.carousel-dots-wrapper {
+  display: flex;
+  position: absolute;
+  bottom: 2.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 0.5rem;
+}
+.carousel-dot {
+  width: 20px;
+  height: 20px;
+  border-width: 1px;
+  border-radius: 100%;
+}
+
 /* Translate 33.33% left and right respectively since that the width of the images; NOT NEEDED: since there is a buffer image before the very "first one", the transitions start -33.33% to the left. */
 .slide-left-enter {
-  transform: translateX(12.5%);              /* Start translating the new element from the right */
+  transform: translateX(calc(-62.5% + 75% * var(--index)));              /* Start translating the new element from the right */
 }
 
 .slide-left-enter-active {
-  transform: translateX(-62.5%);                 /* Position when it is done transitioning */
+  transform: translateX(-62.5%);                                  /* Position of the new element when it is done transitioning */
   transition: all 400ms ease-out;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .slide-left-exit {
-  transform: translateX(-62.5%);                 /* Starting position to start exiting */
+  transform: translateX(-62.5%);                                  /* Start translating the current element to start exiting to the left */
 }
 
 .slide-left-exit-active {
-  transform: translateX(-137.5%);             /* Start translating the new element to the left */
+  transform: translateX(calc(-62.5% - 75% * var(--index)));            /* Position when the current element is finished transitioning offscreen */
   transition: all 400ms ease-in;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .slide-right-enter {
-  transform: translateX(-137.5%);             /* Start translating the new element from the left */
+  transform: translateX(calc(-62.5% - 75% * var(--index)));            /* Start translating the new element from the left */
 }
 
 .slide-right-enter-active {
-  transform: translateX(-62.5%);                 /* Position when it is done transitioning */
+  transform: translateX(-62.5%);                                  /* Position of the new element when it is done transitioning */
   transition: all 400ms ease-out;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .slide-right-exit {
-  transform: translateX(-62.5%);                 /* Starting position to start exiting */
+  transform: translateX(-62.5%);                                  /* Start translating the current element to start exiting to the right */
 }
 
 .slide-right-exit-active {
-  transform: translateX(12.5%);              /* Start translating the new element to the right */
+  transform: translateX(calc(-62.5% + 75% * var(--index)));              /* Position when the current element is finished transitioning offscreen */
   transition: all 400ms ease-in;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
