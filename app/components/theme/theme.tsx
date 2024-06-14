@@ -32,8 +32,9 @@ const theme = () => {
 
 
   return (
-    <button onClick = {handleClick} aria-label = "Theme">
+    <button onClick = {handleClick} aria-label = "Change Theme">
       <svg
+        aria-hidden
         fill="currentColor"
         viewBox="0 0 16 16"
         className='theme-icon'

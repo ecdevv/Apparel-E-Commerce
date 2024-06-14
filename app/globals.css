@@ -19,10 +19,10 @@
 .light {
   --primary-color: 255, 255, 255;
   --inverse-color: 35, 35, 35;
-  --secondary-color: 235, 235, 235;
+  --secondary-color: 235, 235, 238;
 
   --banner-color: 121, 190, 255;
-  --banner-text-color: 50, 120, 225;
+  --banner-text-color: 10, 65, 155;
 
   --search-border-color: 10, 10, 10;
 
@@ -47,10 +47,10 @@
 .dark {
   --primary-color: 35, 35, 35;
   --inverse-color: 255, 255, 255;
-  --secondary-color: 55, 55, 55;
+  --secondary-color: 55, 55, 58;
 
   --banner-color: 121, 190, 255;
-  --banner-text-color: 50, 120, 225;
+  --banner-text-color: 10, 65, 155;
 
   --search-border-color: 245, 245, 245;
 
@@ -86,89 +86,4 @@ h1 {
   font-family: var(--font-montserrat);
   font-weight: 500;
   font-size: 36px;
-}
-
-.home {
-  background-color: rgba(var(--primary-color));
-  width: 100vw;
-  height: 100rem;
-}
-
-.carousel-container {
-  width: 100%;
-  height: 50rem;
-  position: relative;
-  /* background-color: rgba(var(--carousel-background-color)); */
-  overflow: hidden;
-}
-
-.slide-content {
-  width: auto;
-  height: auto;
-  position: absolute;
-  bottom: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 0.5rem;
-  
-}
-
-.slide-h1 {
-  color: white;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  position: relative;
-}
-
-.slide-h1::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 2px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  color: rgba(0, 0, 0, 0.33);
-  z-index: -1;
-}
-
-.slide-btn {
-  width: 250px;
-  background-color: #232323;
-  padding: 0.66rem;
-  border-radius: 0px;
-  border-width: 1px;
-  border-color: black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
-  font-family: var(--font-montserrat);
-  color: white;
-  transition: all 200ms ease-in-out;
-  font-size: 18px;
-  position: relative;
-}
-
-.slide-btn::after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  width: 98%;
-  height: 100%;
-  transform: translateX(-50%);
-  background-color: black;
-  opacity: 0;
-  transition: all 200ms ease-in-out;
-  z-index: -1;
-}
-
-.slide-btn:hover {
-  background-color: white;
-  color: black;
-}
-
-.slide-btn:hover::after {
-  opacity: 1;
 }

@@ -95,7 +95,7 @@ const carousel = () => {
                 <Image
                   key={index}
                   src={image}
-                  alt={`carousel-item${index + 1}`}
+                  alt={`Current Carousel Item - ${index + 1}`}
                   width='0'
                   height='0'
                   placeholder='blur'
@@ -108,8 +108,9 @@ const carousel = () => {
         </CSSTransition>
       </TransitionGroup>
         
-      <button onClick={handlePrevClick} disabled={buttonDisabled} className='carousel-left-btn'>
+      <button onClick={handlePrevClick} disabled={buttonDisabled} aria-label="View Previous Image" className='carousel-left-btn'>
         <svg
+          aria-hidden
           fill="currentColor"
           viewBox="0 0 24 24"
           className='carousel-left-arrow'
@@ -117,8 +118,9 @@ const carousel = () => {
           <path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z"/>
         </svg>
       </button>
-      <button onClick={handleNextClick} disabled={buttonDisabled} className='carousel-right-btn'>
+      <button onClick={handleNextClick} disabled={buttonDisabled} aria-label="View Next Image" className='carousel-right-btn'>
         <svg
+          aria-hidden
           fill="currentColor"
           viewBox="0 0 24 24"
           className='carousel-right-arrow'
@@ -129,7 +131,7 @@ const carousel = () => {
 
       <div className='carousel-dots-wrapper'>
         {Images.map((_, index) => (
-          <button key={index} onClick={() => {handleDotClick(index)}} disabled={buttonDisabled} className={`${index === currentIndex ? 'carousel-dot-selected' : 'carousel-dot'}`} style={{'--total': Images.length} as React.CSSProperties}></button>
+          <button key={index} onClick={() => {handleDotClick(index)}} disabled={buttonDisabled} aria-label={`View Image ${index + 1}`} className={`${index === currentIndex ? 'carousel-dot-selected' : 'carousel-dot'}`} style={{'--total': Images.length} as React.CSSProperties}></button>
         ))}
       </div>
     </>

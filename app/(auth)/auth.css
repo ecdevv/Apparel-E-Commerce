@@ -7,7 +7,7 @@
 
 .auth-container {
   width: 400px;
-  /* background-color: rgba(var(--secondary-color)); */
+  background-color: rgba(var(--secondary-color));
   border-width: 1px;
   border-color: rgba(var(--input-border-color), 0.2);
   border-radius: 0.5rem;
@@ -41,23 +41,54 @@
   top: 50%;
   left: 4%;
   transform: translateY(-50%);
-  opacity: 0.25;
+  opacity: 0.5;
   width: 20px;
   height: 20px;
   pointer-events: none;
   z-index: 1;
+  transition: opacity 200ms ease-in-out;
 }
 
 .input-field {
   width: 100%;
   outline: none; /* TODO: Replace this */
   border-width: 1px;
-  border-color: rgba(var(--input-border-color), 0.45);
-  opacity: 0.8;
+  border-color: rgba(var(--input-border-color), 1);
   padding: 0.5rem;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+  opacity: 0.5;
+  transition: opacity 200ms ease-in-out;
 }
+
+.input-field:focus {
+  opacity: 1;
+  background-color: rgba(var(--primary-color));
+}
+
+.input-field:focus ~ .input-icon{
+  opacity: 1;
+}
+
+.input-field::placeholder {
+  color: black;
+  opacity: 1;
+  transition: opacity 200ms ease-in-out;
+}
+
+.input-field:focus::placeholder {
+  opacity: 0.35;
+}
+
+/* When input has content */
+.input-field:not(:placeholder-shown) {
+  opacity: 1;
+  background-color: rgba(var(--primary-color));
+}
+
+/* .input-field:not(:placeholder-shown) ~ .input-icon {
+  opacity: 0.65;
+} */
 
 .auth-btn {
   display: block;
@@ -138,4 +169,13 @@
   color: black;
 }
 
+.visually-hidden {
+  width: 0;
+  height: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+}
 

@@ -1,5 +1,5 @@
-/****************** Profile ******************/
-.profile {
+/****************** user ******************/
+.user {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,12 +7,12 @@
   position: relative
 }
 
-.profile-icon {
+.user-icon {
   width: 30px;
   height: 30px;
 }
 
-.profile-menu {
+.user-menu {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@
   height: 175px;
 }
 
-.profile-menu-link {
+.user-menu-link {
   padding: 24px;
   cursor: pointer;
   font-family: var(--font-montserrat);
