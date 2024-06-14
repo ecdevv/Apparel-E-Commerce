@@ -129,7 +129,7 @@ const carousel = () => {
 
       <div className='carousel-dots-wrapper'>
         {Images.map((_, index) => (
-          <button key={index} onClick={() => {handleDotClick(index)}} disabled={buttonDisabled} className='carousel-dot'>{index}</button>
+          <button key={index} onClick={() => {handleDotClick(index)}} disabled={buttonDisabled} className={`${index === currentIndex ? 'carousel-dot-selected' : 'carousel-dot'}`} style={{'--total': Images.length} as React.CSSProperties}></button>
         ))}
       </div>
     </>

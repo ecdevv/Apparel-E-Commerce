@@ -12,7 +12,7 @@
   height: 100%;
   border-left-width: 0.25rem;
   border-right-width: 0.25rem;
-  border-color: rgba(var(--primary-button-color));
+  border-color: rgba(var(--primary-color));
   flex-shrink: 0;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .carousel-left-btn, .carousel-right-btn {
-  width: 12.5%;
+  width: calc(12.5% - 0.25rem);
   height: 100%;
   /* background-color: rgba(0, 0, 0, 0.1); */
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); */
@@ -70,18 +70,37 @@
 }
 
 .carousel-dots-wrapper {
+  width: 30%;
   display: flex;
   position: absolute;
-  bottom: 2.5%;
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
-  gap: 0.5rem;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
 }
-.carousel-dot {
-  width: 20px;
-  height: 20px;
+.carousel-dot, .carousel-dot-selected {
+  width: calc(100% / var(--total));
+  height: 15px;
   border-width: 1px;
-  border-radius: 100%;
+  border-radius: 2rem;
+  border-color: rgba(var(--tertiary-button-color));
+  background-color: rgba(var(--tertiary-button-color));
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.66);
+  transform: scale(1);
+  transition: all 200ms ease-in-out;
+}
+
+.carousel-dot-selected {
+  border-color: white;
+  background-color: white;
+  transform: scale(1.15);
+}
+
+.carousel-dot:hover {
+  border-color: white;
+  background-color: white;
 }
 
 /* Translate 33.33% left and right respectively since that the width of the images; NOT NEEDED: since there is a buffer image before the very "first one", the transitions start -33.33% to the left. */
