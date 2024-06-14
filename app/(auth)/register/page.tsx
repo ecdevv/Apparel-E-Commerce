@@ -7,7 +7,10 @@ const register = () => {
     <section className='auth-section'>
       <div className='auth-container'>
         <h1>REGISTER</h1>
+
+        {/* Form for inputting the registration information */}
         <form action='/register' method='POST'>
+        {/* Username Input */}
           <div className='input-container'>
             <h2>Username</h2>
             <div className='input-wrapper'>
@@ -15,7 +18,7 @@ const register = () => {
               <input className='input-field' type="text" id="username" name="username" placeholder='Type Your Username' required/>
 
               <svg
-                aria-label='User Icon'
+                aria-hidden
                 viewBox="0 0 448 512"
                 fill="currentColor"
                 className='input-icon'
@@ -24,6 +27,8 @@ const register = () => {
               </svg>
             </div>
           </div>
+
+          {/* Password Input */}
           <div className='input-container'>
             <h2>Password</h2>
             <div className='input-wrapper'>
@@ -31,7 +36,7 @@ const register = () => {
               <input className='input-field' type="password" id="password" name="password" placeholder='Type Your Password' required/>
 
               <svg
-                aria-label='Password Icon'
+                aria-hidden
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 className='input-icon'
@@ -44,6 +49,7 @@ const register = () => {
           <button className='auth-btn' aria-label='Register' type="submit">Register</button>
         </form>
         
+        {/* Additional actions including: Login Link option for users that may already have an account */}
         <div className="additional-actions">
           <Link href="/login" aria-label='Login' className='auth-link2'>Already have an account? Sign in</Link>
           {/* <Link href="/login" aria-label='Login' className="other-btn">Login</Link> */}

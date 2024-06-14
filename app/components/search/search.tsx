@@ -3,8 +3,8 @@ import './search.css'
 
 const search = () => {
   return (
-    <form id='searchForm' className='search-content' aria-label='Search Box'>
-      <input className='search-box' aria-labelledby='searchForm' type='search' placeholder='Search'/>
+    <form id='searchForm' aria-label='Search Box' className='search-content'>
+      <input aria-labelledby='searchForm' className='search-box' type='search' placeholder='Search'/>
       <svg
         aria-hidden
         viewBox="0 0 1024 1024"

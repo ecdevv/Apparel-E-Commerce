@@ -44,6 +44,7 @@ const user = () => {
         </svg>
       </button>
 
+      {/* User Menu ----- Get's transitioned whenever the menuToggle variable changes/toggled */}
       <CSSTransition
         in={menuToggle}
         timeout={100}
@@ -52,7 +53,7 @@ const user = () => {
       >
         <div className='user-menu' aria-label='User Menu'>
           <Link onClick={handleClick} href='/login' aria-label='Login' className="user-menu-link">Login</Link>
-          <Link onClick={handleClick} href='/register' aria-label='register' className="user-menu-link">Register</Link>
+          <Link onClick={handleClick} href='/register' aria-label='Register' className="user-menu-link">Register</Link>
         </div>
       </CSSTransition>
     </div>

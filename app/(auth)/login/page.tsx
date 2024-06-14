@@ -7,7 +7,10 @@ const login = () => {
     <section className='auth-section'>
       <div className='auth-container'>
         <h1>LOGIN</h1>
+
+        {/* Form for inputting the Username and Password */}
         <form action='/auth' method='POST'>
+          {/* Username Input */}
           <div className='input-container'>
             <h2>Username</h2>
             <div className='input-wrapper'>
@@ -24,6 +27,8 @@ const login = () => {
               </svg>
             </div>
           </div>
+
+          {/* Password Input */}
           <div className='input-container'>
             <h2>Password</h2>
             <div className='input-wrapper'>
@@ -44,6 +49,7 @@ const login = () => {
           <button className='auth-btn' aria-label='auth' type="submit">Login</button>
         </form>
         
+        {/* Additional actions including: Forgot Password Link and Register Button */}
         <div className="additional-actions">
           <Link href="/forgot-password" aria-label='Forgot Password' className='auth-link'>Forgot Password?</Link>
           <Link href="/register" aria-label='Register' className="other-btn">Register</Link>

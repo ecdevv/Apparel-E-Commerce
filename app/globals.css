@@ -16,6 +16,12 @@
   }
 } */
 
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
 .light {
   --primary-color: 255, 255, 255;
   --inverse-color: 35, 35, 35;
@@ -41,7 +47,6 @@
   --secondary-hover-button-color: 65, 65, 65;
 
   --carousel-background-color: 50, 50, 50;
-  
 }
 
 .dark {
@@ -71,15 +76,14 @@
   --carousel-background-color: 50, 50, 50;
 }
 
+/* Set focus outline color universally for better contrast */
+/* :focus {
+  outline: 3px solid #007BFF;
+} */
+
 body {
   font-family: var(--font-lora), sans-serif;
   color: rgba(var(--primary-text-color));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
 }
 
 h1 {

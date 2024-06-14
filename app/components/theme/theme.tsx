@@ -5,6 +5,7 @@ import './theme.css'
 const theme = () => {
   const [theme, setTheme] = useState('light')
 
+  // Set's the theme based on saved 'theme' setting based on user's preference on component mount
   useEffect(() => {
     const storageTheme = localStorage.getItem('theme')
     
@@ -21,6 +22,7 @@ const theme = () => {
     }
   }, [])
 
+  // Change the theme on click (light or dark)
   const handleClick = () => {
     const storageTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(storageTheme);
@@ -29,7 +31,6 @@ const theme = () => {
     document.body.classList.remove('light', 'dark')
     document.body.classList.add(storageTheme)
   }
-
 
   return (
     <button onClick = {handleClick} aria-label = "Change Theme">

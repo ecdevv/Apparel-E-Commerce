@@ -103,43 +103,70 @@
   background-color: white;
 }
 
-/* Translate 33.33% left and right respectively since that the width of the images; NOT NEEDED: since there is a buffer image before the very "first one", the transitions start -33.33% to the left. */
+/* CSS Transition */
 .slide-left-enter {
   transform: translateX(calc(-62.5% + 75% * var(--index)));              /* Start translating the new element from the right */
 }
 
 .slide-left-enter-active {
-  transform: translateX(-62.5%);                                  /* Position of the new element when it is done transitioning */
+  transform: translateX(-62.5%);                                         /* Position of the new element when it is done transitioning */
   transition: all 400ms ease-out;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .slide-left-exit {
-  transform: translateX(-62.5%);                                  /* Start translating the current element to start exiting to the left */
+  transform: translateX(-62.5%);                                        /* Start translating the current element to start exiting to the left */
 }
 
 .slide-left-exit-active {
-  transform: translateX(calc(-62.5% - 75% * var(--index)));            /* Position when the current element is finished transitioning offscreen */
+  transform: translateX(calc(-62.5% - 75% * var(--index)));             /* Position when the current element is finished transitioning offscreen */
   transition: all 400ms ease-in;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .slide-right-enter {
-  transform: translateX(calc(-62.5% - 75% * var(--index)));            /* Start translating the new element from the left */
+  transform: translateX(calc(-62.5% - 75% * var(--index)));             /* Start translating the new element from the left */
 }
 
 .slide-right-enter-active {
-  transform: translateX(-62.5%);                                  /* Position of the new element when it is done transitioning */
+  transform: translateX(-62.5%);                                        /* Position of the new element when it is done transitioning */
   transition: all 400ms ease-out;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .slide-right-exit {
-  transform: translateX(-62.5%);                                  /* Start translating the current element to start exiting to the right */
+  transform: translateX(-62.5%);                                        /* Start translating the current element to start exiting to the right */
 }
 
 .slide-right-exit-active {
-  transform: translateX(calc(-62.5% + 75% * var(--index)));              /* Position when the current element is finished transitioning offscreen */
+  transform: translateX(calc(-62.5% + 75% * var(--index)));             /* Position when the current element is finished transitioning offscreen */
   transition: all 400ms ease-in;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+/* Accessibility */
+.skip-link {
+  width: 0;
+  height: 0;
+  border: 0;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+.skip-link:focus-visible {
+  top: 2.5%;
+  left: 2.5%;
+  width: auto;
+  height: auto;
+  border: 1px solid black;
+  background-color: white;
+  margin: 0;
+  padding: 0.5rem;
+  clip: unset;
+  text-decoration: none;
+  color: black;
+  z-index: 100;
 }

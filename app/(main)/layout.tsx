@@ -7,13 +7,13 @@ export default function AuthLayout({
   children: React.ReactNode
 }) {
   return (
-    <section>
+    <>
       <header>
         <Banner/>
         <Navbar/>
       </header>
       {children}
-    </section>
+    </>
   )
 }
 
