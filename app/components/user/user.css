@@ -7,6 +7,21 @@
   position: relative
 }
 
+.user-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.66rem;
+  font-family: var(--font-montserrat);
+  transition: background-color 200ms ease-in-out;
+  padding: 7.5px;
+  border-radius: 5px;
+}
+
+.user-btn:hover {
+  background-color: rgba(var(--secondary-color));
+}
+
 .user-icon {
   width: 30px;
   height: 30px;
@@ -18,18 +33,31 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  top: 2rem;
+  top: 2.75rem;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(var(--secondary-color));
   border-width: 1px;
   border-color: black;
   gap: 2vh;
-  overflow: hidden;
   height: 175px;
 }
 
+.user-menu::before {
+  content: '';
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  transform: translateX(-50%) rotate(45deg);
+  background-color: rgba(var(--secondary-color));
+  border-left-width: 1px; border-top-width: 1px;
+  border-color: black;
+}
+
 .user-menu-link {
+  display: block;
   padding: 24px;
   cursor: pointer;
   font-family: var(--font-montserrat);
@@ -38,20 +66,20 @@
 
 /* CSS Transition */
 .menu-enter {
-  height: 0px;
+  opacity: 0;
 }
 
 .menu-enter-active {
-  height: 175px;
+  opacity: 1;
   transition: all 100ms linear;
 }
 
 .menu-exit {
-  height: 175px;
+  opacity: 1;
 }
 
 .menu-exit-active {
-  height: 0px;
+  opacity: 0;
   transition: all 100ms linear;
 }
 

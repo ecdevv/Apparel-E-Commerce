@@ -3,3 +3,18 @@
   width: 30px;
   height: 30px;
 }
+
+.cart-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-montserrat);
+  gap: 0.5rem;
+  transition: background-color 200ms ease-in-out;
+  padding: 7.5px;
+  border-radius: 5px;
+}
+
+.cart-btn:hover {
+  background-color: rgba(var(--secondary-color));
+}

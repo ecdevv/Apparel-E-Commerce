@@ -2,10 +2,16 @@
 .search-content {
   position: relative;
   display: flex;
+  margin: 7.5px;
   border-bottom-width: 1px;
   border-color: rgba(var(--search-border-color));
   opacity: 0.66;
-  transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out, background-color 200ms ease-in-out;
+  border-top-left-radius: 5px; border-top-right-radius: 5px;
+}
+
+.search-content:hover {
+  background-color: rgba(var(--secondary-color));
 }
 
 .search-box {

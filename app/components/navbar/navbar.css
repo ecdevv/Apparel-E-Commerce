@@ -18,16 +18,16 @@
 }
 
 .navbar-header, .navbar-header-logo {
-  width: 80%;
+  width: 90%;
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 .navbar-header {
-  padding-top: 1.33rem;
-  padding-bottom: 1.33rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .navbar-header-logo {
@@ -35,26 +35,26 @@
   padding-bottom: 2.5rem;
 }
 
-.navbar-theme-icons-container {
+.navbar-theme-icons-container, .navbar-icons-container {
   width: 500px;
   display: flex;
-  justify-content: start;
   align-items: center;
   gap: 1.5rem;
+}
+
+.navbar-theme-icons-container{
+  justify-content: start;
 }
 
 .navbar-icons-container {
-  width: 500px;
-  display: flex;
   justify-content: end;
-  align-items: center;
-  gap: 1.5rem;
 }
 
 .navbar-logo-container {
-  max-width: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
-  margin: auto;
 }
 
 .navbar-logo {

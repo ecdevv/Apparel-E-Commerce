@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image, {StaticImageData} from 'next/image';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import CarouselImage from '../../../public/images/carousel-item1.webp';
@@ -28,10 +28,6 @@ const carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [difference, setDifference] = useState(0);
   const [slideDirection, setSlideDirection] = useState('slide-left');
-
-  useEffect(() => {
-    console.log(currentIndex)
-  }, [currentIndex])
 
   const handlePrevClick = () => {
     // Disable and then re-enable the button after 300 milliseconds
