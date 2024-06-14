@@ -23,12 +23,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border-bottom-width: 1px; */
 }
 
 .navbar-header {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  padding-top: 1.33rem;
+  padding-bottom: 1.33rem;
 }
 
 .navbar-header-logo {
@@ -74,8 +73,8 @@
   justify-content: center;
   align-items: center;
   gap: 5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.66rem;
+  padding-bottom: 0.66rem;
   background-color: rgba(var(--inverse-color));
   color: rgba(var(--secondary-text-color));
 }
