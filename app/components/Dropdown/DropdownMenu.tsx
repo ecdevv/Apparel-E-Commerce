@@ -12,9 +12,10 @@ interface DropdownMenuProps  {
   Items: Item[];
   menuToggle: boolean;
   translate: string;
+  showPointer: boolean;
 }
 
-const DropdownMenu = ({Items, menuToggle, translate} : DropdownMenuProps) => {
+const DropdownMenu = ({Items, menuToggle, translate, showPointer} : DropdownMenuProps) => {
   return (
     <>
       {/* Dropdown Menu ----- Get's transitioned whenever the menuToggle variable changes/toggled */}
@@ -25,14 +26,14 @@ const DropdownMenu = ({Items, menuToggle, translate} : DropdownMenuProps) => {
         unmountOnExit
       >
         <div className='dropdown-menu-wrapper'>
-          <div className='dropdown-menu-pointer'></div>
+          {showPointer ? <div className='dropdown-menu-pointer'></div> : null}
           <ul aria-label='Dropdown Menu' className='dropdown-menu' style={{
             '--translate': translate === 'left' ? '-50%' : translate === 'center' ? '-50%' : '0%',
             '--left': translate === 'left' ? '0%' : translate === 'center' ? '50%' : '0%',
             } as React.CSSProperties}
           >
             {Items.map((item, index) => (
-              <li key={index}><Link  href={`/${item.name.split(/[ ,]+/).join('').toLowerCase()}`} aria-label={`${item.name}`} className={`${item.type === 'button' ? 'dropdown-menu-btn' : null}`}>{`${item.name}`}</Link></li>
+              <li key={index}><Link  href={`/${item.name.split(/[ ,]+/).join('').toLowerCase()}`} aria-label={`${item.name}`} className={`${item.type === 'button' ? 'dropdown-menu-btn' : 'dropdown-menu-other'}`}>{`${item.name}`}</Link></li>
             ))}
           </ul>
         </div>

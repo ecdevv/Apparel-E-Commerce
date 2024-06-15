@@ -129,7 +129,7 @@
 }
 
 .auth-link:hover, .auth-link2:hover {
-  color: rgb(15, 127, 255);
+  color: rgba(var(--link-text-color));
 }
 
 .auth-link::after, .auth-link2::after {

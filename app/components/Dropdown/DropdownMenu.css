@@ -60,6 +60,14 @@
   background-color: rgba(var(--primary-hover-button-color))
 }
 
+.dropdown-menu-other {
+  font-family: var(--font-montserrat);
+  color: rgba(var(--primary-text-color));
+}
+
+.dropdown-menu-other:hover {
+  color: rgba(var(--link-text-color));
+}
  
 /* CSS Transition */
 .menu-enter {

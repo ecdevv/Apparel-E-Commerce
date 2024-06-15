@@ -40,7 +40,7 @@ const User = () => {
   // }
 
   return (
-    <DropdownButton Items={items} hover={false} orientation={'left'} classNames={['user-btn', 'user-btn-focus']}>
+    <DropdownButton Items={items} hover={false} orientation={'left'} showPointer={true} classNames={['user-btn', 'user-btn-focus']}>
       <svg
         aria-hidden
         fill="currentColor"

@@ -64,12 +64,12 @@ const storeItems:Item[] = [
 
 const Navigation = () => {
   return (
-    <nav className='navbar-navigation'>
+    <nav className='navbar-navigation-wrapper'>
       <ul className='navbar-navigation-list'>
-        <li><DropdownButton Items={storeItems} hover={false} orientation={'center'} classNames={['navbar-navigation-links']}>New</DropdownButton></li>
-        <li><DropdownButton Items={storeItems} hover={true} orientation={'center'} classNames={['navbar-navigation-links']}>Sales</DropdownButton></li>
-        <li><DropdownButton Items={storeItems} hover={true} orientation={'center'} classNames={['navbar-navigation-links']}>Store</DropdownButton></li>
-        <li><DropdownButton Items={storeItems} hover={true} orientation={'center'} classNames={['navbar-navigation-links']}>Contact</DropdownButton></li>
+        <li><DropdownButton Items={storeItems} hover={true} orientation={'center'} showPointer={false} classNames={['navbar-navigation-links', 'navbar-navigation-links-focus']}>New</DropdownButton></li>
+        <li><DropdownButton Items={storeItems} hover={true} orientation={'center'} showPointer={false} classNames={['navbar-navigation-links', 'navbar-navigation-links-focus']}>Sales</DropdownButton></li>
+        <li><DropdownButton Items={storeItems} hover={true} orientation={'center'} showPointer={false} classNames={['navbar-navigation-links', 'navbar-navigation-links-focus']}>Store</DropdownButton></li>
+        <li><DropdownButton Items={storeItems} hover={true} orientation={'center'} showPointer={false} classNames={['navbar-navigation-links', 'navbar-navigation-links-focus']}>Contact</DropdownButton></li>
       </ul>
     </nav>
   )

@@ -14,7 +14,7 @@ const items: Item[] = [
 
 const Cart = () => {
   return (
-    <DropdownButton Items={items} hover={false} orientation={'left'} classNames={['cart-btn', 'cart-btn-focus']}>
+    <DropdownButton Items={items} hover={false} orientation={'left'} showPointer={true} classNames={['cart-btn', 'cart-btn-focus']}>
       <svg
         aria-hidden
         viewBox="0 0 32 32"

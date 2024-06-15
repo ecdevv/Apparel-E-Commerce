@@ -13,11 +13,12 @@ interface DropdownButtonProps  {
   Items: Item[];
   hover: boolean;
   orientation: string;
+  showPointer: boolean;
   classNames: string[];
 }
 
 // Navigation section with the links of this navbar component
-const DropdownButton = ({children, Items, hover, orientation, classNames} : DropdownButtonProps) => {
+const DropdownButton = ({children, Items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
   const [menuToggle, setMenuToggle] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -52,19 +53,26 @@ const DropdownButton = ({children, Items, hover, orientation, classNames} : Drop
   }
 
   return (
-    <span ref={menuRef} className='dropdown' onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined}>
+    <div ref={menuRef} className='dropdown' onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined}>
       {hover 
-      ? <Link href = "/" aria-label='Items On Sale' className={classNames[0]}>{children}</Link> 
+      ? <Link href = "/" aria-label='Items On Sale' 
+          className={`${menuToggle 
+          ? classNames[1] ? classNames[1] : classNames[0] 
+          : classNames[0]}`}
+        >
+          {children}
+      </Link> 
       : <button onClick={handleClick} aria-label='Items On Sale' 
           className={`${menuToggle 
           ? classNames[1] ? classNames[1] : classNames[0] 
-          : classNames[0]}`}>
-            {children}
+          : classNames[0]}`}
+        >
+          {children}
         </button>
       }
       
-      <Dropdown Items={Items} menuToggle={menuToggle} translate={orientation}/>
-    </span>
+      <Dropdown Items={Items} menuToggle={menuToggle} translate={orientation} showPointer={showPointer}/>
+    </div>
   )
 }
 
