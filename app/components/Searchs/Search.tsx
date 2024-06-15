@@ -1,7 +1,7 @@
 import React from 'react';
-import './search.css'
+import './Search.css'
 
-const search = () => {
+const Search = () => {
   return (
     <form id='searchForm' aria-label='Search Box' className='search-content'>
       <input aria-labelledby='searchForm' className='search-box' type='search' placeholder='Search'/>
@@ -17,4 +17,4 @@ const search = () => {
   )
 }
 
-export default search
+export default Search

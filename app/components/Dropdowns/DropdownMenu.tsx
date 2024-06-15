@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group'
-import './dropdown.css'
+import './Dropdown.css'
 
 interface Item {
   name: string;
@@ -15,7 +15,7 @@ interface dropdownProps  {
   orientation: string;
 }
 
-const dropdown = ({Items, menuToggle, orientation} : dropdownProps) => {
+const DropdownMenu = ({Items, menuToggle, orientation} : dropdownProps) => {
   return (
     <>
       {/* Dropdown Menu ----- Get's transitioned whenever the menuToggle variable changes/toggled */}
@@ -38,4 +38,4 @@ const dropdown = ({Items, menuToggle, orientation} : dropdownProps) => {
   )
 }
 
-export default dropdown
+export default DropdownMenu

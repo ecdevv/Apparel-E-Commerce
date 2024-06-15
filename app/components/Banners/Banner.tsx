@@ -1,7 +1,7 @@
 import React from 'react';
-import './banner.css'
+import './Banner.css'
 
-const banner = () => {
+const Banner = () => {
   return (
     <section className='banner'>
       <div className='banner-content'>
@@ -11,4 +11,4 @@ const banner = () => {
   )
 }
 
-export default banner;
+export default Banner;

@@ -6,7 +6,7 @@ import CarouselImage from '../../../public/images/carousel-item1.webp';
 import CarouselImage2 from '../../../public/images/carousel-item2.webp';
 import CarouselImage3 from '../../../public/images/carousel-item3.webp';
 import CarouselImage4 from '../../../public/images/carousel-item4.webp';
-import './carousel.css'
+import './Carousel.css'
 
 const Images = [CarouselImage, CarouselImage2, CarouselImage3, CarouselImage4]; 
 
@@ -23,7 +23,7 @@ const getWrappedImages = (currentIndex:number, images:StaticImageData[], numberO
   return wrappedImages;
 };
 
-const carousel = () => {
+const Carousel = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [difference, setDifference] = useState(0);
@@ -165,4 +165,4 @@ const carousel = () => {
 
 }
 
-export default carousel;
+export default Carousel;

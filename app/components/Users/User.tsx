@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState, useRef } from 'react';
-import './user.css'
-import Dropdown from '../dropdown/dropdown';
+import Dropdown from '../Dropdown/DropdownMenu';
+import './User.css'
 
 interface Item {
   name: string;
@@ -13,7 +13,7 @@ const items:Item[] = [
   { name: 'Register', type: 'button'}
 ]
 
-const user = () => {
+const User = () => {
   const [menuToggle, setMenuToggle] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -67,4 +67,4 @@ const user = () => {
   )
 }
 
-export default user
+export default User

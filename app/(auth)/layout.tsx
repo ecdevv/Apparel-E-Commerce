@@ -1,4 +1,4 @@
-import {HeaderLogo} from '../components/navbar/navbar'
+import {HeaderLogo} from '../components/Navbar/Navbar'
 
 export default function AuthLayout({
   children,

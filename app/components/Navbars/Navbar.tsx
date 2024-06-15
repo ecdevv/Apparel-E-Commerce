@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from 'next/link'
 import Image from 'next/image';
-import Search from '../search/search';
-import User from '../user/user'
-import Cart from '../cart/cart'
-import Theme from '../theme/theme'
-import HoverButton from '../dropdown/hoverButton';
-import './navbar.css'
+import Search from '../Search/Search';
+import User from '../User/User';
+import Cart from '../Cart/Cart';
+import Theme from '../Theme/Theme';
+import DropdownButton from '../Dropdown/DropdownButton';
+import './Navbar.css'
 
 
 // The top section of the navbar with the logo, icons, search box, and etc.
@@ -66,17 +66,17 @@ const Navigation = () => {
   return (
     <nav className='navbar-navigation'>
       <ul className='navbar-navigation-list'>
-        <HoverButton Items={storeItems} label={'New'}/>
-        <HoverButton Items={storeItems} label={'Sales'}/>
-        <HoverButton Items={storeItems} label={'Store'}/>
-        <HoverButton Items={storeItems} label={'Contact'}/>
+        <DropdownButton Items={storeItems} label={'New'}/>
+        <DropdownButton Items={storeItems} label={'Sales'}/>
+        <DropdownButton Items={storeItems} label={'Store'}/>
+        <DropdownButton Items={storeItems} label={'Contact'}/>
       </ul>
     </nav>
   )
 }
 
 // The whole navbar with the header and navigation sections
-const navbar = () => {
+const Navbar = () => {
   return (
     <section className='navbar'>
       <div className='navbar-container'>
@@ -87,5 +87,5 @@ const navbar = () => {
   )
 }
 
-export default navbar
+export default Navbar
 export {Header, HeaderLogo, Navigation};

@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState, useRef } from 'react';
-import './cart.css'
-import Dropdown from '../dropdown/dropdown';
+import DropdownMenu from '../Dropdown/DropdownMenu';
+import './Cart.css'
 
 interface Item {
   name: string;
@@ -13,7 +13,7 @@ const items: Item[] = [
   { name: 'View Cart', type: 'button'}
 ]
 
-const cart = () => {
+const Cart = () => {
   const [menuToggle, setMenuToggle] = useState(false);
 
   const menuRef = useRef<HTMLDivElement>(null);
@@ -62,9 +62,9 @@ const cart = () => {
           </svg>
       </button>
 
-      <Dropdown Items={items} menuToggle={menuToggle} orientation={'right'}/>
+      <DropdownMenu Items={items} menuToggle={menuToggle} orientation={'right'}/>
     </div>
   )
 }
 
-export default cart
+export default Cart

@@ -1,5 +1,5 @@
-import Banner from "../components/banner/banner"
-import Navbar from "../components/navbar/navbar"
+import Banner from "../components/Banner/Banner"
+import Navbar from "../components/Navbar/Navbar"
 
 export default function AuthLayout({
   children,

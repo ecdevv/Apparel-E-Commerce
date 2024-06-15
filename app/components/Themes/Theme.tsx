@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import './theme.css'
+import './Theme.css'
 
-const theme = () => {
+const Theme = () => {
   const [theme, setTheme] = useState('light')
 
   // Set's the theme based on saved 'theme' setting based on user's preference on component mount
@@ -46,4 +46,4 @@ const theme = () => {
   )
 }
 
-export default theme;
+export default Theme;

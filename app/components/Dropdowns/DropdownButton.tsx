@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Link from 'next/link'
-import Dropdown from './dropdown'
+import Dropdown from './DropdownMenu'
 
 interface Item {
   name: string;
@@ -14,7 +14,7 @@ interface dropdownProps  {
 }
 
 // Navigation section with the links of this navbar component
-const hoverButton = ({Items, label} : dropdownProps) => {
+const DropdownButton = ({Items, label} : dropdownProps) => {
   const [hover, setHover] = useState(false);
 
   return (
@@ -25,4 +25,4 @@ const hoverButton = ({Items, label} : dropdownProps) => {
   )
 }
 
-export default hoverButton
+export default DropdownButton
