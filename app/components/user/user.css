@@ -1,9 +1,5 @@
-/****************** user ******************/
+/****************** User ******************/
 .user {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative
 }
 
@@ -26,60 +22,3 @@
   width: 30px;
   height: 30px;
 }
-
-.user-menu {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  top: 2.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(var(--secondary-color));
-  border-width: 1px;
-  border-color: black;
-  gap: 2vh;
-  height: 175px;
-}
-
-.user-menu::before {
-  content: '';
-  position: absolute;
-  top: -0.5rem;
-  left: 50%;
-  width: 15px;
-  height: 15px;
-  transform: translateX(-50%) rotate(45deg);
-  background-color: rgba(var(--secondary-color));
-  border-left-width: 1px; border-top-width: 1px;
-  border-color: black;
-}
-
-.user-menu-link {
-  display: block;
-  padding: 24px;
-  cursor: pointer;
-  font-family: var(--font-montserrat);
-  color: rgba(var(--primary-text-color));
-}
-
-/* CSS Transition */
-.menu-enter {
-  opacity: 0;
-}
-
-.menu-enter-active {
-  opacity: 1;
-  transition: all 100ms linear;
-}
-
-.menu-exit {
-  opacity: 1;
-}
-
-.menu-exit-active {
-  opacity: 0;
-  transition: all 100ms linear;
-}
-

@@ -1,8 +1,17 @@
 'use client'
 import React, { useEffect, useState, useRef } from 'react';
-import Link from 'next/link';
-import {CSSTransition} from 'react-transition-group'
 import './user.css'
+import Dropdown from '../dropdown/dropdown';
+
+interface Item {
+  name: string;
+  type: 'button' | 'other';
+}
+
+const items:Item[] = [
+  { name: 'Login', type: 'button'},
+  { name: 'Register', type: 'button'}
+]
 
 const user = () => {
   const [menuToggle, setMenuToggle] = useState(false);
@@ -23,7 +32,7 @@ const user = () => {
     return () => {
         document.removeEventListener('mousedown', handleClickOutside);
     };
-}, []);
+  }, []);
 
   // Handle toggling the menu on icon clicked
   const handleClick = () => {
@@ -54,18 +63,7 @@ const user = () => {
         </svg>
       </button>
 
-      {/* User Menu ----- Get's transitioned whenever the menuToggle variable changes/toggled */}
-      <CSSTransition
-        in={menuToggle}
-        timeout={100}
-        classNames='menu'
-        unmountOnExit
-      >
-        <ul className='user-menu' aria-label='User Menu'>
-          <li><Link onClick={handleClick} href='/login' aria-label='Login' className="user-menu-link">Login</Link></li>
-          <li><Link onClick={handleClick} href='/register' aria-label='Register' className="user-menu-link">Register</Link></li>
-        </ul>
-      </CSSTransition>
+      <Dropdown Items={items} menuToggle={menuToggle}/>
     </div>
   )
 }

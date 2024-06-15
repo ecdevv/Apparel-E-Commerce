@@ -1,4 +1,8 @@
 /****************** Cart ******************/
+.cart {
+  position: relative;
+}
+
 .cart-icon {
   width: 30px;
   height: 30px;
