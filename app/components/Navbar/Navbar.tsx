@@ -66,10 +66,10 @@ const Navigation = () => {
   return (
     <nav className='navbar-navigation'>
       <ul className='navbar-navigation-list'>
-        <DropdownButton Items={storeItems} label={'New'}/>
-        <DropdownButton Items={storeItems} label={'Sales'}/>
-        <DropdownButton Items={storeItems} label={'Store'}/>
-        <DropdownButton Items={storeItems} label={'Contact'}/>
+        <li><DropdownButton Items={storeItems} hover={false} orientation={'center'} classNames={['navbar-navigation-links']}>New</DropdownButton></li>
+        <li><DropdownButton Items={storeItems} hover={true} orientation={'center'} classNames={['navbar-navigation-links']}>Sales</DropdownButton></li>
+        <li><DropdownButton Items={storeItems} hover={true} orientation={'center'} classNames={['navbar-navigation-links']}>Store</DropdownButton></li>
+        <li><DropdownButton Items={storeItems} hover={true} orientation={'center'} classNames={['navbar-navigation-links']}>Contact</DropdownButton></li>
       </ul>
     </nav>
   )

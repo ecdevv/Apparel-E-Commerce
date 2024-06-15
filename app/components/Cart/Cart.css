@@ -1,8 +1,4 @@
 /****************** Cart ******************/
-.cart {
-  position: relative;
-}
-
 .cart-btn, .cart-btn-focus {
   display: flex;
   justify-content: center;

@@ -1,21 +1,20 @@
-'use client'
 import React from 'react';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group'
-import './Dropdown.css'
+import './DropdownMenu.css'
 
 interface Item {
   name: string;
   type: 'button' | 'other';
 }
 
-interface dropdownProps  {
+interface DropdownMenuProps  {
   Items: Item[];
   menuToggle: boolean;
-  orientation: string;
+  translate: string;
 }
 
-const DropdownMenu = ({Items, menuToggle, orientation} : dropdownProps) => {
+const DropdownMenu = ({Items, menuToggle, translate} : DropdownMenuProps) => {
   return (
     <>
       {/* Dropdown Menu ----- Get's transitioned whenever the menuToggle variable changes/toggled */}
@@ -25,9 +24,13 @@ const DropdownMenu = ({Items, menuToggle, orientation} : dropdownProps) => {
         classNames='menu'
         unmountOnExit
       >
-        <div className='dropdown-menu-container'>
+        <div className='dropdown-menu-wrapper'>
           <div className='dropdown-menu-pointer'></div>
-          <ul aria-label='Dropdown Menu' className='dropdown-menu' style={{'--orientation': orientation === 'right' ? '-50%' : '0%'} as React.CSSProperties}>
+          <ul aria-label='Dropdown Menu' className='dropdown-menu' style={{
+            '--translate': translate === 'left' ? '-50%' : translate === 'center' ? '-50%' : '0%',
+            '--left': translate === 'left' ? '0%' : translate === 'center' ? '50%' : '0%',
+            } as React.CSSProperties}
+          >
             {Items.map((item, index) => (
               <li key={index}><Link  href={`/${item.name.split(/[ ,]+/).join('').toLowerCase()}`} aria-label={`${item.name}`} className={`${item.type === 'button' ? 'dropdown-menu-btn' : null}`}>{`${item.name}`}</Link></li>
             ))}

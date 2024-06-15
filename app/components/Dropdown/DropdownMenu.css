@@ -1,5 +1,9 @@
 /****************** Dropdown ******************/
-.dropdown-container {
+.dropdown {
+  position: relative;
+}
+
+.dropdown-wrapper {
   position: relative;
 }
 
@@ -22,7 +26,8 @@
   display: flex;
   flex-direction: column;
   top: calc(100% + 0.15rem);
-  transform: translateX(calc(var(--orientation)));
+  left: var(--left);
+  transform: translateX(calc(var(--translate)));
   background-color: rgba(var(--secondary-color));
   border-width: 1px;
   border-color: rgba(var(--input-border-color), 0.5);
