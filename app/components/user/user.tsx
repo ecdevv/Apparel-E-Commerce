@@ -36,12 +36,12 @@ const user = () => {
 
   // Handle toggling the menu on icon clicked
   const handleClick = () => {
-    setMenuToggle(!menuToggle)
+    setMenuToggle(!menuToggle);
   }
 
   return (
     <div ref={menuRef} className='user'>
-      <button onClick = {handleClick} aria-label='User Button' className='user-btn'>
+      <button onClick = {handleClick} aria-label='User Button' className={`${menuToggle ? 'user-btn-focus' : 'user-btn'}`}>
         <svg
           aria-hidden
           fill="currentColor"
@@ -52,7 +52,6 @@ const user = () => {
           <path d="M12 6.92969C9.93 6.92969 8.25 8.60969 8.25 10.6797C8.25 12.7097 9.84 14.3597 11.95 14.4197C11.98 14.4197 12.02 14.4197 12.04 14.4197C12.06 14.4197 12.09 14.4197 12.11 14.4197C12.12 14.4197 12.13 14.4197 12.13 14.4197C14.15 14.3497 15.74 12.7097 15.75 10.6797C15.75 8.60969 14.07 6.92969 12 6.92969Z"/>
         </svg>
         <h2>Account</h2>
-
         <svg 
           fill="currentColor" 
           viewBox="0 0 24 24" 
@@ -63,7 +62,7 @@ const user = () => {
         </svg>
       </button>
 
-      <Dropdown Items={items} menuToggle={menuToggle}/>
+      <Dropdown Items={items} menuToggle={menuToggle} orientation={'right'}/>
     </div>
   )
 }

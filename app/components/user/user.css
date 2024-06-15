@@ -1,20 +1,20 @@
 /****************** User ******************/
 .user {
-  position: relative
+  position: relative;
 }
 
-.user-btn {
+.user-btn, .user-btn-focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.66rem;
   font-family: var(--font-montserrat);
+  gap: 0.66rem;
   transition: background-color 200ms ease-in-out;
   padding: 7.5px;
   border-radius: 5px;
 }
 
-.user-btn:hover {
+.user-btn-focus, .user-btn:hover {
   background-color: rgba(var(--secondary-color));
 }
 

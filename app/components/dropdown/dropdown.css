@@ -1,13 +1,12 @@
 /****************** Dropdown ******************/
 .dropdown-container {
   position: relative;
-  display: inline-block;
 }
 
 .dropdown-menu-pointer {
   content: '';
   position: absolute;
-  top: 2.5rem;
+  top: calc(100% - 0.3rem);
   left: 50%;
   width: 15px;
   height: 15px;
@@ -22,12 +21,12 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
+  top: calc(100% + 0.15rem);
+  transform: translateX(calc(var(--orientation)));
   background-color: rgba(var(--secondary-color));
   border-width: 1px;
   border-color: rgba(var(--input-border-color), 0.5);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
   gap: 1rem;
   padding: 1rem;
   width: 250px;
@@ -56,29 +55,26 @@
   background-color: rgba(var(--primary-hover-button-color))
 }
 
-/* .dropdown-menu li:first-child .dropdown-menu-btn {
-  background-color: rgba(var(--primary-button-color));
-}
-
-.dropdown-menu li:not(:first-child) .dropdown-menu-btn {
-  background-color: rgba(var(--secondary-button-color));
-} */
  
 /* CSS Transition */
 .menu-enter {
   opacity: 0;
+  transform: translateY(-10px);
 }
 
 .menu-enter-active {
   opacity: 1;
-  transition: all 100ms linear;
+  transform: translateY(0px);
+  transition: opacity 100ms linear, transform 100ms linear;
 }
 
 .menu-exit {
   opacity: 1;
+  transform: translateY(0px);
 }
 
 .menu-exit-active {
   opacity: 0;
-  transition: all 100ms linear;
+  transform: translateY(-10px);
+  transition: opacity 100ms linear, transform 100ms linear;
 }

@@ -42,7 +42,7 @@ const cart = () => {
 
   return (
     <div ref={menuRef} className='cart'>
-      <button onClick={handleClick} aria-label='Cart' className='cart-btn'>
+      <button onClick={handleClick} aria-label='Cart Button' className={`${menuToggle ? 'cart-btn-focus' : 'cart-btn'}`}>
         <svg
           aria-hidden
           viewBox="0 0 32 32"
@@ -62,7 +62,7 @@ const cart = () => {
           </svg>
       </button>
 
-      <Dropdown Items={items} menuToggle={menuToggle}/>
+      <Dropdown Items={items} menuToggle={menuToggle} orientation={'right'}/>
     </div>
   )
 }

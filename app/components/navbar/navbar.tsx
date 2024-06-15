@@ -5,7 +5,9 @@ import Search from '../search/search';
 import User from '../user/user'
 import Cart from '../cart/cart'
 import Theme from '../theme/theme'
+import HoverButton from '../dropdown/hoverButton';
 import './navbar.css'
+
 
 // The top section of the navbar with the logo, icons, search box, and etc.
 const Header = () => {
@@ -51,14 +53,23 @@ const HeaderLogo = () => {
 }
 
 // Navigation section with the links of this navbar component
+interface Item {
+  name: string;
+  type: 'button' | 'other';
+}
+
+const storeItems:Item[] = [
+  {name: 'test', type: 'other'}
+]
+
 const Navigation = () => {
   return (
     <nav className='navbar-navigation'>
       <ul className='navbar-navigation-list'>
-        <li><Link href = "/" aria-label='New Items For Sale' className='navbar-navigation-links'>New</Link></li>
-        <li><Link href = "/" aria-label='Items On Sale' className='navbar-navigation-links'>Sales</Link></li>
-        <li><Link href = "/" aria-label='Store' className='navbar-navigation-links'>Store</Link></li>
-        <li><Link href = "/" aria-label='Contact' className='navbar-navigation-links'>Contact</Link></li>          
+        <HoverButton Items={storeItems} label={'New'}/>
+        <HoverButton Items={storeItems} label={'Sales'}/>
+        <HoverButton Items={storeItems} label={'Store'}/>
+        <HoverButton Items={storeItems} label={'Contact'}/>
       </ul>
     </nav>
   )
