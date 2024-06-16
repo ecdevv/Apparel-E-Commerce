@@ -1,20 +1,63 @@
 import React from 'react';
 import DropdownButton from '../Dropdown/DropdownButton';
+import Image from 'next/image';
 import './Cart.css'
 
 interface Item {
+  svg?: React.ReactElement;
   name: string;
-  type: 'button' | 'other';
+  type: 'section' | 'cart' | 'button' | 'link' | 'text';
 }
 
 const items: Item[] = [
-  { name: 'Checkout', type: 'button'},
-  { name: 'View Cart', type: 'button'}
+  { name: 'Shopping Cart', type: 'text' },
+  { name: 'Cart Items', type: 'cart' },
+  { name: 'Checkout', type: 'button' },
+  { name: 'View Cart', type: 'button' },
 ]
+
+// TODO: Accept props for store item (like a t-shirt)
+const CartCard = () => {
+  return (
+    <div className='cart-card'>
+      <Image
+        src="/next.svg"
+        alt='Logo'
+        width='0'
+        height='0'
+        className='cart-image'
+      />
+      <div className='cart-info'>
+        <h2>Item Name</h2>
+        <div className='cart-info-second'>
+          <h2>Item Price</h2>
+          <h2>Qty: </h2>
+        </div>
+        <div className='cart-info-third'>
+          <h2>Free Shipping</h2>
+          <h2>TRASH BIN</h2>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// TODO: Implement a system to add items into an array from a database/api or .json file and map that data as props into CartCard
+const CartItemList = () => {
+  return (
+    <div className='cart-container'>
+      <CartCard />
+      <CartCard />
+      <CartCard />
+      <CartCard />
+      <CartCard />
+    </div>
+  )
+}
 
 const Cart = () => {
   return (
-    <DropdownButton Items={items} hover={false} orientation={'left'} showPointer={true} classNames={['cart-btn', 'cart-btn-focus']}>
+    <DropdownButton items={items} hover={false} orientation={'left'} showPointer={true} classNames={['cart-btn', 'cart-btn-focus']}>
       <svg
         aria-hidden
         viewBox="0 0 32 32"
@@ -25,15 +68,16 @@ const Cart = () => {
       </svg>
       <h2>Cart</h2>
       <svg 
-          fill="currentColor" 
-          viewBox="0 0 24 24" 
-          height="1em" 
-          width="1em"
-        >
-          <path d="M6.343 7.757L4.93 9.172 12 16.242l7.071-7.07-1.414-1.415L12 13.414 6.343 7.757z" />
-        </svg>
+        fill="currentColor" 
+        viewBox="0 0 24 24" 
+        height="1em" 
+        width="1em"
+      >
+        <path d="M6.343 7.757L4.93 9.172 12 16.242l7.071-7.07-1.414-1.415L12 13.414 6.343 7.757z" />
+      </svg>
     </DropdownButton>
   )
 }
 
 export default Cart
+export { CartItemList, CartCard }

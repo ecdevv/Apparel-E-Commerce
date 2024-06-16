@@ -4,13 +4,15 @@ import Link from 'next/link'
 import Dropdown from './DropdownMenu'
 
 interface Item {
+  svg?: React.ReactElement;
   name: string;
-  type: 'button' | 'other';
+  type: 'section' | 'cart' | 'button' | 'link' | 'text';
 }
 
 interface DropdownButtonProps  {
   children?: React.ReactNode;
-  Items: Item[];
+  link?: string;
+  items: Item[];
   hover: boolean;
   orientation: string;
   showPointer: boolean;
@@ -18,7 +20,7 @@ interface DropdownButtonProps  {
 }
 
 // Navigation section with the links of this navbar component
-const DropdownButton = ({children, Items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
+const DropdownButton = ({children, link, items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
   const [menuToggle, setMenuToggle] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -55,14 +57,14 @@ const DropdownButton = ({children, Items, hover, orientation, showPointer, class
   return (
     <div ref={menuRef} className='dropdown' onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined}>
       {hover 
-      ? <Link href = "/" aria-label='Items On Sale' 
+      ? <Link href = {`${link?.toLowerCase()}`} aria-label={`${link}`}
           className={`${menuToggle 
           ? classNames[1] ? classNames[1] : classNames[0] 
           : classNames[0]}`}
         >
           {children}
       </Link> 
-      : <button onClick={handleClick} aria-label='Items On Sale' 
+      : <button onClick={handleClick} aria-label={`${link}`}
           className={`${menuToggle 
           ? classNames[1] ? classNames[1] : classNames[0] 
           : classNames[0]}`}
@@ -71,7 +73,7 @@ const DropdownButton = ({children, Items, hover, orientation, showPointer, class
         </button>
       }
       
-      <Dropdown Items={Items} menuToggle={menuToggle} translate={orientation} showPointer={showPointer}/>
+      <Dropdown items={items} menuToggle={menuToggle} translate={orientation} showPointer={showPointer}/>
     </div>
   )
 }

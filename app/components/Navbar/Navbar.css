@@ -77,10 +77,11 @@
   color: rgba(var(--secondary-text-color));
 }
 
-.navbar-navigation-links, .navbar-navigation-links-focus {
+.navbar-navigation-link, .navbar-navigation-link-focus {
   display: inline-block;
   position: relative;
-  padding: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   gap: 0.5rem;
   font-family: var(--font-montserrat);
   font-size: 18px;
@@ -88,7 +89,7 @@
   border-bottom: 2px solid transparent;
 }
 
-.navbar-navigation-links::after, .navbar-navigation-links-focus::after {
+.navbar-navigation-link::after, .navbar-navigation-link-focus::after {
   content: '';
   position: absolute;
   bottom: 7.5px;
@@ -101,7 +102,7 @@
   transform-origin: bottom right;
 }
 
-.navbar-navigation-links:hover::after, .navbar-navigation-links-focus::after {
+.navbar-navigation-link:hover::after, .navbar-navigation-link-focus::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
@@ -109,3 +110,5 @@
 .hidden-theme {
   display: none;
 }
+
+/****************** Navigation Menus ******************/

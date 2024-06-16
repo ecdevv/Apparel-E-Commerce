@@ -103,7 +103,7 @@
   background-color: white;
 }
 
-/* CSS Transition */
+/*** CSSTransition ***/
 .slide-left-enter {
   transform: translateX(calc(-62.5% + 75% * var(--index)));              /* Start translating the new element from the right */
 }

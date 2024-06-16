@@ -18,3 +18,53 @@
   width: 30px;
   height: 30px;
 }
+
+
+/****************** Cart Info Card ******************/
+.cart-container {
+  background-color: white;
+  position: relative;
+  max-height: 300px;
+  overflow-y: scroll;
+  padding: 1rem;
+  scrollbar-width: 1px; 
+}
+
+.cart-container > *:not(:last-child) {
+  margin-bottom: 1rem; 
+}
+
+.cart-container > *:last-child {
+  margin-bottom: 0; 
+}
+
+.cart-card {
+  width: 350px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cart-image {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cart-info {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-info-second {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-info-third {
+  display: flex;
+  justify-content: space-between;
+}

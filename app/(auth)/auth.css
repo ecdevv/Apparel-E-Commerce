@@ -1,4 +1,4 @@
-/****************** auth ******************/
+/****************** Auth ******************/
 .auth-section {
   width: 100vw;
   height: auto;
@@ -169,7 +169,7 @@
   color: black;
 }
 
-/* Accessibility */
+/*** Accessibility ***/
 .visually-hidden {
   width: 0;
   height: 0;
