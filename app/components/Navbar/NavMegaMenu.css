@@ -10,6 +10,9 @@
 }
 
 .mega-menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   width: 100%;
   font-family: var(--font-montserrat);
   font-weight: 500;
