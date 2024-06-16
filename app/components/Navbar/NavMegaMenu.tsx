@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import './navbar.css'
+import './NavMegaMenu.css'
 
 const StoreMegaMenu = () => {
   return (

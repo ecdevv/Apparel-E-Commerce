@@ -1,0 +1,63 @@
+/****************** Navigation Mega Menu ******************/
+.mega-menu-container {
+  display: grid;
+  max-width: 50vw;
+  height: 100%;
+  margin: auto;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  color: rgba(var(--primary-text-color));
+}
+
+.mega-menu-content {
+  width: 100%;
+  font-family: var(--font-montserrat);
+  font-weight: 500;
+  padding-left: 15%;
+  padding-right: 2rem;
+}
+
+.mega-menu-content:not(:last-child) {
+  border-right-width: 1px;
+  border-color: rgba(var(--inverse-color), 0.33);
+}
+
+.mega-menu-content-wrapper {
+  position: relative;
+}
+
+.mega-menu-content h2 {
+  font-weight: 700;
+}
+
+.mega-menu-content ul {
+  font-size: 14px;
+}
+
+.mega-menu-content a {
+  position: relative;
+  transition: color 200ms ease;
+}
+
+.mega-menu-content a:hover {
+  color: rgba(var(--link-text-color));
+}
+
+.mega-menu-content a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px; /* Thickness of the underline */
+  background: rgba(var(--primary-text-color)); /* Matches the text color */
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom;
+  transition: transform 200ms ease;
+}
+
+.mega-menu-content a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom;
+  background-color: rgba(var(--link-text-color));
+}

@@ -27,7 +27,6 @@
 
 .dropdown-menu {
   min-width: 250px;
-  max-width: 500px;
   position: absolute;
   top: calc(100% + 0.15rem);
   left: var(--left);
@@ -37,8 +36,8 @@
 
 .dropdown-mega-menu, .dropdown-mega-menu-fixed {
   width: 100vw;
-  height: 450px;
-  padding: 2rem;
+  height: 430px;
+  padding: 1.5rem;
   position: absolute;
   left: 0%;
   transform: translateY(0px);
@@ -51,11 +50,11 @@
   top: 0%;
 }
 
-.dropdown-menu > *:not(:last-child) {
+.dropdown-menu > *:not(:last-child), .dropdown-mega-menu > *:not(:last-child), .dropdown-mega-menu-fixed > *:not(:last-child) {
   margin-bottom: 1rem; 
 }
 
-.dropdown-menu > *:last-child {
+.dropdown-menu > *:last-child, .dropdown-mega-menu > *:last-child, .dropdown-mega-menu-fixed > *:last-child {
   margin-bottom: 0; 
 }
 
@@ -64,8 +63,10 @@
   width: 100%;
   margin: auto;
   position: relative;
-  display: block;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
   padding: 12px;
   cursor: pointer;
   font-family: var(--font-montserrat);
@@ -82,7 +83,8 @@
 }
 
 .dropdown-link, .dropdown-other {
-  display: inline-flex;
+  position: relative;
+  display: flex;
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-montserrat);
@@ -98,18 +100,18 @@
   pointer-events: stroke;
 }
 
-.dropdown-btn-icon {
+/* .dropdown-btn-icon {
   position: absolute;
   top: 50%;
-  left: 20%;
-  transform: translateX(-50%) translateY(-50%);
+  left: 0%;
+  transform: translateX(-175%) translateY(-50%);
   width: 30px;
   height: 30px;
-}
+} */
 
 .dropdown-icon {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
  
 

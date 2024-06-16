@@ -25,8 +25,8 @@
   background-color: white;
   position: relative;
   max-height: 300px;
-  overflow-y: scroll;
   padding: 1rem;
+  overflow-y: scroll;
   scrollbar-width: 1px; 
 }
 
@@ -39,12 +39,13 @@
 }
 
 .cart-card {
-  width: 350px;
+  width: 300px;
   display: grid;
   grid-template-columns: 30% 70%;
   justify-items: center;
   align-items: center;
   gap: 1rem;
+  font-size: 15px;
 }
 
 .cart-image {

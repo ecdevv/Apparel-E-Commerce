@@ -6,7 +6,7 @@ import User from '../User/User';
 import Cart from '../Cart/Cart';
 import Theme from '../Theme/Theme';
 import DropdownButton from '../Dropdown/DropdownButton';
-import { StoreMegaMenu } from './MegaMenu';
+import { StoreMegaMenu } from './NavMegaMenu';
 import './Navbar.css'
 
 
