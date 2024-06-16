@@ -42,7 +42,7 @@ const CartCard = () => {
   )
 }
 
-// TODO: Implement a system to add items into an array from a database/api or .json file and map that data as props into CartCard
+// TODO: Implement a system to add items into an array from a database/api or .json file and map that data as props into CartCard; add conditional inside cart-container div for empty cart
 const CartItemList = () => {
   return (
     <div className='cart-container'>
@@ -68,6 +68,7 @@ const Cart = () => {
       </svg>
       <h2>Cart</h2>
       <svg 
+        aria-hidden
         fill="currentColor" 
         viewBox="0 0 24 24" 
         height="1em" 

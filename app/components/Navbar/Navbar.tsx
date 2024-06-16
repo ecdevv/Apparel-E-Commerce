@@ -89,10 +89,10 @@ const Navigation = () => {
   return (
     <nav className='navbar-navigation-wrapper'>
       <ul className='navbar-navigation-list'>
-        <li><DropdownButton link={'New'} items={newItems} hover={true} orientation={'center'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>New</DropdownButton></li>
-        <li><DropdownButton link={'Sales'} items={salesItems} hover={true} orientation={'center'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>Sales</DropdownButton></li>
-        <li><DropdownButton link={'Store'} items={storeItems} hover={true} orientation={'center'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>Store</DropdownButton></li>
-        <li><DropdownButton link={'Contact'} items={contactItems} hover={true} orientation={'center'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>Contact</DropdownButton></li>
+        <li><DropdownButton link={'New'} items={newItems} hover={true} orientation={'screen'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>New</DropdownButton></li>
+        <li><DropdownButton link={'Sales'} items={salesItems} hover={true} orientation={'screen'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>Sales</DropdownButton></li>
+        <li><DropdownButton link={'Store'} items={storeItems} hover={true} orientation={'screen'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>Store</DropdownButton></li>
+        <li><DropdownButton link={'Contact'} items={contactItems} hover={true} orientation={'screen'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>Contact</DropdownButton></li>
       </ul>
     </nav>
   )
