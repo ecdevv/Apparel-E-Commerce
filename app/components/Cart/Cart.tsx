@@ -3,19 +3,6 @@ import DropdownButton from '../Dropdown/DropdownButton';
 import Image from 'next/image';
 import './Cart.css'
 
-interface Item {
-  svg?: React.ReactElement;
-  name: string;
-  type: 'section' | 'cart' | 'button' | 'link' | 'text';
-}
-
-const items: Item[] = [
-  { name: 'Shopping Cart', type: 'text' },
-  { name: 'Cart Items', type: 'cart' },
-  { name: 'Checkout', type: 'button' },
-  { name: 'View Cart', type: 'button' },
-]
-
 // TODO: Accept props for store item (like a t-shirt)
 const CartCard = () => {
   return (
@@ -55,7 +42,21 @@ const CartItemList = () => {
   )
 }
 
+interface Item {
+  name: string;
+  type: 'component' | 'button' | 'link' | 'text';
+  component?: React.ReactElement;
+  svg?: React.ReactElement;
+}
+
 const Cart = () => {
+  const items: Item[] = [
+    { name: 'Shopping Cart', type: 'text' },
+    { name: 'Cart Items', type: 'component', component: <CartItemList /> },
+    { name: 'Checkout', type: 'button' },
+    { name: 'View Cart', type: 'button' },
+  ]
+
   return (
     <DropdownButton items={items} hover={false} orientation={'left'} showPointer={true} classNames={['cart-btn', 'cart-btn-focus']}>
       <svg

@@ -4,9 +4,10 @@ import Link from 'next/link'
 import Dropdown from './DropdownMenu'
 
 interface Item {
-  svg?: React.ReactElement;
   name: string;
-  type: 'section' | 'cart' | 'button' | 'link' | 'text';
+  type: 'component' | 'button' | 'link' | 'text';
+  component?: React.ReactElement;
+  svg?: React.ReactElement;
 }
 
 interface DropdownButtonProps  {
@@ -55,7 +56,7 @@ const DropdownButton = ({children, link, items, hover, orientation, showPointer,
   }
 
   return (
-    <div ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined}>
+    <span ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined}>
       {hover 
       ? <Link href = {`${link?.toLowerCase()}`} aria-label={`${link}`}
           className={`${menuToggle 
@@ -74,7 +75,7 @@ const DropdownButton = ({children, link, items, hover, orientation, showPointer,
       }
       
       <Dropdown items={items} menuToggle={menuToggle} orientation={orientation} showPointer={showPointer}/>
-    </div>
+    </span>
   )
 }
 

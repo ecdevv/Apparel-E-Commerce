@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group'
-import { CartItemList } from '../Cart/Cart';
 import './DropdownMenu.css'
 
 interface Item {
-  svg?: React.ReactElement;
   name: string;
-  type: 'section' | 'cart' | 'button' | 'link' | 'text';
+  type: 'component' | 'button' | 'link' | 'text';
+  component?: React.ReactElement;
+  svg?: React.ReactElement;
 }
 
 interface DropdownMenuProps  {
@@ -25,18 +25,16 @@ const MenuCard = ({items}: MenuCardProps) => {
   return (
     <>
       {items.map((item, index) => (
-        item.type === 'section'
-        ? <></>
-        : item.type === 'cart'
-          ? <CartItemList key={index}/>
-          : item.type === 'button' || item.type === 'link' 
-            ? <Link key={index} href={`/${item.name.split(/[ ,]+/).join('').toLowerCase()}`} aria-label={`${item.name}`} className={`${item.type === 'button' ? 'dropdown-btn' : 'dropdown-link'}`}>
-                {item.svg && item.svg}
-                {`${item.name}`}
-              </Link>
-            : item.type === 'text' 
-              ? <h2 key={index} className='dropdown-other'>{item.name}</h2>
-              : <></>
+        item.type === 'component'
+        ? item.component
+        : item.type === 'button' || item.type === 'link' 
+          ? <Link key={index} href={`/${item.name.split(/[ ,]+/).join('').toLowerCase()}`} aria-label={`${item.name}`} className={`${item.type === 'button' ? 'dropdown-btn' : 'dropdown-link'}`}>
+              {item.svg && item.svg}
+              {`${item.name}`}
+            </Link>
+          : item.type === 'text' 
+            ? <h2 key={index} className='dropdown-other'>{item.name}</h2>
+            : <></>
       ))}
     </>
   )
@@ -45,13 +43,14 @@ const MenuCard = ({items}: MenuCardProps) => {
 const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMenuProps) => {
   const [menuFixed, setMenuFixed] = useState(false);
 
+  // Checks to see if Mega Menu is past the navbar when user scrolls, if it is, set it to fixed to the top of the screen right where it starts passing.
   useEffect(() => {
     const handleScroll = () => {
         if (menuToggle) {
           const navbar = document.querySelector('.navbar');
           if (navbar) {
             const navbarRect = navbar.getBoundingClientRect();
-            const isFixed = window.scrollY > navbarRect.bottom;
+            const isFixed = window.scrollY > (navbarRect.bottom + window.scrollY);
             console.log(navbarRect)
             setMenuFixed(isFixed);
           }
@@ -74,7 +73,7 @@ const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMe
         classNames='menu'
         unmountOnExit
       >
-        {orientation !== 'screen'
+        {orientation !== 'mega'
         ? <div className='dropdown-wrapper'>
             {showPointer ? <div className='dropdown-menu-pointer'></div> : null}
             <div aria-label='Dropdown Menu' className='dropdown-menu' style={{
