@@ -4,6 +4,7 @@
   height: 30px;
   background-color: rgba(var(--banner-color));
   z-index: 10;
+  animation: fade-down 500ms 300ms backwards;
 }
 
 .banner-content {

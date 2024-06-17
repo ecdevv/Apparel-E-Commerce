@@ -3,26 +3,35 @@
   position: relative;
   display: flex;
   margin: 7.5px;
-  border-bottom-width: 1px;
-  border-color: rgba(var(--search-border-color));
   opacity: 0.66;
-  transition: opacity 200ms ease-in-out, background-color 200ms ease-in-out;
-  border-top-left-radius: 5px; border-top-right-radius: 5px;
-}
-
-.search-content:hover {
-  background-color: rgba(var(--secondary-color));
+  outline: 1px solid transparent;
+  transition: opacity 200ms ease-in-out, outline 200ms ease-in-out;
 }
 
 .search-box {
-  width: 225px;
-  height: 30px;
-  padding-left: 0.5rem;
+  width: 250px;
+  height: 35px;
+  padding-left: 0.75rem;
   padding-right: 2.25rem;
   font-family: var(--font-montserrat);
-  outline: none;  /* TODO: Find replacement */
-  background-color: var(--primary-color);
-  transition: all 200ms ease-in-out;
+  background-color: rgba(var(--secondary-color));
+  outline: 1px solid transparent;
+}
+
+.search-box::placeholder {
+  color: black;
+  opacity: 0.5;
+  transition: opacity 200ms ease-in-out;
+}
+
+.search-content:focus-within {
+  opacity: 1;
+  outline: 1px solid rgba(var(--inverse-color), 0.75);
+  background-color: rgba(var(--secondary-color));
+}
+
+.search-content:focus-within .search-box::placeholder {
+  opacity: 0;
 }
 
 .search-icon {
@@ -36,22 +45,3 @@
   pointer-events: none;
   z-index: 1;
 }
-
-.search-box::placeholder {
-  color: black;
-  opacity: 0.5;
-  transition: opacity 200ms ease-in-out;
-}
-
-.search-content:focus-within {
-  opacity: 1;
-}
-
-.search-content:focus-within .search-box::placeholder {
-  opacity: 0;
-}
-
-/* .search-box:focus {
-  background-color: rgba(var(--secondary-color));
-  border-radius: 2px;
-} */

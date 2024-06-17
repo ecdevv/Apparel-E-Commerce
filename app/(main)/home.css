@@ -11,6 +11,7 @@
   position: relative;
   /* background-color: rgba(var(--carousel-background-color)); */
   overflow: hidden;
+  animation: fade-up 500ms 200ms backwards;
 }
 
 .slide-content {
