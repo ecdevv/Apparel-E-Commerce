@@ -18,7 +18,7 @@
 }
 
 .navbar-header, .navbar-header-logo {
-  width: 95%;
+  width: 90%;
   margin: auto;
   display: flex;
   justify-content: space-around;
@@ -26,8 +26,8 @@
 }
 
 .navbar-header {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
   animation: fade-down 500ms 400ms backwards;
 }
 
@@ -40,7 +40,7 @@
   width: 500px;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .navbar-theme-icons-container{
@@ -65,14 +65,12 @@
 
 .navbar-navigation-wrapper {
   width: 100%;
-  animation: fade-down 500ms 500ms backwards;
 }
 
 .navbar-navigation-list {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2.5rem;
   background-color: rgba(var(--inverse-color));
   color: rgba(var(--secondary-text-color));
 }
@@ -80,20 +78,21 @@
 .navbar-navigation-link, .navbar-navigation-link-focus {
   display: inline-block;
   position: relative;
-  padding: 0.5rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 0.25rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   gap: 0.5rem;
   font-family: var(--font-montserrat);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   border-bottom: 2px solid transparent;
+  animation: fade-down 500ms 500ms backwards;
 }
 
 .navbar-navigation-link::after, .navbar-navigation-link-focus::after {
   content: '';
   position: absolute;
-  bottom: 15%;
+  bottom: 5%;
   left: 50%;
   width: 100%;
   height: 1px;

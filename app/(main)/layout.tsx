@@ -9,8 +9,8 @@ export default function AuthLayout({
   return (
     <>
       <header>
-        <Banner/>
-        <Navbar/>
+        {/* <Banner /> */}
+        <Navbar />
       </header>
       {children}
     </>

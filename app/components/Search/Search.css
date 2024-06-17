@@ -9,8 +9,8 @@
 }
 
 .search-box {
-  width: 250px;
-  height: 35px;
+  width: 200px;
+  height: 25px;
   padding-left: 0.75rem;
   padding-right: 2.25rem;
   font-family: var(--font-montserrat);

@@ -34,6 +34,7 @@
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
   position: relative;
   font-size: 36px;
+  animation: fade-up 500ms 300ms backwards;
 }
 
 .slide-h1::after {
@@ -60,6 +61,7 @@
   transition: all 200ms ease-in-out;
   font-size: 18px;
   position: relative;
+  animation: fade-up 500ms 400ms backwards;
 }
 
 .slide-btn::after {
