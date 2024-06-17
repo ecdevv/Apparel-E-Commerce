@@ -7,7 +7,7 @@
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   color: rgba(var(--primary-text-color));
-  animation: fade-down 500ms 200ms backwards;
+  animation: fade-in-down 400ms 200ms backwards;
 }
 
 .mega-menu-content {

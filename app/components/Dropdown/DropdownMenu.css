@@ -1,26 +1,4 @@
 /****************** Dropdown Menu ******************/
-/* @keyframes fade-down-DM {
-  0% {
-    opacity: 0;
-    transform: translateX(calc(var(--translate))) translateY(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(calc(var(--translate))) translateY(0px);
-  }
-}
-
-@keyframes fade-down-pointer {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) rotate(45deg) translateY(0px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(-50%) rotate(45deg) translateY(0px);
-  }
-} */
-
 .dropdown-wrapper {
   position: relative;
 }
@@ -36,8 +14,7 @@
   background-color: rgba(var(--secondary-color));
   border-left-width: 1px; border-top-width: 1px;
   border-color: rgba(var(--input-border-color), 0.5);
-  z-index: 3;
-  /* animation: fade-down-pointer 500ms; */
+  z-index: 1;
 }
 
 .dropdown-menu, .dropdown-mega-menu, .dropdown-mega-menu-fixed {
@@ -54,21 +31,18 @@
   top: calc(100% + 0.15rem);
   left: var(--left);
   transform: translateX(calc(var(--translate)));
-  z-index: 2;
-  /* animation: fade-down-DM 500ms; */
+  z-index: 0;
 }
 
 .dropdown-mega-menu, .dropdown-mega-menu-fixed {
   width: 100vw;
-  height: 430px;
   background-color: rgba(var(--primary-color));
   padding: 1.5rem;
   position: absolute;
   left: 0%;
   transform: translateY(0px);
   box-shadow: 0px 8px 8px -6px rgba(0, 0, 0, 0.1);
-  z-index: 1;
-  /* animation: fade-down 500ms; */
+  z-index: -1;
 }
 
 .dropdown-mega-menu-fixed {
@@ -126,15 +100,6 @@
   pointer-events: stroke;
 }
 
-/* .dropdown-btn-icon {
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translateX(-175%) translateY(-50%);
-  width: 30px;
-  height: 30px;
-} */
-
 .dropdown-icon {
   width: 25px;
   height: 25px;
@@ -144,22 +109,20 @@
 /*** CSSTransition ***/
 .menu-enter {
   opacity: 0;
-  transform: translateY(-10px);
+  animation: fade-in-down var(--duration);
 }
 
 .menu-enter-active {
   opacity: 1;
-  transform: translateY(0px);
-  transition: opacity 100ms linear, transform 100ms linear;
+  animation: fade-in-down var(--duration);
 }
 
 .menu-exit {
   opacity: 1;
-  transform: translateY(0px);
+  animation: fade-out-up var(--duration);
 }
 
 .menu-exit-active {
   opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 100ms linear, transform 100ms linear;
+  animation: fade-out-up var(--duration);
 }

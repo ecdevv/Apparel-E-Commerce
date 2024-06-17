@@ -2,11 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-} */
+/* Default Values */
+:root {
+  --keyframe-y-offset: 30px;
+
+  --primary-color: 255, 255, 255;
+  --inverse-color: 35, 35, 35;
+  --secondary-color: 235, 235, 238;
+
+  --banner-color: 121, 190, 255;
+  --banner-text-color: 10, 65, 155;
+
+  --search-border-color: 10, 10, 10;
+
+  --input-border-color: 10, 10, 10;
+
+  --login-menu-color: 55, 55, 55;
+
+  --link-text-color: 15, 127, 255;
+  --primary-text-color: 0, 0, 0;
+  --secondary-text-color: 255, 255, 255;
+
+  --primary-button-color: 35, 35, 35;
+  --secondary-button-color: 85, 85, 85;
+  --tertiary-button-color: 185, 185, 195;
+
+  --primary-hover-button-color: 255, 255, 255;
+  --secondary-hover-button-color: 65, 65, 65;
+
+  --carousel-background-color: 50, 50, 50;
+}
 
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -17,10 +42,10 @@
 } */
 
 /*** KEYFRAMES ***/
-@keyframes fade-down {
+@keyframes fade-in-down {
   0% {
     opacity: 0;
-    transform: translateY(-30px);
+    transform: translateY(calc(-1 * var(--keyframe-y-offset)));
   }
   100% {
     opacity: 1;
@@ -28,14 +53,36 @@
   }
 }
 
-@keyframes fade-up {
+@keyframes fade-in-up {
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(var(--keyframe-y-offset));
   }
   100% {
     opacity: 1;
     transform: translateY(0px);
+  }
+}
+
+@keyframes fade-out-down {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(var(--keyframe-y-offset));
+  }
+}
+
+@keyframes fade-out-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--keyframe-y-offset)));
   }
 }
 

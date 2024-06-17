@@ -28,7 +28,7 @@
 .navbar-header {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-  animation: fade-down 500ms 400ms backwards;
+  animation: fade-in-down 500ms 400ms backwards;
 }
 
 .navbar-header-logo {
@@ -86,7 +86,7 @@
   font-size: 16px;
   font-weight: 500;
   border-bottom: 2px solid transparent;
-  animation: fade-down 500ms 500ms backwards;
+  animation: fade-in-down 500ms 500ms backwards;
 }
 
 .navbar-navigation-link::after, .navbar-navigation-link-focus::after {
