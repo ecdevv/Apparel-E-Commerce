@@ -4,7 +4,7 @@ import './User.css'
 
 interface Item {
   name: string;
-  type: 'component' | 'button' | 'link' | 'text';
+  type: 'component' | 'button' | 'link';
   component?: React.ReactElement;
   svg?: React.ReactElement;
 }
@@ -36,7 +36,7 @@ const User = () => {
   ]
 
   return (
-    <DropdownButton items={items} hover={false} orientation={'left'} showPointer={true} classNames={['user-btn', 'user-btn-focus']}>
+    <DropdownButton label={'Login'} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['user-btn', 'user-btn-focus']}>
       <svg
         aria-hidden
         fill="currentColor"

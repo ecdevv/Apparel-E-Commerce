@@ -32,8 +32,9 @@
 }
 
 .navbar-header-logo {
-  padding-top: 5rem;
-  padding-bottom: 2.5rem;
+  padding-top: 7.5rem;
+  padding-bottom: 1rem;
+  animation: fade-in-down 500ms 200ms backwards;
 }
 
 .navbar-theme-icons-container, .navbar-icons-container {
@@ -83,7 +84,6 @@
   padding-right: 1.5rem;
   gap: 0.5rem;
   font-family: var(--font-montserrat);
-  font-size: 16px;
   font-weight: 500;
   border-bottom: 2px solid transparent;
   animation: fade-in-down 500ms 500ms backwards;

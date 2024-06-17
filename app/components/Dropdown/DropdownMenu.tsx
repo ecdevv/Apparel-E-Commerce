@@ -5,7 +5,7 @@ import './DropdownMenu.css'
 
 interface Item {
   name: string;
-  type: 'component' | 'button' | 'link' | 'text';
+  type: 'component' | 'button' | 'link';
   component?: React.ReactElement;
   svg?: React.ReactElement;
 }
@@ -28,13 +28,11 @@ const MenuCard = ({items}: MenuCardProps) => {
         item.type === 'component'
         ? item.component
         : item.type === 'button' || item.type === 'link' 
-          ? <Link key={index} href={`/${item.name.split(/[ ,]+/).join('').toLowerCase()}`} aria-label={`${item.name}`} className={`${item.type === 'button' ? 'dropdown-btn' : 'dropdown-link'}`}>
+          ? <Link key={index} href={`/${item.name.split(/[ ,]+/).join('').toLowerCase()}`} aria-label={`${item.name} Link`} className={`${item.type === 'button' ? 'dropdown-btn' : 'dropdown-link'}`}>
               {item.svg && item.svg}
               {`${item.name}`}
             </Link>
-          : item.type === 'text' 
-            ? <h2 key={index} className='dropdown-other'>{item.name}</h2>
-            : <></>
+          : <></>
       ))}
     </>
   )
@@ -48,7 +46,7 @@ const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMe
     if (orientation === 'mega') {
       setTimeoutDuration(400)
     } else {
-      setTimeoutDuration(200)
+      setTimeoutDuration(300)
     }
   }, [])
 
@@ -83,7 +81,7 @@ const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMe
         unmountOnExit
         style={{
           '--duration': `${timeoutDuration}ms`,
-          '--keyframe-y-offset': orientation !== 'mega' ? '10px' : '',
+          '--keyframe-y-offset': orientation !== 'mega' ? '15px' : '',
         } as React.CSSProperties}
       >
         {orientation !== 'mega'

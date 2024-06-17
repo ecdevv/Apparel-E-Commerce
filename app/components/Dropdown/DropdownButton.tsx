@@ -5,14 +5,14 @@ import Dropdown from './DropdownMenu'
 
 interface Item {
   name: string;
-  type: 'component' | 'button' | 'link' | 'text';
+  type: 'component' | 'button' | 'link';
   component?: React.ReactElement;
   svg?: React.ReactElement;
 }
 
 interface DropdownButtonProps  {
   children?: React.ReactNode;
-  link?: string;
+  label?: string;
   items: Item[];
   hover: boolean;
   orientation: string;
@@ -21,7 +21,7 @@ interface DropdownButtonProps  {
 }
 
 // Navigation section with the links of this navbar component
-const DropdownButton = ({children, link, items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
+const DropdownButton = ({children, label, items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
   const [menuToggle, setMenuToggle] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -58,14 +58,14 @@ const DropdownButton = ({children, link, items, hover, orientation, showPointer,
   return (
     <span ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined}>
       {hover 
-      ? <Link href = {`${link?.toLowerCase()}`} aria-label={`${link}`}
+      ? <Link href = {`${label?.toLowerCase()}`} aria-label={`${label} Link`}
           className={`${menuToggle 
           ? classNames[1] ? classNames[1] : classNames[0] 
           : classNames[0]}`}
         >
           {children}
         </Link> 
-      : <button onClick={handleClick} aria-label={`${link}`}
+      : <button onClick={handleClick} aria-label={`${label} Button`}
           className={`${menuToggle 
           ? classNames[1] ? classNames[1] : classNames[0] 
           : classNames[0]}`}

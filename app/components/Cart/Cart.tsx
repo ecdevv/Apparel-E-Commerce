@@ -44,21 +44,21 @@ const CartItemList = () => {
 
 interface Item {
   name: string;
-  type: 'component' | 'button' | 'link' | 'text';
+  type: 'component' | 'button' | 'link';
   component?: React.ReactElement;
   svg?: React.ReactElement;
 }
 
 const Cart = () => {
   const items: Item[] = [
-    { name: 'Shopping Cart', type: 'text' },
+    { name: 'Shopping Cart', type: 'component', component: <h2 className='cart-h2'>Shopping Cart</h2> },
     { name: 'Cart Items', type: 'component', component: <CartItemList /> },
     { name: 'Checkout', type: 'button' },
     { name: 'View Cart', type: 'button' },
   ]
 
   return (
-    <DropdownButton items={items} hover={false} orientation={'left'} showPointer={true} classNames={['cart-btn', 'cart-btn-focus']}>
+    <DropdownButton label={'Cart'} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['cart-btn', 'cart-btn-focus']}>
       <svg
         aria-hidden
         viewBox="0 0 32 32"

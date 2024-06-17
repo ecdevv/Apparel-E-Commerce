@@ -3,6 +3,7 @@
   width: 100vw;
   height: auto;
   background-color: rgba(var(--primary-color));
+  animation: fade-in-up 500ms 300ms backwards;
 }
 
 .auth-container {

@@ -2,28 +2,13 @@
 import React, { useState } from 'react';
 import Image, {StaticImageData} from 'next/image';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import CarouselImage from '../../../public/images/carousel-item1.webp';
-import CarouselImage2 from '../../../public/images/carousel-item2.webp';
-import CarouselImage3 from '../../../public/images/carousel-item3.webp';
-import CarouselImage4 from '../../../public/images/carousel-item4.webp';
 import './Carousel.css'
 
-const Images = [CarouselImage, CarouselImage2, CarouselImage3, CarouselImage4]; 
+interface ImagesProps {
+  Images: StaticImageData[]
+}
 
-// Helper function to get the wrapped images (first index here will correspond to the the image at currentIndex - 1)
-const getWrappedImages = (currentIndex:number, images:StaticImageData[], numberOfVisibleImages:number) => {
-  const totalImages = images.length;
-  const wrappedImages: StaticImageData[] = [];
-
-  for (let i = -1; i < numberOfVisibleImages - 1; i++) {
-    const index = (currentIndex + i + totalImages) % totalImages; // Add total images to ensure a positive number gets modded
-    wrappedImages.push(images[index]);
-  }
-
-  return wrappedImages;
-};
-
-const Carousel = () => {
+const Carousel = ({Images} : ImagesProps) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [difference, setDifference] = useState(0);
@@ -86,6 +71,19 @@ const Carousel = () => {
       setCurrentIndex(index);
     }, 0)
   }
+
+  // Helper function to get the wrapped images (first index here will correspond to the the image at currentIndex - 1)
+  const getWrappedImages = (currentIndex:number, images:StaticImageData[], numberOfVisibleImages:number) => {
+    const totalImages = images.length;
+    const wrappedImages: StaticImageData[] = [];
+
+    for (let i = -1; i < numberOfVisibleImages - 1; i++) {
+      const index = (currentIndex + i + totalImages) % totalImages; // Add total images to ensure a positive number gets modded
+      wrappedImages.push(images[index]);
+    }
+
+    return wrappedImages;
+  };
 
   return (
     <>
@@ -157,12 +155,6 @@ const Carousel = () => {
       <div id="skip-link"/>
     </>
   )
-
-  //Photo by <a href="https://unsplash.com/@forcemajeure?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Force Majeure</a> on <a href="https://unsplash.com/photos/man-and-woman-in-white-and-gray-force-majeure-printed-crew-neck-t-shirts-standing-near-gray-concrete-wall-00tlC0Clfrs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  //Photo by <a href="https://unsplash.com/@demoya?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Michael DeMoya</a> on <a href="https://unsplash.com/photos/2-women-standing-near-wall-during-daytime-qI8xWRvfgGg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  //Photo by <a href="https://unsplash.com/@jcgellidon?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">JC Gellidon</a> on <a href="https://unsplash.com/photos/woman-leaning-on-wall-OGy5tojr7x8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  //Photo by <a href="https://unsplash.com/@minusculemarie?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Marie-Michèle Bouchard</a> on <a href="https://unsplash.com/photos/man-in-white-shirt-and-pants-sitting-on-gray-concrete-floor-J_zYSwczKYA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-
 }
 
 export default Carousel;

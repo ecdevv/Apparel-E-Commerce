@@ -70,6 +70,7 @@
   padding: 12px;
   cursor: pointer;
   font-family: var(--font-montserrat);
+  font-size: 15px;
   color: rgba(var(--secondary-text-color));
   border-width: 1px;
   border-color: black;
@@ -82,9 +83,9 @@
   background-color: rgba(var(--primary-hover-button-color))
 }
 
-.dropdown-link, .dropdown-other {
+.dropdown-link {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-montserrat);
@@ -96,16 +97,11 @@
   color: rgba(var(--link-text-color));
 }
 
-.dropdown-other {
-  pointer-events: stroke;
-}
-
 .dropdown-icon {
   width: 25px;
   height: 25px;
 }
  
-
 /*** CSSTransition ***/
 .menu-enter {
   opacity: 0;

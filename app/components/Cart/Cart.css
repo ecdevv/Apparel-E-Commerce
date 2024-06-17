@@ -20,12 +20,16 @@
   height: 25px;
 }
 
+/****************** Cart Content Heading ******************/
+.cart-h2 {
+  font-family: var(--font-montserrat);
+}
 
-/****************** Cart Info Card ******************/
+/****************** Cart Content Info Card ******************/
 .cart-container {
   background-color: white;
   position: relative;
-  max-height: 300px;
+  max-height: 325px;
   padding: 1rem;
   overflow-y: scroll;
   scrollbar-width: 1px; 
@@ -40,13 +44,14 @@
 }
 
 .cart-card {
-  width: 300px;
+  width: 325px;
   display: grid;
   grid-template-columns: 30% 70%;
   justify-items: center;
   align-items: center;
   gap: 1rem;
-  font-size: 15px;
+  font-family: var(--font-montserrat);
+  font-size: 14px;
 }
 
 .cart-image {
