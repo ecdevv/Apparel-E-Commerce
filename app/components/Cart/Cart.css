@@ -8,11 +8,11 @@
   gap: 0.5rem;
   transition: background-color 200ms ease-in-out;
   padding: 7.5px;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .cart-btn-focus, .cart-btn:hover {
-  background-color: rgba(var(--secondary-color));
+  background-color: rgba(var(--secondary-color), 0.5);
 }
 
 .cart-icon {
@@ -56,7 +56,8 @@
 
 .cart-image {
   width: 100%;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
   object-position: center;
 }
 

@@ -6,19 +6,19 @@
 .dropdown-menu-pointer {
   content: '';
   position: absolute;
-  top: calc(100% - 0.3rem);
+  top: calc(100% - 2px);
   left: 50%;
   width: 15px;
   height: 15px;
   transform: translateX(-50%) rotate(45deg);
   background-color: rgba(var(--secondary-color));
   border-left-width: 1px; border-top-width: 1px;
-  border-color: rgba(var(--input-border-color), 0.5);
+  border-color: rgba(var(--input-border-color), 0.25);
   z-index: 1;
 }
 
 .dropdown-menu, .dropdown-mega-menu, .dropdown-mega-menu-fixed {
-  border-color: rgba(var(--input-border-color), 0.5);
+  border-color: rgba(var(--input-border-color), 0.25);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
   padding: 1rem;
 }
@@ -28,7 +28,7 @@
   background-color: rgba(var(--secondary-color));
   border-width: 1px;
   position: absolute;
-  top: calc(100% + 0.15rem);
+  top: calc(100% + 5px);
   left: var(--left);
   transform: translateX(calc(var(--translate)));
   z-index: 0;

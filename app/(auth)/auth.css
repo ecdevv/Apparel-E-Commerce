@@ -52,9 +52,7 @@
 
 .input-field {
   width: 100%;
-  outline: none; /* TODO: Replace this */
-  border-width: 1px;
-  border-color: rgba(var(--input-border-color), 1);
+  outline: 1px solid rgba(var(--input-border-color), 1);
   padding: 0.5rem;
   padding-left: 2.5rem;
   padding-right: 2.5rem;

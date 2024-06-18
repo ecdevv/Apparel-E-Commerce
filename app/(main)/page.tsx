@@ -10,7 +10,7 @@ export default function Home() {
   const Images = [CarouselImage, CarouselImage2, CarouselImage3, CarouselImage4];
 
   return (
-    <section className='home'> {/* TODO: Likely does not need to be a section once I start working on the rest of the page */}
+    <div className='home'>
       <section className="carousel-container">
         <Carousel Images={Images}/>
         <div className='slide-content'>
@@ -18,8 +18,7 @@ export default function Home() {
           <Link href='/' aria-label='New' className='slide-btn'>Shop Now</Link>
         </div>
       </section>
-      <Link href='/'>Link</Link>
-    </section>
+    </div>
   );
 
   //Photo by <a href="https://unsplash.com/@forcemajeure?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Force Majeure</a> on <a href="https://unsplash.com/photos/man-and-woman-in-white-and-gray-force-majeure-printed-crew-neck-t-shirts-standing-near-gray-concrete-wall-00tlC0Clfrs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>

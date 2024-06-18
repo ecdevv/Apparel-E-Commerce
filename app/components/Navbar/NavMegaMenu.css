@@ -7,7 +7,7 @@
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   color: rgba(var(--primary-text-color));
-  animation: fade-in-down 400ms 200ms backwards;
+  animation: fade-in-down 300ms 200ms backwards;
 }
 
 .mega-menu-content {
@@ -23,7 +23,7 @@
 
 .mega-menu-content:not(:last-child) {
   border-right-width: 1px;
-  border-color: rgba(var(--inverse-color), 0.33);
+  border-color: rgba(var(--input-border-color), 0.33);
 }
 
 .mega-menu-content-wrapper {

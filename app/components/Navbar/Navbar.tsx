@@ -6,7 +6,7 @@ import User from '../User/User';
 import Cart from '../Cart/Cart';
 import Theme from '../Theme/Theme';
 import DropdownButton from '../Dropdown/DropdownButton';
-import { StoreMegaMenu } from './NavMegaMenu';
+import { MenMegaMenu, WomenMegaMenu } from './NavMegaMenu';
 import './Navbar.css'
 
 
@@ -67,7 +67,8 @@ interface Item {
 const Navigation = () => {
   const NewItems:Item[] = [ { name: 'New & Featured', type: 'link' } ]
   const SalesItems:Item[] = [ { name: 'Sales Items', type: 'link' } ]
-  const MenItems:Item[] = [ { name: 'Store Items', type: 'component', component: <StoreMegaMenu /> } ]
+  const MenItems:Item[] = [ { name: 'Men Items', type: 'component', component: <MenMegaMenu /> } ]
+  const WomenItems:Item[] = [ { name: 'Women Items', type: 'component', component: <WomenMegaMenu /> } ]
   const CollectionItems:Item[] = [
     { name: 'Collections', type: 'link',
       svg:  <svg
@@ -88,7 +89,7 @@ const Navigation = () => {
         <li><DropdownButton label={'New'} items={NewItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>NEW</DropdownButton></li>
         <li><DropdownButton label={'Sales'} items={SalesItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>SALES</DropdownButton></li>
         <li><DropdownButton label={'Men'} items={MenItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>MEN</DropdownButton></li>
-        <li><DropdownButton label={'Women'} items={MenItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>WOMEN</DropdownButton></li>
+        <li><DropdownButton label={'Women'} items={WomenItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>WOMEN</DropdownButton></li>
         <li><DropdownButton label={'Collections'} items={CollectionItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>COLLECTIONS</DropdownButton></li>
       </ul>
     </nav>

@@ -5,14 +5,14 @@
   align-items: center;
   font-family: var(--font-montserrat);
   font-size: 15px;
-  gap: 0.66rem;
+  gap: 0.5rem;
   transition: background-color 200ms ease-in-out;
   padding: 7.5px;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .user-btn-focus, .user-btn:hover {
-  background-color: rgba(var(--secondary-color));
+  background-color: rgba(var(--secondary-color), 0.5);
 }
 
 .user-icon {

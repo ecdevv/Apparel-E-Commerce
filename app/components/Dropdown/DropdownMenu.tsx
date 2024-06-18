@@ -44,9 +44,9 @@ const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMe
 
   useEffect(() => {
     if (orientation === 'mega') {
-      setTimeoutDuration(400)
-    } else {
       setTimeoutDuration(300)
+    } else {
+      setTimeoutDuration(200)
     }
   }, [])
 
