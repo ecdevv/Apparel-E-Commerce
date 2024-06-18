@@ -7,7 +7,7 @@ const StoreMegaMenu = () => {
     <div className='mega-menu-container'>
       <div className='mega-menu-content'>
         <div className='mega-menu-content-wrapper'>
-          <h2><Link href='/'>Popular</Link></h2>
+          <h2><Link href='/'>POPULAR</Link></h2>
           <ul>
             <li><Link href='/'>Item 1</Link></li>
             <li><Link href='/'>Item 2</Link></li>
@@ -18,7 +18,7 @@ const StoreMegaMenu = () => {
       </div>
       <div className='mega-menu-content'>
         <div className='mega-menu-content-wrapper'>
-          <h2><Link href='/'>Clothing</Link></h2>
+          <h2><Link href='/'>CLOTHING</Link></h2>
           <ul>
             <li><Link href='/'>T-Shirts & Tops</Link></li>
             <li><Link href='/'>Hoodies & Sweatshirts</Link></li>
@@ -34,7 +34,7 @@ const StoreMegaMenu = () => {
           </ul>
         </div>
         <div className='mega-menu-content-wrapper'>
-          <h2><Link href='/'>Underwear</Link></h2>
+          <h2><Link href='/'>UNDERWEAR</Link></h2>
           <ul>
             <li><Link href='/'>Bras</Link></li>
             <li><Link href='/'>Sports Bras</Link></li>
@@ -45,7 +45,7 @@ const StoreMegaMenu = () => {
       </div>
       <div className='mega-menu-content'>
         <div className='mega-menu-content-wrapper'>
-          <h2><Link href='/'>Shoes</Link></h2>
+          <h2><Link href='/'>SHOES</Link></h2>
           <ul>
             <li><Link href='/'>Slides & Sandals</Link></li>
             <li><Link href='/'>Sneakers</Link></li>
@@ -61,7 +61,7 @@ const StoreMegaMenu = () => {
       </div>
       <div className='mega-menu-content'>
         <div className='mega-menu-content-wrapper'>
-          <h2><Link href='/'>Accessories</Link></h2>
+          <h2><Link href='/'>ACCESSORIES</Link></h2>
           <ul>
             <li><Link href='/'>Hats & Caps</Link></li>
             <li><Link href='/'>Bags & Backpacks</Link></li>

@@ -8,7 +8,7 @@ export default function AuthLayout({
 }) {
   return (
     <>
-      <header>
+      <header className='header'>
         {/* <Banner /> */}
         <Navbar />
       </header>
