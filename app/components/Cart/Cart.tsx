@@ -53,8 +53,8 @@ const Cart = () => {
   const items: Item[] = [
     { name: 'Shopping Cart', type: 'component', component: <h2 className='cart-h2'>Shopping Cart</h2> },
     { name: 'Cart Items', type: 'component', component: <CartItemList /> },
-    { name: 'Checkout', type: 'button' },
     { name: 'View Cart', type: 'button' },
+    { name: 'Checkout', type: 'button' },
   ]
 
   return (

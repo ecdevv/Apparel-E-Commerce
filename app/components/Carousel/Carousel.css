@@ -31,7 +31,7 @@
 }
 
 .carousel-left-btn, .carousel-right-btn {
-  width: calc(12.5% - 0.2rem);
+  width: calc(12.5% - 0.15rem);
   height: 100%;
   backdrop-filter: blur(5px) grayscale(66.66%);
   position: absolute;

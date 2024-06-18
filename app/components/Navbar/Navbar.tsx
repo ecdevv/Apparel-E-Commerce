@@ -6,7 +6,7 @@ import User from '../User/User';
 import Cart from '../Cart/Cart';
 import Theme from '../Theme/Theme';
 import DropdownButton from '../Dropdown/DropdownButton';
-import { MenMegaMenu, WomenMegaMenu } from './NavMegaMenu';
+import { MenMegaMenu, NewMegaMenu, SalesMegaMenu, WomenMegaMenu } from './NavMegaMenu';
 import './Navbar.css'
 
 
@@ -65,8 +65,8 @@ interface Item {
 
 // Navigation section with the links of this navbar component
 const Navigation = () => {
-  const NewItems:Item[] = [ { name: 'New & Featured', type: 'link' } ]
-  const SalesItems:Item[] = [ { name: 'Sales Items', type: 'link' } ]
+  const NewItems:Item[] = [ { name: 'New & Featured', type: 'component', component: <NewMegaMenu /> } ]
+  const SalesItems:Item[] = [ { name: 'Sales Items', type: 'component', component: <SalesMegaMenu /> } ]
   const MenItems:Item[] = [ { name: 'Men Items', type: 'component', component: <MenMegaMenu /> } ]
   const WomenItems:Item[] = [ { name: 'Women Items', type: 'component', component: <WomenMegaMenu /> } ]
   const CollectionItems:Item[] = [
