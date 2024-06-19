@@ -1,0 +1,18 @@
+[
+  {
+    "product_id": 1,
+    "name": "T-Shirt",
+    "description": "A comfortable cotton t-shirt",
+    "category_id": 1,
+    "price": 19.99,
+    "discount": 0.0,
+    "sku": "TSHIRT001",
+    "material": "Cotton",
+    "weight": 0.2,
+    "dimensions": "LxWxH",
+    "image_url": "url-to-image",
+    "video_url": "url-to-video",
+    "tags": ["summer", "cotton"],
+    "custom_attributes": {"season": "summer"}
+  }
+]

@@ -25,5 +25,4 @@ export default function Home() {
   //Photo by <a href="https://unsplash.com/@demoya?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Michael DeMoya</a> on <a href="https://unsplash.com/photos/2-women-standing-near-wall-during-daytime-qI8xWRvfgGg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
   //Photo by <a href="https://unsplash.com/@jcgellidon?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">JC Gellidon</a> on <a href="https://unsplash.com/photos/woman-leaning-on-wall-OGy5tojr7x8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
   //Photo by <a href="https://unsplash.com/@minusculemarie?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Marie-Michèle Bouchard</a> on <a href="https://unsplash.com/photos/man-in-white-shirt-and-pants-sitting-on-gray-concrete-floor-J_zYSwczKYA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-
 }

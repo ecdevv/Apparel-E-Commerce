@@ -1,0 +1,9 @@
+[
+  {
+    "sale_id": 1,
+    "product_id": 1,
+    "sale_date": "06-19-2024",
+    "units_sold": 5,
+    "revenue": 5.00
+  }
+]

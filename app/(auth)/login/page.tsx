@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import '../auth.css';
 
-const login = () => {
+const Login = () => {
   return (
     <section className='auth-section'>
       <div className='auth-container'>
@@ -59,4 +59,4 @@ const login = () => {
   )  
 }
 
-export default login;
+export default Login;

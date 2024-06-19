@@ -1,0 +1,10 @@
+[
+  {
+    "review_id": 1,
+    "product_id": 1,
+    "customer_id": 1,
+    "review_text": "REVIEW DESCRIPTION",
+    "rating": 5,
+    "review_date": "06-20-2024"
+  }
+]
