@@ -28,7 +28,7 @@ const MenuCard = ({items}: MenuCardProps) => {
         item.type === 'component'
         ? item.component
         : item.type === 'button' || item.type === 'link' 
-          ? <Link key={index} href={`/${item.name.split(/[ ,]+/).join('').toLowerCase()}`} aria-label={`${item.name} Link`} className={`${item.type === 'button' ? 'dropdown-btn' : 'dropdown-link'}`}>
+          ? <Link key={index} href={`/${item.name.split(/[ ,]+/).join('').toLowerCase()}`} aria-label={`${item.name}`} className={`${item.type === 'button' ? 'dropdown-btn' : 'dropdown-link'}`}>
               {item.svg && item.svg}
               {`${item.name}`}
             </Link>

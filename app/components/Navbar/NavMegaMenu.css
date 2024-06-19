@@ -1,7 +1,7 @@
 /****************** Navigation Mega Menu ******************/
 .mega-menu-container {
   display: grid;
-  max-width: 55vw;
+  max-width: 50vw;
   height: 100%;
   margin: auto;
   grid-template-columns: repeat(var(--num-columns), 1fr);
@@ -79,4 +79,20 @@
   height: 100%;
   object-fit: contain;
   object-position: center;
+}
+
+.mega-menu-content-link-wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 0.25rem;
+}
+
+.mega-menu-content-link-wrapper a {
+  white-space: nowrap;
+}
+
+.mega-menu-content-icon {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
 }

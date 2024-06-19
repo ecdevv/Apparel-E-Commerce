@@ -58,14 +58,14 @@ const DropdownButton = ({children, label, items, hover, orientation, showPointer
   return (
     <span ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined}>
       {hover 
-      ? <Link href = {`${label?.toLowerCase()}`} aria-label={`${label} Link`}
+      ? <Link href = {`${label?.toLowerCase()}`} aria-label={`${label}`}
           className={`${menuToggle 
           ? classNames[1] ? classNames[1] : classNames[0] 
           : classNames[0]}`}
         >
           {children}
         </Link> 
-      : <button onClick={handleClick} aria-label={`${label} Button`}
+      : <button onClick={handleClick} aria-label={`${label}`}
           className={`${menuToggle 
           ? classNames[1] ? classNames[1] : classNames[0] 
           : classNames[0]}`}
