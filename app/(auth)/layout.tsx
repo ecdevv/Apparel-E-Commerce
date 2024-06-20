@@ -7,7 +7,7 @@ export default function AuthLayout({
 }) {
   return (
     <>
-      <HeaderLogo/>
+      <HeaderLogo />
       {children}
     </>
     )

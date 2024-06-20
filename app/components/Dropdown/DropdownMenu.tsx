@@ -40,7 +40,6 @@ const MenuCard = ({items}: MenuCardProps) => {
 
 const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMenuProps) => {
   const [timeoutDuration, setTimeoutDuration] = useState(0);
-  const [menuFixed, setMenuFixed] = useState(false);
 
   useEffect(() => {
     if (orientation === 'mega') {
@@ -49,26 +48,6 @@ const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMe
       setTimeoutDuration(200)
     }
   }, [])
-
-  // // Checks to see if Mega Menu is past the navbar when user scrolls, if it is, set it to fixed to the top of the screen right where it starts passing.
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //       if (menuToggle) {
-  //         const navbar = document.querySelector('.navbar');
-  //         if (navbar) {
-  //           const navbarRect = navbar.getBoundingClientRect();
-  //           const isFixed = window.scrollY > (navbarRect.bottom + window.scrollY);
-  //           setMenuFixed(isFixed);
-  //         }
-  //       }
-  //       else {
-  //         setMenuFixed(false)
-  //       }
-  //   };
-
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => window.removeEventListener('scroll', handleScroll);
-  // }, [menuToggle]);
 
   return (
     <>
@@ -81,6 +60,7 @@ const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMe
         style={{
           '--duration': `${timeoutDuration}ms`,
           '--keyframe-y-offset': orientation !== 'mega' ? '15px' : '',
+          '--z-index': menuToggle === true ? '1' : '0',
         } as React.CSSProperties}
       >
         {orientation !== 'mega'

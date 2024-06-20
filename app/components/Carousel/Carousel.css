@@ -3,15 +3,15 @@
   width: 100%;
   height: 100%;
   display: flex;
-  transform: translateX(-62.5%); /* Shift left to center the image at currentIndex */
+  transform: translateX(var(--shift)); /* Shift left to center the image at currentIndex */
   position: absolute;
 }
 
 .carousel-image-wrapper {
-  width: 75%;
+  width: var(--width);
   height: 100%;
-  border-left-width: 0.25rem;
-  border-right-width: 0.25rem;
+  border-left-width: var(--border-width);
+  border-right-width: var(--border-width);
   border-color: rgba(var(--inverse-color));
   flex-shrink: 0;
 }
@@ -23,15 +23,15 @@
   object-position: center;
 }
 
-.carousel-image-wrapper::before {
+/* .carousel-image-wrapper::before {
   content:'';
   position: absolute;
   width: 75%;
   height: 100%;
-}
+} */
 
 .carousel-left-btn, .carousel-right-btn {
-  width: calc(12.5% - 0.15rem);
+  width: calc(var(--btn-size) - ((var(--border-width) / 2) + (var(--border-width) * 0.1)));
   height: 100%;
   backdrop-filter: blur(5px) grayscale(66.66%);
   position: absolute;
@@ -73,17 +73,18 @@
   bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
-  gap: 1.5rem;
+  gap: 5%;
   align-items: center;
   justify-content: center;
 }
+
 .carousel-dot, .carousel-dot-selected {
   width: calc(100% / var(--total));
   height: 15px;
   border-width: 1px;
   border-radius: 2rem;
-  border-color: rgba(var(--tertiary-button-color));
-  background-color: rgba(var(--tertiary-button-color));
+  border-color: rgba(var(--dot-button-color));
+  background-color: rgba(var(--dot-button-color));
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.66);
   transform: scale(1);
   transition: all 200ms ease-in-out;
@@ -100,43 +101,85 @@
   background-color: white;
 }
 
+.carousel-thumbnail-container {
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  bottom: calc(0% - 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.carousel-thumbnail-wrapper {
+  height: 100%;
+  display: flex;
+  gap: 2.5%;
+  padding: 0.66rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.carousel-thumbnail-container:hover {
+  opacity: 1;
+}
+
+.carousel-thumbnail, .carousel-thumbnail-selected {
+  width: 125px;
+  height: auto;
+  flex-shrink: 0;
+  border: 1px solid rgba(var(--input-border-color));
+  transform: scale(1);
+  transition: all 200ms ease-in-out;
+}
+
+.carousel-thumbnail-selected {
+  transform: scale(1.15);
+}
+
+
+
 /*** CSSTransition ***/
 .slide-left-enter {
-  transform: translateX(calc(-62.5% + 75% * var(--index)));              /* Start translating the new element from the right */
+  transform: translateX(calc(var(--shift) + var(--width) * var(--index)));              /* Start translating the new element from the right */
 }
 
 .slide-left-enter-active {
-  transform: translateX(-62.5%);                                         /* Position of the new element when it is done transitioning */
+  transform: translateX(var(--shift));                                         /* Position of the new element when it is done transitioning */
   transition: all 400ms ease-out;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .slide-left-exit {
-  transform: translateX(-62.5%);                                        /* Start translating the current element to start exiting to the left */
+  transform: translateX(var(--shift));                                        /* Start translating the current element to start exiting to the left */
 }
 
 .slide-left-exit-active {
-  transform: translateX(calc(-62.5% - 75% * var(--index)));             /* Position when the current element is finished transitioning offscreen */
+  transform: translateX(calc(var(--shift) - var(--width) * var(--index)));             /* Position when the current element is finished transitioning offscreen */
   transition: all 400ms ease-in;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .slide-right-enter {
-  transform: translateX(calc(-62.5% - 75% * var(--index)));             /* Start translating the new element from the left */
+  transform: translateX(calc(var(--shift) - var(--width) * var(--index)));             /* Start translating the new element from the left */
 }
 
 .slide-right-enter-active {
-  transform: translateX(-62.5%);                                        /* Position of the new element when it is done transitioning */
+  transform: translateX(var(--shift));                                        /* Position of the new element when it is done transitioning */
   transition: all 400ms ease-out;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 .slide-right-exit {
-  transform: translateX(-62.5%);                                        /* Start translating the current element to start exiting to the right */
+  transform: translateX(var(--shift));                                        /* Start translating the current element to start exiting to the right */
 }
 
 .slide-right-exit-active {
-  transform: translateX(calc(-62.5% + 75% * var(--index)));             /* Position when the current element is finished transitioning offscreen */
+  transform: translateX(calc(var(--shift) + var(--width) * var(--index)));             /* Position when the current element is finished transitioning offscreen */
   transition: all 400ms ease-in;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
 }

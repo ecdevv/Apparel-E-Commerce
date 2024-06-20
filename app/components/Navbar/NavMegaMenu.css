@@ -68,7 +68,7 @@
   transition: transform 200ms ease;
 }
 
-.mega-menu-content a:hover::after {
+.mega-menu-content a:not(:has(img)):hover::after {
   transform: scaleX(1);
   transform-origin: bottom;
   background-color: rgba(var(--link-text-color));

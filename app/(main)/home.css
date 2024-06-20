@@ -2,14 +2,15 @@
 .home {
   position: relative;
   background-color: rgba(var(--primary-color));
+  overflow: hidden;
 }
 
 .carousel-container {
   width: 100%;
   height: 52rem;
   position: relative;
-  overflow: hidden;
   animation: fade-in-up 500ms 200ms backwards;
+  overflow: hidden;
 }
 
 .slide-content {
