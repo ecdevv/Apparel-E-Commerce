@@ -9,10 +9,41 @@
     "sku": "TSHIRT001",
     "material": "Cotton",
     "weight": 0.2,
-    "dimensions": "LxWxH",
-    "image_url": "url-to-image",
-    "video_url": "url-to-video",
+    "colors": [
+      {
+        "color": "white",
+        "media": [
+          {
+            "type": "image",
+            "url": "../public/images/products/product1/option1/white1.webp"
+          },
+          {
+            "type": "image",
+            "url": "../public/images/products/product1/option1/white2.webp"
+          },
+          {
+            "type": "video",
+            "url": "https://example.com/videos/tshirt_red_promo.mp4"
+          }
+        ]
+      },
+      {
+        "color": "black",
+        "media": [
+          {
+            "type": "image",
+            "url": "../public/images/products/product1/option1/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "../public/images/products/product1/option1/black2.webp"
+          }
+        ]
+      }
+    ],
+    "sizes": ["xs", "s", "md", "lg", "xl", "2xl"],
     "tags": ["summer", "cotton"],
     "custom_attributes": {"season": "summer"}
   }
 ]
+  

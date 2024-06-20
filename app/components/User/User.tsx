@@ -1,5 +1,5 @@
 import React from 'react';
-import DropdownButton from '../Dropdown/DropdownButton';
+import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import './User.css'
 
 interface Item {

@@ -1,9 +1,9 @@
 import Carousel from '../components/Carousel/Carousel'
 import Link from 'next/link';
-import CarouselImage from '../../public/images/carousel-item1.webp';
-import CarouselImage2 from '../../public/images/carousel-item2.webp';
-import CarouselImage3 from '../../public/images/carousel-item3.webp';
-import CarouselImage4 from '../../public/images/carousel-item4.webp'; 
+import CarouselImage from '../../public/images/home/carousel-item1.webp';
+import CarouselImage2 from '../../public/images/home/carousel-item2.webp';
+import CarouselImage3 from '../../public/images/home/carousel-item3.webp';
+import CarouselImage4 from '../../public/images/home/carousel-item4.webp'; 
 import './home.css'
 
 export default function Home() {
