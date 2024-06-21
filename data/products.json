@@ -3,23 +3,22 @@
     "product_id": 1,
     "name": "T-Shirt",
     "description": "A comfortable cotton t-shirt",
-    "category_id": 1,
+    "category": "tshirt",
     "price": 19.99,
     "discount": 0.0,
-    "sku": "TSHIRT001",
-    "material": "Cotton",
     "weight": 0.2,
-    "colors": [
+    "material": "Cotton",
+    "options": [
       {
-        "color": "white",
+        "name": "white",
         "media": [
           {
             "type": "image",
-            "url": "../public/images/products/product1/option1/white1.webp"
+            "url": "/images/products/clothing/tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "../public/images/products/product1/option1/white2.webp"
+            "url": "/images/products/clothing/tops/product1/white/white2.webp"
           },
           {
             "type": "video",
@@ -28,15 +27,15 @@
         ]
       },
       {
-        "color": "black",
+        "name": "black",
         "media": [
           {
             "type": "image",
-            "url": "../public/images/products/product1/option1/black1.webp"
+            "url": "/images/products/clothing/tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "../public/images/products/product1/option1/black2.webp"
+            "url": "/images/products/clothing/tops/product1/black/black2.webp"
           }
         ]
       }

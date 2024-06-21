@@ -5,10 +5,16 @@ import './NavMegaMenu.css'
 
 interface LinkWithIconProps {
   NEW?: boolean;
-  Text: string;
+  text: string;
+  product?: boolean;
+  productID?: number;
 }
 
-const LinkWithIcon = ({NEW, Text}:LinkWithIconProps) => {
+const LinkWithIcon = ({NEW, text, product = false, productID}:LinkWithIconProps) => {
+  const link = product === true
+  ? `/product/${text.split(/[ ,]+/).join('').toLowerCase()}?id=${productID}`
+  : `/${text.split(/[ ,]+/).join('').toLowerCase()}`;
+
   return (
     <span className='mega-menu-content-link-wrapper'>
       {NEW 
@@ -22,7 +28,7 @@ const LinkWithIcon = ({NEW, Text}:LinkWithIconProps) => {
         </svg>
       : <></>
       }
-      <Link href='/'>{Text}</Link>
+      <Link href={link}>{text}</Link>
     </span>
   )
 }
@@ -32,7 +38,7 @@ const NewMegaMenu = () => {
     <div className='mega-menu-container' style={{'--num-columns': '3'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <Link href='/product'>
+          <Link href='/'>
             <Image 
               src='/next.svg'
               alt='New Image'
@@ -45,11 +51,11 @@ const NewMegaMenu = () => {
         <div className='mega-menu-content'>
           <h2><Link href='/'>LIMITED EXCLUSIVES</Link></h2>
           <ul>
-            <li><LinkWithIcon NEW={true} Text={'Atelier x Luxe Exclusive Jacket'} /></li>
-            <li><LinkWithIcon Text={'Luxe Mercury'} /></li>
-            <li><LinkWithIcon Text={'Luxe Jupiter'} /></li>
-            <li><LinkWithIcon Text={'Luxe Saturn'} /></li>
-            <li><LinkWithIcon Text={'Luxe Neptune'} /></li>
+            <li><LinkWithIcon NEW={true} text={'Atelier x Luxe Exclusive Jacket'} product={true} productID={1} /></li>
+            <li><LinkWithIcon text={'Luxe Mercury'} product={true} productID={2} /></li>
+            <li><LinkWithIcon text={'Luxe Jupiter'} product={true} productID={3} /></li>
+            <li><LinkWithIcon text={'Luxe Saturn'} product={true} productID={4} /></li>
+            <li><LinkWithIcon text={'Luxe Neptune'} product={true} productID={5} /></li>
           </ul>
         </div>
       </div>
@@ -59,9 +65,9 @@ const NewMegaMenu = () => {
           <div className='mega-menu-content'>
             <h3><Link href='/'>Collections</Link></h3>
             <ul>
-              <li><LinkWithIcon NEW={true} Text='Atelier x Luxe Collection' /></li>
-              <li><LinkWithIcon NEW={true} Text='Summer Breeze Collection' /></li>
-              <li><LinkWithIcon NEW={true} Text='Urban Edge Collection' /></li>
+              <li><LinkWithIcon NEW={true} text='Atelier x Luxe Collection' /></li>
+              <li><LinkWithIcon NEW={true} text='Summer Breeze Collection' /></li>
+              <li><LinkWithIcon NEW={true} text='Urban Edge Collection' /></li>
             </ul>
           </div>
         </div>
@@ -86,13 +92,13 @@ const NewMegaMenu = () => {
         <div className='mega-menu-content'>
           <h2><Link href='/'>BEST SELLERS</Link></h2>
           <ul>
-            <li><LinkWithIcon NEW={true} Text='Atelier x Luxe Exclusive Jacket' /></li>
-            <li><LinkWithIcon Text='Luxe Mercury' /></li>
-            <li><LinkWithIcon Text='Luxe Neptune' /></li>
-            <li><LinkWithIcon NEW={true} Text='Atelier x Luxe Denim Jeans' /></li>
-            <li><LinkWithIcon NEW={true} Text='Atelier x Luxe Joggers' /></li>
-            <li><LinkWithIcon Text='Luxe Jupiter' /></li>
-            <li><LinkWithIcon Text='Luxe Saturn' /></li>
+            <li><LinkWithIcon NEW={true} text='Atelier x Luxe Exclusive Jacket' product={true} productID={1} /></li>
+            <li><LinkWithIcon text='Luxe Mercury' product={true} productID={1} /></li>
+            <li><LinkWithIcon text='Luxe Neptune' product={true} productID={1} /></li>
+            <li><LinkWithIcon NEW={true} text='Atelier x Luxe Denim Jeans'product={true} productID={1}  /></li>
+            <li><LinkWithIcon NEW={true} text='Atelier x Luxe Joggers' product={true} productID={1} /></li>
+            <li><LinkWithIcon text='Luxe Jupiter' product={true} productID={1} /></li>
+            <li><LinkWithIcon text='Luxe Saturn' product={true} productID={1} /></li>
           </ul>
         </div>
       </div>   
@@ -160,11 +166,11 @@ const MenMegaMenu = () => {
         <div className='mega-menu-content'>
           <h2><Link href='/'>TRENDING</Link></h2>
           <ul>
-            <li><LinkWithIcon NEW={true} Text='Atelier x Luxe Exclusive Jacket' /></li>
-            <li><LinkWithIcon NEW={true} Text='Atelier x Luxe Joggers' /></li>
-            <li><LinkWithIcon Text='Luxe Mercury' /></li>
-            <li><LinkWithIcon Text='Luxe Neptune' /></li>
-            <li><LinkWithIcon Text='Luxe Jupiter' /></li>
+            <li><LinkWithIcon NEW={true} text='Atelier x Luxe Exclusive Jacket' product={true} productID={1} /></li>
+            <li><LinkWithIcon NEW={true} text='Atelier x Luxe Joggers' product={true} productID={1} /></li>
+            <li><LinkWithIcon text='Luxe Mercury' product={true} productID={1} /></li>
+            <li><LinkWithIcon text='Luxe Neptune' product={true} productID={1} /></li>
+            <li><LinkWithIcon text='Luxe Jupiter' product={true} productID={1} /></li>
           </ul>
         </div>
       </div>
@@ -229,11 +235,11 @@ const WomenMegaMenu = () => {
         <div className='mega-menu-content'>
           <h2><Link href='/'>TRENDING</Link></h2>
           <ul>
-            <li><LinkWithIcon NEW={true} Text='Atelier x Luxe Exclusive Jacket' /></li>
-            <li><LinkWithIcon NEW={true} Text='Atelier x Luxe Denim Jeans' /></li>
-            <li><LinkWithIcon Text='Luxe Saturn' /></li>
-            <li><LinkWithIcon Text='Luxe Jupiter' /></li>
-            <li><LinkWithIcon Text='Luxe Neptune' /></li>
+            <li><LinkWithIcon NEW={true} text='Atelier x Luxe Exclusive Jacket' product={true} productID={1} /></li>
+            <li><LinkWithIcon NEW={true} text='Atelier x Luxe Denim Jeans' product={true} productID={1} /></li>
+            <li><LinkWithIcon text='Luxe Saturn' product={true} productID={1} /></li>
+            <li><LinkWithIcon text='Luxe Jupiter' product={true} productID={1} /></li>
+            <li><LinkWithIcon text='Luxe Neptune' product={true} productID={1} /></li>
           </ul>
         </div>
       </div>
@@ -351,9 +357,9 @@ const CollectionsMegaMenu = () => {
         <div className='mega-menu-content'>
           <h2><Link href='/'>CURRENT COLLECTIONS</Link></h2>
           <ul>
-            <li><LinkWithIcon NEW={true} Text='Atelier x Luxe Collection' /></li>
-            <li><LinkWithIcon NEW={true} Text='Summer Breeze Collection' /></li>
-            <li><LinkWithIcon NEW={true} Text='Urban Edge Collection' /></li>
+            <li><LinkWithIcon NEW={true} text='Atelier x Luxe Collection' /></li>
+            <li><LinkWithIcon NEW={true} text='Summer Breeze Collection' /></li>
+            <li><LinkWithIcon NEW={true} text='Urban Edge Collection' /></li>
             <li><Link href='/'>Vox Luxe Collection</Link></li>
             <li><Link href='/'>Royal Elegance Collection</Link></li>
             <li><Link href='/'>Haute Couture Collection</Link></li>

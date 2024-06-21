@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import '../auth.css';
 
-const Register = () => {
+export default function Register() {
   return (
     <section className='auth-section'>
       <div className='auth-container'>
@@ -58,5 +58,3 @@ const Register = () => {
     </section>
   )  
 }
-
-export default Register;

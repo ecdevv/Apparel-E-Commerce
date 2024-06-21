@@ -1,11 +1,11 @@
 'use client'
 import React, { useState } from 'react';
-import Image, {StaticImageData} from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './Carousel.css'
 
 interface ImagesProps {
-  Images: StaticImageData[]
+  Images: StaticImageData[] | string[]
   Width: number;
   BorderWidth?: number;
   ShowNavArrows?: boolean;
@@ -99,9 +99,9 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
   }
 
   // Helper function to get the wrapped images (first index here will correspond to the the image at currentIndex - 1)
-  const getWrappedImages = (currentIndex:number, images:StaticImageData[], numberOfVisibleImages:number) => {
+  const getWrappedImages = (currentIndex:number, images:(StaticImageData | string)[], numberOfVisibleImages:number) => {
     const totalImages = images.length;
-    const wrappedImages: StaticImageData[] = [];
+    const wrappedImages: (StaticImageData | string)[] = [];
 
     for (let i = -1; i < numberOfVisibleImages - 1; i++) {
       const index = (currentIndex + i + totalImages) % totalImages; // Add total images to ensure a positive number gets modded
@@ -133,10 +133,11 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
                   key={index}
                   src={image}
                   alt={`Current Carousel Item - ${index + 1}`}
-                  width='0'
-                  height='0'
-                  placeholder='blur'
+                  fill
+                  objectFit='cover'
+                  objectPosition='center'
                   className='carousel-image'
+                  placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
                   // style={{translate: `${-100 * currentIndex}%`}}
                 />
               </div>
@@ -194,10 +195,11 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
                   key={index}
                   src={image}
                   alt={`Current Carousel Item - ${index + 1}`}
-                  width='0'
-                  height='0'
-                  placeholder='blur'
+                  fill
+                  objectFit='cover'
+                  objectPosition='center'
                   className='carousel-image'
+                  placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
                 />
               </button>
             ))}

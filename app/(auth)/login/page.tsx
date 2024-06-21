@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import '../auth.css';
 
-const Login = () => {
+export default function Login() {
   return (
     <section className='auth-section'>
       <div className='auth-container'>
@@ -58,5 +58,3 @@ const Login = () => {
     </section>
   )  
 }
-
-export default Login;
