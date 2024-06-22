@@ -28,6 +28,13 @@
   --secondary-button-color: 85, 85, 85;
   --tertiary-button-color: 235, 235, 240;
 
+  --red-button-color: 255, 70, 70;
+  --orange-button-color: 255, 140, 0;
+  --yellow-button-color: 255, 255, 0;
+  --green-button-color: 110, 255, 0;
+  --blue-button-color: 100, 149, 237;
+  --violet-button-color: 155, 0, 255;
+
   --primary-hover-button-color: 255, 255, 255;
   --secondary-hover-button-color: 65, 65, 65;
 

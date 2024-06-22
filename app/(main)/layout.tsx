@@ -1,7 +1,7 @@
 import Banner from "../components/Banner/Banner"
 import Navbar from "../components/Navbar/Navbar"
 
-export default function AuthLayout({
+export default function MainLayout({
   children,
 }: {
   children: React.ReactNode
@@ -12,7 +12,7 @@ export default function AuthLayout({
         {/* <Banner /> */}
         <Navbar />
       </header>
-      {children}
+      <main>{children}</main>
     </>
   )
 }

@@ -7,8 +7,8 @@ export default function AuthLayout({
 }) {
   return (
     <>
-      <HeaderLogo />
-      {children}
+      <header><HeaderLogo /></header>
+      <main>{children}</main>
     </>
     )
 }

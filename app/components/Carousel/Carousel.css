@@ -106,10 +106,10 @@
   width: 100%;
   height: 20%;
   position: absolute;
-  bottom: calc(0% - 1rem);
+  bottom: 0%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   transition: opacity 200ms ease-in-out;
 }
@@ -125,24 +125,30 @@
   scrollbar-width: thin;
 }
 
-.carousel-thumbnail-container:hover {
+.carousel-thumbnail-container:hover, .carousel-thumbnail-container:focus-within {
   opacity: 1;
 }
+
 
 .carousel-thumbnail, .carousel-thumbnail-selected {
   width: 125px;
   height: auto;
   flex-shrink: 0;
-  border: 1px solid rgba(var(--input-border-color));
+  border: 1px solid rgba(var(--input-border-color), 0.5);
   transform: scale(1);
-  transition: all 200ms ease-in-out;
+  transition: border 100ms linear, box-shadow 100ms linear, transform 100ms linear;
+}
+
+.carousel-thumbnail:hover {
+  border: 1px solid rgba(var(--input-border-color));
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 .carousel-thumbnail-selected {
-  transform: scale(1.15);
+  transform: scale(1.05);
+  border: 1px solid rgba(var(--input-border-color));
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
 }
-
-
 
 /*** CSSTransition ***/
 .slide-left-enter {

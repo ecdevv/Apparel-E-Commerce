@@ -134,8 +134,6 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
                   src={image}
                   alt={`Current Carousel Item - ${index + 1}`}
                   fill
-                  objectFit='cover'
-                  objectPosition='center'
                   className='carousel-image'
                   placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
                   // style={{translate: `${-100 * currentIndex}%`}}
@@ -196,8 +194,6 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
                   src={image}
                   alt={`Current Carousel Item - ${index + 1}`}
                   fill
-                  objectFit='cover'
-                  objectPosition='center'
                   className='carousel-image'
                   placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
                 />
