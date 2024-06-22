@@ -13,11 +13,12 @@ export default function Home() {
     <div className='home'>
       <section className="carousel-container">
         <Carousel Images={Images} Width={75} BorderWidth={0.25} ShowNavArrows={true} ShowDotBtns={true} />
-        <div className='slide-content'>
+        {/* <div className='slide-content'>
           <h1 className='slide-h1' data-text="NEW SUMMER COLLECTION">NEW SUMMER COLLECTION</h1>
           <Link href='/' aria-label='New' className='slide-btn'>Shop Now</Link>
-        </div>
+        </div> */}
       </section>
+      {/* <div>ss</div> */}
     </div>
   );
 

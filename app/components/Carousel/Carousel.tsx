@@ -15,10 +15,12 @@ interface ImagesProps {
 
 const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDotBtns = false, ShowThumbnails = false} : ImagesProps) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [prevIndex, setPrevIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [difference, setDifference] = useState(0);
-  const [slideDirection, setSlideDirection] = useState('slide-left');
-
+  const [timeoutDuration, setTimeoutDuration] = useState(0);
+  const [slideDirection, setSlideDirection] = useState('');
+ 
   const handlePrevClick = () => {
     // Disable and then re-enable the button after 300 milliseconds
     setButtonDisabled(true);
@@ -27,11 +29,13 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
     }, 300);
 
     // Set slideDirection to the right since we are going back an image; the index is only moving one image so difference is always 1
+    setTimeoutDuration(400);
     setSlideDirection('slide-right');
     setDifference(1);
 
     // Set the current index AFTER (using setTimeout to achieve this) the slideDirection and difference are set.
     setTimeout (() => {
+      setPrevIndex((prevIndex) => (prevIndex - 1 + Images.length) % Images.length);
       setCurrentIndex((prevIndex) => (prevIndex - 1 + Images.length) % Images.length);  // Add total images to ensure a positive number gets modded
     }, 0)
   }
@@ -44,11 +48,13 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
     }, 300);
 
     // Set slide direction to the left since we are going back an image; the index is only moving one image so difference is always 1
+    setTimeoutDuration(400);
     setSlideDirection('slide-left');
     setDifference(1);
 
     // Set the current index AFTER (using setTimeout to achieve this) the slideDirection and difference are set.
     setTimeout (() => {
+      setPrevIndex((prevIndex) => (prevIndex + 1) % Images.length);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % Images.length);  // Always positive, so just mod by total length of images to ensure the index wraps back around
     }, 0)
   }
@@ -61,16 +67,25 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
     }, 300);
     
     // Set slide direction based on if the index of the image clicked on is greater than the currentIndex of the current image
+    setTimeoutDuration(400);
     if (index > currentIndex) {
       setSlideDirection('slide-left');
     }
     else {
       setSlideDirection('slide-right');
     }
-    
+
     // Set the difference based on the difference between the current image's index and the target image's index (the image clicked on); modding by total image length to be safe and ensure it wraps
     setDifference(Math.abs((index - currentIndex) % Images.length));
 
+    // Set the current index AFTER (using setTimeout to achieve this) the slideDirection and difference are set.
+    setTimeout (() => {
+      setPrevIndex(index);
+      setCurrentIndex(index); 
+    }, 0)
+  }
+
+  const handleThumbnailClick = (index:number) => {
     // FOR THUMBNAIL DOTS: Get the thumbnail wrapper element
     const wrapper = document.querySelector('.carousel-thumbnail-wrapper') as HTMLElement;
     if (wrapper) {
@@ -94,9 +109,22 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
 
     // Set the current index AFTER (using setTimeout to achieve this) the slideDirection and difference are set.
     setTimeout (() => {
+      setPrevIndex(index);
       setCurrentIndex(index);
     }, 0)
   }
+
+  const handleThumbnailHover = (index:number) => {
+    setTimeoutDuration(0);
+    setSlideDirection('');
+    setCurrentIndex(index);
+  }  
+
+  const handleThumbnailUnhover = () => {
+    setTimeoutDuration(0);
+    setSlideDirection('');
+    setCurrentIndex(prevIndex);
+  }  
 
   // Helper function to get the wrapped images (first index here will correspond to the the image at currentIndex - 1)
   const getWrappedImages = (currentIndex:number, images:(StaticImageData | string)[], numberOfVisibleImages:number) => {
@@ -110,7 +138,9 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
 
     return wrappedImages;
   };
-
+  
+  const thumbnailHeight = 17.5;
+  
   return (
     <>
       {/* ACCESSIBILITY LINK to skip the carousel/image track component */}
@@ -120,34 +150,33 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
       <TransitionGroup component={null}>
         <CSSTransition
           key={currentIndex}
-          timeout={400}
+          timeout={timeoutDuration}
           classNames={slideDirection}
-          style={{'--width': `${Width}%`, '--shift': `calc(${-Width}% + ((100% - ${Width}%) / 2))`, '--index': difference} as React.CSSProperties}
+          style={{'--width': `${Width}%`, '--shift': `calc(${-Width}% + ((100% - ${Width}%) / 2))`, '--index': difference, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}
           unmountOnExit
         >
-          <div className='carousel-image-container'>
-            {/* Only maps the primary image selected and the two surrounding images */}
-            {getWrappedImages(currentIndex, Images, 3).map((image, index) => (
-              <div key={index} className='carousel-image-wrapper' style={{'--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
-                <Image
-                  key={index}
-                  src={image}
-                  alt={`Current Carousel Item - ${index + 1}`}
-                  fill
-                  className='carousel-image'
-                  placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
-                  // style={{translate: `${-100 * currentIndex}%`}}
-                />
-              </div>
-            ))}
-          </div>
+            <div className='carousel-image-container'>
+              {/* Only maps the primary image selected and the two surrounding images */}
+              {getWrappedImages(currentIndex, Images, 3).map((image, index) => (
+                <div key={index} className='carousel-image-wrapper' style={{'--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
+                  <Image
+                    key={index}
+                    src={image}
+                    alt={`Current Carousel Item - ${index + 1}`}
+                    fill
+                    className='carousel-image'
+                    placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
+                  />
+                </div>
+              ))}
+            </div>
         </CSSTransition>
       </TransitionGroup>
 
       {/* The buttons on top of the surrounding images in order to go to the previous or next image in the carousel */}  
       {ShowNavArrows 
       ? <>
-          <button onClick={handlePrevClick} disabled={buttonDisabled} aria-label="View Previous Image" className='carousel-left-btn' style={{'--btn-size': `(100% - ${Width}%) / 2`, '--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
+          <button onClick={handlePrevClick} disabled={buttonDisabled} aria-label="View Previous Image" className='carousel-left-btn' style={{'--btn-size': `${Math.max((100 - Width) / 2, 8.25)}%`, '--border-width': `${BorderWidth}rem`, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
             <svg
               aria-hidden
               fill="currentColor"
@@ -158,7 +187,7 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
             </svg>
           </button>
 
-          <button onClick={handleNextClick} disabled={buttonDisabled} aria-label="View Next Image" className='carousel-right-btn' style={{'--btn-size': `(100% - ${Width}%) / 2`, '--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
+          <button onClick={handleNextClick} disabled={buttonDisabled} aria-label="View Next Image" className='carousel-right-btn' style={{'--btn-size': `${Math.max((100 - Width) / 2, 8.25)}%`, '--border-width': `${BorderWidth}rem`, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
             <svg
               aria-hidden
               fill="currentColor"
@@ -175,7 +204,7 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
 
       {/* The dot buttons at the bottom of the carousel to select the specific images */}
       {ShowDotBtns 
-      ? <div className='carousel-dots-wrapper'>
+      ? <div className='carousel-dots-wrapper' style={{'--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
           {Images.map((_, index) => (
             <button key={index} onClick={() => {handleDotClick(index)}} disabled={buttonDisabled} aria-label={`View Image ${index + 1}`} className={`${index === currentIndex ? 'carousel-dot-selected' : 'carousel-dot'}`} style={{'--total': Images.length} as React.CSSProperties}></button>
           ))}
@@ -185,10 +214,10 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
 
       {/* The thumbnail buttons at the left of the carousel to select the specific images */}
       {ShowThumbnails 
-      ? <div className='carousel-thumbnail-container'>
+      ? <div className='carousel-thumbnail-container' style={{'--thumbnail-height': `${thumbnailHeight}%`} as React.CSSProperties}>
           <div className='carousel-thumbnail-wrapper'>
             {Images.map((image, index) => (
-              <button key={index} onClick={() => {handleDotClick(index)}} aria-label={`View Image ${index + 1}`} className={`${index === currentIndex ? 'carousel-thumbnail-selected' : 'carousel-thumbnail'}`}>
+              <button key={index} onClick={() => handleThumbnailClick(index)} disabled={buttonDisabled} onMouseEnter={() => handleThumbnailHover(index)} onMouseLeave={() => handleThumbnailUnhover()} aria-label={`View Image ${index + 1}`} className={`${index === currentIndex || index === prevIndex ? 'carousel-thumbnail-selected' : 'carousel-thumbnail'}`}>
                 <Image
                   key={index}
                   src={image}

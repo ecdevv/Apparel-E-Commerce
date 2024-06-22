@@ -27,7 +27,7 @@
   gap: 2rem;
 }
 
-.product-content h2, h3, h4 {
+.product-content h2, h3, h4, p {
   font-family: var(--font-montserrat);
   font-weight: 700;
   font-size: 22px;
@@ -43,6 +43,11 @@
   font-size: 16px;
 }
 
+.product-content p {
+  font-weight: 500;
+  font-size: 16px;
+}
+
 .product-content-header {
   display: flex;
   flex-direction: column;
@@ -55,10 +60,16 @@
   gap: 0.5rem;
 }
 
+.product-options-header {
+  display: flex;
+  gap: 0.35rem;
+  font-family: var(--font-montserrat);
+}
+
 .product-options-btn-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.5rem;
   font-family: var(--font-montserrat);
 }
 
@@ -66,7 +77,6 @@
   position: relative;
   width: var(--width);
   height: var(--height);
-  padding: 5px;
   border: 1px solid rgba(var(--inverse-color), 0.25);
   transition: border 200ms linear, box-shadow 200ms linear, font-weight 100ms linear;
 }

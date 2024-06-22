@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Carousel from '@/app/components/Carousel/Carousel';
+import { capitalizeFirstLetter } from '@/app/utility/helper';
 import Products from '../../../../data/products.json'
 import './product.css'
 
@@ -46,6 +47,7 @@ const ProductCard = () => {
   const index = (parseInt(searchParams?.get('id') as string) - 1);
   const product: Product = Products[index] as Product;
   const [Images, setImages] = useState<string[]>([]);
+  const [prevOptionIndex, setPrevOptionIndex] = useState(0);
   const [currentOptionIndex, setCurrentOptionIndex] = useState(0);
   const [currentSizeIndex, setCurrentSizeIndex] = useState(0);
 
@@ -64,10 +66,25 @@ const ProductCard = () => {
         .map(item => item.url);
       setImages(selectedImages);
     }
-  }, [currentOptionIndex, product]);
+  }, []);
 
   const handleOptionClick = (index: number) => {
+    setPrevOptionIndex(currentOptionIndex);
     setCurrentOptionIndex(index);
+
+    const selectedOption = product.options[currentOptionIndex];
+    const selectedImages = selectedOption.media
+      .filter(item => item.type === "image")
+      .map(item => item.url);
+    setImages(selectedImages);
+  }
+
+  const handleOnHover = (index: number) => {
+    setCurrentOptionIndex(index);
+  }
+
+  const handleOnUnhover = () => {
+    setCurrentOptionIndex(prevOptionIndex);
   }
 
   const handleSizeClick = (index: number) => {
@@ -83,12 +100,16 @@ const ProductCard = () => {
         <div className='product-content-header'>
           <h2>{product.name}</h2>
           <h3>${product.price}</h3>
+          <p>{product.description}</p>
         </div>
         <div className='product-options-container'>
-          <h4>{`${(product.options[currentOptionIndex].type).toUpperCase()}:`}</h4>
+          <span className='product-options-header'>
+            <h4>{`${(product.options[currentOptionIndex].type).toUpperCase()}:`}</h4>
+            <p>{`${capitalizeFirstLetter(product.options[currentOptionIndex].name)}`}</p>
+          </span>
           <div className='product-options-btn-container'>
             {product.options.map((option, index) => (
-              <button key={index} onClick={() => handleOptionClick(index)} aria-label={`Product Option: ${option.name}`} className={`${currentOptionIndex === index ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '90px', '--height': '100px', '--bs-opacity': '0.5'} as React.CSSProperties}>
+              <button key={index} onClick={() => handleOptionClick(index)} onMouseEnter={() => handleOnHover(index)} onMouseLeave={handleOnUnhover} aria-label={`Product Option: ${option.name}`} className={`${currentOptionIndex === index || prevOptionIndex === index ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '90px', '--height': '100px', '--bs-opacity': '0.5'} as React.CSSProperties}>
                 <Image
                   src={option.media[0].url}
                   alt={option.name}

@@ -22,6 +22,26 @@
             "url": "/images/products/clothing/tops/product1/white/white2.webp"
           },
           {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+          },
+          {
             "type": "video",
             "url": "https://example.com/videos/tshirt_red_promo.mp4"
           }
@@ -30,6 +50,34 @@
       {
         "type": "color",
         "name": "black",
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "orange",
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "red",
         "media": [
           {
             "type": "image",

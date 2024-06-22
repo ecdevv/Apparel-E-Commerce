@@ -42,17 +42,17 @@ const DropdownButton = ({children, label, items, hover, orientation, showPointer
     };
   }, []);
 
-  // Handle toggling the menu on icon clicked
-  const handleClick = () => {
-    setMenuToggle(!menuToggle)
-  }
-
   const onHover = () => {
     setMenuToggle(true)
   }
 
   const onUnhover = () => {
     setMenuToggle(false)
+  }
+
+  // Handle toggling the menu on icon clicked
+  const handleClick = () => {
+    setMenuToggle(!menuToggle)
   }
 
   return (
