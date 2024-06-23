@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductCard } from './PageSections';
+import { ProductDetailsSection } from './PageSections';
 import './product.css'
 
 interface MediaItem {
@@ -32,7 +32,7 @@ interface Product {
 export default function Product() {
   return (
     <div className='product'>
-      <ProductCard />
+      <ProductDetailsSection />
     </div>
   )
 }

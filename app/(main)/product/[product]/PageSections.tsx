@@ -1,9 +1,10 @@
 'use client'
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import React from 'react';
 import Image from 'next/image';
-import Carousel from '@/app/components/Carousel/Carousel';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
+import Carousel from '@/app/components/Carousel/Carousel';
 import Products from '../../../../data/products.json'
 import './product.css'
 
@@ -42,14 +43,12 @@ const ProductNotFound = () => {
   )
 }
 
-const ProductCard = () => {
+const ProductDetailsSection = () => {
   const searchParams = useSearchParams();
   const index = (parseInt(searchParams?.get('id') as string) - 1);
   const product: Product = Products[index] as Product;
-  const [Images, setImages] = useState<string[]>([]);
-  const [prevOptionIndex, setPrevOptionIndex] = useState(0);
-  const [currentOptionIndex, setCurrentOptionIndex] = useState(0);
-  const [currentSizeIndex, setCurrentSizeIndex] = useState(0);
+  const selectedOption = searchParams.get('option') as string ?? product.options[0].name;
+  const selectedSize = searchParams.get('size') as string ?? product.sizes[0];
 
   if (!product) {
     console.log(index);
@@ -57,44 +56,24 @@ const ProductCard = () => {
     return <ProductNotFound />;
   }
 
-  // Effect to update Images state when currentOptionIndex changes
-  useEffect(() => {
-    if (product.options[currentOptionIndex]) {
-      const selectedOption = product.options[currentOptionIndex];
-      const selectedImages = selectedOption.media
-        .filter(item => item.type === "image")
-        .map(item => item.url);
-      setImages(selectedImages);
-    }
-  }, []);
+  const currentOption = product.options.find(option => option.name === selectedOption);
+  const selectedImages = currentOption?.media.filter(item => item.type === "image").map(item => item.url);
+  const Images = selectedImages;
 
-  const handleOptionClick = (index: number) => {
-    setPrevOptionIndex(currentOptionIndex);
-    setCurrentOptionIndex(index);
-
-    const selectedOption = product.options[currentOptionIndex];
-    const selectedImages = selectedOption.media
-      .filter(item => item.type === "image")
-      .map(item => item.url);
-    setImages(selectedImages);
-  }
-
-  const handleOnHover = (index: number) => {
-    setCurrentOptionIndex(index);
+  const handleOnHover = (string: string) => {
+    const selectedOption = string;
+    console.log(selectedOption)
   }
 
   const handleOnUnhover = () => {
-    setCurrentOptionIndex(prevOptionIndex);
-  }
-
-  const handleSizeClick = (index: number) => {
-    setCurrentSizeIndex(index);
+    const selectedOption = searchParams.get('option') as string;
+    console.log(selectedOption)
   }
 
   return (
     <section className='product-container'>
       <div className='product-content'>
-        <Carousel Images={Images} Width={100} ShowThumbnails={true} />
+        {Images ? <Carousel Images={Images as (string[])} Width={100} ShowThumbnails={true} /> : null}
       </div>
       <div className='product-content'>
         <div className='product-content-header'>
@@ -104,19 +83,19 @@ const ProductCard = () => {
         </div>
         <div className='product-options-container'>
           <span className='product-options-header'>
-            <h4>{`${(product.options[currentOptionIndex].type).toUpperCase()}:`}</h4>
-            <p>{`${capitalizeFirstLetter(product.options[currentOptionIndex].name)}`}</p>
+            <h4>{`${(product.options[0].type).toUpperCase()}:`}</h4>
+            <p>{`${capitalizeFirstLetter(selectedOption)}`}</p>
           </span>
           <div className='product-options-btn-container'>
             {product.options.map((option, index) => (
-              <button key={index} onClick={() => handleOptionClick(index)} onMouseEnter={() => handleOnHover(index)} onMouseLeave={handleOnUnhover} aria-label={`Product Option: ${option.name}`} className={`${prevOptionIndex === index ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '90px', '--height': '100px', '--bs-opacity': '0.5'} as React.CSSProperties}>
+              <Link key={index} href={`?id=${product.product_id}&option=${option.name}&size=${selectedSize}`} onMouseEnter={() => handleOnHover(option.name)} onMouseLeave={handleOnUnhover} aria-label={`Product Option: ${option.name}`} className={`${selectedOption === option.name ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '90px', '--height': '100px', '--bs-opacity': '0.5'} as React.CSSProperties}>
                 <Image
                   src={option.media[0].url}
                   alt={option.name}
                   fill
                   className='product-option-image'
                 />
-              </button>
+              </Link>
             ))}
           </div>
         </div>
@@ -124,9 +103,9 @@ const ProductCard = () => {
           <h4>SIZE: </h4>
           <div className='product-options-btn-container'>
             {product.sizes.map((size, index) => (
-              <button key={index} onClick={() => handleSizeClick(index)} aria-label={`Product Size Option: ${size}`} className={`${currentSizeIndex === index ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '50px', '--height': '50px', '--bs-opacity': '0.15'} as React.CSSProperties}>
+              <Link key={index} href={`?id=${product.product_id}&option=${selectedOption}&size=${size}`} aria-label={`Product Size Option: ${size}`} className={`${selectedSize === size ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '50px', '--height': '50px', '--bs-opacity': '0.15'} as React.CSSProperties}>
                 {size.toUpperCase()}
-              </button>
+              </Link>
             ))}
           </div>
         </div>
@@ -140,7 +119,7 @@ const ProductCard = () => {
   )
 }
 
-export { ProductCard }
+export { ProductDetailsSection }
 
 
 // Photo by <a href="https://unsplash.com/@anomaly?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Anomaly</a> on <a href="https://unsplash.com/photos/man-wearing-white-crew-neck-t-shirts-WWesmHEgXDs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
