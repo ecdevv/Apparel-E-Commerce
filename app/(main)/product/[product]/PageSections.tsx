@@ -109,7 +109,7 @@ const ProductCard = () => {
           </span>
           <div className='product-options-btn-container'>
             {product.options.map((option, index) => (
-              <button key={index} onClick={() => handleOptionClick(index)} onMouseEnter={() => handleOnHover(index)} onMouseLeave={handleOnUnhover} aria-label={`Product Option: ${option.name}`} className={`${currentOptionIndex === index || prevOptionIndex === index ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '90px', '--height': '100px', '--bs-opacity': '0.5'} as React.CSSProperties}>
+              <button key={index} onClick={() => handleOptionClick(index)} onMouseEnter={() => handleOnHover(index)} onMouseLeave={handleOnUnhover} aria-label={`Product Option: ${option.name}`} className={`${prevOptionIndex === index ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '90px', '--height': '100px', '--bs-opacity': '0.5'} as React.CSSProperties}>
                 <Image
                   src={option.media[0].url}
                   alt={option.name}

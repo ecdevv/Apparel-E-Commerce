@@ -7,7 +7,6 @@
   --keyframe-y-offset: 30px;
 
   --primary-color: 255, 255, 255;
-  --primary-color: 255, 255, 255;
   --inverse-color: 35, 35, 35;
   --secondary-color: 235, 235, 238;
 
@@ -15,10 +14,7 @@
   --banner-text-color: 10, 65, 155;
 
   --search-border-color: 10, 10, 10;
-
   --input-border-color: 10, 10, 10;
-
-  --login-menu-color: 55, 55, 55;
 
   --link-text-color: 15, 127, 255;
   --primary-text-color: 0, 0, 0;
@@ -38,7 +34,6 @@
   --primary-hover-button-color: 255, 255, 255;
   --secondary-hover-button-color: 65, 65, 65;
 
-  --carousel-background-color: 50, 50, 50;
   --dot-button-color: 185, 185, 195;
 }
 
@@ -51,10 +46,7 @@
   --banner-text-color: 10, 65, 155;
 
   --search-border-color: 10, 10, 10;
-
   --input-border-color: 10, 10, 10;
-
-  --login-menu-color: 55, 55, 55;
 
   --link-text-color: 15, 127, 255;
   --primary-text-color: 0, 0, 0;
@@ -67,7 +59,6 @@
   --primary-hover-button-color: 255, 255, 255;
   --secondary-hover-button-color: 65, 65, 65;
 
-  --carousel-background-color: 50, 50, 50;
   --dot-button-color: 185, 185, 195;
 }
 
@@ -83,8 +74,6 @@
 
   --input-border-color: 10, 10, 10;
 
-  --login-menu-color: 55, 55, 55;
-
   --link-text-color: 15, 127, 255;
   --primary-text-color: 255, 255, 255;
   --secondary-text-color: 0, 0, 0;
@@ -96,7 +85,6 @@
   --primary-hover-button-color: 255, 255, 255;
   --secondary-hover-button-color: 65, 65, 65;
 
-  --carousel-background-color: 50, 50, 50;
   --dot-button-color: 185, 185, 195;
 }
 

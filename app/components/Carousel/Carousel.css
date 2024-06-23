@@ -101,9 +101,7 @@
   height: var(--thumbnail-height);
   position: absolute;
   bottom: 0%;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 1;
+  left: 0%;
   transition: opacity 200ms ease-in-out;
   z-index: 1;
 }
@@ -114,10 +112,10 @@
   display: flex;
   justify-content: safe center;
   align-items: center;
-  gap: 1.5%;
+  gap: 2%;
   padding: 0.66rem;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.35rem;
+  padding-right: 0.4rem;
   overflow-x: auto;
   scrollbar-width: thin;
 }
@@ -125,22 +123,23 @@
 .carousel-thumbnail, .carousel-thumbnail-selected {
   aspect-ratio: 1.33 / 1;
   height: 100%;
-  flex-shrink: 0;
-  border: 1px solid rgba(var(--input-border-color), 0.5);
+  border: 1px solid rgba(var(--inverse-color), 0.25);
   transform: scale(1);
-  transition: border 100ms linear, box-shadow 100ms linear, transform 100ms linear;
-}
-
-.carousel-thumbnail:hover {
-  border: 1px solid rgba(var(--input-border-color));
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  transition: border 200ms linear, box-shadow 200ms linear, transform 100ms linear;
 }
 
 .carousel-thumbnail-selected {
-  /* transform: scale(1.15); */
-  border: 1px solid rgba(var(--input-border-color));
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
+
+.carousel-thumbnail:hover {
+  transform: scale(1.05);
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
 
 /*** CSSTransition ***/
 .slide-left-enter {

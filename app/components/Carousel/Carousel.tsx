@@ -20,7 +20,8 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
   const [difference, setDifference] = useState(0);
   const [timeoutDuration, setTimeoutDuration] = useState(0);
   const [slideDirection, setSlideDirection] = useState('');
- 
+  const thumbnailHeight = 20;
+
   const handlePrevClick = () => {
     // Disable and then re-enable the button after 300 milliseconds
     setButtonDisabled(true);
@@ -86,26 +87,8 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
   }
 
   const handleThumbnailClick = (index:number) => {
-    // FOR THUMBNAIL DOTS: Get the thumbnail wrapper element
-    const wrapper = document.querySelector('.carousel-thumbnail-wrapper') as HTMLElement;
-    if (wrapper) {
-      // Get the thumbnail button element by index
-      const thumbnailButton = wrapper.querySelector(`.carousel-thumbnail-wrapper button:nth-child(${index + 1})`) as HTMLElement;
-
-      if (thumbnailButton) {
-        const buttonRect = thumbnailButton.getBoundingClientRect();
-        const wrapperRect = wrapper.getBoundingClientRect();
-
-        // Check if thumbnail button is partially or fully outside the wrapper's viewport
-        if (buttonRect.left < wrapperRect.left || buttonRect.right > wrapperRect.right) {
-          // Scroll only if the thumbnail button is not fully visible
-          wrapper.scroll({
-            left: thumbnailButton.offsetLeft - wrapper.offsetLeft - (wrapper.clientWidth - thumbnailButton.offsetWidth) / 2,
-            behavior: 'smooth'
-          });
-        }
-      }
-    }
+    // Scroll the element if the item clicked on is outside the viewport
+    thumbnailScroll(index);
 
     // Set the current index AFTER (using setTimeout to achieve this) the slideDirection and difference are set.
     setTimeout (() => {
@@ -126,6 +109,30 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
     setCurrentIndex(prevIndex);
   }  
 
+  // Helper function to scroll the thumbnail wrapper element
+  const thumbnailScroll = (index:number) => {
+    // FOR THUMBNAIL DOTS: Get the thumbnail wrapper element
+    const wrapper = document.querySelector('.carousel-thumbnail-wrapper') as HTMLElement;
+    if (wrapper) {
+      // Get the thumbnail button element by index
+      const thumbnailButton = wrapper.querySelector(`.carousel-thumbnail-wrapper button:nth-child(${index + 1})`) as HTMLElement;
+
+      if (thumbnailButton) {
+        const buttonRect = thumbnailButton.getBoundingClientRect();
+        const wrapperRect = wrapper.getBoundingClientRect();
+
+        // Check if thumbnail button is partially or fully outside the wrapper's viewport
+        if (buttonRect.left < wrapperRect.left || buttonRect.right > wrapperRect.right) {
+          // Scroll only if the thumbnail button is not fully visible
+          wrapper.scroll({
+            left: thumbnailButton.offsetLeft - wrapper.offsetLeft - (wrapper.clientWidth - thumbnailButton.offsetWidth) / 2,
+            behavior: 'smooth'
+          });
+        }
+      }
+    }
+  }
+
   // Helper function to get the wrapped images (first index here will correspond to the the image at currentIndex - 1)
   const getWrappedImages = (currentIndex:number, images:(StaticImageData | string)[], numberOfVisibleImages:number) => {
     const totalImages = images.length;
@@ -138,8 +145,6 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
 
     return wrappedImages;
   };
-  
-  const thumbnailHeight = 17.5;
   
   return (
     <>
@@ -217,7 +222,7 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
       ? <div className='carousel-thumbnail-container' style={{'--thumbnail-height': `${thumbnailHeight}%`} as React.CSSProperties}>
           <div className='carousel-thumbnail-wrapper'>
             {Images.map((image, index) => (
-              <button key={index} onClick={() => handleThumbnailClick(index)} disabled={buttonDisabled} onMouseEnter={() => handleThumbnailHover(index)} onMouseLeave={() => handleThumbnailUnhover()} aria-label={`View Image ${index + 1}`} className={`${index === currentIndex || index === prevIndex ? 'carousel-thumbnail-selected' : 'carousel-thumbnail'}`}>
+              <button key={index} onClick={() => handleThumbnailClick(index)} disabled={buttonDisabled} onMouseEnter={() => handleThumbnailHover(index)} onMouseLeave={() => handleThumbnailUnhover()} aria-label={`View Image ${index + 1}`} className={`${index === prevIndex ? 'carousel-thumbnail-selected' : 'carousel-thumbnail'}`}>
                 <Image
                   key={index}
                   src={image}
