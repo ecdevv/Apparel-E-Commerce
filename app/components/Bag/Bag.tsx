@@ -3,12 +3,11 @@ import React from 'react';
 import Image from 'next/image';
 import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import { CSSTransition } from 'react-transition-group';
-import QuantityInput from './QuantityInput';
+import NumberStepper from '../Input/NumberStepper/NumberStepper';
 import { DropdownItem, ProductToBeAdded } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import { useBagContext } from '@/app/utility/useBagContext';
 import './Bag.css'
-
 
 const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItems: ProductToBeAdded[] | []; setBagItems: React.Dispatch<React.SetStateAction<ProductToBeAdded[] | []>>}) => {
   // This function removes the item from the bagItems array by finding the index of the item in the array and then using the splice method to remove that item from the array.
@@ -20,7 +19,14 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
     localStorage.setItem('bagItems', JSON.stringify(newBagItems));
   }
 
-  // TODO: Proper card styling and button aria-labels
+  const handleQuantityStepper = (value: number) => {
+    const newBagItems = [...bagItems as ProductToBeAdded[]];
+    const itemIndex = newBagItems.indexOf(item);
+    newBagItems[itemIndex].selectedQuantity = value
+    setBagItems(newBagItems);
+    localStorage.setItem('bagItems', JSON.stringify(newBagItems));
+  }
+
   return (
     <div className='bag-card'>
       <div className='bag-image-wrapper'>
@@ -35,8 +41,9 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
       <div className='bag-info-container'>
         <div className='bag-info'>
           <h2>{item.selectedProduct.name}</h2>
-          <button onClick={handleRemoveClick} className='bag-close'>
-            <svg 
+          <button onClick={handleRemoveClick} aria-label='Remove item from bag' className='bag-close'>
+            <svg
+              aria-hidden
               viewBox="0 0 25 25" 
               fill="currentColor"
               width={27.5}
@@ -53,8 +60,8 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
           <h3>{capitalizeFirstLetter('Size')}: {item.selectedSize.toUpperCase()}</h3>
         </div>
         <div className='bag-info'>
-          <h3>${item.selectedProduct.price}</h3>
-          <h3>Qty: <QuantityInput item={item} bagItems={bagItems} setBagItems={setBagItems}/></h3>  {/* TODO: Proper qty layout/styling */}
+          <h3>${(item.selectedProduct.price * item.selectedQuantity).toFixed(2)}</h3>
+          <div className='bag-qty-container'><h3>Qty: </h3><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} className='bag-qty-stepper'/></div>
         </div>
       </div>
     </div>
@@ -109,7 +116,7 @@ const Bag = () => {
           classNames="badge"
           unmountOnExit
         >
-          <span className='bag-quantity'>{totalQuantity}</span>
+          <span className='bag-badge'>{totalQuantity > 99 ? '99+' : totalQuantity}</span>
         </CSSTransition>
       </span>
       <h2>Bag</h2>

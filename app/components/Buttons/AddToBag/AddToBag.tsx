@@ -27,7 +27,7 @@ const AddToBagButton = ({product, option, size, quantity, className}: AddToBagPr
     );
     if (existingItemIndex !== -1) {
       const newBagItems = [...bagItems as ProductToBeAdded[]];
-      newBagItems[existingItemIndex].selectedQuantity = Math.min(newBagItems[existingItemIndex].selectedQuantity + 1, 99);
+      newBagItems[existingItemIndex].selectedQuantity = Math.min(newBagItems[existingItemIndex].selectedQuantity + productDetails.selectedQuantity, 99);
       setBagItems(newBagItems);
       localStorage.setItem('bagItems', JSON.stringify(newBagItems));
     }

@@ -24,9 +24,9 @@
   height: 25px;
 }
 
-.bag-quantity {
-  width: 15px;
-  height: 15px;
+.bag-badge {
+  width: 17.5px;
+  height: 17.5px;
   font-weight: 500;
   font-size: 10px;
   color: rgba(var(--primary-color));
@@ -34,8 +34,8 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: -6px;
+  right: -6px;
   background-color: rgba(var(--red-button-color));
   border-radius: 100%;
   animation: fade-in-up 300ms;
@@ -63,7 +63,7 @@
   /* background-color: white; */
   position: relative;
   max-height: 325px;
-  padding: 1rem;
+  padding: 0.5rem;
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-scrollbar-width: thin;
@@ -120,10 +120,38 @@
   justify-content: space-between;
 }
 
+.bag-qty-container {
+  display: flex;
+  align-items: center;
+  margin-top: -2.5px
+}
+
+.bag-qty-stepper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bag-qty-stepper button {
+  font-size: 16px;
+  padding: 0px 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.bag-qty-stepper input {
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid rgba(var(--inverse-color), 0.25);
+}
+
 .bag-close {
   position: absolute;
-  top: -7.5px;
-  right: -7.5px;
+  top: -10px;
+  right: 0;
   width: 25px;
   height: 25px;
 }
