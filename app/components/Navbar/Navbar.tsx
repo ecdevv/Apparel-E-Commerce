@@ -1,14 +1,13 @@
 import React from 'react';
 import Link from 'next/link'
-import Image from 'next/image';
 import Search from '../Search/Search';
 import User from '../User/User';
-import Cart from '../Cart/Cart';
+import Bag from '../Bag/Bag';
 import Theme from '../Theme/Theme';
 import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import { CollectionsMegaMenu, MenMegaMenu, NewMegaMenu, SalesMegaMenu, WomenMegaMenu } from './NavMegaMenu';
+import { DropdownItem } from '@/app/utility/types';
 import './Navbar.css'
-
 
 // The top section of the navbar with the logo, icons, search box, and etc.
 const Header = () => {
@@ -30,7 +29,7 @@ const Header = () => {
       <div className='navbar-icons-container'>
         <Search />
         <User />
-        <Cart />
+        <Bag />
       </div>
     </section>
   )
@@ -55,21 +54,13 @@ const HeaderLogo = () => {
   )
 }
 
-
-interface Item {
-  name: string;
-  type: 'component' | 'button' | 'link';
-  component?: React.ReactElement;
-  svg?: React.ReactElement;
-}
-
 // Navigation section with the links of this navbar component
 const Navigation = () => {
-  const NewItems:Item[] = [ { name: 'New & Featured Items', type: 'component', component: <NewMegaMenu /> } ]
-  const SalesItems:Item[] = [ { name: 'Sales Items', type: 'component', component: <SalesMegaMenu /> } ]
-  const MenItems:Item[] = [ { name: 'Men Items', type: 'component', component: <MenMegaMenu /> } ]
-  const WomenItems:Item[] = [ { name: 'Women Items', type: 'component', component: <WomenMegaMenu /> } ]
-  const CollectionItems:Item[] = [ { name: 'Collections Items', type: 'component', component: <CollectionsMegaMenu /> } ]
+  const NewItems:DropdownItem[] = [ { name: 'New & Featured Items', type: 'component', component: <NewMegaMenu /> } ]
+  const SalesItems:DropdownItem[] = [ { name: 'Sales Items', type: 'component', component: <SalesMegaMenu /> } ]
+  const MenItems:DropdownItem[] = [ { name: 'Men Items', type: 'component', component: <MenMegaMenu /> } ]
+  const WomenItems:DropdownItem[] = [ { name: 'Women Items', type: 'component', component: <WomenMegaMenu /> } ]
+  const CollectionItems:DropdownItem[] = [ { name: 'Collections Items', type: 'component', component: <CollectionsMegaMenu /> } ]
 
   return (
     <nav className='navbar-navigation-wrapper'>

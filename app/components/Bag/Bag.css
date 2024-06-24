@@ -1,5 +1,5 @@
-/****************** Cart ******************/
-.cart-btn, .cart-btn-focus {
+/****************** Bag ******************/
+.bag-btn, .bag-btn-focus {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,22 +11,22 @@
   border-radius: 2px;
 }
 
-.cart-btn-focus, .cart-btn:hover {
+.bag-btn-focus, .bag-btn:hover {
   background-color: rgba(var(--secondary-color), 0.5);
 }
 
-.cart-icon {
+.bag-icon {
   width: 25px;
   height: 25px;
 }
 
-/****************** Cart Content Heading ******************/
-.cart-h2 {
+/****************** Bag Content Heading ******************/
+.bag-h2 {
   font-family: var(--font-montserrat);
 }
 
-/****************** Cart Content Info Card ******************/
-.cart-container {
+/****************** Bag Content Info Card ******************/
+.bag-container {
   background-color: white;
   position: relative;
   max-height: 325px;
@@ -35,15 +35,15 @@
   scrollbar-width: 1px; 
 }
 
-.cart-container > *:not(:last-child) {
+.bag-container > *:not(:last-child) {
   margin-bottom: 1rem; 
 }
 
-.cart-container > *:last-child {
+.bag-container > *:last-child {
   margin-bottom: 0; 
 }
 
-.cart-card {
+.bag-card {
   width: 325px;
   display: grid;
   grid-template-columns: 30% 70%;
@@ -54,25 +54,25 @@
   font-size: 14px;
 }
 
-.cart-image {
+.bag-image {
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: center;
 }
 
-.cart-info {
+.bag-info {
   width: 90%;
   display: flex;
   flex-direction: column;
 }
 
-.cart-info-second {
+.bag-info-second {
   display: flex;
   justify-content: space-between;
 }
 
-.cart-info-third {
+.bag-info-third {
   display: flex;
   justify-content: space-between;
 }

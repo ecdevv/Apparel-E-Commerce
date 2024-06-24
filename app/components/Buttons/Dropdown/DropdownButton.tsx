@@ -2,18 +2,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Dropdown from './DropdownMenu'
-
-interface Item {
-  name: string;
-  type: 'component' | 'button' | 'link';
-  component?: React.ReactElement;
-  svg?: React.ReactElement;
-}
+import { DropdownItem } from '@/app/utility/types'
 
 interface DropdownButtonProps  {
   children?: React.ReactNode;
   label?: string;
-  items: Item[];
+  items: DropdownItem[];
   hover: boolean;
   orientation: string;
   showPointer: boolean;

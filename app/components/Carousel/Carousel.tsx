@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './Carousel.css'
@@ -21,6 +21,12 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
   const [timeoutDuration, setTimeoutDuration] = useState(0);
   const [slideDirection, setSlideDirection] = useState('');
   const thumbnailHeight = 20;
+
+  // Set the current index to the first image every time new images are set
+  useEffect(() => {
+    setPrevIndex(0);
+    setCurrentIndex(0);
+  }, [Images])
 
   const handlePrevClick = () => {
     // Disable and then re-enable the button after 300 milliseconds

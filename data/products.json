@@ -126,6 +126,49 @@
     "sizes": ["xs", "s", "md", "lg", "xl", "2xl"],
     "tags": ["summer", "cotton"],
     "custom_attributes": {"season": "summer"}
+  },
+  {
+    "product_id": 3,
+    "name": "PRODUCT 2",
+    "description": "A comfortable cotton t-shirt",
+    "category": "tshirt",
+    "price": 19.99,
+    "discount": 0.0,
+    "weight": 0.2,
+    "material": "Cotton",
+    "options": [
+      {
+        "type": "color",
+        "name": "black",
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "black",
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/clothing/tops/product1/black/black2.webp"
+          }
+        ]
+      }
+    ],
+    "sizes": ["xs", "s", "md", "lg", "xl", "2xl"],
+    "tags": ["summer", "cotton"],
+    "custom_attributes": {"season": "summer"}
   }
 ]
   

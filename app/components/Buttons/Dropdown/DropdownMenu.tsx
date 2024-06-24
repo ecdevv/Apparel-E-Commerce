@@ -1,27 +1,17 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group'
+import { DropdownItem } from '@/app/utility/types';
 import './DropdownMenu.css'
 
-interface Item {
-  name: string;
-  type: 'component' | 'button' | 'link';
-  component?: React.ReactElement;
-  svg?: React.ReactElement;
-}
-
 interface DropdownMenuProps  {
-  items: Item[];
+  items: DropdownItem[];
   menuToggle: boolean;
   orientation: string;
   showPointer: boolean;
 }
 
-interface MenuCardProps {
-  items: Item[];
-}
-
-const MenuCard = ({items}: MenuCardProps) => {
+const MenuCard = ({items}: {items: DropdownItem[]}) => {
   return (
     <>
       {items.map((item, index) => (
@@ -77,10 +67,6 @@ const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMe
         : <div className='dropdown-mega-menu'>
             <MenuCard items={items} />
           </div>
-          
-        // : <div className={`${menuFixed ? 'dropdown-mega-menu-fixed' : 'dropdown-mega-menu'}`}>
-        //     <MenuCard items={items} />
-        //   </div>
         }
       </CSSTransition>
     </>

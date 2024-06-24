@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat, Lora } from "next/font/google";
 import "./globals.css";
+import { BagProvider } from './utility/useBagContext';
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -30,7 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${montserrat.variable} ${lora.variable}`}>
-        {children}
+        <BagProvider>
+          {children}
+        </BagProvider>
       </body>
     </html>
   );
