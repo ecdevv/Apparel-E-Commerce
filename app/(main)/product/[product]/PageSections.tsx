@@ -72,7 +72,9 @@ const ProductDetailsSection = () => {
                   src={option.media[0].url}
                   alt={option.name}
                   fill
+                  sizes="(100vw, 100vh)"
                   className='product-option-image'
+                  priority
                 />
               </Link>
             ))}

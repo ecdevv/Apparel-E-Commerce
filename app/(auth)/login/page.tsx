@@ -9,7 +9,7 @@ export default function Login() {
         <h1>LOGIN</h1>
 
         {/* Form for inputting the Username and Password */}
-        <form action='/auth' method='POST'>
+        <form id='auth-form' action='/auth' method='POST'>
           {/* Username Input */}
           <div className='input-container'>
             <h2>Username</h2>

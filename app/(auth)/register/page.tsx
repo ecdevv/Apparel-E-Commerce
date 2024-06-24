@@ -9,8 +9,8 @@ export default function Register() {
         <h1>REGISTER</h1>
 
         {/* Form for inputting the registration information */}
-        <form action='/register' method='POST'>
-        {/* Username Input */}
+        <form id='auth-form' action='/register' method='POST'>
+          {/* Username Input */}
           <div className='input-container'>
             <h2>Username</h2>
             <div className='input-wrapper'>

@@ -3,11 +3,11 @@ import React from 'react';
 import Image from 'next/image';
 import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import { CSSTransition } from 'react-transition-group';
+import QuantityInput from './QuantityInput';
 import { DropdownItem, ProductToBeAdded } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import { useBagContext } from '@/app/utility/useBagContext';
 import './Bag.css'
-
 
 
 const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItems: ProductToBeAdded[] | []; setBagItems: React.Dispatch<React.SetStateAction<ProductToBeAdded[] | []>>}) => {
@@ -20,25 +20,6 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
     localStorage.setItem('bagItems', JSON.stringify(newBagItems));
   }
 
-  const handleRemoveQuantity = () => {
-    const newBagItems = [...bagItems as ProductToBeAdded[]];
-    const itemIndex = newBagItems.indexOf(item);
-    newBagItems[itemIndex].selectedQuantity = Math.max(newBagItems[itemIndex].selectedQuantity - 1, 0);
-    if (newBagItems[itemIndex].selectedQuantity === 0) {
-      newBagItems.splice(itemIndex, 1);                                     // TODO: Popup to confirm removal
-    }
-    setBagItems(newBagItems);
-    localStorage.setItem('bagItems', JSON.stringify(newBagItems));
-  }
-
-  const handleAddQuantity = () => {
-    const newBagItems = [...bagItems as ProductToBeAdded[]];
-    const itemIndex = newBagItems.indexOf(item);
-    newBagItems[itemIndex].selectedQuantity = Math.min(newBagItems[itemIndex].selectedQuantity + 1, 99);
-    setBagItems(newBagItems);
-    localStorage.setItem('bagItems', JSON.stringify(newBagItems));
-  }
-
   // TODO: Proper card styling and button aria-labels
   return (
     <div className='bag-card'>
@@ -47,30 +28,33 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
           src={item.selectedProduct.options.find(option => option.name === item.selectedOption)?.media[0].url || item.selectedProduct.options[0].media[0].url}
           alt='Logo'
           fill
+          sizes="(100vw)"
           className='bag-image'
         />
       </div>
       <div className='bag-info-container'>
         <div className='bag-info'>
-          <h2>{item.selectedProduct.name} {item.selectedSize.toUpperCase()}, {capitalizeFirstLetter(item.selectedOption)}</h2>
+          <h2>{item.selectedProduct.name}</h2>
           <button onClick={handleRemoveClick} className='bag-close'>
             <svg 
-              viewBox="0 0 24 24" 
-              fill="none"
-              className='bag-icon'
+              viewBox="0 0 25 25" 
+              fill="currentColor"
+              width={27.5}
+              height={27.5}
             > 
-              <rect width="24" height="24" fill="white"></rect> 
-              <path d="M7 17L16.8995 7.10051" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path> 
-              <path d="M7 7.00001L16.8995 16.8995" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M18 7L7 18M7 7L18 18" stroke="#121923" strokeWidth="1.2" />
             </svg>
           </button>
         </div>
         <div className='bag-info'>
-          <h2>{item.selectedProduct.price}</h2>
-          <h2>Qty: <button onClick={handleRemoveQuantity}> - </button> {item.selectedQuantity} <button onClick={handleAddQuantity}> + </button></h2>  {/* TODO: Proper qty layout/styling */}
+          <h3>{capitalizeFirstLetter(item.selectedProduct.options.find(option => option.name === item.selectedOption)?.type || '')}: {capitalizeFirstLetter(item.selectedOption)}</h3>
         </div>
         <div className='bag-info'>
-          <h2>Free Shipping</h2>
+          <h3>{capitalizeFirstLetter('Size')}: {item.selectedSize.toUpperCase()}</h3>
+        </div>
+        <div className='bag-info'>
+          <h3>${item.selectedProduct.price}</h3>
+          <h3>Qty: <QuantityInput item={item} bagItems={bagItems} setBagItems={setBagItems}/></h3>  {/* TODO: Proper qty layout/styling */}
         </div>
       </div>
     </div>
@@ -81,7 +65,7 @@ const BagItemList = ({bagItems, setBagItems}: {bagItems: ProductToBeAdded[] | []
   // Check if the "bagItems" array is empty or undefined.
   if (!bagItems || bagItems.length === 0) {
     console.log('Your Bag is Empty');
-    return <h2 className='bag-h2'>Your Bag is Empty</h2>;
+    return <h2 className='bag-header'>Your Bag is Empty</h2>;
   }
   
   // If the "bagItems" array is not empty, map over each item in the array and render a "BagCard" component for each item.
@@ -97,13 +81,15 @@ const BagItemList = ({bagItems, setBagItems}: {bagItems: ProductToBeAdded[] | []
 const Bag = () => {
   const {bagItems, setBagItems} = useBagContext();
   const totalQuantity = bagItems.reduce((acc, item) => acc + item.selectedQuantity, 0);
+  const subTotal = bagItems.reduce((acc, item) => acc + item.selectedProduct.price * item.selectedQuantity, 0);
 
   // This is an array of DropdownItem objects (the content of the dropdown) that will be passed to the DropdownButton component.
   const items: DropdownItem[] = [
-    { name: 'Shopping Bag', type: 'component', component: <h2 className='bag-h2'>Shopping Bag ({totalQuantity})</h2> },
+    { name: 'Shopping Bag', type: 'component', component: <div className='bag-header'><h2>Shopping Bag ({totalQuantity})</h2><h3>Subtotal: ${subTotal.toFixed(2)}</h3></div> },
     { name: 'Bag Items', type: 'component', component: <BagItemList bagItems={bagItems} setBagItems={setBagItems}/> },
     { name: 'View Bag', type: 'button' },
     { name: 'Checkout', type: 'button' },
+    { name: 'Log', type: 'component', component: <button onClick={() => {console.log(bagItems)}}>Log</button>}
   ]
 
   return (

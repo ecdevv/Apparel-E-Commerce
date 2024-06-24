@@ -37,17 +37,15 @@ const NewMegaMenu = () => {
   return (
     <div className='mega-menu-container' style={{'--num-columns': '3'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
-        <div className='mega-menu-content'>
-          <Link href='/'>
-            <Image 
-              src='/next.svg'
-              alt='New Image'
-              width='0'
-              height='0'
-              className='mega-menu-content-image'
-            />
-          </Link>
-        </div>
+        <Link href='/' className='mega-menu-content'>
+          <Image 
+            src='/next.svg'
+            alt='New Image'
+            fill
+            sizes="(100vw, 100vh)"
+            className='mega-menu-content-image'
+          />
+        </Link>
         <div className='mega-menu-content'>
           <h2><Link href='/'>LIMITED EXCLUSIVES</Link></h2>
           <ul>
@@ -110,17 +108,15 @@ const SalesMegaMenu = () => {
   return (
     <div className='mega-menu-container' style={{'--num-columns': '4'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
-        <div className='mega-menu-content'>
-          <Link href='/'>
-            <Image 
-              src='/vercel.svg'
-              alt='Sales Image'
-              width='0'
-              height='0'
-              className='mega-menu-content-image'
-            />
-          </Link>
-        </div>
+        <Link href='/' className='mega-menu-content'>
+          <Image 
+            src='/vercel.svg'
+            alt='Sales Image'
+            fill
+            sizes="(100vw, 100vh)"
+            className='mega-menu-content-image'
+          />
+        </Link>
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
@@ -306,52 +302,44 @@ const CollectionsMegaMenu = () => {
   return (
     <div className='mega-menu-container' style={{'--num-columns': '3'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
-        <div className='mega-menu-content'>
-          <Link href='/'>
-            <Image 
-              src='/next.svg'
-              alt='Collection Image 1'
-              width='0'
-              height='0'
-              className='mega-menu-content-image'
-            />
-          </Link>
-        </div>
-        <div className='mega-menu-content'>
-          <Link href='/'>
-            <Image 
-              src='/vercel.svg'
-              alt='Collection Image 2'
-              width='0'
-              height='0'
-              className='mega-menu-content-image'
-            />
-          </Link>
-        </div>
+        <Link href='/' className='mega-menu-content'>
+          <Image 
+            src='/next.svg'
+            alt='Collection Image 1'
+            fill
+            sizes="(100vw, 100vh)"
+            className='mega-menu-content-image'
+          />
+        </Link>
+        <Link href='/' className='mega-menu-content'>
+          <Image 
+            src='/vercel.svg'
+            alt='Collection Image 2'
+            fill
+            sizes="(100vw, 100vh)"
+            className='mega-menu-content-image'
+          />
+        </Link>
       </div>
       <div className='mega-menu-content-wrapper'>
-        <div className='mega-menu-content'>
-          <Link href='/'>
-            <Image 
-              src='/vercel.svg'
-              alt='Collection Image 3'
-              width='0'
-              height='0'
-              className='mega-menu-content-image'
-            />
-          </Link>
-        </div>
-        <div className='mega-menu-content'>
-          <Link href='/'>
-            <Image 
-              src='/next.svg'
-              alt='Collection Image 4'
-              width='0'
-              height='0'
-              className='mega-menu-content-image'
-            />
-          </Link>
-        </div>
+        <Link href='/' className='mega-menu-content'>
+          <Image 
+            src='/vercel.svg'
+            alt='Collection Image 3'
+            fill
+            sizes="(100vw, 100vh)"
+            className='mega-menu-content-image'
+          />
+        </Link>
+        <Link href='/' className='mega-menu-content'>
+          <Image 
+            src='/next.svg'
+            alt='Collection Image 4'
+            fill
+            sizes="(100vw, 100vh)"
+            className='mega-menu-content-image'
+          />
+        </Link>
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>

@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { ProductToBeAdded } from './types';
 
 type ContextProviderProps = {
@@ -14,9 +14,14 @@ type BagContext = {
 const BagContext = createContext<BagContext | null>(null);
 
 export function BagProvider({children}:ContextProviderProps) {
-  const [bagItems, setBagItems] = useState<ProductToBeAdded[] | []>(
-    JSON.parse(localStorage.getItem('bagItems') || '[]')
-  );
+  const [bagItems, setBagItems] = useState<ProductToBeAdded[] | []>([]);
+
+  useEffect(() => {
+    const storedBagItems = localStorage.getItem('bagItems');
+    if (storedBagItems) {
+      setBagItems(JSON.parse(storedBagItems));
+    }
+  }, []);
 
   return (
     <BagContext.Provider value={{bagItems, setBagItems}}>

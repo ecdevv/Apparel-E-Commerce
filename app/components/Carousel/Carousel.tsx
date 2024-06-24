@@ -175,8 +175,10 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
                     src={image}
                     alt={`Current Carousel Item - ${index + 1}`}
                     fill
+                    sizes="(100vw, 100vh)"
                     className='carousel-image'
                     placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
+                    priority
                   />
                 </div>
               ))}
@@ -234,6 +236,7 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
                   src={image}
                   alt={`Current Carousel Item - ${index + 1}`}
                   fill
+                  sizes="(100vw, 100vh)"
                   className='carousel-image'
                   placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
                 />

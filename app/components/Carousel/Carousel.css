@@ -27,6 +27,7 @@
 .carousel-left-btn, .carousel-right-btn {
   width: calc(var(--btn-size) - ((var(--border-width) / 2) + (var(--border-width) * 0.1)));
   height: calc(100% - var(--thumbnail-height));;
+  -webkit-backdrop-filter: blur(5px) grayscale(66.66%);
   backdrop-filter: blur(5px) grayscale(66.66%);
   position: absolute;
   top: 0%;
@@ -44,6 +45,7 @@
 }
 
 .carousel-left-btn:hover, .carousel-right-btn:hover {
+  -webkit-backdrop-filter: blur(0px) grayscale(0%);
   backdrop-filter: blur(0px) grayscale(0%);
 }
 
@@ -121,6 +123,7 @@
 }
 
 .carousel-thumbnail, .carousel-thumbnail-selected {
+  position: relative;
   aspect-ratio: 1.33 / 1;
   height: 100%;
   border: 1px solid rgba(var(--inverse-color), 0.25);
