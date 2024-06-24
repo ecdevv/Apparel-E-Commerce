@@ -39,6 +39,7 @@ const ProductDetailsSection = () => {
   const Images = product.options.find(option => option.name === selectedOption)?.media.filter(item => item.type === "image").map(item => item.url);   // Find's the option in the array that is equivalent to the selectedOption; filters for images in the media array; maps the string image urls
   
   // TODO - Figure out how to update url on hover and unhover so the option text can also update
+  // TODO - Figure out how to disable scrolling when clicking on the links
   const handleOnHover = (string: string) => {
     const selectedOption = string;
     console.log(selectedOption)
@@ -66,7 +67,7 @@ const ProductDetailsSection = () => {
           </span>
           <div className='product-options-btn-container'>
             {product.options.map((option, index) => (
-              <Link key={index} href={`?${new URLSearchParams({id: product.product_id.toString(), option: option.name, size: selectedSize})}`} onMouseEnter={() => handleOnHover(option.name)} onMouseLeave={handleOnUnhover} aria-label={`Product Option: ${option.name}`} className={`${selectedOption === option.name ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '90px', '--height': '100px', '--bs-opacity': '0.5'} as React.CSSProperties}>
+              <Link key={index} href={`?${new URLSearchParams({id: product.product_id.toString(), option: option.name, size: selectedSize})}`} onMouseEnter={() => handleOnHover(option.name)} onMouseLeave={handleOnUnhover} aria-label={`Product ${capitalizeFirstLetter(option.type)} Option: ${option.name}`} className={`${selectedOption === option.name ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '90px', '--height': '100px', '--bs-opacity': '0.5'} as React.CSSProperties}>
                 <Image
                   src={option.media[0].url}
                   alt={option.name}
