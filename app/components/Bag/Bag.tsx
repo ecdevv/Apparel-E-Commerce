@@ -42,13 +42,14 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
   // TODO: Proper card styling and button aria-labels
   return (
     <div className='bag-card'>
-      <Image
-        src={item.selectedProduct.options[0].media[0].url}
-        alt='Logo'
-        width='0'
-        height='0'
-        className='bag-image'
-      />
+      <div className='bag-image-wrapper'>
+        <Image
+          src={item.selectedProduct.options.find(option => option.name === item.selectedOption)?.media[0].url || item.selectedProduct.options[0].media[0].url}
+          alt='Logo'
+          fill
+          className='bag-image'
+        />
+      </div>
       <div className='bag-info-container'>
         <div className='bag-info'>
           <h2>{item.selectedProduct.name} {item.selectedSize.toUpperCase()}, {capitalizeFirstLetter(item.selectedOption)}</h2>
