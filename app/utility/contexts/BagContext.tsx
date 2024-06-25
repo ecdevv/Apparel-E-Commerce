@@ -9,6 +9,7 @@ type ContextProviderProps = {
 type BagContext = {
   bagItems: ProductToBeAdded[] | [];
   setBagItems: React.Dispatch<React.SetStateAction<ProductToBeAdded[] | []>>;
+  scrollableRef: React.RefObject<HTMLDivElement>;
   forceElementRef: React.RefObject<HTMLButtonElement>;
 }
 
@@ -16,6 +17,7 @@ const BagContext = createContext<BagContext | null>(null);
 
 export function BagProvider({children}:ContextProviderProps) {
   const [bagItems, setBagItems] = useState<ProductToBeAdded[] | []>([]);
+  const scrollableRef = useRef<HTMLDivElement>(null);
   const forceElementRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -26,7 +28,7 @@ export function BagProvider({children}:ContextProviderProps) {
   }, []);
 
   return (
-    <BagContext.Provider value={{bagItems, setBagItems, forceElementRef}}>
+    <BagContext.Provider value={{bagItems, setBagItems, scrollableRef, forceElementRef}}>
       {children}
     </BagContext.Provider>
   )

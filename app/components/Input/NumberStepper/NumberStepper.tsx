@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, ChangeEvent } from 'react'
+import React, { useState, useEffect, ChangeEvent } from 'react'
 import './NumberStepper.css'
 
 interface NumberStepperProps {
@@ -11,6 +11,10 @@ interface NumberStepperProps {
 }
 const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, className = 'number-stepper'}: NumberStepperProps) => {
   const [value, setValue] = useState(initialValue);
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
 
   // Handle decrementing the value
   const handleDecrement = () => {

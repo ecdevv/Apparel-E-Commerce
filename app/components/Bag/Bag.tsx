@@ -1,8 +1,8 @@
 'use client'
 import React from 'react';
 import Image from 'next/image';
-import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import { CSSTransition } from 'react-transition-group';
+import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import NumberStepper from '../Input/NumberStepper/NumberStepper';
 import { DropdownItem, ProductToBeAdded } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
@@ -14,6 +14,12 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
   const handleRemoveClick = () => {
     const newBagItems = [...bagItems as ProductToBeAdded[]];
     const itemIndex = newBagItems.indexOf(item);
+    // Decrement the index of all items after the removed item.
+    newBagItems.forEach((item, index) => {
+      if (index > itemIndex) {
+        item.index -= 1;
+      }
+    });
     newBagItems.splice(itemIndex, 1);
     setBagItems(newBagItems);
     localStorage.setItem('bagItems', JSON.stringify(newBagItems));
@@ -28,7 +34,7 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
   }
 
   return (
-    <div className='bag-card'>
+    <div id={item.index.toString()} className='bag-card'>
       <div className='bag-image-wrapper'>
         <Image
           src={item.selectedProduct.options.find(option => option.name === item.selectedOption)?.media[0].url || item.selectedProduct.options[0].media[0].url}
@@ -69,14 +75,16 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
 }
 
 const BagItemList = ({bagItems, setBagItems}: {bagItems: ProductToBeAdded[] | []; setBagItems: React.Dispatch<React.SetStateAction<ProductToBeAdded[] | []>>}) => {
+  const {scrollableRef} = useBagContext();
+
   // Check if the "bagItems" array is empty or undefined.
   if (!bagItems || bagItems.length === 0) {
     return <h2 className='bag-header'>Your Bag is Empty</h2>;
   }
-  
+
   // If the "bagItems" array is not empty, map over each item in the array and render a "BagCard" component for each item.
   return (
-    <div className='bag-container'>
+    <div ref={scrollableRef} className='bag-container'>
       {bagItems.map((item, index) => (
         <BagCard key={index} item={item} bagItems={bagItems} setBagItems={setBagItems}/>
       ))}
@@ -95,7 +103,7 @@ const Bag = () => {
     { name: 'Bag Items', type: 'component', component: <BagItemList bagItems={bagItems} setBagItems={setBagItems}/> },
     { name: 'View Bag', type: 'button' },
     { name: 'Checkout', type: 'button' },
-    { name: 'Log', type: 'component', component: <button onClick={() => {console.log(bagItems)}}>Log</button>}
+    { name: 'Log', type: 'component', component: <button onClick={() => {console.log(bagItems, bagItems.map((item) => item.selectedQuantity))}}>Log</button>}
   ]
 
   return (
