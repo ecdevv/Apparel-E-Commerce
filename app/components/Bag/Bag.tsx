@@ -6,7 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 import NumberStepper from '../Input/NumberStepper/NumberStepper';
 import { DropdownItem, ProductToBeAdded } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
-import { useBagContext } from '@/app/utility/useBagContext';
+import { useBagContext } from '@/app/utility/contexts/BagContext';
 import './Bag.css'
 
 const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItems: ProductToBeAdded[] | []; setBagItems: React.Dispatch<React.SetStateAction<ProductToBeAdded[] | []>>}) => {
@@ -71,7 +71,6 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
 const BagItemList = ({bagItems, setBagItems}: {bagItems: ProductToBeAdded[] | []; setBagItems: React.Dispatch<React.SetStateAction<ProductToBeAdded[] | []>>}) => {
   // Check if the "bagItems" array is empty or undefined.
   if (!bagItems || bagItems.length === 0) {
-    console.log('Your Bag is Empty');
     return <h2 className='bag-header'>Your Bag is Empty</h2>;
   }
   
@@ -86,7 +85,7 @@ const BagItemList = ({bagItems, setBagItems}: {bagItems: ProductToBeAdded[] | []
 }
 
 const Bag = () => {
-  const {bagItems, setBagItems} = useBagContext();
+  const {bagItems, setBagItems, forceElementRef} = useBagContext();
   const totalQuantity = bagItems.reduce((acc, item) => acc + item.selectedQuantity, 0);
   const subTotal = bagItems.reduce((acc, item) => acc + item.selectedProduct.price * item.selectedQuantity, 0);
 
@@ -100,7 +99,7 @@ const Bag = () => {
   ]
 
   return (
-    <DropdownButton label={'Bag'} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['bag-btn', 'bag-btn-focus']}>
+    <DropdownButton label={'Bag'} forceRef={forceElementRef} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['bag-btn', 'bag-btn-focus']}>
       <span className='bag-icon-wrapper'>
         <svg
           aria-hidden

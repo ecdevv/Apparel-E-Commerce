@@ -1,6 +1,6 @@
 import React from 'react'
 import { Product, ProductToBeAdded } from '@/app/utility/types'
-import { useBagContext } from '@/app/utility/useBagContext'
+import { useBagContext } from '@/app/utility/contexts/BagContext'
 
 interface AddToBagProps {
   product: Product;
@@ -11,7 +11,8 @@ interface AddToBagProps {
 }
 
 const AddToBagButton = ({product, option, size, quantity, className}: AddToBagProps) => {
-  const {bagItems, setBagItems} = useBagContext();
+  const {bagItems, setBagItems, forceElementRef} = useBagContext();
+
   const productToBeAdded: ProductToBeAdded = {
     selectedProduct: product, 
     selectedOption: option, 
@@ -39,9 +40,10 @@ const AddToBagButton = ({product, option, size, quantity, className}: AddToBagPr
   }
 
   return (
-    <button onClick={() => {handleClick(productToBeAdded)}} className={`${className}`}>Add to Bag</button>
+    <button ref={forceElementRef} onClick={() => {handleClick(productToBeAdded)}} className={`${className}`}>Add to Bag</button>
   )
 }
 
 export default AddToBagButton;
+
 

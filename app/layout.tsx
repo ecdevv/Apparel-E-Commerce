@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat, Lora } from "next/font/google";
 import "./globals.css";
-import { BagProvider } from './utility/useBagContext';
+import { BagProvider } from './utility/contexts/BagContext';
 
 const inter = Inter({ 
   subsets: ["latin"],

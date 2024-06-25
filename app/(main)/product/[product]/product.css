@@ -81,7 +81,7 @@
   width: var(--width);
   height: var(--height);
   border: 1px solid rgba(var(--inverse-color), 0.25);
-  transition: border 200ms linear, box-shadow 200ms linear, font-weight 100ms linear;
+  transition: border 150ms linear, box-shadow 150ms linear, font-weight 50ms linear;
 }
 
 .product-option-btn-selected {
@@ -124,6 +124,10 @@
   border-color: black;
   transition: all 200ms ease-in-out;
   background-color: rgba(var(--primary-button-color));
+}
+
+.product-btn:active, .product-btn2:active {
+  transform: translateY(5px);
 }
 
 .product-btn2 {

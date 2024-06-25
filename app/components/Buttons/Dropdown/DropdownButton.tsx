@@ -6,6 +6,7 @@ import { DropdownItem } from '@/app/utility/types'
 
 interface DropdownButtonProps  {
   children?: React.ReactNode;
+  forceRef?: React.RefObject<HTMLButtonElement>;
   label?: string;
   items: DropdownItem[];
   hover: boolean;
@@ -15,15 +16,22 @@ interface DropdownButtonProps  {
 }
 
 // Navigation section with the links of this navbar component
-const DropdownButton = ({children, label, items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
+const DropdownButton = ({children, forceRef, label, items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
   const [menuToggle, setMenuToggle] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Function to handle clicks outside the element
     const handleClickOutside = (e: MouseEvent) => {
-        if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-            setMenuToggle(false);
+      // Check if forceRef exists
+      if (forceRef) {
+        if ((menuRef.current && !menuRef.current.contains(e.target as Node)) && (forceRef?.current && !forceRef.current.contains(e.target as Node))) {  // If the mouse click is not in the DropdownButton or forceRef button, close the menu
+          setMenuToggle(false);
+        } else if (forceRef?.current && forceRef.current.contains(e.target as Node)) {  // If the mouse click is in the forceRef button, open the menu
+            setMenuToggle(true);
+          }
+      } else if (menuRef.current && !menuRef.current.contains(e.target as Node)) {  // If the mouse click is not in the DropdownButton, close the menu
+          setMenuToggle(false);
         }
     };
 
@@ -37,16 +45,16 @@ const DropdownButton = ({children, label, items, hover, orientation, showPointer
   }, []);
 
   const onHover = () => {
-    setMenuToggle(true)
+    setMenuToggle(true);
   }
 
   const onUnhover = () => {
-    setMenuToggle(false)
+    setMenuToggle(false);
   }
 
   // Handle toggling the menu on icon clicked
   const handleClick = () => {
-    setMenuToggle(!menuToggle)
+    setMenuToggle(!menuToggle);
   }
 
   return (

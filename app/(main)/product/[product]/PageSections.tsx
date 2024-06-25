@@ -24,7 +24,6 @@ const ProductDetailsSection = () => {
 
   // Valdiation check if product exists; if it does not exist, return ProductError component
   if (!product) {
-    console.log('Product not found: ', index);
     return <ProductError text="Product not found." />;
   }
 

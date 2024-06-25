@@ -128,7 +128,7 @@
   height: 100%;
   border: 1px solid rgba(var(--inverse-color), 0.25);
   transform: scale(1);
-  transition: border 200ms linear, box-shadow 200ms linear, transform 100ms linear;
+  transition: border 150ms linear, box-shadow 150ms linear, transform 150ms linear;
 }
 
 .carousel-thumbnail-selected {

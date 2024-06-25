@@ -78,6 +78,10 @@
   background-color: rgba(var(--primary-hover-button-color))
 }
 
+.dropdown-btn:active {
+  transform: translateY(5px);
+}
+
 .dropdown-link {
   position: relative;
   display: inline-flex;

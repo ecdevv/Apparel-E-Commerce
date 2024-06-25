@@ -1,6 +1,6 @@
 'use client'
-import { createContext, useContext, useEffect, useState } from 'react';
-import { ProductToBeAdded } from './types';
+import { createContext, useContext, useEffect, useState, useRef } from 'react';
+import { ProductToBeAdded } from '../types';
 
 type ContextProviderProps = {
   children: React.ReactNode;
@@ -9,12 +9,14 @@ type ContextProviderProps = {
 type BagContext = {
   bagItems: ProductToBeAdded[] | [];
   setBagItems: React.Dispatch<React.SetStateAction<ProductToBeAdded[] | []>>;
+  forceElementRef: React.RefObject<HTMLButtonElement>;
 }
 
 const BagContext = createContext<BagContext | null>(null);
 
 export function BagProvider({children}:ContextProviderProps) {
   const [bagItems, setBagItems] = useState<ProductToBeAdded[] | []>([]);
+  const forceElementRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const storedBagItems = localStorage.getItem('bagItems');
@@ -24,7 +26,7 @@ export function BagProvider({children}:ContextProviderProps) {
   }, []);
 
   return (
-    <BagContext.Provider value={{bagItems, setBagItems}}>
+    <BagContext.Provider value={{bagItems, setBagItems, forceElementRef}}>
       {children}
     </BagContext.Provider>
   )
