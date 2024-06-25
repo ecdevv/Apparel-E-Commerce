@@ -52,7 +52,7 @@ const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMe
         style={{
           '--duration': `${timeoutDuration}ms`,
           '--keyframe-y-offset': orientation !== 'mega' ? '15px' : '',
-          '--z-index': menuToggle === true ? '0' : '-1',
+          '--z-index': menuToggle === true ? '1' : '0',
         } as React.CSSProperties}
       >
         {orientation !== 'mega'

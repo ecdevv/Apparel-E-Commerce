@@ -10,6 +10,7 @@ import Products from '../../../../data/products.json'
 import { Product } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import './product.css'
+import AccordionMenu from '@/app/components/Accordion/AccordionMenu';
 
 const ProductError = ({text}: {text: string}) => {
   return (
@@ -19,12 +20,19 @@ const ProductError = ({text}: {text: string}) => {
 
 const ProductDetailsSection = () => {
   const searchParams = useSearchParams();
-  const index = (parseInt(searchParams?.get('id') as string) - 1);
-  const product: Product = Products[index] as Product;
+  const id = (parseInt(searchParams?.get('id') as string));
+  const product: Product = Products.find(product => product.product_id === id) as Product;
 
   // Valdiation check if product exists; if it does not exist, return ProductError component
   if (!product) {
     return <ProductError text="Product not found." />;
+  }
+
+  // Valdiation check if product IDs are unique; if not unique, return ProductError component (only necessary because using mock JSON data)
+  const productIDs = Products.map(product => product.product_id);
+  const duplicateIDs = productIDs.filter((id, index) => productIDs.indexOf(id) !== index);
+  if (duplicateIDs.length > 0 && duplicateIDs.includes(product.product_id)) {
+    return <ProductError text={`The following product IDs are duplicate: ${duplicateIDs.join(', ')}`} />;
   }
 
   // Valdiation check if each option of the product is unique; if not unique, return ProductError component // Handle product options not being unique
@@ -62,7 +70,6 @@ const ProductDetailsSection = () => {
         <div className='product-content-header'>
           <h2>{product.name}</h2>
           <h3>${product.price}</h3>
-          <p>{product.description}</p>
         </div>
         <div className='product-options-container'>
           <span className='product-options-header'>
@@ -105,6 +112,10 @@ const ProductDetailsSection = () => {
         <div className='product-btn-container'>
           <AddToBagButton product={product} option={selectedOption} size={selectedSize} quantity={selectedQuantity} className={'product-btn'} />
           <button className='product-btn2'>Wishlist</button>
+        </div>
+
+        <div>
+          <AccordionMenu title={'Details'} content={product.description}/>
         </div>
       </div>
     </section>

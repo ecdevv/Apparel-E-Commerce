@@ -11,9 +11,9 @@
   justify-items: center;
   margin: auto;
   gap: 2rem;
-  padding: 2rem;
-  width: 75%;
-  height: 50rem;
+  padding: 2rem 0;
+  width: 80rem;
+  height: 52rem;
   animation: fade-in-up 400ms 200ms backwards;
 }
 

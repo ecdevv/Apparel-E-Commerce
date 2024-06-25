@@ -39,6 +39,7 @@ export interface Product {
 
 /* Add to Bag Types */
 export interface ProductToBeAdded {
+  index: number;
   selectedProduct: Product;
   selectedOption: string;
   selectedSize: string;

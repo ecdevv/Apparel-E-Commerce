@@ -1,0 +1,33 @@
+.accordion-menu-container {
+  border: 1px solid rgba(var(--inverse-color), 0.25);
+  padding: 1rem;
+}
+
+.accordion-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.accordion-menu-title {
+  font-family: var(--font-montserrat);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.accordion-menu-icon {
+  transition: transform 200ms ease-in-out;
+}
+
+.accordion-menu-icon-rotated {
+  transform: rotate(180deg)
+}
+
+.accordion-menu-content {
+  display: none;
+}
+
+.show {
+  display: block;
+}
