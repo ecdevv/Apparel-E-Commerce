@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat, Lora } from "next/font/google";
+import { Inter, Montserrat, Roboto, Lora } from "next/font/google";
 import "./globals.css";
 import { BagProvider } from './utility/contexts/BagContext';
 
@@ -11,6 +11,14 @@ const inter = Inter({
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
+})
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '500', '700', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: "--font-roboto",
 })
 
 const lora = Lora ({
@@ -30,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${montserrat.variable} ${lora.variable}`}>
+      <body className={`${inter.variable} ${montserrat.variable} ${roboto.variable} ${lora.variable}`}>
         <BagProvider>
           {children}
         </BagProvider>

@@ -66,7 +66,7 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
           <h3>{capitalizeFirstLetter('Size')}: {item.selectedSize.toUpperCase()}</h3>
         </div>
         <div className='bag-info'>
-          <h3>${(item.selectedProduct.price * item.selectedQuantity).toFixed(2)}</h3>
+          <h3>${((item.selectedProduct.price - item.selectedProduct.discount) * item.selectedQuantity).toFixed(2)}</h3>
           <div className='bag-qty-container'><h3>Qty: </h3><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} className='bag-qty-stepper'/></div>
         </div>
       </div>
@@ -95,7 +95,7 @@ const BagItemList = ({bagItems, setBagItems}: {bagItems: ProductToBeAdded[] | []
 const Bag = () => {
   const {bagItems, setBagItems, forceElementRef} = useBagContext();
   const totalQuantity = bagItems.reduce((acc, item) => acc + item.selectedQuantity, 0);
-  const subTotal = bagItems.reduce((acc, item) => acc + item.selectedProduct.price * item.selectedQuantity, 0);
+  const subTotal = bagItems.reduce((acc, item) => acc + (item.selectedProduct.price - item.selectedProduct.discount) * item.selectedQuantity, 0);
 
   // This is an array of DropdownItem objects (the content of the dropdown) that will be passed to the DropdownButton component.
   const items: DropdownItem[] = [

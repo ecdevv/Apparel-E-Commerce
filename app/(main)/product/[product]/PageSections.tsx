@@ -6,11 +6,11 @@ import { useSearchParams } from 'next/navigation';
 import Carousel from '@/app/components/Carousel/Carousel';
 import NumberStepper from '@/app/components/Input/NumberStepper/NumberStepper';
 import AddToBagButton from '@/app/components/Buttons/AddToBag/AddToBag';
+import AccordionMenu from '@/app/components/Accordion/AccordionMenu';
 import Products from '../../../../data/products.json'
 import { Product } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import './product.css'
-import AccordionMenu from '@/app/components/Accordion/AccordionMenu';
 
 const ProductError = ({text}: {text: string}) => {
   return (
@@ -68,13 +68,13 @@ const ProductDetailsSection = () => {
       </div>
       <div className='product-content'>
         <div className='product-content-header'>
-          <h2>{product.name}</h2>
-          <h3>${product.price}</h3>
+          <h2 className='product-h2'>{product.name.toUpperCase()}</h2>
+          <h3 className='product-h3'>${(product.price - product.discount).toFixed(2)}</h3>
         </div>
         <div className='product-options-container'>
           <span className='product-options-header'>
-            <h4>{`${(product.options[0].type).toUpperCase()}:`}</h4>
-            <p>{`${capitalizeFirstLetter(selectedOption)}`}</p>
+            <h4 className='product-h4'>{`${(product.options[0].type).toUpperCase()}:`}</h4>
+            <h5 className='product-h5'>{`${capitalizeFirstLetter(selectedOption)}`}</h5>
           </span>
           <div className='product-options-btn-container'>
             {product.options.map((option, index) => (
@@ -92,7 +92,7 @@ const ProductDetailsSection = () => {
           </div>
         </div>
         <div className='product-options-container'>
-          <h4>SIZE: </h4>
+          <h4 className='product-h4'>SIZE: </h4>
           <div className='product-options-btn-container'>
             {product.sizes.map((size, index) => (
               <Link key={index} href={`?${new URLSearchParams({id: product.product_id.toString(), option: selectedOption, size: size})}`} scroll={false} aria-label={`Product Size Option: ${size}`} className={`${selectedSize === size ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '50px', '--height': '50px', '--bs-opacity': '0.15'} as React.CSSProperties}>
@@ -103,7 +103,7 @@ const ProductDetailsSection = () => {
         </div>
 
         <div className='product-options-container'>
-          <h4>QUANTITY: </h4>
+          <h4 className='product-h4'>QUANTITY: </h4>
           <div className='product-options-btn-container'>
             <NumberStepper min={1} value={selectedQuantity} onChange={handleQuantityStepper}/>
           </div>
@@ -114,8 +114,10 @@ const ProductDetailsSection = () => {
           <button className='product-btn2'>Wishlist</button>
         </div>
 
-        <div>
-          <AccordionMenu title={'Details'} content={product.description}/>
+        <div className='product-details-container'>
+          <AccordionMenu title={'Details'} content={product.details ? [product.description, product.details] : [product.description]} />
+          { product.care ? <AccordionMenu title={'Care'} content={['To maintain the luxurious quality of your leather jacket, we recommend following these care guidelines:', product.care]} /> : null }
+          <AccordionMenu title={'Shipping and Returns'} content={["We're pleased to offer complimentary shipping on all orders, ensuring your shopping experience is as convenient as possible. Additionally, returns are easy and stress-free, because your satisfaction is our priority."]} />
         </div>
       </div>
     </section>

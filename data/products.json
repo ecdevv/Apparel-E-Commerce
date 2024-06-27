@@ -1,13 +1,14 @@
 [
   {
     "product_id": 1,
-    "name": "T-Shirt",
-    "description": "A comfortable cotton t-shirt",
-    "category": "tshirt",
-    "price": 19.99,
-    "discount": 0.0,
+    "name": "Atelier x Lux Limited Edition Jacket",
+    "description": "Introducing the Atelier x Lux Limited Edition Jacket",
+    "category": "apparel",
+    "subcategory": "tops",
+    "price": 19999.99,
+    "discount": 20.0,
     "weight": 0.2,
-    "material": "Cotton",
+    "material": "Italian Leather",
     "options": [
       {
         "type": "color",
@@ -15,11 +16,11 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
           }
         ]
       },
@@ -29,24 +30,39 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
           }
         ]
       }
     ],
     "sizes": ["xs", "s", "md", "lg", "xl", "2xl"],
-    "tags": ["summer", "cotton"],
+    "details": [
+      ["Material", "Crafted from the finest Italian leather with rich suede accents, and lined with luxurious silk for an unmatched feel."],
+      ["Design", "A sleek, modern silhouette with a tailored fit, featuring intricate stitching and bespoke detailing."],
+      ["Limited Edition", "Each jacket is individually numbered, with only 100 pieces available worldwide."],
+      ["Functionality", "Discreet pockets, hidden zip closure, adjustable cuffs, and a removable fur collar for versatility."],
+      ["Signature Elements", "Custom embroidered logos and a commemorative plaque celebrating the collaboration."],
+      ["Eco-Friendly", "Made with ethically sourced materials and sustainable production processes."]
+    ],
+    "care": [
+      ["Cleaning", "Gently wipe off any dirt or dust using a soft, dry cloth."],
+      ["Conditioning", "Apply a high-quality leather conditioner periodically to keep the leather supple and moisturized."],
+      ["Storage", "Store your jacket in a cool, dry place away from direct sunlight to prevent fading and moisture damage."],
+      ["Avoid", "Avoid exposing your jacket to harsh chemicals, excessive moisture, or heat sources. Following these care instructions will help preserve the timeless elegance and durability of your exclusive leather jacket for years to come."]
+    ],
+    "tags": ["tshirt", "summer", "cotton"],
     "custom_attributes": {"season": "summer"}
   },
   {
     "product_id": 2,
     "name": "PRODUCT 2",
     "description": "A comfortable cotton t-shirt",
-    "category": "tshirt",
+    "category": "apparel",
+    "subcategory": "tops",
     "price": 19.99,
     "discount": 0.0,
     "weight": 0.2,
@@ -58,11 +74,11 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
           }
         ]
       },
@@ -72,24 +88,25 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
           }
         ]
       }
     ],
     "sizes": ["xs", "s", "md", "lg", "xl", "2xl"],
-    "tags": ["summer", "cotton"],
+    "tags": ["tshirt", "summer", "cotton"],
     "custom_attributes": {"season": "summer"}
   },
   {
     "product_id": 3,
     "name": "TEST 3",
     "description": "A comfortable cotton t-shirt",
-    "category": "tshirt",
+    "category": "apparel",
+    "subcategory": "tops",
     "price": 19.99,
     "discount": 0.0,
     "weight": 0.2,
@@ -101,31 +118,31 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
           },
           {
             "type": "video",
@@ -139,11 +156,11 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
           }
         ]
       },
@@ -153,11 +170,11 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
           }
         ]
       },
@@ -167,21 +184,21 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/clothing/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
           }
         ]
       }
     ],
     "sizes": ["xs", "s", "md", "lg", "xl", "2xl"],
-    "tags": ["summer", "cotton"],
+    "tags": ["tshirt", "summer", "cotton"],
     "custom_attributes": {"season": "summer"}
   }
 ]

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Dropdown from './DropdownMenu'
 import { DropdownItem } from '@/app/utility/types'
+import './Dropdown.css'
 
 interface DropdownButtonProps  {
   children?: React.ReactNode;

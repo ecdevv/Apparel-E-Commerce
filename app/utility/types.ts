@@ -25,15 +25,18 @@ export interface Product {
   name: string;
   description: string;
   category: string;
+  subcategory: string;
   price: number;
   discount: number;
   weight: number;
   material: string;
   options: Option[];
   sizes: string[];
+  details?: [string, string][];
+  care?: [string, string][];
   tags: string[];
   custom_attributes: {
-    [key: string]: string; // Allows any string key-value pair
+    [key: string]: string;
   };
 }
 

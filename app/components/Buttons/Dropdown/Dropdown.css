@@ -1,6 +1,5 @@
 /****************** Dropdown Button ******************/
 .dropdown-chevron {
-  transform: rotate(0deg);
   transition: transform 200ms ease-in-out;
 }
 

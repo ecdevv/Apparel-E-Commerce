@@ -70,17 +70,17 @@ const NewMegaMenu = () => {
           </div>
         </div>
         <div className='mega-menu-content'>
-          <h3><Link href='/'>New In Men&apos;s Apparel</Link></h3>
+          <h3><Link href='/'>New In Men&apos;s Clothing</Link></h3>
           <ul>
-            <li><Link href='/'>Clothing</Link></li>
+            <li><Link href='/'>Apparel</Link></li>
             <li><Link href='/'>Shoes</Link></li>
             <li><Link href='/'>Accessories</Link></li>
           </ul>
         </div>
         <div className='mega-menu-content'>
-          <h3><Link href='/'>New In Women&apos;s Apparel</Link></h3>
+          <h3><Link href='/'>New In Women&apos;s Clothing</Link></h3>
           <ul>
-            <li><Link href='/'>Clothing</Link></li>
+            <li><Link href='/'>Apparel</Link></li>
             <li><Link href='/'>Shoes</Link></li>
             <li><Link href='/'>Accessories</Link></li>
           </ul>
@@ -135,7 +135,7 @@ const SalesMegaMenu = () => {
         <div className='mega-menu-content'>
           <h3><Link href='/'>MEN&apos;S SALES</Link></h3>
           <ul>
-            <li><Link href='/'>Clothing</Link></li>
+            <li><Link href='/'>Apparel</Link></li>
             <li><Link href='/'>Shoes</Link></li>
             <li><Link href='/'>Accessories</Link></li>
           </ul>
@@ -145,7 +145,7 @@ const SalesMegaMenu = () => {
         <div className='mega-menu-content'>
           <h3><Link href='/'>WOMEN&apos;S SALES</Link></h3>
           <ul>
-            <li><Link href='/'>Clothing</Link></li>
+            <li><Link href='/'>Apparel</Link></li>
             <li><Link href='/'>Shoes</Link></li>
             <li><Link href='/'>Accessories</Link></li>
           </ul>
@@ -172,7 +172,7 @@ const MenMegaMenu = () => {
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><Link href='/'>CLOTHING</Link></h2>
+          <h2><Link href='/'>APPAREL</Link></h2>
           <ul>
             <li><Link href='/'>T-Shirts & Tops</Link></li>
             <li><Link href='/'>Hoodies & Sweatshirts</Link></li>
@@ -241,7 +241,7 @@ const WomenMegaMenu = () => {
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><Link href='/'>CLOTHING</Link></h2>
+          <h2><Link href='/'>APPAREL</Link></h2>
           <ul>
             <li><Link href='/'>T-Shirts & Tops</Link></li>
             <li><Link href='/'>Hoodies & Sweatshirts</Link></li>

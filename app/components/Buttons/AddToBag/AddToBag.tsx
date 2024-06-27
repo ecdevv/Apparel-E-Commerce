@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Product, ProductToBeAdded } from '@/app/utility/types'
 import { useBagContext } from '@/app/utility/contexts/BagContext'

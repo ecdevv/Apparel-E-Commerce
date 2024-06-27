@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group'
 import { DropdownItem } from '@/app/utility/types';
-import './DropdownMenu.css'
 
 interface DropdownMenuProps  {
   items: DropdownItem[];

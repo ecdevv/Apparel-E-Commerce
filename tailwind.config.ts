@@ -20,6 +20,7 @@ const config: Config = {
       },
       fontFamily: {
         "montserrat": "var(--font-montserrat)",
+        "roboto": "var(--font-roboto)",
         "lora": "var(--font-lora)",
       }
     },
