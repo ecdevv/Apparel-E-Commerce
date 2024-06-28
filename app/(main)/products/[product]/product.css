@@ -2,38 +2,35 @@
 .product {
   position: relative;
   background-color: rgba(var(--primary-color));
-  overflow: hidden;
 }
 
 .product-container {
+  position: relative;
   display: grid;
-  grid-template-columns: 55% 1fr;
+  grid-template-columns: 64% 1fr;
   justify-items: center;
   margin: auto;
-  gap: 2rem;
-  padding: 1rem 0;
-  width: 80rem;
+  width: 75%;
+  padding: 1.25rem 0;
+  gap: 1.5rem;
   animation: fade-in-up 400ms 200ms backwards;
 }
 
-.product-content {
+.product-gallery-container {
+  position: sticky;
+  top: calc(104px + 1.25rem);
   width: 100%;
+  height: calc(100vh - 104px - (1.25rem * 2));
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.product-content {
   position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   gap: 2rem;
-}
-
-.product-content:nth-child(1) {
-  height: 55rem;
-}
-
-.product-content:nth-child(2) {
-  width: 100%;
-  padding: 1rem 0;
-  align-items: center;
-  text-align: center;
 }
 
 .product-h2 {
@@ -45,13 +42,13 @@
 .product-h3 {
   font-family: var(--font-montserrat);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .product-h4 {
   font-family: var(--font-montserrat);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .product-content-header {
@@ -60,20 +57,21 @@
 
 .product-discount-badge {
   display: inline-block;
-  margin-top: 0.75rem;
+  margin-bottom: 0.35rem;
   background: rgba(var(--secondary-color));
   padding: 0.25rem 0.35rem;
   font-weight: 700;
 }
 
 .product-price-wrapper {
-  margin-top: 1rem;
+  display: inline-flex;
+  gap: 0.5rem;
 }
 
 .product-price, .product-price-discounted, .product-price-strike {
   font-family: var(--font-montserrat);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .product-price-discounted {
@@ -89,6 +87,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.product-options-header {
+  display: flex;
+  gap: 0.35rem;
 }
 
 .product-options-btn-container {
@@ -144,6 +147,7 @@
   padding: 12px;
   cursor: pointer;
   font-family: var(--font-montserrat);
+  font-weight: 500;
   font-size: 15px;
   color: rgba(var(--secondary-text-color));
   border-width: 1px;

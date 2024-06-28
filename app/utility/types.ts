@@ -9,14 +9,22 @@ export interface DropdownItem {
 }
 
 /* Product Types */
-export interface MediaItem {
+interface MediaItem {
   type: "image" | "video";
   url: string;
+}
+
+interface Size {
+  size: string;
+  stock: number;
+  price: number;
+  discount: number;
 }
 
 export interface Option {
   type: string;
   name: string;
+  data: {sizes: Size[]}
   media: MediaItem[];
 }
 
@@ -26,18 +34,10 @@ export interface Product {
   description: string;
   category: string;
   subcategory: string;
-  price: number;
-  discount: number;
-  weight: number;
-  material: string;
   options: Option[];
-  sizes: string[];
   details?: [string, string][];
   care?: [string, string][];
   tags: string[];
-  custom_attributes: {
-    [key: string]: string;
-  };
 }
 
 /* Add to Bag Types */
@@ -47,4 +47,5 @@ export interface ProductToBeAdded {
   selectedOption: string;
   selectedSize: string;
   selectedQuantity: number;
+  selectedPrice: number;
 }

@@ -75,6 +75,7 @@
   padding: 10px;
   cursor: pointer;
   font-family: var(--font-montserrat);
+  font-weight: 500;
   font-size: 15px;
   color: rgba(var(--secondary-text-color));
   border-width: 1px;

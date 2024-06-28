@@ -5,28 +5,20 @@
     "description": "Introducing the Atelier x Luxe Limited Edition Jacket",
     "category": "apparel",
     "subcategory": "tops",
-    "price": 19999.99,
-    "discount": 0.0,
-    "weight": 0.2,
-    "material": "Italian Leather",
     "options": [
       {
         "type": "color",
-        "name": "white",
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
-          }
-        ]
-      },
-      {
-        "type": "color",
         "name": "black",
+        "data": {
+          "sizes": [
+            { "size": "XS", "stock": 10, "price": 19999.99, "discount": 0.0 },
+            { "size": "S", "stock": 10, "price": 19999.99, "discount": 0.0 },
+            { "size": "MD", "stock": 10, "price": 19999.99, "discount": 0.0 },
+            { "size": "LG", "stock": 10, "price": 19999.99, "discount": 0.0 },
+            { "size": "XL", "stock": 10, "price": 19999.99, "discount": 0.0 },
+            { "size": "2XL", "stock": 10, "price": 19999.99, "discount": 0.0 }
+          ]
+        },
         "media": [
           {
             "type": "image",
@@ -35,11 +27,14 @@
           {
             "type": "image",
             "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
           }
         ]
       }
     ],
-    "sizes": ["xs", "s", "md", "lg", "xl", "2xl"],
     "details": [
       ["Material", "Crafted from the finest Italian leather with rich suede accents, and lined with luxurious silk for an unmatched feel."],
       ["Design", "A sleek, modern silhouette with a tailored fit, featuring intricate stitching and bespoke detailing."],
@@ -54,8 +49,7 @@
       ["Storage", "Store your jacket in a cool, dry place away from direct sunlight to prevent fading and moisture damage."],
       ["Avoid", "Avoid exposing your jacket to harsh chemicals, excessive moisture, or heat sources. Following these care instructions will help preserve the timeless elegance and durability of your exclusive leather jacket for years to come."]
     ],
-    "tags": ["tshirt", "summer", "cotton"],
-    "custom_attributes": {"season": "summer"}
+    "tags": ["tshirt", "summer", "cotton"]
   },
   {
     "product_id": 2,
@@ -63,14 +57,20 @@
     "description": "A comfortable cotton t-shirt",
     "category": "apparel",
     "subcategory": "tops",
-    "price": 19.99,
-    "discount": 0.5,
-    "weight": 0.2,
-    "material": "Cotton",
     "options": [
       {
         "type": "color",
         "name": "white",
+        "data": {
+          "sizes": [
+            { "size": "XS", "stock": 42, "price": 19.99, "discount": 0.5 },
+            { "size": "S", "stock": 24, "price": 19.99, "discount": 0.45 },
+            { "size": "MD", "stock": 56, "price": 19.99, "discount": 0.35 },
+            { "size": "LG", "stock": 4, "price": 19.99, "discount": 0.35 },
+            { "size": "XL", "stock": 91, "price": 19.99, "discount": 0.45 },
+            { "size": "2XL", "stock": 71, "price": 19.99, "discount": 0.5 }
+          ]
+        },
         "media": [
           {
             "type": "image",
@@ -85,6 +85,16 @@
       {
         "type": "color",
         "name": "black",
+        "data": {
+          "sizes": [
+            { "size": "XS", "stock": 50, "price": 19.99, "discount": 0.25 },
+            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.25 },
+            { "size": "MD", "stock": 0, "price": 19.99, "discount": 0.25 },
+            { "size": "LG", "stock": 0, "price": 19.99, "discount": 0.25 },
+            { "size": "XL", "stock": 25, "price": 19.99, "discount": 0.25 },
+            { "size": "2XL", "stock": 30, "price": 19.99, "discount": 0.25 }
+          ]
+        },
         "media": [
           {
             "type": "image",
@@ -97,9 +107,7 @@
         ]
       }
     ],
-    "sizes": ["xs", "s", "md", "lg", "xl", "2xl"],
-    "tags": ["tshirt", "summer", "cotton"],
-    "custom_attributes": {"season": "summer"}
+    "tags": ["tshirt", "summer", "cotton"]
   },
   {
     "product_id": 3,
@@ -107,14 +115,20 @@
     "description": "A comfortable cotton t-shirt",
     "category": "apparel",
     "subcategory": "tops",
-    "price": 19.99,
-    "discount": 0.0,
-    "weight": 0.2,
-    "material": "Cotton",
     "options": [
       {
         "type": "color",
         "name": "white",
+        "data": {
+          "sizes": [
+            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
+          ]
+        },
         "media": [
           {
             "type": "image",
@@ -153,6 +167,16 @@
       {
         "type": "color",
         "name": "black",
+        "data": {
+          "sizes": [
+            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
+          ]
+        },
         "media": [
           {
             "type": "image",
@@ -167,6 +191,16 @@
       {
         "type": "color",
         "name": "orange",
+        "data": {
+          "sizes": [
+            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
+          ]
+        },
         "media": [
           {
             "type": "image",
@@ -181,6 +215,16 @@
       {
         "type": "color",
         "name": "red",
+        "data": {
+          "sizes": [
+            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
+          ]
+        },
         "media": [
           {
             "type": "image",
@@ -195,11 +239,84 @@
             "url": "/images/products/apparel/tops/product1/black/black1.webp"
           }
         ]
+      },
+      
+      {
+        "type": "color",
+        "name": "e",
+        "data": {
+          "sizes": [
+            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
+          ]
+        },
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      
+      {
+        "type": "color",
+        "name": "d",
+        "data": {
+          "sizes": [
+            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
+          ]
+        },
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      
+      {
+        "type": "color",
+        "name": "f",
+        "data": {
+          "sizes": [
+            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
+            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
+          ]
+        },
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
       }
     ],
-    "sizes": ["xs", "s", "md", "lg", "xl", "2xl"],
-    "tags": ["tshirt", "summer", "cotton"],
-    "custom_attributes": {"season": "summer"}
+    "tags": ["tshirt", "summer", "cotton"]
   }
 ]
   

@@ -66,7 +66,7 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
           <h3>{capitalizeFirstLetter('Size')}: {item.selectedSize.toUpperCase()}</h3>
         </div>
         <div className='bag-info'>
-          <h3><span className='dollar-sign'>$</span>{((Number((item.selectedProduct.price * item.selectedProduct.discount).toFixed(2)) * item.selectedQuantity).toFixed(2))}</h3>
+          <h4><span className='dollar-sign'>$</span>{(item.selectedPrice * item.selectedQuantity).toFixed(2)}</h4>
           <div className='bag-qty-container'><h3>Qty: </h3><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} className='bag-qty-stepper'/></div>
         </div>
       </div>
@@ -95,11 +95,11 @@ const BagItemList = ({bagItems, setBagItems}: {bagItems: ProductToBeAdded[] | []
 const Bag = () => {
   const {bagItems, setBagItems, forceElementRef} = useBagContext();
   const totalQuantity = bagItems.reduce((acc, item) => acc + item.selectedQuantity, 0);
-  const subTotal = bagItems.reduce((acc, item) => acc + Number((item.selectedProduct.price * item.selectedProduct.discount).toFixed(2)) * item.selectedQuantity, 0.00).toFixed(2);
+  const subTotal = bagItems.reduce((acc, item) => acc + Number((item.selectedPrice * item.selectedQuantity).toFixed(2)), 0.00).toFixed(2);
 
   // This is an array of DropdownItem objects (the content of the dropdown) that will be passed to the DropdownButton component.
   const items: DropdownItem[] = [
-    { name: 'Shopping Bag', type: 'component', component: <div className='bag-header'><h2>Shopping Bag ({totalQuantity})</h2><h3>Subtotal: <span className='dollar-sign'>$</span>{subTotal}</h3></div> },
+    { name: 'Shopping Bag', type: 'component', component: <div className='bag-header'><h2>Your Bag ({totalQuantity})</h2><h3>Subtotal: <span className='dollar-sign'>$</span>{subTotal}</h3></div> },
     { name: 'Bag Items', type: 'component', component: <BagItemList bagItems={bagItems} setBagItems={setBagItems}/> },
     { name: 'View Bag', type: 'button' },
     { name: 'Checkout', type: 'button' },

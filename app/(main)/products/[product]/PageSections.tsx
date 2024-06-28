@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import Carousel from '@/app/components/Carousel/Carousel';
+import Gallery from '@/app/components/Gallery/Gallery';
 import NumberStepper from '@/app/components/Input/NumberStepper/NumberStepper';
 import AddToBagButton from '@/app/components/Buttons/AddToBag/AddToBag';
 import AccordionMenu from '@/app/components/Accordion/AccordionMenu';
@@ -11,6 +11,7 @@ import Products from '../../../../data/products.json'
 import { Product } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import './product.css'
+
 
 const ProductError = ({text}: {text: string}) => {
   return (
@@ -43,17 +44,22 @@ const ProductDetailsSection = () => {
     console.error('Duplicate option name found; each option name must be unique.');
     return <ProductError text="Duplicate option name found; each option name must be unique." />;
   }
+  
+  const selectedOptionData = product.options.find(option => option.name === (searchParams.get('option') as string)) || product.options[0];   // Find's the option in the array that is equivalent to the 'option' url param; set to the first option if not found
+  const selectedOption = selectedOptionData.name.toLowerCase(); // Set's the name of the selected option                    
+  const selectedSize = selectedOptionData.data.sizes.find(sizes => sizes.size.toLowerCase() === (searchParams.get('size') as string))?.size.toLowerCase() || selectedOptionData.data.sizes[0].size.toLowerCase();   // Find's the size in the data object of optins that is equivalent to the 'size' url param; set to the first size if not found
+  const Images = selectedOptionData.media.filter(item => item.type === "image").map(item => item.url);   // Find's the option in the array that is equivalent to the selectedOption; filters for images in the media array; maps the string image urls
 
   let price;
-  if (product.discount != 0) {
-    price = (product.price * product.discount).toFixed(2);
+  const currentOption = selectedOptionData.data.sizes.find(sizes => sizes.size.toLowerCase() === selectedSize) || selectedOptionData.data.sizes[0];
+  const discount = currentOption.discount;
+  const ogPrice = currentOption.price;
+  if (discount != 0) {
+    console.log(currentOption)
+    price = (ogPrice * (1 - discount)).toFixed(2);
   } else {
-    price = (product.price).toFixed(2);
+    price = (ogPrice).toFixed(2);
   }
-  
-  const selectedOption = product.options.find(option => option.name === (searchParams.get('option') as string))?.name || product.options[0].name;     // Find's the option in the array that is equivalent to the 'option' url param; set to the first option if not found
-  const selectedSize = product.sizes.find(sizes => sizes === (searchParams.get('size') as string)) || product.sizes[0];                               // Find's the size in the array that is equivalent to the 'size' url param; set to the first size if not found
-  const Images = product.options.find(option => option.name === selectedOption)?.media.filter(item => item.type === "image").map(item => item.url);   // Find's the option in the array that is equivalent to the selectedOption; filters for images in the media array; maps the string image urls
 
   // TODO - Figure out how to update url on hover and unhover so the option text can also update
   const handleOnHover = (string: string) => {
@@ -71,36 +77,44 @@ const ProductDetailsSection = () => {
 
   return (
     <section className='product-container'>
-      <div className='product-content'>
+      <div className='product-gallery-container'><Gallery Images={Images as (string[])} /></div>
+      {/* <div className='product-gallery-container'>
         <Carousel Images={Images as (string[])} Width={100} ShowThumbnails={true} />
-      </div>
+      </div> */}
       <div className='product-content'>
         <div className='product-content-header'>
-          <h2 className='product-h2'>{product.name.toUpperCase()}</h2>
-          {product.discount <= 0 
+          {discount > 0 ? <div className='product-discount-badge'>{discount * 100}% OFF</div> : <></>}
+          <h2 className='product-h2'>{product.name}</h2>
+          {discount <= 0 
             ? <div className='product-price-wrapper'>
                <h2 className='product-price'>
                   <span className='dollar-sign'>$</span>{price}
                 </h2> 
               </div>
-            : <>
-                <div className='product-discount-badge'>{product.discount * 100}% OFF</div>
-                <div className='product-price-wrapper'>
-                  <h2 className='product-price-strike'>
-                    <span className='dollar-sign'>$</span>{product.price}
-                  </h2>
-                  <h2 className='product-price-discounted'>
-                    <span className='dollar-sign'>$</span>{price}
-                  </h2>
-                </div>
-              </>
+            : <div className='product-price-wrapper'>
+                <h2 className='product-price-strike'>
+                  <span className='dollar-sign'>$</span>{ogPrice}
+                </h2>
+                <h2 className='product-price-discounted'>
+                  <span className='dollar-sign'>$</span>{price}
+                </h2>
+              </div>
           }
         </div>
         <div className='product-options-container'>
-          <h3 className='product-h3'>{`${(product.options[0].type).toUpperCase()}`}</h3>
+          <div className='product-options-header'><h3 className='product-h3'>{`${capitalizeFirstLetter(product.options[0].type)}`}:</h3><h4 className='product-h4'>{`${capitalizeFirstLetter(selectedOption)}`}</h4></div>
           <div className='product-options-btn-container'>
             {product.options.map((option, index) => (
-              <Link key={index} href={`?${new URLSearchParams({name: product.name.split(/[ ,]+/).join('-').toLowerCase(), id: product.product_id.toString(), option: option.name, size: selectedSize})}`} scroll={false} onMouseEnter={() => handleOnHover(option.name)} onMouseLeave={handleOnUnhover} aria-label={`Product ${capitalizeFirstLetter(option.type)} Option: ${option.name}`} className={`${selectedOption === option.name ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '90px', '--height': '100px', '--bs-opacity': '0.5'} as React.CSSProperties}>
+              <Link 
+                key={index} 
+                href={`?${new URLSearchParams({name: product.name.split(/[ ,]+/).join('-').toLowerCase(), id: product.product_id.toString(), option: option.name.toLowerCase(), size: selectedSize})}`} 
+                scroll={false} 
+                onMouseEnter={() => handleOnHover(option.name)} 
+                onMouseLeave={handleOnUnhover} 
+                aria-label={`Product ${capitalizeFirstLetter(option.type)} Option: ${option.name}`} 
+                className={`${selectedOption === option.name ? 'product-option-btn-selected' : 'product-option-btn'}`} 
+                style={{'--width': '100px', '--height': '110px', '--bs-opacity': '0.5'} as React.CSSProperties}
+              >
                 <Image
                   src={option.media[0].url}
                   alt={option.name}
@@ -112,35 +126,45 @@ const ProductDetailsSection = () => {
               </Link>
             ))}
           </div>
-          <h4 className='product-h4'>{`${capitalizeFirstLetter(selectedOption)}`}</h4>
         </div>
         <div className='product-options-container'>
-          <h3 className='product-h3'>SIZE</h3>
+          <h3 className='product-h3'>Size:</h3>
           <div className='product-options-btn-container'>
-            {product.sizes.map((size, index) => (
-              <Link key={index} href={`?${new URLSearchParams({name: product.name.split(/[ ,]+/).join('-').toLowerCase(), id: product.product_id.toString(), option: selectedOption, size: size})}`} scroll={false} aria-label={`Product Size Option: ${size}`} className={`${selectedSize === size ? 'product-option-btn-selected' : 'product-option-btn'}`} style={{'--width': '50px', '--height': '50px', '--bs-opacity': '0.15'} as React.CSSProperties}>
-                {size.toUpperCase()}
-              </Link>
-            ))}
+            {selectedOptionData.data.sizes.map((sizeObj, index) => {
+              const size = sizeObj.size.toLowerCase()
+              const inStock = sizeObj.stock > 0
+              return inStock
+                ? <Link 
+                    key={index} 
+                    href={`?${new URLSearchParams({name: product.name.split(/[ ,]+/).join('-').toLowerCase(), id: product.product_id.toString(), option: selectedOption, size: size})}`} 
+                    scroll={false} 
+                    aria-label={`Product Size Option: ${size}`} 
+                    className={`${selectedSize === size ? 'product-option-btn-selected' : 'product-option-btn'}`} 
+                    style={{'--width': '65px', '--height': '65px', '--bs-opacity': '0.15'} as React.CSSProperties}
+                  >
+                    {size.toUpperCase()}
+                  </Link>
+                : <div>{size.toUpperCase()}</div>
+            })}
           </div>
         </div>
 
         <div className='product-options-container'>
-          <h3 className='product-h3'>QUANTITY</h3>
+          <h3 className='product-h3'>Quantity:</h3>
           <div className='product-options-btn-container'>
             <NumberStepper min={1} value={selectedQuantity} onChange={handleQuantityStepper}/>
           </div>
         </div>        
 
         <div className='product-btn-container'>
-          <AddToBagButton product={product} option={selectedOption} size={selectedSize} quantity={selectedQuantity} className={'product-btn'} />
+          <AddToBagButton product={product} option={selectedOption} size={selectedSize} quantity={selectedQuantity} price={parseFloat(price)} className={'product-btn'} />
           <button className='product-btn2'>Wishlist</button>
         </div>
 
         <div className='product-details-container'>
           <AccordionMenu title={'Details'} content={product.details ? [product.description, product.details] : [product.description]} />
           { product.care ? <AccordionMenu title={'Care'} content={['To maintain the luxurious quality of your leather jacket, we recommend following these care guidelines:', product.care]} /> : null }
-          <AccordionMenu title={'Shipping and Returns'} content={["We're pleased to offer complimentary shipping on all orders, ensuring your shopping experience is as convenient as possible. Additionally, returns are easy and stress-free, because your satisfaction is our priority."]} />
+          <AccordionMenu title={'Shipping & Returns'} content={["Complimentary shipping on all orders.", "Free returns within 30 days, excluding final sale items, underwear, bottles, and swimwear."]} />
         </div>
       </div>
     </section>

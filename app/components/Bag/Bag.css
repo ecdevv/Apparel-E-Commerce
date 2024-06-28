@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   font-family: var(--font-montserrat);
+  font-weight: 500;
   font-size: 15px;
   gap: 0.33rem;
   transition: background-color 200ms ease-in-out;
@@ -48,14 +49,14 @@
   align-items: center;
   gap: 0.25rem;
   font-family: var(--font-montserrat);
-  font-size: 15px;
+  font-size: 14px;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(var(--inverse-color), 0.25);
 }
 
 .bag-header h2 {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 /****************** Bag Content Info Card ******************/
@@ -80,18 +81,14 @@
 }
 
 .bag-card {
-  width: 350px;
+  width: 330px;
+  height: 100px;
   display: grid;
   position: relative;
   grid-template-columns: 30% 70%;
   gap: 1rem;
   font-family: var(--font-montserrat);
   font-size: 14px;
-}
-
-.bag-card h2 {
-  font-weight: 700;
-  font-size: 16px;
 }
 
 .bag-image-wrapper {
@@ -108,15 +105,29 @@
 }
 
 .bag-info-container {
-  width: 90%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding-right: 2rem;
+}
+
+.bag-info-container > :first-child {
+  margin-bottom: 0.25rem;
 }
 
 .bag-info {
+  max-width: 100%;
   display: flex;
   justify-content: space-between;
+  padding-right: 1.1rem;
+}
+
+.bag-info h2 {
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .bag-qty-container {
@@ -150,9 +161,9 @@
 .bag-close {
   position: absolute;
   top: -0.5rem;
-  right: 5px;
-  width: 25px;
-  height: 25px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
 }
 
 

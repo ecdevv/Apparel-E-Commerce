@@ -8,10 +8,11 @@ interface AddToBagProps {
   option: string;
   size: string;
   quantity: number;
+  price: number;
   className: string;
 }
 
-const AddToBagButton = ({product, option, size, quantity, className}: AddToBagProps) => {
+const AddToBagButton = ({product, option, size, quantity, price, className}: AddToBagProps) => {
   const {bagItems, setBagItems, forceElementRef, scrollableRef} = useBagContext();
 
   const productToBeAdded: ProductToBeAdded = {
@@ -20,6 +21,7 @@ const AddToBagButton = ({product, option, size, quantity, className}: AddToBagPr
     selectedOption: option, 
     selectedSize: size, 
     selectedQuantity: quantity,
+    selectedPrice: price
   }
   
   const handleClick = (productDetails: ProductToBeAdded) => {

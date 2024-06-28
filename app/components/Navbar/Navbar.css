@@ -1,6 +1,6 @@
 /****************** Navbar ******************/
 .navbar {
-  width: 100vw;
+  width: 100%;
   background-color: rgba(var(--primary-color));
   z-index: 10;
   position: relative;

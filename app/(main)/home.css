@@ -2,7 +2,6 @@
 .home {
   position: relative;
   background-color: rgba(var(--primary-color));
-  overflow: hidden;
 }
 
 .carousel-container {

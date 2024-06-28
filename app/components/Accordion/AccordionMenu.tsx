@@ -13,6 +13,7 @@ const AccordionMenu = ({ title, content }: AccordionMenuProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setIsOpen(false);
     if (contentRef.current) {
       const updateHeight = () => {
         if (contentRef.current) {const { height } = contentRef.current.getBoundingClientRect();
@@ -29,7 +30,7 @@ const AccordionMenu = ({ title, content }: AccordionMenuProps) => {
         window.removeEventListener('resize', updateHeight);
       };
     }
-  }, []);
+  }, [content]);
 
   const toggleMenu = (event: React.KeyboardEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>) => {
     // Check if the event is a keyboard event
@@ -69,7 +70,7 @@ const AccordionMenu = ({ title, content }: AccordionMenuProps) => {
         <div ref={contentRef} className='accordion-menu-content'>
           {content.map((item, index) => {
             if (typeof item === 'string') {
-              return <p key={index} className='accordion-value'>{item}</p>;
+              return <p key={index} className='accordion-description'>{item}</p>;
             } else {
               return (
                 <div key={index} className={'ul-list-wrapper'}>
