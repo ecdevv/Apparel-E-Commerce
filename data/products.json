@@ -1,12 +1,12 @@
 [
   {
     "product_id": 1,
-    "name": "Atelier x Lux Limited Edition Jacket",
-    "description": "Introducing the Atelier x Lux Limited Edition Jacket",
+    "name": "Atelier x Luxe Limited Edition Jacket",
+    "description": "Introducing the Atelier x Luxe Limited Edition Jacket",
     "category": "apparel",
     "subcategory": "tops",
     "price": 19999.99,
-    "discount": 20.0,
+    "discount": 0.0,
     "weight": 0.2,
     "material": "Italian Leather",
     "options": [
@@ -59,12 +59,12 @@
   },
   {
     "product_id": 2,
-    "name": "PRODUCT 2",
+    "name": "Luxe Mercury",
     "description": "A comfortable cotton t-shirt",
     "category": "apparel",
     "subcategory": "tops",
     "price": 19.99,
-    "discount": 0.0,
+    "discount": 0.5,
     "weight": 0.2,
     "material": "Cotton",
     "options": [
@@ -103,7 +103,7 @@
   },
   {
     "product_id": 3,
-    "name": "TEST 3",
+    "name": "Luxe Jupiter",
     "description": "A comfortable cotton t-shirt",
     "category": "apparel",
     "subcategory": "tops",

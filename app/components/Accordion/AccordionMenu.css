@@ -28,7 +28,7 @@
 .accordion-menu-title {
   font-family: var(--font-montserrat);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .accordion-menu-icon {
@@ -44,6 +44,7 @@
   display: block;
   padding-bottom: 0.75rem;
   cursor: default;
+  text-align: start;
 }
 
 .ul-list-wrapper {
@@ -57,7 +58,7 @@
 .accordion-key {
   display: inline;
   font-family: var(--font-montserrat);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 15px;
 }
 

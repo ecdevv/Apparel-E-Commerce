@@ -19,7 +19,7 @@ const AddToBagButton = ({product, option, size, quantity, className}: AddToBagPr
     selectedProduct: product, 
     selectedOption: option, 
     selectedSize: size, 
-    selectedQuantity: quantity
+    selectedQuantity: quantity,
   }
   
   const handleClick = (productDetails: ProductToBeAdded) => {

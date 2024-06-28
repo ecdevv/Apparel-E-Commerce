@@ -7,11 +7,11 @@
 
 .product-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 55% 1fr;
   justify-items: center;
   margin: auto;
   gap: 2rem;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   width: 80rem;
   animation: fade-in-up 400ms 200ms backwards;
 }
@@ -26,48 +26,69 @@
 }
 
 .product-content:nth-child(1) {
-  height: 50rem;
+  height: 55rem;
+}
+
+.product-content:nth-child(2) {
+  width: 100%;
+  padding: 1rem 0;
+  align-items: center;
+  text-align: center;
 }
 
 .product-h2 {
   font-family: var(--font-montserrat);
   font-weight: 700;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .product-h3 {
   font-family: var(--font-montserrat);
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .product-h4 {
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.product-content-header {
+  margin-bottom: -0.9rem;
+}
+
+.product-discount-badge {
+  display: inline-block;
+  margin-top: 0.75rem;
+  background: rgba(var(--secondary-color));
+  padding: 0.25rem 0.35rem;
+  font-weight: 700;
+}
+
+.product-price-wrapper {
+  margin-top: 1rem;
+}
+
+.product-price, .product-price-discounted, .product-price-strike {
   font-family: var(--font-montserrat);
   font-weight: 600;
   font-size: 16px;
 }
 
-.product-h5 {
-  font-family: var(--font-montserrat);
-  font-weight: 500;
-  font-size: 16px;
+.product-price-discounted {
+  color: rgba(215, 0, 0, 1)
 }
 
-.product-content-header {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: -0.9rem;
+.product-price-strike {
+  color: rgba(var(--primary-text-color), 0.45);
+  text-decoration: line-through;
 }
 
 .product-options-container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-.product-options-header {
-  display: flex;
-  gap: 0.35rem;
 }
 
 .product-options-btn-container {
@@ -107,6 +128,7 @@
 }
 
 .product-btn-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
