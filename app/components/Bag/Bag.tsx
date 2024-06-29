@@ -67,7 +67,7 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
         </div>
         <div className='bag-info'>
           <h4><span className='dollar-sign'>$</span>{(item.selectedPrice * item.selectedQuantity).toFixed(2)}</h4>
-          <div className='bag-qty-container'><h3>Qty: </h3><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} className='bag-qty-stepper'/></div>
+          <div className='bag-qty-container'><h3>Qty: </h3><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={20} /></div>
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@ const Bag = () => {
     { name: 'Bag Items', type: 'component', component: <BagItemList bagItems={bagItems} setBagItems={setBagItems}/> },
     { name: 'View Bag', type: 'button' },
     { name: 'Checkout', type: 'button' },
-    { name: 'Log', type: 'component', component: <button onClick={() => {console.log(bagItems, bagItems.map((item) => item.selectedQuantity))}}>Log</button>}
+    // { name: 'Log', type: 'component', component: <button onClick={() => {console.log(bagItems, bagItems.map((item) => item.selectedQuantity))}}>Log</button>}
   ]
 
   return (

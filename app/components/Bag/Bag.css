@@ -109,7 +109,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-right: 2rem;
+  padding-right: 2.75rem;
 }
 
 .bag-info-container > :first-child {
@@ -120,7 +120,6 @@
   max-width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-right: 1.1rem;
 }
 
 .bag-info h2 {
@@ -133,37 +132,26 @@
 .bag-qty-container {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   margin-top: -2.5px
-}
-
-.bag-qty-stepper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.bag-qty-stepper button {
-  font-size: 16px;
-  padding: 0px 5px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.bag-qty-stepper input {
-  width: 22px;
-  height: 22px;
-  font-size: 14px;
-  text-align: center;
-  border: 1px solid rgba(var(--inverse-color), 0.25);
 }
 
 .bag-close {
   position: absolute;
   top: -0.5rem;
-  right: 15px;
+  right: 10px;
   width: 20px;
   height: 20px;
+  transform: scale(1);
+  transition: transform 200ms ease;
+}
+
+.bag-close:hover {
+  transform: scale(1.05);
+}
+
+.bag-close:active {
+  transform: scale(0.9);
 }
 
 

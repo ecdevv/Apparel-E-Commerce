@@ -3,22 +3,38 @@
 .number-stepper {
   position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
+  border: 1px solid rgba(var(--inverse-color), 0.25);
 }
 
 .number-stepper button {
-  padding: 0px 10px;
-  border: none;
-  background-color: transparent;
+  width: calc(var(--size) * 0.75);
+  height: var(--size);
+  background-color: rgba(var(--primary-color)), transparent;
   cursor: pointer;
-  font-size: 18px;
+  transform: scale(1);
+  transition: transform 100ms ease-in-out;
+}
+
+.number-stepper button:active {
+  transform: scale(0.8)
 }
 
 .number-stepper input {
-  width: 40px;
+  width: var(--size);
+  height: var(--size);
   text-align: center;
-  border: 1px solid rgba(var(--inverse-color), 0.25);
   padding: 5px;
+  background-color: rgba(var(--primary-color));
+  border-left: 1px solid rgba(var(--inverse-color), 0.25);
+  border-right: 1px solid rgba(var(--inverse-color), 0.25);
+}
+
+.svg-icon {
+  margin: auto;
+  width: calc(var(--size) * 0.375);
+  height: calc(var(--size) * 0.375);
 }
 
 

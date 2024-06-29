@@ -152,12 +152,9 @@
   color: rgba(var(--secondary-text-color));
   border-width: 1px;
   border-color: black;
-  transition: all 200ms ease-in-out;
   background-color: rgba(var(--primary-button-color));
-}
-
-.product-btn:active, .product-btn2:active {
-  transform: translateY(5px);
+  transform: scale(1);
+  transition: color 200ms ease-in-out, background-color 200ms ease-in-out, transform 200ms ease;
 }
 
 .product-btn2 {
@@ -173,6 +170,10 @@
 .product-btn2:hover {
   color: rgba(var(--secondary-text-color));
   background-color: rgba(var(--secondary-hover-button-color))
+}
+
+.product-btn:active, .product-btn2:active {
+  transform: scale(0.9);
 }
 
 .product-details-container {

@@ -7,9 +7,9 @@ interface NumberStepperProps {
   max?: number;
   value?: number;
   onChange?: (value: number) => void;
-  className? : string;
+  size?: number;
 }
-const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, className = 'number-stepper'}: NumberStepperProps) => {
+const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, size = 40}: NumberStepperProps) => {
   const [value, setValue] = useState(initialValue);
 
   useEffect(() => {
@@ -40,9 +40,17 @@ const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, cl
   };
   
   return (
-    <div className={className}>
+    <div className='number-stepper' style={{'--size': `${size}px`} as React.CSSProperties}>
       <button onClick={handleDecrement} disabled={value <= min} aria-label='Decrement'>
-        - 
+        <svg 
+          aria-hidden
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke='currentColor'
+          className='svg-icon'
+        >
+          <path d="M6 12L18 12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </button> 
       <label htmlFor="stepper" className='visually-hidden'>Number Stepper</label>
       <input 
@@ -56,7 +64,15 @@ const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, cl
         max={max}
       />
       <button onClick={handleIncrement} disabled={value >= max} aria-label='Increment'>
-        + 
+        <svg 
+          aria-hidden
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke='currentColor'
+          className='svg-icon'
+        >
+          <path d="M4 12H20M12 4V20" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg> 
       </button>
     </div>
   )

@@ -8,7 +8,7 @@
 
   --primary-color: 255, 255, 255;
   --inverse-color: 35, 35, 35;
-  --secondary-color: 235, 235, 238;
+  --secondary-color: 240, 240, 242;
 
   --banner-color: 121, 190, 255;
   --banner-text-color: 10, 65, 155;
@@ -40,7 +40,7 @@
 .light {
   --primary-color: 255, 255, 255;
   --inverse-color: 35, 35, 35;
-  --secondary-color: 235, 235, 238;
+  --secondary-color: 240, 240, 242;
 
   --banner-color: 121, 190, 255;
   --banner-text-color: 10, 65, 155;

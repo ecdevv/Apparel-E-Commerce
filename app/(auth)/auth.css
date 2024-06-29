@@ -99,12 +99,17 @@
   border-color: rgba(var(--input-border-color));
   padding: 0.5rem;
   color: white;
-  transition: all 200ms ease-in-out;
+  transform: scale(1);
+  transition: color 200ms ease-in-out, background-color 200ms ease-in-out, transform 200ms ease;
 }
 
 .auth-btn:hover {
   background-color: rgba(var(--primary-hover-button-color));
   color: black;
+}
+
+.auth-btn:active {
+  transform: scale(0.9);
 }
 
 .additional-actions {
