@@ -4,10 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import Gallery from '@/app/components/Gallery/Gallery';
+import Rating from '@/app/components/Rating/Rating';
 import NumberStepper from '@/app/components/Input/NumberStepper/NumberStepper';
 import AddToBagButton from '@/app/components/Buttons/AddToBag/AddToBag';
 import AccordionMenu from '@/app/components/Accordion/AccordionMenu';
 import Products from '../../../../data/products.json'
+import Reviews from '../../../../data/reviews.json'
 import { Product } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import './product.css'
@@ -22,9 +24,8 @@ const ProductError = ({text}: {text: string}) => {
 const ProductDetailsSection = () => {
   const [selectedQuantity, setSelectedQuantity] = React.useState(1);
   const searchParams = useSearchParams();
-  const name = (searchParams?.get('name') as string).split(/[-]+/).join(' ').toLowerCase();
   const id = (parseInt(searchParams?.get('id') as string));
-  const product: Product = Products.find(product => product.name.toLowerCase() === name && product.product_id === id) as Product;
+  const product: Product = Products.find(product => product.product_id === id) as Product;
 
   // Valdiation check if product exists; if it does not exist, return ProductError component
   if (!product) {
@@ -54,7 +55,40 @@ const ProductDetailsSection = () => {
   const selectedOption = selectedOptionData.name.toLowerCase(); // Set's the name of the selected option                    
   const selectedSize = selectedOptionData.sizes.find(sizes => sizes.size.toLowerCase() === (searchParams.get('size') as string) && sizes.stock > 0)?.size.toLowerCase() || selectedOptionData.sizes.find(size => size.stock > 0)?.size.toLowerCase() || 'oos';   // Find's the size in the data object of options that is equivalent to the 'size' url param; set to the first element in stock otherwise or 'out of stock'
   const Images = selectedOptionData.media.filter(item => item.type === "image").map(item => item.url);   // Find's the option in the array that is equivalent to the selectedOption; filters for images in the media array; maps the string image urls
-  console.log(selectedSize)
+  
+  const productReviews = Reviews.filter(review => review.product_id === id);
+  const averageRating = parseFloat((productReviews.reduce((acc, review) => acc + review.rating, 0) / productReviews.length).toFixed(2)) || -1;
+
+  // Valdation for refreshing the page and the url is invalid (incorrect options and sizes)
+  const updateUrl = () => {
+    if (typeof window === 'undefined') return;
+    // Timeout is used to wait for the url to update with the properties above
+    setTimeout(() => {
+      const newUrl = new URL(window.location.href);
+      const searchParams = new URLSearchParams(newUrl.search);
+      const validParams = ['name', 'id', 'option', 'size'];
+      
+      // Remove invalid params
+      for (const param of Array.from(searchParams.keys())) {
+        if (!validParams.includes(param)) {
+          searchParams.delete(param);
+        }
+      }
+      
+      // Set new params
+      searchParams.set('name', product.name.split(/[ ,]+/).join('-').toLowerCase());
+      searchParams.set('option', selectedOption);
+      searchParams.set('size', selectedSize);
+  
+      // Update the search params in the URL
+      newUrl.search = searchParams.toString();
+      
+      // Replace the current URL with the updated one
+      window.history.replaceState({}, '', newUrl.toString());
+    }, 10);
+  };
+  updateUrl();
+  
   let price;
   let discount;
   let ogPrice;
@@ -103,42 +137,37 @@ const ProductDetailsSection = () => {
                 </h2>
               </div>
           }
+          <Rating rating={averageRating} reviewCount={productReviews.length} />
         </div>
         <div className='product-options-container'>
           <div className='product-options-header'><h3 className='product-h3'>{`${capitalizeFirstLetter(product.options[0].type)}`}:</h3><h4 className='product-h4'>{`${capitalizeFirstLetter(selectedOption)}`}</h4></div>
           <div className='product-options-btn-container'>
-            {product.options.map((option, index) => {
-              const newSelectedSize = (option.sizes.find(size => size.size.toLowerCase() === selectedSize && size.stock > 0) 
-                ? selectedSize 
-                : option.sizes.find(size => size.stock > 0)?.size.toLowerCase() || 'oos'
-              );
-              return (
-                <Link 
-                  key={index} 
-                  href={`?${new URLSearchParams({
-                    name: product.name.split(/[ ,]+/).join('-').toLowerCase(), 
-                    id: product.product_id.toString(), 
-                    option: option.name.toLowerCase(), 
-                    size: newSelectedSize
-                  })}`} 
-                  scroll={false} 
-                  onMouseEnter={() => handleOnHover(option.name)} 
-                  onMouseLeave={handleOnUnhover} 
-                  aria-label={`Product ${capitalizeFirstLetter(option.type)} Option: ${option.name}`} 
-                  className={`${selectedOption === option.name ? 'product-option-btn-selected' : 'product-option-btn'}`} 
-                  style={{'--width': '100px', '--height': '110px', '--bs-opacity': '0.5'} as React.CSSProperties}
-                >
-                  <Image
-                    src={option.media[0].url}
-                    alt={option.name}
-                    fill
-                    sizes="(100vw, 100vh)"
-                    className='product-option-image'
-                    priority
-                  />
-                </Link>
-              )
-            })}
+            {product.options.map((option, index) => (
+              <Link 
+                key={index} 
+                href={`?${new URLSearchParams({
+                  name: product.name.split(/[ ,]+/).join('-').toLowerCase(), 
+                  id: product.product_id.toString(), 
+                  option: option.name.toLowerCase(), 
+                  size: selectedSize
+                })}`}
+                scroll={false} 
+                onMouseEnter={() => handleOnHover(option.name)} 
+                onMouseLeave={handleOnUnhover} 
+                aria-label={`Product ${capitalizeFirstLetter(option.type)} Option: ${option.name}`} 
+                className={`${selectedOption === option.name ? 'product-option-btn-selected' : 'product-option-btn'}`} 
+                style={{'--width': '100px', '--height': '110px', '--bs-opacity': '0.5'} as React.CSSProperties}
+              >
+                <Image
+                  src={option.media[0].url}
+                  alt={option.name}
+                  fill
+                  sizes="(100vw, 100vh)"
+                  className='product-option-image'
+                  priority
+                />
+              </Link>
+            ))}
           </div>
         </div>
         <div className='product-options-container'>
@@ -176,12 +205,12 @@ const ProductDetailsSection = () => {
                  <NumberStepper min={1} value={selectedQuantity} onChange={handleQuantityStepper} />
                 </div>
               </>
-            : <div className='product-option-btn-disabled'>Out of Stock</div>
+            : <div className='product-out-of-stock'>Sorry, we're temporarily out of stock.</div>
           }
         </div>        
 
         <div className='product-btn-container'>
-          <AddToBagButton product={product} option={selectedOption} size={selectedSize} quantity={selectedQuantity} price={price} ogPrice={ogPrice} discount={discount} className={'product-btn'} />
+          <AddToBagButton product={product} option={selectedOption} size={selectedSize} quantity={selectedQuantity} price={price} ogPrice={ogPrice} discount={discount} />
           <button className='product-btn2'>Wishlist</button>
         </div>
 
