@@ -17,14 +17,14 @@ interface MediaItem {
 interface Size {
   size: string;
   stock: number;
-  price: number;
-  discount: number;
 }
 
 export interface Option {
   type: string;
   name: string;
-  data: {sizes: Size[]}
+  price: number;
+  discount: number;
+  sizes: Size[];
   media: MediaItem[];
 }
 
@@ -47,5 +47,7 @@ export interface ProductToBeAdded {
   selectedOption: string;
   selectedSize: string;
   selectedQuantity: number;
-  selectedPrice: number;
+  price: number;
+  ogPrice: number;
+  discount: number;
 }

@@ -1,0 +1,41 @@
+/****************** AddToBag ******************/
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.add-btn {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 12px;
+  cursor: pointer;
+  font-family: var(--font-montserrat);
+  font-weight: 500;
+  font-size: 15px;
+  color: rgba(var(--secondary-text-color));
+  border-width: 1px;
+  border-color: black;
+  background-color: rgba(var(--primary-button-color));
+  transform: scale(1);
+  transition: transform var(--duration) linear, color 200ms ease-in-out, background-color 200ms ease-in-out;
+}
+
+.add-btn:hover {
+  color: rgba(var(--primary-text-color));
+  background-color: rgba(var(--primary-hover-button-color))
+}
+
+.active {
+  transform: scale(0.9);
+}
+
+.fail {
+  animation: shake var(--duration) ease-in-out;
+}

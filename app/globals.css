@@ -6,6 +6,8 @@
 :root {
   --keyframe-y-offset: 30px;
 
+  --scrollbar-color: 160, 160, 160;
+
   --primary-color: 255, 255, 255;
   --inverse-color: 35, 35, 35;
   --secondary-color: 240, 240, 242;
@@ -148,7 +150,6 @@
   }
 }
 
-
 body {
   font-family: var(--font-roboto), sans-serif;
   color: rgba(var(--primary-text-color));
@@ -159,6 +160,46 @@ h1 {
   font-weight: 500;
   font-size: 36px;
 }
+
+/* Modern browsers with `scrollbar-*` support */
+@supports (scrollbar-width: auto) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--scrollbar-color), 1) rgba(var(--primary-color), 1);
+  }
+}
+
+/* Legacy browsers with `::-webkit-scrollbar-*` support */
+@supports selector(::-webkit-scrollbar) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(var(--primary-color), 1);
+    border-radius: 2rem;
+    margin-block: 0.1rem
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(var(--scrollbar-color), 1);
+    border-radius: 2rem;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--scrollbar-color), 1);
+  }
+
+  .product-gallery-container::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .bag-container::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .product-gallery-container::-webkit-scrollbar-track, .bag-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
 
 .header {
   position: sticky;

@@ -66,10 +66,15 @@
   padding: 0.5rem 0;
   overflow-x: hidden;
   overflow-y: scroll;
-  -webkit-scrollbar-width: thin;
-  -webkit-scrollbar-color: rgba(var(--inverse-color), 0.5) transparent;
-  scrollbar-width: thin; 
-  scrollbar-color: rgba(var(--inverse-color), 0.5) transparent;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--scrollbar-color), 1) transparent;
+  scrollbar-gutter: stable;
+}
+
+@supports selector(::-webkit-scrollbar) {
+  .bag-container::-webkit-scrollbar {
+    width: 4px;
+  }
 }
 
 .bag-container > *:not(:last-child) {
@@ -81,12 +86,12 @@
 }
 
 .bag-card {
-  width: 330px;
-  height: 100px;
+  width: 350px;
+  height: 106px;
   display: grid;
   position: relative;
   grid-template-columns: 30% 70%;
-  gap: 1rem;
+  gap: 0.5rem;
   font-family: var(--font-montserrat);
   font-size: 14px;
 }
@@ -109,11 +114,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-right: 2.75rem;
-}
-
-.bag-info-container > :first-child {
-  margin-bottom: 0.25rem;
+  justify-content: center;
+  padding-right: 1.25rem;
 }
 
 .bag-info {
@@ -123,10 +125,39 @@
 }
 
 .bag-info h2 {
-  font-weight: 700;
+  font-weight: 600;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.bag-price-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.bag-discount-badge {
+  display: inline-block;
+  background: rgba(var(--primary-color));
+  font-family: var(--font-roboto);
+  font-weight: 600;
+  font-size: 12px;
+  padding: 0.1rem 0.25rem;
+}
+
+.bag-price, .bag-price-discounted, .bag-price-strike {
+  font-weight: 400;
+}
+
+.bag-price-discounted {
+  font-weight: 500;
+  color: rgba(215, 0, 0, 1)
+}
+
+.bag-price-strike {
+  color: rgba(var(--primary-text-color), 0.45);
+  text-decoration: line-through;
 }
 
 .bag-qty-container {
@@ -134,20 +165,17 @@
   align-items: center;
   gap: 0.5rem;
   margin-top: -2.5px
+
 }
 
 .bag-close {
   position: absolute;
-  top: -0.5rem;
-  right: 10px;
-  width: 20px;
-  height: 20px;
+  top: -5px;
+  right: 5px;
+  width: 25px;
+  height: 25px;
   transform: scale(1);
   transition: transform 200ms ease;
-}
-
-.bag-close:hover {
-  transform: scale(1.05);
 }
 
 .bag-close:active {

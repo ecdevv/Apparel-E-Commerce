@@ -9,16 +9,16 @@
       {
         "type": "color",
         "name": "black",
-        "data": {
-          "sizes": [
-            { "size": "XS", "stock": 10, "price": 19999.99, "discount": 0.0 },
-            { "size": "S", "stock": 10, "price": 19999.99, "discount": 0.0 },
-            { "size": "MD", "stock": 10, "price": 19999.99, "discount": 0.0 },
-            { "size": "LG", "stock": 10, "price": 19999.99, "discount": 0.0 },
-            { "size": "XL", "stock": 10, "price": 19999.99, "discount": 0.0 },
-            { "size": "2XL", "stock": 10, "price": 19999.99, "discount": 0.0 }
-          ]
-        },
+        "price": 1999.99,
+        "discount": 0.42,
+        "sizes": [
+          { "size": "XS", "stock": 10 },
+          { "size": "S", "stock": 10 },
+          { "size": "MD", "stock": 10 },
+          { "size": "LG", "stock": 10 },
+          { "size": "XL", "stock": 10 },
+          { "size": "2XL", "stock": 10 }
+        ],
         "media": [
           {
             "type": "image",
@@ -61,16 +61,16 @@
       {
         "type": "color",
         "name": "white",
-        "data": {
-          "sizes": [
-            { "size": "XS", "stock": 42, "price": 19.99, "discount": 0.5 },
-            { "size": "S", "stock": 24, "price": 19.99, "discount": 0.45 },
-            { "size": "MD", "stock": 56, "price": 19.99, "discount": 0.35 },
-            { "size": "LG", "stock": 4, "price": 19.99, "discount": 0.35 },
-            { "size": "XL", "stock": 91, "price": 19.99, "discount": 0.45 },
-            { "size": "2XL", "stock": 71, "price": 19.99, "discount": 0.5 }
-          ]
-        },
+        "price": 19.99,
+        "discount": 0.45,
+        "sizes": [
+          { "size": "XS", "stock": 42 },
+          { "size": "S", "stock": 24 },
+          { "size": "MD", "stock": 56 },
+          { "size": "LG", "stock": 4 },
+          { "size": "XL", "stock": 91 },
+          { "size": "2XL", "stock": 71 }
+        ],
         "media": [
           {
             "type": "image",
@@ -85,16 +85,16 @@
       {
         "type": "color",
         "name": "black",
-        "data": {
-          "sizes": [
-            { "size": "XS", "stock": 50, "price": 19.99, "discount": 0.25 },
-            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.25 },
-            { "size": "MD", "stock": 0, "price": 19.99, "discount": 0.25 },
-            { "size": "LG", "stock": 0, "price": 19.99, "discount": 0.25 },
-            { "size": "XL", "stock": 25, "price": 19.99, "discount": 0.25 },
-            { "size": "2XL", "stock": 30, "price": 19.99, "discount": 0.25 }
-          ]
-        },
+        "price": 19.99,
+        "discount": 0.25,
+        "sizes": [
+          { "size": "XS", "stock": 0 },
+          { "size": "S", "stock": 0 },
+          { "size": "MD", "stock": 0 },
+          { "size": "LG", "stock": 0 },
+          { "size": "XL", "stock": 0 },
+          { "size": "2XL", "stock": 0 }
+        ],
         "media": [
           {
             "type": "image",
@@ -119,16 +119,16 @@
       {
         "type": "color",
         "name": "white",
-        "data": {
-          "sizes": [
-            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
-          ]
-        },
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10 },
+          { "size": "S", "stock": 10 },
+          { "size": "MD", "stock": 10 },
+          { "size": "LG", "stock": 10 },
+          { "size": "XL", "stock": 10 },
+          { "size": "2XL", "stock": 10 }
+        ],
         "media": [
           {
             "type": "image",
@@ -167,16 +167,16 @@
       {
         "type": "color",
         "name": "black",
-        "data": {
-          "sizes": [
-            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
-          ]
-        },
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10 },
+          { "size": "S", "stock": 10 },
+          { "size": "MD", "stock": 10 },
+          { "size": "LG", "stock": 10 },
+          { "size": "XL", "stock": 10 },
+          { "size": "2XL", "stock": 10 }
+        ],
         "media": [
           {
             "type": "image",
@@ -191,16 +191,16 @@
       {
         "type": "color",
         "name": "orange",
-        "data": {
-          "sizes": [
-            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
-          ]
-        },
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10 },
+          { "size": "S", "stock": 10 },
+          { "size": "MD", "stock": 10 },
+          { "size": "LG", "stock": 10 },
+          { "size": "XL", "stock": 10 },
+          { "size": "2XL", "stock": 10 }
+        ],
         "media": [
           {
             "type": "image",
@@ -215,16 +215,16 @@
       {
         "type": "color",
         "name": "red",
-        "data": {
-          "sizes": [
-            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
-          ]
-        },
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10 },
+          { "size": "S", "stock": 10 },
+          { "size": "MD", "stock": 10 },
+          { "size": "LG", "stock": 10 },
+          { "size": "XL", "stock": 10 },
+          { "size": "2XL", "stock": 10 }
+        ],
         "media": [
           {
             "type": "image",
@@ -244,16 +244,16 @@
       {
         "type": "color",
         "name": "e",
-        "data": {
-          "sizes": [
-            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
-          ]
-        },
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10 },
+          { "size": "S", "stock": 10 },
+          { "size": "MD", "stock": 10 },
+          { "size": "LG", "stock": 10 },
+          { "size": "XL", "stock": 10 },
+          { "size": "2XL", "stock": 10 }
+        ],
         "media": [
           {
             "type": "image",
@@ -269,16 +269,16 @@
       {
         "type": "color",
         "name": "d",
-        "data": {
-          "sizes": [
-            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
-          ]
-        },
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10 },
+          { "size": "S", "stock": 10 },
+          { "size": "MD", "stock": 10 },
+          { "size": "LG", "stock": 10 },
+          { "size": "XL", "stock": 10 },
+          { "size": "2XL", "stock": 10 }
+        ],
         "media": [
           {
             "type": "image",
@@ -294,16 +294,16 @@
       {
         "type": "color",
         "name": "f",
-        "data": {
-          "sizes": [
-            { "size": "XS", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "S", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "MD", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "LG", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "XL", "stock": 10, "price": 19.99, "discount": 0.0 },
-            { "size": "2XL", "stock": 10, "price": 19.99, "discount": 0.0 }
-          ]
-        },
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10 },
+          { "size": "S", "stock": 10 },
+          { "size": "MD", "stock": 10 },
+          { "size": "LG", "stock": 10 },
+          { "size": "XL", "stock": 10 },
+          { "size": "2XL", "stock": 10 }
+        ],
         "media": [
           {
             "type": "image",

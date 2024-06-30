@@ -1,5 +1,4 @@
 /****************** QuantityStepper ******************/
-/* TODO: Some hover, focus, and active styling */
 .number-stepper {
   position: relative;
   display: flex;
@@ -22,7 +21,7 @@
 }
 
 .number-stepper input {
-  width: var(--size);
+  width: calc(var(--size) + var(--size2));
   height: var(--size);
   text-align: center;
   padding: 5px;

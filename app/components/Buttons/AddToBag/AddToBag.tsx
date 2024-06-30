@@ -1,7 +1,8 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Product, ProductToBeAdded } from '@/app/utility/types'
 import { useBagContext } from '@/app/utility/contexts/BagContext'
+import './AddToBag.css'
 
 interface AddToBagProps {
   product: Product;
@@ -9,11 +10,14 @@ interface AddToBagProps {
   size: string;
   quantity: number;
   price: number;
+  ogPrice: number;
+  discount: number;
   className: string;
 }
 
-const AddToBagButton = ({product, option, size, quantity, price, className}: AddToBagProps) => {
+const AddToBagButton = ({product, option, size, quantity, price, ogPrice, discount, className = 'add-btn'}: AddToBagProps) => {
   const {bagItems, setBagItems, forceElementRef, scrollableRef} = useBagContext();
+  const [isClicked, setIsClicked] = useState(false);
 
   const productToBeAdded: ProductToBeAdded = {
     index: 0,
@@ -21,10 +25,20 @@ const AddToBagButton = ({product, option, size, quantity, price, className}: Add
     selectedOption: option, 
     selectedSize: size, 
     selectedQuantity: quantity,
-    selectedPrice: price
+    price: price,
+    ogPrice: ogPrice,
+    discount: discount
   }
   
-  const handleClick = (productDetails: ProductToBeAdded) => {
+  const handleClick = (productDetails: ProductToBeAdded, duration: number) => { 
+    setIsClicked(true);
+
+    setTimeout(() => {
+      setIsClicked(false);
+    }, duration);
+
+    if (productDetails.selectedSize === 'oos') return;
+    
     const existingItemIndex = bagItems.findIndex((item) => 
       item.selectedProduct.product_id === productDetails.selectedProduct.product_id &&
       item.selectedOption == productDetails.selectedOption &&
@@ -36,8 +50,7 @@ const AddToBagButton = ({product, option, size, quantity, price, className}: Add
       newBagItems[existingItemIndex].selectedQuantity = Math.min(newBagItems[existingItemIndex].selectedQuantity + productDetails.selectedQuantity, 99);
       setBagItems(newBagItems);
       localStorage.setItem('bagItems', JSON.stringify(newBagItems));
-    }
-    else {
+    } else {
       productDetails.index = bagItems.length;
       const newBagItems = [...bagItems as ProductToBeAdded[], productDetails];
       setBagItems(newBagItems);
@@ -63,7 +76,12 @@ const AddToBagButton = ({product, option, size, quantity, price, className}: Add
   }
 
   return (
-    <button ref={forceElementRef} onClick={() => {handleClick(productToBeAdded)}} className={`${className}`}>Add to Bag</button>
+    <>
+      {productToBeAdded.selectedSize !== 'oos'
+        ? <button ref={forceElementRef} onClick={() => {handleClick(productToBeAdded, 75)}} className={`${className} ${isClicked ? 'active' : ''}`} style={{'--duration': '200ms'} as React.CSSProperties}>Add to Bag</button>
+        : <button onClick = {() => {handleClick(productToBeAdded, 200)}} className={`${className} ${isClicked ? 'fail' : ''}`} style={{'--duration': '200ms'} as React.CSSProperties}>Add to Bag</button>
+      }
+    </>
   )
 }
 

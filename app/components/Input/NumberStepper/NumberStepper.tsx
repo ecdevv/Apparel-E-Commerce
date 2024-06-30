@@ -8,8 +8,9 @@ interface NumberStepperProps {
   value?: number;
   onChange?: (value: number) => void;
   size?: number;
+  doubleWidth?: boolean;
 }
-const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, size = 40}: NumberStepperProps) => {
+const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, size = 40, doubleWidth = false}: NumberStepperProps) => {
   const [value, setValue] = useState(initialValue);
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, si
   };
   
   return (
-    <div className='number-stepper' style={{'--size': `${size}px`} as React.CSSProperties}>
+    <div className='number-stepper' style={{'--size': `${size}px`, '--size2': doubleWidth ? `${size / 2}px` : '0px'} as React.CSSProperties}>
       <button onClick={handleDecrement} disabled={value <= min} aria-label='Decrement'>
         <svg 
           aria-hidden

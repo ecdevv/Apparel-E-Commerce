@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
 import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import NumberStepper from '../Input/NumberStepper/NumberStepper';
@@ -35,7 +36,15 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
 
   return (
     <div id={item.index.toString()} className='bag-card'>
-      <div className='bag-image-wrapper'>
+      <Link 
+        href={`/products/p?${new URLSearchParams({
+          name: `${item.selectedProduct.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
+          id: item.selectedProduct.product_id.toString() || '', 
+          option: item.selectedOption, 
+          size: item.selectedSize})}`
+        } 
+        className='bag-image-wrapper'
+      >
         <Image
           src={item.selectedProduct.options.find(option => option.name === item.selectedOption)?.media[0].url || item.selectedProduct.options[0].media[0].url}
           alt='Logo'
@@ -43,21 +52,21 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
           sizes="(100vw)"
           className='bag-image'
         />
-      </div>
+      </Link>
       <div className='bag-info-container'>
+        {item.discount > 0 && <div className='bag-info'><div className='bag-discount-badge'>{(item.discount * 100).toFixed(0)}% OFF</div></div> }
         <div className='bag-info'>
-          <h2>{item.selectedProduct.name}</h2>
-          <button onClick={handleRemoveClick} aria-label='Remove item from bag' className='bag-close'>
-            <svg
-              aria-hidden
-              viewBox="0 0 25 25" 
-              fill="currentColor"
-              width={27.5}
-              height={27.5}
-            > 
-              <path d="M18 7L7 18M7 7L18 18" stroke="#121923" strokeWidth="1.2" />
-            </svg>
-          </button>
+          <Link 
+            href={`/products/p?${new URLSearchParams({
+              name: `${item.selectedProduct.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
+              id: item.selectedProduct.product_id.toString() || '', 
+              option: item.selectedOption, 
+              size: item.selectedSize})}`
+            } 
+            className='bag-image-wrapper'
+          >
+            <h2>{item.selectedProduct.name}</h2>
+          </Link>
         </div>
         <div className='bag-info'>
           <h3>{capitalizeFirstLetter(item.selectedProduct.options.find(option => option.name === item.selectedOption)?.type || '')}: {capitalizeFirstLetter(item.selectedOption)}</h3>
@@ -66,10 +75,35 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
           <h3>{capitalizeFirstLetter('Size')}: {item.selectedSize.toUpperCase()}</h3>
         </div>
         <div className='bag-info'>
-          <h4><span className='dollar-sign'>$</span>{(item.selectedPrice * item.selectedQuantity).toFixed(2)}</h4>
-          <div className='bag-qty-container'><h3>Qty: </h3><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={20} /></div>
+          {item.discount <= 0 
+            ? <div className='bag-price-wrapper'>
+               <h4 className='bag-price'>
+                  <span className='dollar-sign'>$</span>{item.price}
+                </h4> 
+              </div>
+            : <div className='bag-price-wrapper'>
+                <h4 className='bag-price-strike'>
+                  <span className='dollar-sign'>$</span>{item.ogPrice}
+                </h4>
+                <h4 className='bag-price-discounted'>
+                  <span className='dollar-sign'>$</span>{item.price}
+                </h4>
+              </div>
+          }
+          <div className='bag-qty-container'><h3>Qty: </h3><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={20} doubleWidth={true} /></div>
         </div>
       </div>
+      <button onClick={handleRemoveClick} aria-label='Remove item from bag' className='bag-close'>
+        <svg
+          aria-hidden
+          viewBox="0 0 25 25" 
+          fill="currentColor"
+          width={25}
+          height={25}
+        > 
+          <path d="M18 7L7 18M7 7L18 18" stroke="#121923" strokeWidth="1.2" />
+        </svg>
+      </button>
     </div>
   )
 }
@@ -95,7 +129,7 @@ const BagItemList = ({bagItems, setBagItems}: {bagItems: ProductToBeAdded[] | []
 const Bag = () => {
   const {bagItems, setBagItems, forceElementRef} = useBagContext();
   const totalQuantity = bagItems.reduce((acc, item) => acc + item.selectedQuantity, 0);
-  const subTotal = bagItems.reduce((acc, item) => acc + Number((item.selectedPrice * item.selectedQuantity).toFixed(2)), 0.00).toFixed(2);
+  const subTotal = bagItems.reduce((acc, item) => acc + Number((item.price * item.selectedQuantity).toFixed(2)), 0.00).toFixed(2);
 
   // This is an array of DropdownItem objects (the content of the dropdown) that will be passed to the DropdownButton component.
   const items: DropdownItem[] = [
