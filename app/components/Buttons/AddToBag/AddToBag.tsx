@@ -12,10 +12,9 @@ interface AddToBagProps {
   price: number;
   ogPrice: number;
   discount: number;
-  className: string;
 }
 
-const AddToBagButton = ({product, option, size, quantity, price, ogPrice, discount, className = 'add-btn'}: AddToBagProps) => {
+const AddToBagButton = ({product, option, size, quantity, price, ogPrice, discount}: AddToBagProps) => {
   const {bagItems, setBagItems, forceElementRef, scrollableRef} = useBagContext();
   const [isClicked, setIsClicked] = useState(false);
 
@@ -78,8 +77,8 @@ const AddToBagButton = ({product, option, size, quantity, price, ogPrice, discou
   return (
     <>
       {productToBeAdded.selectedSize !== 'oos'
-        ? <button ref={forceElementRef} onClick={() => {handleClick(productToBeAdded, 75)}} className={`${className} ${isClicked ? 'active' : ''}`} style={{'--duration': '200ms'} as React.CSSProperties}>Add to Bag</button>
-        : <button onClick = {() => {handleClick(productToBeAdded, 200)}} className={`${className} ${isClicked ? 'fail' : ''}`} style={{'--duration': '200ms'} as React.CSSProperties}>Add to Bag</button>
+        ? <button ref={forceElementRef} onClick={() => {handleClick(productToBeAdded, 100)}} className={`add-btn ${isClicked ? 'active' : ''}`} style={{'--duration': '100ms'} as React.CSSProperties}>Add to Bag</button>
+        : <button className={'add-btn-disabled'}>Add to Bag</button>
       }
     </>
   )

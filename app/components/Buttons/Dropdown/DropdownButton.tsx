@@ -18,6 +18,7 @@ interface DropdownButtonProps  {
 
 // Navigation section with the links of this navbar component
 const DropdownButton = ({children, forceRef, label, items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -56,11 +57,15 @@ const DropdownButton = ({children, forceRef, label, items, hover, orientation, s
   }, []);
 
   const onHover = () => {
-    setMenuToggle(true);
+    if (!isTransitioning) setMenuToggle(true);
   }
 
   const onUnhover = () => {
     setMenuToggle(false);
+  }
+
+  const onHoverLinkOnly = () => {
+    setMenuToggle(true);
   }
 
   // Handle toggling the menu on icon clicked
@@ -68,10 +73,15 @@ const DropdownButton = ({children, forceRef, label, items, hover, orientation, s
     setMenuToggle(!menuToggle);
   }
 
+  const setTransitionState = (value : boolean) => {
+    setIsTransitioning(value);
+  }
+
   return (
     <span ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined}>
       {hover 
       ? <Link href = {`/${label?.toLowerCase()}`} aria-label={`${label}`}
+          onMouseEnter={onHoverLinkOnly}
           className={`${menuToggle 
           ? classNames[1] ? classNames[1] : classNames[0] 
           : classNames[0]}`}
@@ -97,7 +107,7 @@ const DropdownButton = ({children, forceRef, label, items, hover, orientation, s
         </button>
       }
       
-      <Dropdown items={items} menuToggle={menuToggle} orientation={orientation} showPointer={showPointer}/>
+      <Dropdown items={items} menuToggle={menuToggle} setTransitionState={setTransitionState} orientation={orientation} showPointer={showPointer}/>
     </span>
   )
 }

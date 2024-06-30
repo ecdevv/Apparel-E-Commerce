@@ -1,0 +1,20 @@
+/****************** Rating ******************/
+.rating-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  width: 18px;
+  height: 18px;
+  fill: rgba(var(--review-star-color));
+}
+
+.filled {
+  fill: black;
+}
+
+.rating-value {
+  margin-left: 0.35rem;
+}

@@ -6,6 +6,7 @@ import { DropdownItem } from '@/app/utility/types';
 interface DropdownMenuProps  {
   items: DropdownItem[];
   menuToggle: boolean;
+  setTransitionState: (value: boolean) => void;
   orientation: string;
   showPointer: boolean;
 }
@@ -29,7 +30,7 @@ const MenuCard = ({items}: {items: DropdownItem[]}) => {
   )
 }
 
-const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMenuProps) => {
+const DropdownMenu = ({items, menuToggle, setTransitionState, orientation, showPointer} : DropdownMenuProps) => {
   const [timeoutDuration, setTimeoutDuration] = useState(0);
 
   useEffect(() => {
@@ -47,6 +48,9 @@ const DropdownMenu = ({items, menuToggle, orientation, showPointer} : DropdownMe
         in={menuToggle}
         timeout={timeoutDuration}
         classNames='menu'
+        onEnter={() => setTransitionState(false)}
+        onExit={() => setTransitionState(true)}
+        onExited={() => setTransitionState(false)}
         unmountOnExit
         style={{
           '--duration': `${timeoutDuration}ms`,

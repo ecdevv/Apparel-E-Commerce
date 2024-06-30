@@ -37,6 +37,8 @@
   --secondary-hover-button-color: 65, 65, 65;
 
   --dot-button-color: 185, 185, 195;
+
+  --review-star-color: 200, 200, 200;
 }
 
 .light {
@@ -62,6 +64,7 @@
   --secondary-hover-button-color: 65, 65, 65;
 
   --dot-button-color: 185, 185, 195;
+  --review-star-color: 200, 200, 200;
 }
 
 .dark {
@@ -88,6 +91,7 @@
   --secondary-hover-button-color: 65, 65, 65;
 
   --dot-button-color: 185, 185, 195;
+  --review-star-color: 200, 200, 200;
 }
 
 /* @media (prefers-color-scheme: dark) {

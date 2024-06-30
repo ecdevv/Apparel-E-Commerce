@@ -4,14 +4,72 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import Gallery from '@/app/components/Gallery/Gallery';
+import Rating from '@/app/components/Rating/Rating';
 import NumberStepper from '@/app/components/Input/NumberStepper/NumberStepper';
 import AddToBagButton from '@/app/components/Buttons/AddToBag/AddToBag';
 import AccordionMenu from '@/app/components/Accordion/AccordionMenu';
 import Products from '../../../../data/products.json'
+import Reviews from '../../../../data/reviews.json'
 import { Product } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import './product.css'
 
+const validateProduct = (searchParams: URLSearchParams): { error: boolean, product: Product, productReviews: any, averageRating: number } => {
+  const id = (parseInt(searchParams?.get('id') as string));
+  const product: Product = Products.find(product => product.product_id === id) as Product;
+  const productReviews = Reviews.filter(review => review.product_id === id);
+  const averageRating = parseFloat((productReviews.reduce((acc, review) => acc + review.rating, 0) / productReviews.length).toFixed(2)) || -1;
+
+  // Valdiation check if product exists
+  if (!product) {
+    console.error('Product not found.');
+    return { error: true, product: {} as Product, productReviews: [], averageRating: -1 };
+  }
+
+  // Valdiation check if product IDs are unique
+  const productIDs = Products.map(product => product.product_id);
+  const duplicateIDs = productIDs.filter((id, index) => productIDs.indexOf(id) !== index);
+  if (duplicateIDs.length > 0 && duplicateIDs.includes(product.product_id)) {
+    console.error(`The following product IDs are duplicate: ${duplicateIDs.join(', ')}`);
+    return { error: true, product: {} as Product, productReviews: [], averageRating: -1 };
+  }
+
+  // Valdiation check if each option of the product is unique and if the product options are empty or falsy
+  const optionNames = product.options.map(option => option.name);
+  if (new Set(optionNames).size !== optionNames.length) {
+    console.error('Duplicate option name found; each option name must be unique.');
+    return { error: true, product: {} as Product, productReviews: [], averageRating: -1 };
+  } else if (optionNames.length === 0 || optionNames.every(name => !name)) {
+    console.error('No options found.');
+    return { error: true, product: {} as Product, productReviews: [], averageRating: -1 };
+  }
+
+  return { error: false, product, productReviews, averageRating };
+};
+
+const setProductDetails = (searchParams: URLSearchParams, product: Product): { name: string, size: string, images: string[], ogPrice: number, discount: number, price: number } => {
+  /*
+   *  Find the option element in the array that is equivalent to the 'option' url param and set the name, 
+   *  then validate and set the size from the 'size' url param or set the first size that has stock > 0 or set 'oos' if all sizes are stock <= 0, 
+   *  then set the images for the selected option,
+   *  and finally set the ogPrice, discount, and price of the selected option 
+  */
+  const selectedOptionElement = product.options.find(option => option.name === (searchParams.get('option') as string)) || product.options[0];
+  const name = selectedOptionElement.name.toLowerCase();
+  const size = selectedOptionElement.sizes.find(sizes => sizes.size.toLowerCase() === (searchParams.get('size') as string) && sizes.stock > 0)?.size.toLowerCase() || selectedOptionElement.sizes.find(size => size.stock > 0)?.size.toLowerCase() || 'oos';
+  const images = selectedOptionElement.media.filter(item => item.type === "image").map(item => item.url);
+  const ogPrice = selectedOptionElement.price;
+  const discount = selectedOptionElement.discount;
+
+  let price = ogPrice - (ogPrice * discount / 100);
+  if (discount != 0) {
+    price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
+  } else {
+    price = parseFloat((ogPrice).toFixed(2));
+  }
+  
+  return {name, size, images, ogPrice, discount, price};
+}
 
 const ProductError = ({text}: {text: string}) => {
   return (
@@ -22,60 +80,49 @@ const ProductError = ({text}: {text: string}) => {
 const ProductDetailsSection = () => {
   const [selectedQuantity, setSelectedQuantity] = React.useState(1);
   const searchParams = useSearchParams();
-  const name = (searchParams?.get('name') as string).split(/[-]+/).join(' ').toLowerCase();
-  const id = (parseInt(searchParams?.get('id') as string));
-  const product: Product = Products.find(product => product.name.toLowerCase() === name && product.product_id === id) as Product;
 
-  // Valdiation check if product exists; if it does not exist, return ProductError component
-  if (!product) {
-    console.error('Product not found.');
+  // Find and validate the product and product reviews
+  const productResponse = validateProduct(searchParams);
+  if (productResponse.error) {
     return <ProductError text="Product not found" />;
   }
-
-  // Valdiation check if product IDs are unique; if not unique, return ProductError component (only necessary because using mock JSON data)
-  const productIDs = Products.map(product => product.product_id);
-  const duplicateIDs = productIDs.filter((id, index) => productIDs.indexOf(id) !== index);
-  if (duplicateIDs.length > 0 && duplicateIDs.includes(product.product_id)) {
-    console.error(`The following product IDs are duplicate: ${duplicateIDs.join(', ')}`);
-    return <ProductError text={'Product not found"'} />;
-  }
-
-  // Valdiation check if each option of the product is unique; if not unique, return ProductError component // Handle product options not being unique
-  const optionNames = product.options.map(option => option.name);
-  if (new Set(optionNames).size !== optionNames.length) {
-    console.error('Duplicate option name found; each option name must be unique.');
-    return <ProductError text="Product not found" />;
-  } else if (optionNames.length === 0 || optionNames.every(name => !name)) {  // Validation check if product options are empty
-    console.error('No options found.');
-    return <ProductError text="Product not found" />;
-  }
+  const product: Product = productResponse.product;
+  const productReviews = productResponse.productReviews
+  const averageRating = productResponse.averageRating;
   
-  const selectedOptionData = product.options.find(option => option.name === (searchParams.get('option') as string)) || product.options[0];   // Find's the option in the array that is equivalent to the 'option' url param; set to the first option if not found
-  const selectedOption = selectedOptionData.name.toLowerCase(); // Set's the name of the selected option                    
-  const selectedSize = selectedOptionData.sizes.find(sizes => sizes.size.toLowerCase() === (searchParams.get('size') as string) && sizes.stock > 0)?.size.toLowerCase() || selectedOptionData.sizes.find(size => size.stock > 0)?.size.toLowerCase() || 'oos';   // Find's the size in the data object of options that is equivalent to the 'size' url param; set to the first element in stock otherwise or 'out of stock'
-  const Images = selectedOptionData.media.filter(item => item.type === "image").map(item => item.url);   // Find's the option in the array that is equivalent to the selectedOption; filters for images in the media array; maps the string image urls
-  console.log(selectedSize)
-  let price;
-  let discount;
-  let ogPrice;
-  discount = selectedOptionData.discount;
-  ogPrice = selectedOptionData.price;
-  if (discount != 0) {
-    price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
-  } else {
-    price = parseFloat((ogPrice).toFixed(2));
-  }
+  // Setting all of the product details (and validates based on the search param)
+  const productOptionResponse = setProductDetails(searchParams, product);
+  const selectedOption = productOptionResponse.name;                  
+  const selectedSize = productOptionResponse.size;
+  const Images = productOptionResponse.images;
+
+  const discount = productOptionResponse.discount;
+  const ogPrice = productOptionResponse.ogPrice;
+  const price = productOptionResponse.price;
+
+  // Valdation for refreshing the page and the url is invalid (incorrect options and sizes)
+  const updateUrl = () => {
+    if (typeof window === 'undefined') return;
+    // Timeout is used to wait for the url to update with the properties above
+    setTimeout(() => {
+      const newUrl = new URL(window.location.href);
+      const searchParams = new URLSearchParams({
+        name: product.name.split(/[ ,]+/).join('-').toLowerCase(),
+        id: product.product_id.toString(),
+        option: selectedOption,
+        size: selectedSize
+      });
   
+      // Update the search params in the URL
+      newUrl.search = searchParams.toString();
+      
+      // Replace the current URL with the updated one
+      window.history.replaceState({}, '', newUrl.toString());
+    }, 10);
+  };
+  updateUrl();  
 
   // TODO - Figure out how to update url on hover and unhover so the option text can also update
-  const handleOnHover = (string: string) => {
-    const selectedOption = string;
-    // console.log(selectedOption)
-  }
-  const handleOnUnhover = () => {
-    const selectedOption = searchParams.get('option') as string;
-    // console.log(selectedOption)
-  }
 
   const handleQuantityStepper = (value: number) => {
     setSelectedQuantity(value);
@@ -103,48 +150,41 @@ const ProductDetailsSection = () => {
                 </h2>
               </div>
           }
+          <Rating rating={averageRating} reviewCount={productReviews.length} />
         </div>
         <div className='product-options-container'>
           <div className='product-options-header'><h3 className='product-h3'>{`${capitalizeFirstLetter(product.options[0].type)}`}:</h3><h4 className='product-h4'>{`${capitalizeFirstLetter(selectedOption)}`}</h4></div>
           <div className='product-options-btn-container'>
-            {product.options.map((option, index) => {
-              const newSelectedSize = (option.sizes.find(size => size.size.toLowerCase() === selectedSize && size.stock > 0) 
-                ? selectedSize 
-                : option.sizes.find(size => size.stock > 0)?.size.toLowerCase() || 'oos'
-              );
-              return (
-                <Link 
-                  key={index} 
-                  href={`?${new URLSearchParams({
-                    name: product.name.split(/[ ,]+/).join('-').toLowerCase(), 
-                    id: product.product_id.toString(), 
-                    option: option.name.toLowerCase(), 
-                    size: newSelectedSize
-                  })}`} 
-                  scroll={false} 
-                  onMouseEnter={() => handleOnHover(option.name)} 
-                  onMouseLeave={handleOnUnhover} 
-                  aria-label={`Product ${capitalizeFirstLetter(option.type)} Option: ${option.name}`} 
-                  className={`${selectedOption === option.name ? 'product-option-btn-selected' : 'product-option-btn'}`} 
-                  style={{'--width': '100px', '--height': '110px', '--bs-opacity': '0.5'} as React.CSSProperties}
-                >
-                  <Image
-                    src={option.media[0].url}
-                    alt={option.name}
-                    fill
-                    sizes="(100vw, 100vh)"
-                    className='product-option-image'
-                    priority
-                  />
-                </Link>
-              )
-            })}
+            {product.options.map((option, index) => (
+              <Link 
+                key={index} 
+                href={`?${new URLSearchParams({
+                  name: product.name.split(/[ ,]+/).join('-').toLowerCase(), 
+                  id: product.product_id.toString(), 
+                  option: option.name.toLowerCase(), 
+                  size: selectedSize
+                })}`}
+                scroll={false} 
+                aria-label={`Product ${capitalizeFirstLetter(option.type)} Option: ${option.name}`} 
+                className={`${selectedOption === option.name ? 'product-option-btn-selected' : 'product-option-btn'}`} 
+                style={{'--width': '100px', '--height': '110px', '--bs-opacity': '0.5'} as React.CSSProperties}
+              >
+                <Image
+                  src={option.media[0].url}
+                  alt={option.name}
+                  fill
+                  sizes="(100vw, 100vh)"
+                  className='product-option-image'
+                  priority
+                />
+              </Link>
+            ))}
           </div>
         </div>
         <div className='product-options-container'>
           <h3 className='product-h3'>Size:</h3>
           <div className='product-options-btn-container'>
-            {selectedOptionData.sizes.map((sizeObj, index) => {
+            {product.options.find((option) => option.name === selectedOption)?.sizes.map((sizeObj, index) => {
               const size = sizeObj.size.toLowerCase()
               const inStock = sizeObj.stock > 0
               return inStock
@@ -176,12 +216,12 @@ const ProductDetailsSection = () => {
                  <NumberStepper min={1} value={selectedQuantity} onChange={handleQuantityStepper} />
                 </div>
               </>
-            : <div className='product-option-btn-disabled'>Out of Stock</div>
+            : <div className='product-out-of-stock'>Sorry, we're temporarily out of stock.</div>
           }
         </div>        
 
         <div className='product-btn-container'>
-          <AddToBagButton product={product} option={selectedOption} size={selectedSize} quantity={selectedQuantity} price={price} ogPrice={ogPrice} discount={discount} className={'product-btn'} />
+          <AddToBagButton product={product} option={selectedOption} size={selectedSize} quantity={selectedQuantity} price={price} ogPrice={ogPrice} discount={discount} />
           <button className='product-btn2'>Wishlist</button>
         </div>
 
