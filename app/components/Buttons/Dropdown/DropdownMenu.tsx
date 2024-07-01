@@ -5,6 +5,7 @@ import { DropdownItem } from '@/app/utility/types';
 
 interface DropdownMenuProps  {
   items: DropdownItem[];
+  globalMenuToggle?: boolean;
   menuToggle: boolean;
   setTransitionState: (value: boolean) => void;
   orientation: string;
@@ -30,7 +31,7 @@ const MenuCard = ({items}: {items: DropdownItem[]}) => {
   )
 }
 
-const DropdownMenu = ({items, menuToggle, setTransitionState, orientation, showPointer} : DropdownMenuProps) => {
+const DropdownMenu = ({items, globalMenuToggle, menuToggle, setTransitionState, orientation, showPointer} : DropdownMenuProps) => {
   const [timeoutDuration, setTimeoutDuration] = useState(0);
 
   useEffect(() => {
@@ -45,7 +46,7 @@ const DropdownMenu = ({items, menuToggle, setTransitionState, orientation, showP
     <>
       {/* Dropdown Menu ----- Get's transitioned whenever the menuToggle variable changes/toggled */}
       <CSSTransition
-        in={menuToggle}
+        in={globalMenuToggle !== undefined ? globalMenuToggle && menuToggle : menuToggle}
         timeout={timeoutDuration}
         classNames='menu'
         onEnter={() => setTransitionState(false)}

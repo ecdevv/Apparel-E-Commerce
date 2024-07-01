@@ -49,7 +49,7 @@ const validateProduct = (searchParams: URLSearchParams): { error: boolean, produ
 };
 
 // Set the name, size, images, ogPrice, discount, and price of the selected option
-const setProductDetails = (searchParams: URLSearchParams, product: Product): { name: string, size: string, images: string[], ogPrice: number, discount: number, price: number } => {
+const getSelectedOption = (searchParams: URLSearchParams, product: Product): { name: string, size: string, images: string[], ogPrice: number, discount: number, price: number } => {
   /*
    *  Find the option element in the array that is equivalent to the 'option' url param and set the name, 
    *  then validate and set the size from the 'size' url param or set the first size that has stock > 0 or set 'oos' if all sizes are stock <= 0, 
@@ -79,7 +79,8 @@ const ProductError = ({text}: {text: string}) => {
   )
 }
 
-const ProductDetailsSection = () => {
+const ProductDetails = () => {
+  const [hoveredOption, setHoveredOption] = React.useState('');
   const [selectedQuantity, setSelectedQuantity] = React.useState(1);
   const searchParams = useSearchParams();
 
@@ -92,37 +93,52 @@ const ProductDetailsSection = () => {
   const productReviews = productResponse.productReviews
   const averageRating = productResponse.averageRating;
   
-  // Setting all of the product details (and validates based on the search param)
-  const productDetailsResponse = setProductDetails(searchParams, product);
-  const selectedOption = productDetailsResponse.name;                  
-  const selectedSize = productDetailsResponse.size;
-  const Images = productDetailsResponse.images;
+  // Setting all of the selected option's details (and validates based on the search param)
+  const selectedOptionResponse = getSelectedOption(searchParams, product);
+  const selectedOption = selectedOptionResponse.name;                  
+  const selectedSize = selectedOptionResponse.size;
+  const Images = selectedOptionResponse.images;
 
-  const discount = productDetailsResponse.discount;
-  const ogPrice = productDetailsResponse.ogPrice;
-  const price = productDetailsResponse.price;
+  const discount = selectedOptionResponse.discount;
+  const ogPrice = selectedOptionResponse.ogPrice;
+  const price = selectedOptionResponse.price;
 
-  // Valdation for refreshing the page and the url is invalid (incorrect options and sizes)
+  // Validation for refreshing the page and the url is invalid (incorrect name, options, and sizes)
   const updateUrl = () => {
     if (typeof window === 'undefined') return;
-    // Timeout is used to wait for the url to update with the properties above
-    setTimeout(() => {
-      const newUrl = new URL(window.location.href);
-      const searchParams = new URLSearchParams({
-        name: product.name.split(/[ ,]+/).join('-').toLowerCase(),
-        id: product.product_id.toString(),
-        option: selectedOption,
-        size: selectedSize
-      });
-  
-      // Update the search params in the URL
-      newUrl.search = searchParams.toString();
-      
-      // Replace the current URL with the updated one
-      window.history.replaceState({}, '', newUrl.toString());
-    }, 10);
+    
+    const newUrl = new URL(window.location.href);
+    const searchParams = new URLSearchParams({
+      name: product.name.split(/[ ,]+/).join('-').toLowerCase(),
+      id: product.product_id.toString(),
+      option: selectedOption,
+      size: selectedSize
+    });
+
+    // Update the search params in the URL
+    newUrl.search = searchParams.toString();
+    
+    // Replace the current URL with the updated one
+    window.history.replaceState({}, '', newUrl.toString());
   };
-  updateUrl();
+
+  // Update the url on page load/refresh
+  React.useEffect(() => {
+    updateUrl();
+  }, [updateUrl]);
+
+  // Set the initial hovered option state
+  React.useEffect(() => {
+    setHoveredOption(selectedOption);
+  }, [selectedOption]);
+
+  const handleOnHover = (value: string) => {
+    setHoveredOption(value);
+  }
+
+  const handleOnUnhover = () => {
+    setHoveredOption(selectedOption);
+  }
 
   const handleQuantityStepper = (value: number) => {
     setSelectedQuantity(value);
@@ -153,7 +169,7 @@ const ProductDetailsSection = () => {
           }
         </div>
         <div className='product-options-container'>
-          <div className='product-options-header'><h3 className='product-h3'>{`${capitalizeFirstLetter(product.options[0].type)}`}:</h3><h4 className='product-h4'>{`${capitalizeFirstLetter(selectedOption)}`}</h4></div>
+          <div className='product-options-header'><h3 className='product-h3'>{`${capitalizeFirstLetter(product.options[0].type)}`}:</h3><h4 className='product-h4'>{`${capitalizeFirstLetter(hoveredOption)}`}</h4></div>
           <div className='product-options-btn-container'>
             {product.options.map((option, index) => (
               <Link 
@@ -162,9 +178,11 @@ const ProductDetailsSection = () => {
                   name: product.name.split(/[ ,]+/).join('-').toLowerCase(), 
                   id: product.product_id.toString(), 
                   option: option.name.toLowerCase(), 
-                  size: selectedSize
+                  size: option.sizes.find(size => size.size.toLowerCase() === selectedSize && size.stock > 0)?.size.toLowerCase() || option.sizes.find(size => size.stock > 0)?.size.toLowerCase() || 'oos'
                 })}`}
-                scroll={false} 
+                scroll={false}
+                onMouseEnter={() => handleOnHover(option.name)}
+                onMouseLeave={handleOnUnhover}
                 aria-label={`Product ${capitalizeFirstLetter(option.type)} Option: ${option.name}`} 
                 className={`${selectedOption === option.name ? 'product-option-btn-selected' : 'product-option-btn'}`} 
                 style={{'--width': '100px', '--height': '110px', '--bs-opacity': '0.5'} as React.CSSProperties}
@@ -216,12 +234,12 @@ const ProductDetailsSection = () => {
                  <NumberStepper min={1} value={selectedQuantity} onChange={handleQuantityStepper} />
                 </div>
               </>
-            : <div className='product-out-of-stock'>Sorry, we're temporarily out of stock.</div>
+            : <div className='product-out-of-stock'>Sorry, we're out of stock.</div>
           }
         </div>        
 
         <div className='product-btn-container'>
-          <AddToBagButton product={product} option={selectedOption} size={selectedSize} quantity={selectedQuantity} price={price} ogPrice={ogPrice} discount={discount} />
+          <AddToBagButton id={product.product_id} option={selectedOption} size={selectedSize} quantity={selectedQuantity} />
           <button className='product-btn2'>Wishlist</button>
         </div>
 
@@ -235,7 +253,7 @@ const ProductDetailsSection = () => {
   )
 }
 
-export { ProductDetailsSection }
+export { ProductDetails }
 
 
 // Photo by <a href="https://unsplash.com/@anomaly?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Anomaly</a> on <a href="https://unsplash.com/photos/man-wearing-white-crew-neck-t-shirts-WWesmHEgXDs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>

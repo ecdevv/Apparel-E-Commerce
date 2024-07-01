@@ -43,11 +43,14 @@ export interface Product {
 /* Add to Bag Types */
 export interface ProductToBeAdded {
   index: number;
-  selectedProduct: Product;
+  id: number;
+  name: string;
+  optionType: string;
   selectedOption: string;
   selectedSize: string;
   selectedQuantity: number;
-  price: number;
-  ogPrice: number;
   discount: number;
+  ogPrice: number;
+  price: number;
+  defaultMedia: string;
 }

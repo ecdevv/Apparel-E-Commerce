@@ -81,16 +81,3 @@
   object-fit: contain;
   object-position: center;
 }
-
-.mega-menu-content-link-wrapper {
-  display: flex;
-  align-items: center;
-  column-gap: 0.25rem;
-}
-
-.mega-menu-content-icon {
-  width: 25px;
-  height: 25px;
-  margin-top: -2.5px;
-  margin-bottom: -2.5px;
-}

@@ -1,64 +1,90 @@
 'use client'
 import React, { useState } from 'react'
-import { Product, ProductToBeAdded } from '@/app/utility/types'
+import { Product, ProductToBeAdded, Option } from '@/app/utility/types'
 import { useBagContext } from '@/app/utility/contexts/BagContext'
+import Products from '../../../../data/products.json'
 import './AddToBag.css'
 
 interface AddToBagProps {
-  product: Product;
+  id: number;
   option: string;
   size: string;
   quantity: number;
-  price: number;
-  ogPrice: number;
-  discount: number;
 }
 
-const AddToBagButton = ({product, option, size, quantity, price, ogPrice, discount}: AddToBagProps) => {
-  const {bagItems, setBagItems, forceElementRef, scrollableRef} = useBagContext();
-  const [isClicked, setIsClicked] = useState(false);
+// Validate if product is in stock that I assume would normally be done through fetching from the backend
+const validateProduct = (id: number, option: string, size: string, quantity: number): { inStock: boolean, productToBeAdded: ProductToBeAdded} => {
+  const product: Product = Products.find(product => product.product_id === id) as Product;
+  const currentOption = product.options.find(opt => opt.name === option) as Option;
+  const inStock = currentOption.sizes.find(sizeObj => sizeObj.size.toLowerCase() === size.toLowerCase() && sizeObj.stock > 0)
+  const discount = currentOption.discount;
+  const ogPrice = currentOption.price;
+  
+  let price = ogPrice - (ogPrice * discount / 100);
+  if (discount != 0) {
+    price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
+  } else {
+    price = parseFloat((ogPrice).toFixed(2));
+  }
+
+  if (!inStock) {
+    return { inStock: false, productToBeAdded: {} as ProductToBeAdded };
+  }
 
   const productToBeAdded: ProductToBeAdded = {
     index: 0,
-    selectedProduct: product, 
+    id: product.product_id,
+    name: product.name,
+    optionType: currentOption.type,
     selectedOption: option, 
     selectedSize: size, 
     selectedQuantity: quantity,
+    discount: discount,
+    ogPrice: price,
     price: price,
-    ogPrice: ogPrice,
-    discount: discount
+    defaultMedia: currentOption.media[0].url
   }
-  
-  const handleClick = (productDetails: ProductToBeAdded, duration: number) => { 
-    setIsClicked(true);
 
+  return { inStock: true, productToBeAdded };
+}
+
+
+const AddToBagButton = ({ id, option, size, quantity }: AddToBagProps) => {
+  const {bagItems, setBagItems, forceElementRef, scrollableRef} = useBagContext();
+  const [isClicked, setIsClicked] = useState(false);
+
+  const productResponse = validateProduct(id, option, size, quantity);
+  
+  const handleClick = (duration: number) => {
+    setIsClicked(true);
     setTimeout(() => {
       setIsClicked(false);
     }, duration);
-
-    if (productDetails.selectedSize === 'oos') return;
+    
+    if (productResponse.inStock === false) return;
+    const product = productResponse.productToBeAdded
     
     const existingItemIndex = bagItems.findIndex((item) => 
-      item.selectedProduct.product_id === productDetails.selectedProduct.product_id &&
-      item.selectedOption == productDetails.selectedOption &&
-      item.selectedSize == productDetails.selectedSize
+      item.id === product.id &&
+      item.selectedOption == product.selectedOption &&
+      item.selectedSize == product.selectedSize
     );
     if (existingItemIndex !== -1) {
-      productDetails.index = bagItems[existingItemIndex].index;
+      product.index = bagItems[existingItemIndex].index;
       const newBagItems = [...bagItems as ProductToBeAdded[]];
-      newBagItems[existingItemIndex].selectedQuantity = Math.min(newBagItems[existingItemIndex].selectedQuantity + productDetails.selectedQuantity, 99);
+      newBagItems[existingItemIndex].selectedQuantity = Math.min(newBagItems[existingItemIndex].selectedQuantity + product.selectedQuantity, 99);
       setBagItems(newBagItems);
       localStorage.setItem('bagItems', JSON.stringify(newBagItems));
     } else {
-      productDetails.index = bagItems.length;
-      const newBagItems = [...bagItems as ProductToBeAdded[], productDetails];
+      product.index = bagItems.length;
+      const newBagItems = [...bagItems as ProductToBeAdded[], product];
       setBagItems(newBagItems);
       localStorage.setItem('bagItems', JSON.stringify(newBagItems));
     }
 
     // Timeout to ensure this runs after product is added to bagItems to ensure element exists
     setTimeout(() => {
-      const element = document.getElementById(productDetails.index.toString());
+      const element = document.getElementById(product.index.toString());
       if (element && scrollableRef.current) {
         const scrollableElement = scrollableRef.current;
         const scrollableRect = scrollableElement.getBoundingClientRect();
@@ -76,9 +102,9 @@ const AddToBagButton = ({product, option, size, quantity, price, ogPrice, discou
 
   return (
     <>
-      {productToBeAdded.selectedSize !== 'oos'
-        ? <button ref={forceElementRef} onClick={() => {handleClick(productToBeAdded, 100)}} className={`add-btn ${isClicked ? 'active' : ''}`} style={{'--duration': '100ms'} as React.CSSProperties}>Add to Bag</button>
-        : <button className={'add-btn-disabled'}>Add to Bag</button>
+      {productResponse.inStock
+        ? <button ref={forceElementRef} onClick={() => {handleClick(100)}} className={`add-btn ${isClicked ? 'active' : ''}`} style={{'--duration': '100ms'} as React.CSSProperties}>Add to Bag</button>
+        : <div className={'add-btn-disabled'}>Add to Bag</div>
       }
     </>
   )

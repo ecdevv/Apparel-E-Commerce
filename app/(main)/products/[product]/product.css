@@ -79,7 +79,7 @@
 }
 
 .product-price-strike {
-  color: rgba(var(--primary-text-color), 0.45);
+  color: rgba(var(--primary-text-color), 0.55);
   text-decoration: line-through;
 }
 
@@ -114,7 +114,7 @@
 
 .product-option-btn-disabled {
   background-color: rgba(var(--inverse-color), 0.1);
-  opacity: 0.4;
+  opacity: 0.65;
 }
 
 .product-option-btn-selected {
@@ -139,7 +139,7 @@
   display: block;
   font-family: var(--font-montserrat);
   font-weight: 400;
-  color: rgba(255, 0, 0, 1)
+  color: rgba(235, 0, 0, 1)
 }
 
 .product-btn-container {

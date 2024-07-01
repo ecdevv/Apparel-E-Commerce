@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat, Roboto, Lora } from "next/font/google";
 import "./globals.css";
+import { DropdownProvider } from "./utility/contexts/DropdownContext";
 import { BagProvider } from './utility/contexts/BagContext';
 
 const inter = Inter({ 
@@ -39,9 +40,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${montserrat.variable} ${roboto.variable} ${lora.variable}`}>
-        <BagProvider>
-          {children}
-        </BagProvider>
+        <DropdownProvider>
+          <BagProvider>
+            {children}
+          </BagProvider>
+        </DropdownProvider>
       </body>
     </html>
   );

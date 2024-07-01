@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Dropdown from './DropdownMenu'
 import { DropdownItem } from '@/app/utility/types'
+import { useDropdownContext } from '@/app/utility/contexts/DropdownContext'
 import './Dropdown.css'
 
 interface DropdownButtonProps  {
@@ -18,6 +19,7 @@ interface DropdownButtonProps  {
 
 // Navigation section with the links of this navbar component
 const DropdownButton = ({children, forceRef, label, items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
+  const { globalMenuToggle, setGlobalMenuToggle } = useDropdownContext();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -57,15 +59,17 @@ const DropdownButton = ({children, forceRef, label, items, hover, orientation, s
   }, []);
 
   const onHover = () => {
-    if (!isTransitioning) setMenuToggle(true);
+    if (!isTransitioning) {setMenuToggle(true); setGlobalMenuToggle(true);}
   }
 
   const onUnhover = () => {
     setMenuToggle(false);
+    setGlobalMenuToggle(false);
   }
 
   const onHoverLinkOnly = () => {
     setMenuToggle(true);
+    setGlobalMenuToggle(true);
   }
 
   // Handle toggling the menu on icon clicked
@@ -80,34 +84,38 @@ const DropdownButton = ({children, forceRef, label, items, hover, orientation, s
   return (
     <span ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined}>
       {hover 
-      ? <Link href = {`/${label?.toLowerCase()}`} aria-label={`${label}`}
-          onMouseEnter={onHoverLinkOnly}
-          className={`${menuToggle 
-          ? classNames[1] ? classNames[1] : classNames[0] 
-          : classNames[0]}`}
-        >
-          {children}
-        </Link> 
-      : <button onClick={handleClick} aria-label={`${label}`}
-          className={`${menuToggle 
-          ? classNames[1] ? classNames[1] : classNames[0] 
-          : classNames[0]}`}
-        >
-          {children}
-          <svg 
-            aria-hidden
-            fill="currentColor" 
-            viewBox="0 0 24 24" 
-            height="1em" 
-            width="1em"
-            className={`${menuToggle ? 'dropdown-chevron-rotated' : 'dropdown-chevron'}`}
+      ? <>
+          <Link href = {`/${label?.toLowerCase()}`} aria-label={`${label}`}
+            onMouseEnter={onHoverLinkOnly}
+            className={`${menuToggle && globalMenuToggle
+            ? classNames[1] ? classNames[1] : classNames[0] 
+            : classNames[0]}`}
           >
-            <path d="M6.343 7.757L4.93 9.172 12 16.242l7.071-7.07-1.414-1.415L12 13.414 6.343 7.757z" />
-          </svg>
-        </button>
+            {children}
+          </Link> 
+          <Dropdown items={items} globalMenuToggle={globalMenuToggle} menuToggle={menuToggle} setTransitionState={setTransitionState} orientation={orientation} showPointer={showPointer}/>
+        </>
+      : <>
+          <button onClick={handleClick} aria-label={`${label}`}
+            className={`${menuToggle
+            ? classNames[1] ? classNames[1] : classNames[0] 
+            : classNames[0]}`}
+          >
+            {children}
+            <svg 
+              aria-hidden
+              fill="currentColor" 
+              viewBox="0 0 24 24" 
+              height="1em" 
+              width="1em"
+              className={`${menuToggle ? 'dropdown-chevron-rotated' : 'dropdown-chevron'}`}
+            >
+              <path d="M6.343 7.757L4.93 9.172 12 16.242l7.071-7.07-1.414-1.415L12 13.414 6.343 7.757z" />
+            </svg>
+          </button>
+          <Dropdown items={items} menuToggle={menuToggle} setTransitionState={setTransitionState} orientation={orientation} showPointer={showPointer}/>
+        </>
       }
-      
-      <Dropdown items={items} menuToggle={menuToggle} setTransitionState={setTransitionState} orientation={orientation} showPointer={showPointer}/>
     </span>
   )
 }

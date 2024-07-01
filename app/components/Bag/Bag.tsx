@@ -38,15 +38,15 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
     <div id={item.index.toString()} className='bag-card'>
       <Link 
         href={`/products/p?${new URLSearchParams({
-          name: `${item.selectedProduct.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
-          id: item.selectedProduct.product_id.toString() || '', 
+          name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
+          id: item.id.toString() || '', 
           option: item.selectedOption, 
           size: item.selectedSize})}`
         } 
         className='bag-image-wrapper'
       >
         <Image
-          src={item.selectedProduct.options.find(option => option.name === item.selectedOption)?.media[0].url || item.selectedProduct.options[0].media[0].url}
+          src={item.defaultMedia}
           alt='Logo'
           fill
           sizes="(100vw)"
@@ -58,18 +58,18 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
         <div className='bag-info'>
           <Link 
             href={`/products/p?${new URLSearchParams({
-              name: `${item.selectedProduct.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
-              id: item.selectedProduct.product_id.toString() || '', 
+              name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
+              id: item.id.toString() || '', 
               option: item.selectedOption, 
               size: item.selectedSize})}`
             } 
             className='bag-image-wrapper'
           >
-            <h2>{item.selectedProduct.name}</h2>
+            <h2>{item.name}</h2>
           </Link>
         </div>
         <div className='bag-info'>
-          <h3>{capitalizeFirstLetter(item.selectedProduct.options.find(option => option.name === item.selectedOption)?.type || '')}: {capitalizeFirstLetter(item.selectedOption)}</h3>
+          <h3>{item.optionType}: {capitalizeFirstLetter(item.selectedOption)}</h3>
         </div>
         <div className='bag-info'>
           <h3>{capitalizeFirstLetter('Size')}: {item.selectedSize.toUpperCase()}</h3>

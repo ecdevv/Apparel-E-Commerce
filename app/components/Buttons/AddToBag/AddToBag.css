@@ -28,8 +28,7 @@
 }
 
 .add-btn-disabled {
-  background-color: rgba(var(--inverse-color), 0.5);
-  border: 1px solid rgba(var(--inverse-color), 0.5);
+  background-color: rgba(var(--inverse-color), 0.65);
   cursor: default;
 }
 
