@@ -120,9 +120,7 @@ const ProductDetailsSection = () => {
       window.history.replaceState({}, '', newUrl.toString());
     }, 10);
   };
-  updateUrl();  
-
-  // TODO - Figure out how to update url on hover and unhover so the option text can also update
+  updateUrl();
 
   const handleQuantityStepper = (value: number) => {
     setSelectedQuantity(value);
