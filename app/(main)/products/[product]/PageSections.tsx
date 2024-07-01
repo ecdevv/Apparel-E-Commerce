@@ -91,14 +91,14 @@ const ProductDetailsSection = () => {
   const averageRating = productResponse.averageRating;
   
   // Setting all of the product details (and validates based on the search param)
-  const productOptionResponse = setProductDetails(searchParams, product);
-  const selectedOption = productOptionResponse.name;                  
-  const selectedSize = productOptionResponse.size;
-  const Images = productOptionResponse.images;
+  const productDetailsResponse = setProductDetails(searchParams, product);
+  const selectedOption = productDetailsResponse.name;                  
+  const selectedSize = productDetailsResponse.size;
+  const Images = productDetailsResponse.images;
 
-  const discount = productOptionResponse.discount;
-  const ogPrice = productOptionResponse.ogPrice;
-  const price = productOptionResponse.price;
+  const discount = productDetailsResponse.discount;
+  const ogPrice = productDetailsResponse.ogPrice;
+  const price = productDetailsResponse.price;
 
   // Valdation for refreshing the page and the url is invalid (incorrect options and sizes)
   const updateUrl = () => {
@@ -120,9 +120,7 @@ const ProductDetailsSection = () => {
       window.history.replaceState({}, '', newUrl.toString());
     }, 10);
   };
-  updateUrl();  
-
-  // TODO - Figure out how to update url on hover and unhover so the option text can also update
+  updateUrl();
 
   const handleQuantityStepper = (value: number) => {
     setSelectedQuantity(value);
