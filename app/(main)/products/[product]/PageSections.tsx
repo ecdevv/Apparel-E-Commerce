@@ -14,19 +14,20 @@ import { Product } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import './product.css'
 
+// Some validations that I assume would normally be in the backend
 const validateProduct = (searchParams: URLSearchParams): { error: boolean, product: Product, productReviews: any, averageRating: number } => {
   const id = (parseInt(searchParams?.get('id') as string));
   const product: Product = Products.find(product => product.product_id === id) as Product;
   const productReviews = Reviews.filter(review => review.product_id === id);
   const averageRating = parseFloat((productReviews.reduce((acc, review) => acc + review.rating, 0) / productReviews.length).toFixed(2)) || -1;
 
-  // Valdiation check if product exists
+  // Validation check if product exists
   if (!product) {
     console.error('Product not found.');
     return { error: true, product: {} as Product, productReviews: [], averageRating: -1 };
   }
 
-  // Valdiation check if product IDs are unique
+  // Validation check if product IDs are unique
   const productIDs = Products.map(product => product.product_id);
   const duplicateIDs = productIDs.filter((id, index) => productIDs.indexOf(id) !== index);
   if (duplicateIDs.length > 0 && duplicateIDs.includes(product.product_id)) {
@@ -34,7 +35,7 @@ const validateProduct = (searchParams: URLSearchParams): { error: boolean, produ
     return { error: true, product: {} as Product, productReviews: [], averageRating: -1 };
   }
 
-  // Valdiation check if each option of the product is unique and if the product options are empty or falsy
+  // Validation check if each option of the product is unique and if the product options are empty or falsy
   const optionNames = product.options.map(option => option.name);
   if (new Set(optionNames).size !== optionNames.length) {
     console.error('Duplicate option name found; each option name must be unique.');
@@ -47,6 +48,7 @@ const validateProduct = (searchParams: URLSearchParams): { error: boolean, produ
   return { error: false, product, productReviews, averageRating };
 };
 
+// Set the name, size, images, ogPrice, discount, and price of the selected option
 const setProductDetails = (searchParams: URLSearchParams, product: Product): { name: string, size: string, images: string[], ogPrice: number, discount: number, price: number } => {
   /*
    *  Find the option element in the array that is equivalent to the 'option' url param and set the name, 
@@ -133,6 +135,7 @@ const ProductDetailsSection = () => {
         <div className='product-content-header'>
           {discount > 0 ? <div className='product-discount-badge'>{(discount * 100).toFixed(0)}% OFF</div> : <></>}
           <h2 className='product-h2'>{product.name}</h2>
+          <Rating rating={averageRating} reviewCount={productReviews.length} />
           {discount <= 0 
             ? <div className='product-price-wrapper'>
                <h2 className='product-price'>
@@ -148,7 +151,6 @@ const ProductDetailsSection = () => {
                 </h2>
               </div>
           }
-          <Rating rating={averageRating} reviewCount={productReviews.length} />
         </div>
         <div className='product-options-container'>
           <div className='product-options-header'><h3 className='product-h3'>{`${capitalizeFirstLetter(product.options[0].type)}`}:</h3><h4 className='product-h4'>{`${capitalizeFirstLetter(selectedOption)}`}</h4></div>
