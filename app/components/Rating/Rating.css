@@ -12,7 +12,7 @@
 }
 
 .filled {
-  fill: black;
+  fill: rgba(var(--review-star-filled-color));
 }
 
 .rating-value {

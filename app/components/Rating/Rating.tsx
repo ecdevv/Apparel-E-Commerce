@@ -18,7 +18,7 @@ const Rating = ({ rating, reviewCount }: { rating: number, reviewCount: number }
             <svg aria-hidden className="star" viewBox="0 0 20 20">
               <defs>
                 <linearGradient id="half-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="50%" style={{ stopColor: "black", stopOpacity: 1 }} />
+                  <stop offset="50%" style={{ stopColor: "rgba(var(--review-star-filled-color))", stopOpacity: 1 }} />
                   <stop offset="50%" style={{ stopColor: 'rgba(var(--review-star-color))', stopOpacity: 1 }} />
                 </linearGradient>
               </defs>

@@ -137,7 +137,7 @@ const Bag = () => {
     { name: 'Bag Items', type: 'component', component: <BagItemList bagItems={bagItems} setBagItems={setBagItems}/> },
     { name: 'View Bag', type: 'button' },
     { name: 'Checkout', type: 'button' },
-    // { name: 'Log', type: 'component', component: <button onClick={() => {console.log(bagItems, bagItems.map((item) => item.selectedQuantity))}}>Log</button>}
+    // { name: 'Log', type: 'component', component: <button onClick={() => console.log(bagItems)}>Log</button>}
   ]
 
   return (

@@ -1,6 +1,7 @@
 'use client'
 import { createContext, useContext, useEffect, useState, useRef } from 'react';
 import { ProductToBeAdded } from '../types';
+import { validateBag } from '@/server/mockValidations';
 
 type ContextProviderProps = {
   children: React.ReactNode;
@@ -21,10 +22,10 @@ export function BagProvider({children}:ContextProviderProps) {
   const forceElementRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const storedBagItems = localStorage.getItem('bagItems');
-    if (storedBagItems) {
-      setBagItems(JSON.parse(storedBagItems));
-    }
+    const savedBagItems = JSON.parse(localStorage.getItem('bagItems') || '[]') as ProductToBeAdded[];
+    const validBagItems = validateBag(savedBagItems);
+    setBagItems(validBagItems);
+    localStorage.setItem('bagItems', JSON.stringify(validBagItems));
   }, []);
 
   return (

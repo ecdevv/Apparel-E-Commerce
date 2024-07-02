@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
-import { Product, ProductToBeAdded, Option } from '@/app/utility/types'
+import { ProductToBeAdded } from '@/app/utility/types'
 import { useBagContext } from '@/app/utility/contexts/BagContext'
-import Products from '../../../../data/products.json'
+import { validateProductToBeAdded } from '@/server/mockValidations'
 import './AddToBag.css'
 
 interface AddToBagProps {
@@ -12,48 +12,11 @@ interface AddToBagProps {
   quantity: number;
 }
 
-// Validate if product is in stock that I assume would normally be done through fetching from the backend
-const validateProduct = (id: number, option: string, size: string, quantity: number): { inStock: boolean, productToBeAdded: ProductToBeAdded} => {
-  const product: Product = Products.find(product => product.product_id === id) as Product;
-  const currentOption = product.options.find(opt => opt.name === option) as Option;
-  const inStock = currentOption.sizes.find(sizeObj => sizeObj.size.toLowerCase() === size.toLowerCase() && sizeObj.stock > 0)
-  const discount = currentOption.discount;
-  const ogPrice = currentOption.price;
-  
-  let price = ogPrice - (ogPrice * discount / 100);
-  if (discount != 0) {
-    price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
-  } else {
-    price = parseFloat((ogPrice).toFixed(2));
-  }
-
-  if (!inStock) {
-    return { inStock: false, productToBeAdded: {} as ProductToBeAdded };
-  }
-
-  const productToBeAdded: ProductToBeAdded = {
-    index: 0,
-    id: product.product_id,
-    name: product.name,
-    optionType: currentOption.type,
-    selectedOption: option, 
-    selectedSize: size, 
-    selectedQuantity: quantity,
-    discount: discount,
-    ogPrice: price,
-    price: price,
-    defaultMedia: currentOption.media[0].url
-  }
-
-  return { inStock: true, productToBeAdded };
-}
-
-
 const AddToBagButton = ({ id, option, size, quantity }: AddToBagProps) => {
   const {bagItems, setBagItems, forceElementRef, scrollableRef} = useBagContext();
   const [isClicked, setIsClicked] = useState(false);
 
-  const productResponse = validateProduct(id, option, size, quantity);
+  const productResponse = validateProductToBeAdded(id, option, size, quantity);
   
   const handleClick = (duration: number) => {
     setIsClicked(true);

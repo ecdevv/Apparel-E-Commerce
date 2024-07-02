@@ -16,7 +16,7 @@ const CustomLink = ({children, href, NEW, productID, className}:CustomLinkProps)
   const { setGlobalMenuToggle } = useDropdownContext();
   const fixedHref = href.replace(/[ ,]+/g, '-').toLowerCase();
   const link = productID !== undefined
-    ? `/products/p?${new URLSearchParams({ name: fixedHref, id: productID?.toString() || '' })}`
+    ? `/store/p?${new URLSearchParams({ name: fixedHref, id: productID?.toString() || '' })}`
     : fixedHref;
 
   return (
