@@ -1,30 +1,30 @@
-/****************** Bag ******************/
-.bag-btn, .bag-btn-focus {
+/****************** Cart ******************/
+.cart-btn, .cart-btn-focus {
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: var(--font-montserrat);
   font-size: 15px;
-  gap: 0.33rem;
+  gap: 0.25rem;
   transition: background-color 200ms ease-in-out;
   padding: 7.5px;
   border-radius: 2px;
 }
 
-.bag-btn-focus, .bag-btn:hover {
+.cart-btn-focus, .cart-btn:hover {
   background-color: rgba(var(--secondary-color), 0.5);
 }
 
-.bag-icon-wrapper {
+.cart-icon-wrapper {
   position: relative;
 }
 
-.bag-icon {
+.cart-icon {
   width: 25px;
   height: 25px;
 }
 
-.bag-badge {
+.cart-badge {
   width: 17.5px;
   height: 17.5px;
   font-weight: 500;
@@ -41,8 +41,8 @@
   animation: fade-in-up 300ms;
 }
 
-/****************** Bag Content Heading ******************/
-.bag-header {
+/****************** Cart Content Heading ******************/
+.cart-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,13 +53,13 @@
   border-bottom: 1px solid rgba(var(--inverse-color), 0.25);
 }
 
-.bag-header h2 {
+.cart-header h2 {
   font-weight: 700;
   font-size: 15px;
 }
 
-/****************** Bag Content Info Card ******************/
-.bag-container {
+/****************** Cart Content Info Card ******************/
+.cart-container {
   position: relative;
   max-height: 330px;
   padding: 0.5rem 0;
@@ -71,20 +71,20 @@
 }
 
 @supports selector(::-webkit-scrollbar) {
-  .bag-container::-webkit-scrollbar {
+  .cart-container::-webkit-scrollbar {
     width: 4px;
   }
 }
 
-.bag-container > *:not(:last-child) {
+.cart-container > *:not(:last-child) {
   margin-bottom: 1.5rem; 
 }
 
-.bag-container > *:last-child {
+.cart-container > *:last-child {
   margin-bottom: 0; 
 }
 
-.bag-card {
+.cart-card {
   width: 350px;
   height: 106px;
   display: grid;
@@ -95,20 +95,25 @@
   font-size: 14px;
 }
 
-.bag-image-wrapper {
+.wish {
+  width: 300px;
+  grid-template-columns: 35% 65%;
+}
+
+.cart-image-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.bag-image {
+.cart-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-.bag-info-container {
+.cart-info-container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -117,26 +122,27 @@
   padding-right: 1.25rem;
 }
 
-.bag-info {
+.cart-info {
+  position: relative;
   max-width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
-.bag-info h2 {
+.cart-info h2 {
   font-weight: 600;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.bag-price-wrapper {
+.cart-price-wrapper {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
 }
 
-.bag-discount-badge {
+.cart-discount-badge {
   display: inline-block;
   background: rgba(var(--primary-color));
   font-family: var(--font-roboto);
@@ -145,31 +151,41 @@
   padding: 0.1rem 0.25rem;
 }
 
-.bag-price, .bag-price-discounted, .bag-price-strike {
+.cart-price, .cart-price-discounted, .cart-price-strike {
   font-weight: 400;
 }
 
-.bag-price-discounted {
+.cart-price-discounted {
   font-weight: 500;
   color: rgba(215, 0, 0, 1)
 }
 
-.bag-price-strike {
+.cart-price-strike {
   color: rgba(var(--primary-text-color), 0.55);
   text-decoration: line-through;
 }
 
-.bag-qty-container {
+.cart-qty-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: -2.5px
-
 }
 
-.bag-close {
+.cart-qty-oos {
+  width: 50%;
   position: absolute;
-  top: -5px;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  color: rgba(235, 0, 0, 1)
+}
+
+.cart-close {
+  position: absolute;
+  top: -7.5px;
   right: 5px;
   width: 25px;
   height: 25px;
@@ -177,7 +193,38 @@
   transition: transform 200ms ease;
 }
 
-.bag-close:active {
+.cart-close:active {
+  transform: scale(0.9);
+}
+
+/****************** Dropdown Content ******************/
+.dropdown-btn {
+  width: 100%;
+  margin: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 10px;
+  cursor: pointer;
+  font-family: var(--font-montserrat);
+  font-weight: 500;
+  font-size: 15px;
+  color: rgba(var(--secondary-text-color));
+  border-width: 1px;
+  border-color: black;
+  background-color: rgba(var(--primary-button-color));
+  transform: scale(1);
+  transition: color 200ms ease-in-out, background-color 200ms ease-in-out, transform 200ms ease;
+}
+
+.dropdown-btn:hover {
+  color: rgba(var(--primary-text-color));
+  background-color: rgba(var(--primary-hover-button-color))
+}
+
+.dropdown-btn:active {
   transform: scale(0.9);
 }
 

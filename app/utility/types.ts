@@ -40,8 +40,8 @@ export interface Product {
   tags: string[];
 }
 
-/* Add to Bag Types */
-export interface ProductToBeAdded {
+/* Add to Cart (Bag/Wishlist) Types */
+export interface BagProduct {
   index: number;
   id: number;
   name: string;
@@ -49,6 +49,18 @@ export interface ProductToBeAdded {
   selectedOption: string;
   selectedSize: string;
   selectedQuantity: number;
+  discount: number;
+  ogPrice: number;
+  price: number;
+  defaultMedia: string;
+}
+
+export interface WishlistProduct {
+  index: number;
+  id: number;
+  name: string;
+  optionType: string;
+  selectedOption: string;
   discount: number;
   ogPrice: number;
   price: number;

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import './User.css'
 
@@ -11,8 +12,8 @@ interface Item {
 
 const User = () => {
   const items:Item[] = [
-    { name: 'Login', type: 'button' },
-    { name: 'Register', type: 'button' },
+    { name: 'Login', type: 'component', component: <Link href='/login' className='dropdown-btn'>Login</Link> },
+    { name: 'Register', type: 'component', component: <Link href='/register' className='dropdown-btn'>Register</Link> },
   ]
 
   return (

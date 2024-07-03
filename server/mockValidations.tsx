@@ -1,9 +1,9 @@
-import { Product, ProductToBeAdded, Option } from '@/app/utility/types'
+import { BagProduct, WishlistProduct, Product, Option } from '@/app/utility/types'
 import Products from '@/data/products.json'
 import Reviews from '@/data/reviews.json'
 
 // Validate each item in the bag
-const validateBag = (bagItems: ProductToBeAdded[]): ProductToBeAdded[] => {
+const validateBag = (bagItems: BagProduct[]): BagProduct[] => {
   return bagItems.map(item => {
     const product: Product = Products.find(p => p.product_id.toString() === item.id.toString()) as Product;
     const currentOption = product.options.find(opt => opt.name === item.selectedOption) as Option;
@@ -28,6 +28,32 @@ const validateBag = (bagItems: ProductToBeAdded[]): ProductToBeAdded[] => {
         price: price,
         defaultMedia: currentOption.media[0].url
       }
+    }
+
+    return {
+      ...item,
+      name: product.name,
+      discount: discount,
+      ogPrice: ogPrice,
+      price: price,
+      defaultMedia: currentOption.media[0].url
+    }
+  })
+}
+
+// Validate each item in the bag
+const validateWishlist = (wishItems: WishlistProduct[]): WishlistProduct[] => {
+  return wishItems.map(item => {
+    const product: Product = Products.find(p => p.product_id.toString() === item.id.toString()) as Product;
+    const currentOption = product.options.find(opt => opt.name === item.selectedOption) as Option;
+    const discount = currentOption.discount;
+    const ogPrice = currentOption.price;
+
+    let price = ogPrice - (ogPrice * discount / 100);
+    if (discount != 0) {
+      price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
+    } else {
+      price = parseFloat((ogPrice).toFixed(2));
     }
 
     return {
@@ -101,7 +127,7 @@ const getSelectedOption = (searchParams: URLSearchParams, product: Product): { n
 }
 
 // Validate if product to be added to the bag is in stock
-const validateProductToBeAdded = (id: number, option: string, size: string, quantity: number): { inStock: boolean, productToBeAdded: ProductToBeAdded } => {
+const validateBagProduct = (id: number, option: string, size: string, quantity: number): { inStock: boolean, bagProduct: BagProduct } => {
   const product: Product = Products.find(product => product.product_id === id) as Product;
   const currentOption = product.options.find(opt => opt.name === option) as Option;
   const inStock = currentOption.sizes.find(sizeObj => sizeObj.size.toLowerCase() === size.toLowerCase() && sizeObj.stock > 0)
@@ -116,10 +142,10 @@ const validateProductToBeAdded = (id: number, option: string, size: string, quan
   }
 
   if (!inStock) {
-    return { inStock: false, productToBeAdded: {} as ProductToBeAdded };
+    return { inStock: false, bagProduct: {} as BagProduct };
   }
 
-  const productToBeAdded: ProductToBeAdded = {
+  const bagProduct: BagProduct = {
     index: 0,
     id: product.product_id,
     name: product.name,
@@ -133,7 +159,36 @@ const validateProductToBeAdded = (id: number, option: string, size: string, quan
     defaultMedia: currentOption.media[0].url
   }
 
-  return { inStock: true, productToBeAdded };
+  return { inStock: true, bagProduct };
 }
 
-export { validateBag, validateProduct, getSelectedOption, validateProductToBeAdded };
+// Validate if product to be added to the bag is in stock
+const validateWishlistProduct = (id: number, option: string): { inStock: boolean, wishlistProduct: WishlistProduct } => {
+  const product: Product = Products.find(product => product.product_id === id) as Product;
+  const currentOption = product.options.find(opt => opt.name === option) as Option;
+  const discount = currentOption.discount;
+  const ogPrice = currentOption.price;
+  
+  let price = ogPrice - (ogPrice * discount / 100);
+  if (discount != 0) {
+    price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
+  } else {
+    price = parseFloat((ogPrice).toFixed(2));
+  }
+
+  const wishlistProduct: WishlistProduct = {
+    index: 0,
+    id: product.product_id,
+    name: product.name,
+    optionType: currentOption.type,
+    selectedOption: option, 
+    discount: discount,
+    ogPrice: ogPrice,
+    price: price,
+    defaultMedia: currentOption.media[0].url
+  }
+
+  return { inStock: true, wishlistProduct };
+}
+
+export { validateBag, validateWishlist, validateProduct, getSelectedOption, validateBagProduct, validateWishlistProduct };

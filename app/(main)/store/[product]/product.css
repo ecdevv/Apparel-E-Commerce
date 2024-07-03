@@ -149,35 +149,6 @@
   gap: 1rem;
 }
 
-.product-btn2 {
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 12px;
-  cursor: pointer;
-  font-family: var(--font-montserrat);
-  font-weight: 500;
-  font-size: 15px;
-  color: rgba(var(--secondary-text-color));
-  border-width: 1px;
-  border-color: black;
-  background-color: rgba(var(--primary-button-color));
-  transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
-}
-
-.product-btn2 {
-  color: rgba(var(--primary-text-color));
-  background-color: rgba(var(--tertiary-button-color));
-}
-
-.product-btn2:hover {
-  color: rgba(var(--secondary-text-color));
-  background-color: rgba(var(--secondary-hover-button-color))
-}
-
 .product-details-container {
   display: flex;
   flex-direction: column;

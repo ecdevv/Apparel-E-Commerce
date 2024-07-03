@@ -1,8 +1,8 @@
 'use client'
 import React, { useState } from 'react'
-import { ProductToBeAdded } from '@/app/utility/types'
+import { BagProduct } from '@/app/utility/types'
 import { useBagContext } from '@/app/utility/contexts/BagContext'
-import { validateProductToBeAdded } from '@/server/mockValidations'
+import { validateBagProduct } from '@/server/mockValidations'
 import './AddToBag.css'
 
 interface AddToBagProps {
@@ -16,7 +16,7 @@ const AddToBagButton = ({ id, option, size, quantity }: AddToBagProps) => {
   const {bagItems, setBagItems, forceElementRef, scrollableRef} = useBagContext();
   const [isClicked, setIsClicked] = useState(false);
 
-  const productResponse = validateProductToBeAdded(id, option, size, quantity);
+  const productResponse = validateBagProduct(id, option, size, quantity);
   
   const handleClick = (duration: number) => {
     setIsClicked(true);
@@ -25,7 +25,7 @@ const AddToBagButton = ({ id, option, size, quantity }: AddToBagProps) => {
     }, duration);
     
     if (productResponse.inStock === false) return;
-    const product = productResponse.productToBeAdded
+    const product = productResponse.bagProduct
     
     const existingItemIndex = bagItems.findIndex((item) => 
       item.id === product.id &&
@@ -34,13 +34,13 @@ const AddToBagButton = ({ id, option, size, quantity }: AddToBagProps) => {
     );
     if (existingItemIndex !== -1) {
       product.index = bagItems[existingItemIndex].index;
-      const newBagItems = [...bagItems as ProductToBeAdded[]];
+      const newBagItems = [...bagItems as BagProduct[]];
       newBagItems[existingItemIndex].selectedQuantity = Math.min(newBagItems[existingItemIndex].selectedQuantity + product.selectedQuantity, 99);
       setBagItems(newBagItems);
       localStorage.setItem('bagItems', JSON.stringify(newBagItems));
     } else {
       product.index = bagItems.length;
-      const newBagItems = [...bagItems as ProductToBeAdded[], product];
+      const newBagItems = [...bagItems as BagProduct[], product];
       setBagItems(newBagItems);
       localStorage.setItem('bagItems', JSON.stringify(newBagItems));
     }

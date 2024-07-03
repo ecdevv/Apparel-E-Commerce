@@ -3,17 +3,17 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
-import DropdownButton from '../Buttons/Dropdown/DropdownButton';
-import NumberStepper from '../Input/NumberStepper/NumberStepper';
-import { DropdownItem, ProductToBeAdded } from '@/app/utility/types';
+import DropdownButton from '../../Buttons/Dropdown/DropdownButton';
+import NumberStepper from '../../Input/NumberStepper/NumberStepper';
+import { DropdownItem, BagProduct } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import { useBagContext } from '@/app/utility/contexts/BagContext';
-import './Bag.css'
+import '../Cart.css'
 
-const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItems: ProductToBeAdded[] | []; setBagItems: React.Dispatch<React.SetStateAction<ProductToBeAdded[] | []>>}) => {
+const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: BagProduct[] | []; setBagItems: React.Dispatch<React.SetStateAction<BagProduct[] | []>>}) => {
   // This function removes the item from the bagItems array by finding the index of the item in the array and then using the splice method to remove that item from the array.
   const handleRemoveClick = () => {
-    const newBagItems = [...bagItems as ProductToBeAdded[]];
+    const newBagItems = [...bagItems as BagProduct[]];
     const itemIndex = newBagItems.indexOf(item);
     // Decrement the index of all items after the removed item.
     newBagItems.forEach((item, index) => {
@@ -27,7 +27,7 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
   }
 
   const handleQuantityStepper = (value: number) => {
-    const newBagItems = [...bagItems as ProductToBeAdded[]];
+    const newBagItems = [...bagItems as BagProduct[]];
     const itemIndex = newBagItems.indexOf(item);
     newBagItems[itemIndex].selectedQuantity = value
     setBagItems(newBagItems);
@@ -35,65 +35,68 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
   }
 
   return (
-    <div id={item.index.toString()} className='bag-card'>
+    <div id={item.index.toString()} className='cart-card'>
       <Link 
-        href={`/products/p?${new URLSearchParams({
+        href={`/store/p?${new URLSearchParams({
           name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
           id: item.id.toString() || '', 
           option: item.selectedOption, 
           size: item.selectedSize})}`
         } 
-        className='bag-image-wrapper'
+        className='cart-image-wrapper'
       >
         <Image
           src={item.defaultMedia}
           alt='Logo'
           fill
           sizes="(100vw)"
-          className='bag-image'
+          className='cart-image'
         />
       </Link>
-      <div className='bag-info-container'>
-        {item.discount > 0 && <div className='bag-info'><div className='bag-discount-badge'>{(item.discount * 100).toFixed(0)}% OFF</div></div> }
-        <div className='bag-info'>
+      <div className='cart-info-container'>
+        {item.discount > 0 && <div className='cart-info'><div className='cart-discount-badge'>{(item.discount * 100).toFixed(0)}% OFF</div></div> }
+        <div className='cart-info'>
           <Link 
-            href={`/products/p?${new URLSearchParams({
+            href={`/store/p?${new URLSearchParams({
               name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
               id: item.id.toString() || '', 
               option: item.selectedOption, 
               size: item.selectedSize})}`
             } 
-            className='bag-image-wrapper'
+            className='cart-image-wrapper'
           >
             <h2>{item.name}</h2>
           </Link>
         </div>
-        <div className='bag-info'>
-          <h3>{item.optionType}: {capitalizeFirstLetter(item.selectedOption)}</h3>
+        <div className='cart-info'>
+          <h3>{capitalizeFirstLetter(item.optionType)}: {capitalizeFirstLetter(item.selectedOption)}</h3>
         </div>
-        <div className='bag-info'>
+        <div className='cart-info'>
           <h3>{capitalizeFirstLetter('Size')}: {item.selectedSize.toUpperCase()}</h3>
         </div>
-        <div className='bag-info'>
+        <div className='cart-info'>
           {item.discount <= 0 
-            ? <div className='bag-price-wrapper'>
-               <h4 className='bag-price'>
+            ? <div className='cart-price-wrapper'>
+               <h4 className='cart-price'>
                   <span className='dollar-sign'>$</span>{item.price}
                 </h4> 
               </div>
-            : <div className='bag-price-wrapper'>
-                <h4 className='bag-price-strike'>
+            : <div className='cart-price-wrapper'>
+                <h4 className='cart-price-strike'>
                   <span className='dollar-sign'>$</span>{item.ogPrice}
                 </h4>
-                <h4 className='bag-price-discounted'>
+                <h4 className='cart-price-discounted'>
                   <span className='dollar-sign'>$</span>{item.price}
                 </h4>
               </div>
           }
-          <div className='bag-qty-container'><h3>Qty: </h3><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={20} doubleWidth={true} /></div>
+          {item.selectedQuantity > 0 
+            ? <div className='cart-qty-container'><h3>Qty: </h3><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={20} doubleWidth={true} /></div>
+            : <h3 className='cart-qty-oos'>Sorry, this item is unavailable</h3>
+          }
         </div>
       </div>
-      <button onClick={handleRemoveClick} aria-label='Remove item from bag' className='bag-close'>
+      <button onClick={handleRemoveClick} aria-label='Remove item from bag' className='cart-close'>
         <svg
           aria-hidden
           viewBox="0 0 25 25" 
@@ -108,17 +111,17 @@ const BagCard = ({item, bagItems, setBagItems}: {item: ProductToBeAdded; bagItem
   )
 }
 
-const BagItemList = ({bagItems, setBagItems}: {bagItems: ProductToBeAdded[] | []; setBagItems: React.Dispatch<React.SetStateAction<ProductToBeAdded[] | []>>}) => {
+const BagItemList = ({bagItems, setBagItems}: {bagItems: BagProduct[] | []; setBagItems: React.Dispatch<React.SetStateAction<BagProduct[] | []>>}) => {
   const {scrollableRef} = useBagContext();
 
   // Check if the "bagItems" array is empty or undefined.
   if (!bagItems || bagItems.length === 0) {
-    return <h2 className='bag-header'>Your Bag is Empty</h2>;
+    return <h2 className='cart-header'>Your Bag is Empty</h2>;
   }
 
   // If the "bagItems" array is not empty, map over each item in the array and render a "BagCard" component for each item.
   return (
-    <div ref={scrollableRef} className='bag-container'>
+    <div ref={scrollableRef} className='cart-container'>
       {bagItems.map((item, index) => (
         <BagCard key={index} item={item} bagItems={bagItems} setBagItems={setBagItems}/>
       ))}
@@ -128,36 +131,38 @@ const BagItemList = ({bagItems, setBagItems}: {bagItems: ProductToBeAdded[] | []
 
 const Bag = () => {
   const {bagItems, setBagItems, forceElementRef} = useBagContext();
-  const totalQuantity = bagItems.reduce((acc, item) => acc + item.selectedQuantity, 0);
+  const totalQuantity = bagItems.some(item => item.selectedQuantity === 0)
+    ? '!'
+    : bagItems.reduce((acc, item) => acc + item.selectedQuantity, 0);
   const subTotal = bagItems.reduce((acc, item) => acc + Number((item.price * item.selectedQuantity).toFixed(2)), 0.00).toFixed(2);
 
   // This is an array of DropdownItem objects (the content of the dropdown) that will be passed to the DropdownButton component.
   const items: DropdownItem[] = [
-    { name: 'Shopping Bag', type: 'component', component: <div className='bag-header'><h2>Your Bag ({totalQuantity})</h2><h3>Subtotal: <span className='dollar-sign'>$</span>{subTotal}</h3></div> },
+    { name: 'Shopping Bag', type: 'component', component: <div className='cart-header'><h2>Your Bag</h2><h3>Subtotal: <span className='dollar-sign'>$</span>{subTotal}</h3></div> },
     { name: 'Bag Items', type: 'component', component: <BagItemList bagItems={bagItems} setBagItems={setBagItems}/> },
-    { name: 'View Bag', type: 'button' },
-    { name: 'Checkout', type: 'button' },
+    { name: 'View Bag', type: 'component', component: <Link href='/bag' className='dropdown-btn'>View Bag</Link> },
+    { name: 'Checkout', type: 'component', component: <Link href='/checkout' className='dropdown-btn'>Checkout</Link> },
     // { name: 'Log', type: 'component', component: <button onClick={() => console.log(bagItems)}>Log</button>}
   ]
 
   return (
-    <DropdownButton label={'Bag'} forceRef={forceElementRef} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['bag-btn', 'bag-btn-focus']}>
-      <span className='bag-icon-wrapper'>
+    <DropdownButton label={'Bag'} forceRef={forceElementRef} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['cart-btn', 'cart-btn-focus']}>
+      <span className='cart-icon-wrapper'>
         <svg
           aria-hidden
           viewBox="0 0 32 32"
           fill="currentColor"
-          className='bag-icon'
+          className='cart-icon'
         >
           <path d="M 16 3 C 13.253906 3 11 5.253906 11 8 L 11 9 L 6.0625 9 L 6 9.9375 L 5 27.9375 L 4.9375 29 L 27.0625 29 L 27 27.9375 L 26 9.9375 L 25.9375 9 L 21 9 L 21 8 C 21 5.253906 18.746094 3 16 3 Z M 16 5 C 17.65625 5 19 6.34375 19 8 L 19 9 L 13 9 L 13 8 C 13 6.34375 14.34375 5 16 5 Z M 7.9375 11 L 11 11 L 11 14 L 13 14 L 13 11 L 19 11 L 19 14 L 21 14 L 21 11 L 24.0625 11 L 24.9375 27 L 7.0625 27 Z"/>
         </svg>
         <CSSTransition
-          in={totalQuantity > 0}
+          in={totalQuantity === '!' || totalQuantity > 0}
           timeout={300}
           classNames="badge"
           unmountOnExit
         >
-          <span className='bag-badge'>{totalQuantity > 99 ? '99+' : totalQuantity}</span>
+          <span className='cart-badge'>{totalQuantity !== '!' && totalQuantity > 99 ? '99+' : totalQuantity}</span>
         </CSSTransition>
       </span>
       <h2>Bag</h2>

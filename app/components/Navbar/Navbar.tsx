@@ -2,7 +2,8 @@ import React from 'react';
 import Link from 'next/link'
 import Search from '../Search/Search';
 import User from '../User/User';
-import Bag from '../Bag/Bag';
+import Bag from '../Cart/Bag/Bag';
+import Wishlist from '../Cart/Wishlist/Wishlist';
 import Theme from '../Theme/Theme';
 import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import { CollectionsMegaMenu, MenMegaMenu, NewMegaMenu, SalesMegaMenu, WomenMegaMenu } from './NavMegaMenu';
@@ -29,6 +30,7 @@ const Header = () => {
       <div className='navbar-icons-container'>
         <Search />
         <User />
+        <Wishlist />
         <Bag />
       </div>
     </section>

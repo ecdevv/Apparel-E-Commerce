@@ -7,11 +7,32 @@ import Gallery from '@/app/components/Gallery/Gallery';
 import Rating from '@/app/components/Rating/Rating';
 import NumberStepper from '@/app/components/Input/NumberStepper/NumberStepper';
 import AddToBagButton from '@/app/components/Buttons/AddToBag/AddToBag';
+import AddToWishlistButton from '@/app/components/Buttons/AddToWishlist/AddToWishlist';
 import AccordionMenu from '@/app/components/Accordion/AccordionMenu';
 import { Product } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import { validateProduct, getSelectedOption } from '@/server/mockValidations';
 import './product.css'
+
+// Validation for refreshing the page and the url is invalid (incorrect name, options, and sizes)
+const validateUrl = (product: Product, selectedOption: string, selectedSize: string) => {
+  if (typeof window === 'undefined') return;
+
+  // Create a new URL object and update the search params
+  const newUrl = new URL(window.location.href);
+  const searchParams = new URLSearchParams({
+    name: product.name.split(/[ ,]+/).join('-').toLowerCase(),
+    id: product.product_id.toString(),
+    option: selectedOption,
+    size: selectedSize
+  });
+
+  // Update the search params in the URL
+  newUrl.search = searchParams.toString();
+  
+  // Replace the current URL with the updated one
+  window.history.replaceState({}, '', newUrl.toString());
+};
 
 const ProductError = ({text}: {text: string}) => {
   return (
@@ -26,9 +47,19 @@ const ProductDetails = () => {
 
   // Find and validate the product and product reviews
   const productResponse = validateProduct(searchParams);
+
+  // Update the url on page load/refresh if product is found when searchParams changes
+  React.useEffect(() => {
+    if (!productResponse.error) {
+      validateUrl(product, selectedOption, selectedSize);
+    }
+  }, [searchParams]);
+
+
   if (productResponse.error) {
     return <ProductError text="Product not found" />;
   }
+  
   const product: Product = productResponse.product;
   const productReviews = productResponse.productReviews
   const averageRating = productResponse.averageRating;
@@ -42,29 +73,7 @@ const ProductDetails = () => {
   const discount = selectedOptionResponse.discount;
   const ogPrice = selectedOptionResponse.ogPrice;
   const price = selectedOptionResponse.price;
-
-  // Validation for refreshing the page and the url is invalid (incorrect name, options, and sizes)
-  const updateUrl = () => {
-    if (typeof window === 'undefined') return;
-    
-    const newUrl = new URL(window.location.href);
-    const searchParams = new URLSearchParams({
-      name: product.name.split(/[ ,]+/).join('-').toLowerCase(),
-      id: product.product_id.toString(),
-      option: selectedOption,
-      size: selectedSize
-    });
-
-    // Update the search params in the URL
-    newUrl.search = searchParams.toString();
-    
-    // Replace the current URL with the updated one
-    window.history.replaceState({}, '', newUrl.toString());
-  };
-
-  // Update the url on page load/refresh
-  setTimeout(updateUrl, 50);
-
+  
   const handleOnHover = (value: string) => {
     setHoveredOption(value);
   }
@@ -102,7 +111,10 @@ const ProductDetails = () => {
           }
         </div>
         <div className='product-options-container'>
-          <div className='product-options-header'><h3 className='product-h3'>{`${capitalizeFirstLetter(product.options[0].type)}`}:</h3><h4 className='product-h4'>{`${capitalizeFirstLetter(hoveredOption)}`}</h4></div>
+          <div className='product-options-header'>
+            <h3 className='product-h3'>{`${capitalizeFirstLetter(product.options[0].type)}`}:</h3>
+            <h4 className='product-h4'>{`${hoveredOption === '' ? capitalizeFirstLetter(selectedOption) : capitalizeFirstLetter(hoveredOption)}`}</h4>
+          </div>
           <div className='product-options-btn-container'>
             {product.options.map((option, index) => (
               <Link 
@@ -171,7 +183,7 @@ const ProductDetails = () => {
 
         <div className='product-btn-container'>
           <AddToBagButton id={product.product_id} option={selectedOption} size={selectedSize} quantity={selectedQuantity} />
-          <button className='product-btn2'>Wishlist</button>
+          <AddToWishlistButton id={product.product_id} option={selectedOption} />
         </div>
 
         <div className='product-details-container'>
