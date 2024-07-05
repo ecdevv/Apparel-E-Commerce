@@ -1,0 +1,83 @@
+/****************** Mobile Navbar ******************/
+.navbar-hamburger-container {
+  display: none;
+}
+
+.nav-mobile-menu-container {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .navbar-hamburger-container {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-left: -5px;
+  }
+
+  .navbar-hamburger {
+    width: 25px;
+    height: 25px;
+    margin: auto;
+  }
+
+  .nav-mobile-menu-container {
+    display: block;
+    width: 340px;
+    min-height: calc(100vh - 65px);
+    position: absolute;
+    top: calc(0% + 65px);
+    right: 0;
+    background-color: rgba(var(--primary-color));
+    font-family: var(--font-montserrat);
+    border-top: 1px solid rgba(var(--inverse-color), 0.15);
+    overflow-y: scroll;
+  }
+
+  .nav-mobile-menu-back {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    border-bottom: 1px solid rgba(var(--inverse-color), 0.25);
+    gap: 1rem;
+    padding: 1rem 0rem;
+  }
+
+  .nav-mobile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+  }
+
+  .nav-user-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    background-color: rgba(var(--secondary-color));
+    font-weight: 400;
+    font-size: 15px;
+  }
+}
+
+/*** CSSTransition ***/
+.mobile-enter {
+  transform: translateX(340px);
+}
+
+.mobile-enter-active {
+  transform: translateX(0px);
+  transition: transform 300ms ease-in-out;
+}
+
+.mobile-exit {
+  transform: translateX(0px);
+}
+
+.mobile-exit-active {
+  transform: translateX(340px);
+  transition: transform 300ms ease-in-out;
+}

@@ -149,7 +149,6 @@
   }
 }
 
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -167,6 +166,27 @@ h1 {
   font-size: 36px;
 }
 
+.header {
+  position: sticky;
+  top: 0%;
+  z-index: 10;
+}
+
+.dollar-sign {
+  font-family: var(--font-roboto);
+}
+
+/*** Mobile & Media Queries ***/
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 22px;
+  }
+}
+
+
+
+
+/*** Scrollbar ***/
 /* Modern browsers with `scrollbar-*` support */
 @supports (scrollbar-width: auto) {
   html {
@@ -204,15 +224,4 @@ h1 {
   .product-gallery-container::-webkit-scrollbar-track, .bag-container::-webkit-scrollbar-track {
     background: transparent;
   }
-}
-
-
-.header {
-  position: sticky;
-  top: 0%;
-  z-index: 10;
-}
-
-.dollar-sign {
-  font-family: var(--font-roboto);
 }

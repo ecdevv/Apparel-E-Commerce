@@ -1,0 +1,30 @@
+/****************** MuliLevelMenu Button ******************/
+.multi-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.multi-sub {
+  font-weight: 400
+}
+
+/*** CSSTransition ***/
+.multi-menu-enter {
+  transform: translateX(340px);
+}
+
+.multi-menu-enter-active {
+  transform: translateX(0px);
+  transition: transform 300ms ease-in-out;
+}
+
+.multi-menu-exit {
+  transform: translateX(0px);
+}
+
+.multi-menu-exit-active {
+  transform: translateX(-340px);
+  transition: transform 300ms ease-in-out;
+}

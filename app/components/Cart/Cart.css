@@ -1,5 +1,5 @@
 /****************** Cart ******************/
-.cart-btn, .cart-btn-focus {
+.cart-btn, .cart-btn-focus, .wish-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,11 +8,11 @@
   gap: 0.25rem;
   transition: background-color 200ms ease-in-out;
   padding: 7.5px;
-  border-radius: 2px;
+  border-radius: 10px;
 }
 
 .cart-btn-focus, .cart-btn:hover {
-  background-color: rgba(var(--secondary-color), 0.5);
+  background-color: rgba(var(--secondary-color), 1);
 }
 
 .cart-icon-wrapper {
@@ -197,8 +197,30 @@
   transform: scale(0.9);
 }
 
+/*** Mobile & Media Queries ***/
+.cart-btn-mobile {
+  display: none;
+}
+
+.cart-dropdown-header {
+  display: block;
+}
+
+@media (max-width: 1536px) {
+  .cart-dropdown-header {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cart-btn-mobile {
+    position: relative;
+    display: block;
+  }
+}
+
 /****************** Dropdown Content ******************/
-.dropdown-btn {
+.cart-dropdown-btn {
   width: 100%;
   margin: auto;
   position: relative;
@@ -209,7 +231,7 @@
   padding: 10px;
   cursor: pointer;
   font-family: var(--font-montserrat);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 15px;
   color: rgba(var(--secondary-text-color));
   border-width: 1px;
@@ -219,15 +241,14 @@
   transition: color 200ms ease-in-out, background-color 200ms ease-in-out, transform 200ms ease;
 }
 
-.dropdown-btn:hover {
+.cart-dropdown-btn:hover {
   color: rgba(var(--primary-text-color));
   background-color: rgba(var(--primary-hover-button-color))
 }
 
-.dropdown-btn:active {
+.cart-dropdown-btn:active {
   transform: scale(0.9);
 }
-
 
 /*** CSSTransition ***/
 .badge-enter {

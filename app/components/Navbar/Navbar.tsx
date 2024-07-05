@@ -6,6 +6,7 @@ import Bag from '../Cart/Bag/Bag';
 import Wishlist from '../Cart/Wishlist/Wishlist';
 import Theme from '../Theme/Theme';
 import DropdownButton from '../Buttons/Dropdown/DropdownButton';
+import MobileNavigation from './MobileNavbar';
 import { CollectionsMegaMenu, MenMegaMenu, NewMegaMenu, SalesMegaMenu, WomenMegaMenu } from './NavMegaMenu';
 import { DropdownItem } from '@/app/utility/types';
 import './Navbar.css'
@@ -27,11 +28,14 @@ const Header = () => {
         /> */}
         <h1>URBAN LUXE</h1>
       </Link>
-      <div className='navbar-icons-container'>
+      <div className ='navbar-icons-container-wrapper'>
         <Search />
-        <User />
-        <Wishlist />
-        <Bag />
+        <div className='navbar-icons-container'>
+          <User />
+          <Wishlist />
+          <Bag />
+          <MobileNavigation />
+        </div>
       </div>
     </section>
   )
@@ -65,7 +69,7 @@ const Navigation = () => {
   const CollectionItems:DropdownItem[] = [ { name: 'Collections Items', type: 'component', component: <CollectionsMegaMenu /> } ]
 
   return (
-    <nav className='navbar-navigation-wrapper'>
+    <section className='navbar-navigation-wrapper'>
       <ul className='navbar-navigation-list'>
         <li><DropdownButton label={'New'} items={NewItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>NEW</DropdownButton></li>
         <li><DropdownButton label={'Sales'} items={SalesItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>SALES</DropdownButton></li>
@@ -73,19 +77,19 @@ const Navigation = () => {
         <li><DropdownButton label={'Women'} items={WomenItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>WOMEN</DropdownButton></li>
         <li><DropdownButton label={'Collections'} items={CollectionItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>COLLECTIONS</DropdownButton></li>
       </ul>
-    </nav>
+    </section>
   )
 }
 
 // The whole navbar with the header and navigation sections
 const Navbar = () => {
   return (
-    <section className='navbar'>
+    <nav className='navbar'>
       <div className='navbar-container'>
         <Header />
         <Navigation />
       </div>
-    </section>
+    </nav>
   )
 }
 

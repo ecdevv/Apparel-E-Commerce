@@ -31,8 +31,6 @@
   backdrop-filter: blur(5px) grayscale(66.66%);
   position: absolute;
   top: 0%;
-  /* top: 50%;
-  transform: translateY(-50%); */
   transition: all 200ms ease-in-out;
 }
 
@@ -64,7 +62,7 @@
 }
 
 .carousel-dots-wrapper {
-  width: 30%;
+  width: 35%;
   display: flex;
   position: absolute;
   bottom: calc(5% + var(--thumbnail-height));
@@ -75,21 +73,31 @@
   justify-content: center;
 }
 
-.carousel-dot, .carousel-dot-selected {
+.carousel-dots-wrapper.small {
+  gap: 7.5%;
+}
+
+.carousel-dot {
   width: calc(100% / var(--total));
   height: 15px;
   border-width: 1px;
   border-radius: 2rem;
-  border-color: rgba(var(--dot-button-color));
-  background-color: rgba(var(--dot-button-color));
+  border-color: rgba(var(--dot-button-color), 0.35);
+  background-color: rgba(var(--dot-button-color), 0.35);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.66);
   transform: scale(1);
   transition: all 200ms ease-in-out;
 }
 
-.carousel-dot-selected {
-  border-color: white;
-  background-color: white;
+.carousel-dot.small {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+}
+
+.carousel-dot.selected {
+  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   transform: scale(1.15);
 }
 
@@ -142,7 +150,6 @@
   border: 1px solid rgba(0, 0, 0, 1);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
-
 
 /*** CSSTransition ***/
 .slide-left-enter {

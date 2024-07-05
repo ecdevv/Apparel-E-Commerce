@@ -20,10 +20,6 @@
   transition: background-color 200ms ease-in-out;
 }
 
-.search-box:focus {
-  background-color: rgba(var(--secondary-color));
-}
-
 .search-box::placeholder {
   color: black;
   opacity: 0.5;
@@ -50,4 +46,16 @@
   transform: translateX(-0.5rem) translateY(-50%);
   pointer-events: none;
   z-index: 1;
+}
+
+/*** Mobile & Media Queries ***/
+@media (max-width: 1536px) {
+  .search-box {
+    width: 150px;
+  }
+}
+@media (max-width: 1024px) {
+  .search-content {
+    display: none;
+  }
 }

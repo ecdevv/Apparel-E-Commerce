@@ -101,10 +101,11 @@ const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Bag
           aria-hidden
           viewBox="0 0 25 25" 
           fill="currentColor"
+          stroke="currentColor"
           width={25}
           height={25}
         > 
-          <path d="M18 7L7 18M7 7L18 18" stroke="#121923" strokeWidth="1.2" />
+          <path d="M18 7L7 18M7 7L18 18" strokeWidth="1.2" />
         </svg>
       </button>
     </div>
@@ -140,14 +141,36 @@ const Bag = () => {
   const items: DropdownItem[] = [
     { name: 'Shopping Bag', type: 'component', component: <div className='cart-header'><h2>Your Bag</h2><h3>Subtotal: <span className='dollar-sign'>$</span>{subTotal}</h3></div> },
     { name: 'Bag Items', type: 'component', component: <BagItemList bagItems={bagItems} setBagItems={setBagItems}/> },
-    { name: 'View Bag', type: 'component', component: <Link href='/bag' className='dropdown-btn'>View Bag</Link> },
-    { name: 'Checkout', type: 'component', component: <Link href='/checkout' className='dropdown-btn'>Checkout</Link> },
+    { name: 'View Bag', type: 'component', component: <Link href='/bag' className='cart-dropdown-btn'>View Bag</Link> },
+    { name: 'Checkout', type: 'component', component: <Link href='/checkout' className='cart-dropdown-btn'>Checkout</Link> },
     // { name: 'Log', type: 'component', component: <button onClick={() => console.log(bagItems)}>Log</button>}
   ]
 
   return (
-    <DropdownButton label={'Bag'} forceRef={forceElementRef} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['cart-btn', 'cart-btn-focus']}>
-      <span className='cart-icon-wrapper'>
+    <>
+      <DropdownButton label={'Bag'} forceRef={forceElementRef} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['cart-btn', 'cart-btn-focus']}>
+        <span className='cart-icon-wrapper'>
+          <svg
+            aria-hidden
+            viewBox="0 0 32 32"
+            fill="currentColor"
+            className='cart-icon'
+          >
+            <path d="M 16 3 C 13.253906 3 11 5.253906 11 8 L 11 9 L 6.0625 9 L 6 9.9375 L 5 27.9375 L 4.9375 29 L 27.0625 29 L 27 27.9375 L 26 9.9375 L 25.9375 9 L 21 9 L 21 8 C 21 5.253906 18.746094 3 16 3 Z M 16 5 C 17.65625 5 19 6.34375 19 8 L 19 9 L 13 9 L 13 8 C 13 6.34375 14.34375 5 16 5 Z M 7.9375 11 L 11 11 L 11 14 L 13 14 L 13 11 L 19 11 L 19 14 L 21 14 L 21 11 L 24.0625 11 L 24.9375 27 L 7.0625 27 Z"/>
+          </svg>
+          <CSSTransition
+            in={totalQuantity === '!' || totalQuantity > 0}
+            timeout={300}
+            classNames="badge"
+            unmountOnExit
+          >
+            <span className='cart-badge'>{totalQuantity !== '!' && totalQuantity > 99 ? '99+' : totalQuantity}</span>
+          </CSSTransition>
+        </span>
+        <h2 className='cart-dropdown-header'>Bag</h2>
+      </DropdownButton>
+
+      <Link href='/bag' aria-label='View Bag' className='cart-btn-mobile'>
         <svg
           aria-hidden
           viewBox="0 0 32 32"
@@ -164,9 +187,8 @@ const Bag = () => {
         >
           <span className='cart-badge'>{totalQuantity !== '!' && totalQuantity > 99 ? '99+' : totalQuantity}</span>
         </CSSTransition>
-      </span>
-      <h2>Bag</h2>
-    </DropdownButton>
+      </Link>
+    </>
   )
 }
 

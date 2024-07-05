@@ -3,6 +3,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  margin: auto;
 }
 
 .star {
@@ -11,10 +12,11 @@
   fill: rgba(var(--review-star-color));
 }
 
-.filled {
+.star.filled {
   fill: rgba(var(--review-star-filled-color));
 }
 
 .rating-value {
   margin-left: 0.35rem;
 }
+

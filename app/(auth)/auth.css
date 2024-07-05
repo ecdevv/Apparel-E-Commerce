@@ -1,4 +1,8 @@
 /****************** Auth ******************/
+.margin {
+  margin-top: 10vh;
+}
+
 .auth-section {
   width: 100vw;
   height: auto;
@@ -52,17 +56,17 @@
 
 .input-field {
   width: 100%;
-  outline: 1px solid rgba(var(--input-border-color), 1);
+  outline: 1px solid rgba(var(--input-border-color), 0.25);
   padding: 0.5rem;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-  opacity: 0.5;
-  transition: opacity 200ms ease-in-out;
+  transition: outline 200ms ease-in-out;
 }
 
 .input-field:focus {
   opacity: 1;
   background-color: rgba(var(--primary-color));
+  outline: 1px solid rgba(var(--input-border-color), 1);
 }
 
 .input-field:focus ~ .input-icon{
@@ -71,12 +75,8 @@
 
 .input-field::placeholder {
   color: black;
-  opacity: 1;
+  opacity: 0.5;
   transition: opacity 200ms ease-in-out;
-}
-
-.input-field:focus::placeholder {
-  opacity: 0;
 }
 
 /* When input has content */
@@ -171,6 +171,14 @@
 .other-btn:hover {
   background-color: rgba(var(--primary-hover-button-color));
   color: black;
+}
+
+/*** Mobile & Media Queries ***/
+@media (max-width: 450px) {
+  .auth-container {
+    width: 100%;
+    border-radius: 0;
+  }
 }
 
 /*** Accessibility ***/

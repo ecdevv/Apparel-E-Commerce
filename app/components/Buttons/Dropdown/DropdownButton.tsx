@@ -82,7 +82,7 @@ const DropdownButton = ({children, forceRef, label, items, hover, orientation, s
   }
 
   return (
-    <span ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined}>
+    <div ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined} className='dropdown-display'>
       {hover 
       ? <>
           <Link href = {`/${label?.toLowerCase()}`} aria-label={`${label}`}
@@ -102,7 +102,7 @@ const DropdownButton = ({children, forceRef, label, items, hover, orientation, s
             : classNames[0]}`}
           >
             {children}
-            <svg 
+            {/* <svg 
               aria-hidden
               fill="currentColor" 
               viewBox="0 0 24 24" 
@@ -111,12 +111,12 @@ const DropdownButton = ({children, forceRef, label, items, hover, orientation, s
               className={`${menuToggle ? 'dropdown-chevron-rotated' : 'dropdown-chevron'}`}
             >
               <path d="M6.343 7.757L4.93 9.172 12 16.242l7.071-7.07-1.414-1.415L12 13.414 6.343 7.757z" />
-            </svg>
+            </svg> */}
           </button>
           <Dropdown items={items} menuToggle={menuToggle} setTransitionState={setTransitionState} orientation={orientation} showPointer={showPointer}/>
         </>
       }
-    </span>
+    </div>
   )
 }
 

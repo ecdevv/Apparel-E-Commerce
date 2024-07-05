@@ -33,7 +33,7 @@ const Theme = () => {
   }
 
   return (
-    <button onClick = {handleClick} aria-label = "Change Theme">
+    <button onClick = {handleClick} aria-label = "Change Theme" className='theme-icon-container'>
       <svg
         aria-hidden
         fill="currentColor"

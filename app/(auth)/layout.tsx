@@ -7,7 +7,7 @@ export default function AuthLayout({
 }) {
   return (
     <>
-      <header><HeaderLogo /></header>
+      <header className='margin'><HeaderLogo /></header>
       <main>{children}</main>
     </>
     )

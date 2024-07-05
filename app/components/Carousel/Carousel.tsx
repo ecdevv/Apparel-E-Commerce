@@ -9,11 +9,12 @@ interface ImagesProps {
   Width: number;
   BorderWidth?: number;
   ShowNavArrows?: boolean;
-  ShowDotBtns?: boolean;
   ShowThumbnails?: boolean;
+  ShowDotBtns?: boolean;
+  dotSmall?: boolean;
 }
 
-const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDotBtns = false, ShowThumbnails = false} : ImagesProps) => {
+const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowThumbnails = false, ShowDotBtns = false, dotSmall = false} : ImagesProps) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [prevIndex, setPrevIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -217,9 +218,9 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowDo
 
       {/* The dot buttons at the bottom of the carousel to select the specific images */}
       {ShowDotBtns 
-      ? <div className='carousel-dots-wrapper' style={{'--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
+      ? <div className={`carousel-dots-wrapper ${dotSmall ? 'small' : ''}`} style={{'--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
           {Images.map((_, index) => (
-            <button key={index} onClick={() => {handleDotClick(index)}} disabled={buttonDisabled} aria-label={`View Image ${index + 1}`} className={`${index === currentIndex ? 'carousel-dot-selected' : 'carousel-dot'}`} style={{'--total': Images.length} as React.CSSProperties}></button>
+            <button key={index} onClick={() => {handleDotClick(index)}} disabled={buttonDisabled} aria-label={`View Image ${index + 1}`} className={`carousel-dot ${index === currentIndex ? 'selected' : ''} ${dotSmall ? 'small' : ''}`} style={{'--total': Images.length} as React.CSSProperties}></button>
           ))}
         </div>
       : <></>

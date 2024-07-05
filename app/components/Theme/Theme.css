@@ -1,5 +1,21 @@
 /****************** Theme ******************/
+.theme-icon-container {
+  padding: 7.5px;
+}
+
 .theme-icon {
   width: 25px;
   height: 25px;
+}
+
+/*** Mobile & Media Queries ***/
+@media (max-width: 1024px) {
+  .theme-icon-container {
+    padding: 4px;
+  }
+
+  .theme-icon {
+    width: 22px;
+    height: 22px;
+  }
 }

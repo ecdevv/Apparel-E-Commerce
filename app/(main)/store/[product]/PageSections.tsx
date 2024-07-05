@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import Gallery from '@/app/components/Gallery/Gallery';
+import Carousel from '@/app/components/Carousel/Carousel';
 import Rating from '@/app/components/Rating/Rating';
 import NumberStepper from '@/app/components/Input/NumberStepper/NumberStepper';
 import AddToBagButton from '@/app/components/Buttons/AddToBag/AddToBag';
@@ -89,6 +90,7 @@ const ProductDetails = () => {
   return (
     <section className='product-container'>
       <div className='product-gallery-container'><Gallery Images={Images as (string[])} /></div>
+      <div className='product-carousel-container'><Carousel Images={Images} Width={100} BorderWidth={0} ShowDotBtns={true} dotSmall={true} /></div>
       <div className='product-content'>
         <div className='product-content-header'>
           {discount > 0 ? <div className='product-discount-badge'>{(discount * 100).toFixed(0)}% OFF</div> : <></>}
@@ -129,8 +131,8 @@ const ProductDetails = () => {
                 onMouseEnter={() => handleOnHover(option.name)}
                 onMouseLeave={handleOnUnhover}
                 aria-label={`Product ${capitalizeFirstLetter(option.type)} Option: ${option.name}`} 
-                className={`${selectedOption === option.name ? 'product-option-btn-selected' : 'product-option-btn'}`} 
-                style={{'--width': '100px', '--height': '110px', '--bs-opacity': '0.5'} as React.CSSProperties}
+                className={`product-option-btn option ${selectedOption === option.name ? 'selected' : ''}`} 
+                style={{'--bs-opacity': '0.5'} as React.CSSProperties}
               >
                 <Image
                   src={option.media[0].url}
@@ -159,12 +161,12 @@ const ProductDetails = () => {
                   })}`} 
                   scroll={false} 
                   aria-label={`Product Size Option: ${sizeObj.size}`} 
-                  className={`${selectedSize === sizeObj.size.toLowerCase() ? 'product-option-btn-selected' : 'product-option-btn'}`} 
-                  style={{'--width': '60px', '--height': '60px', '--bs-opacity': '0.15'} as React.CSSProperties}
+                  className={`product-option-btn size ${selectedSize === sizeObj.size.toLowerCase() ? 'selected' : ''}`} 
+                  style={{'--bs-opacity': '0.15'} as React.CSSProperties}
                 >
                   {sizeObj.size.toUpperCase()}
                 </Link>
-              : <div key={index} className='product-option-btn-disabled' style={{'--width': '60px', '--height': '60px', '--bs-opacity': '0.15'} as React.CSSProperties}>{sizeObj.size.toUpperCase()}</div>
+              : <div key={index} className='product-option-btn size disabled' style={{'--bs-opacity': '0.15'} as React.CSSProperties}>{sizeObj.size.toUpperCase()}</div>
             ))}
           </div>
         </div>
