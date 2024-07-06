@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Montserrat, Roboto, Lora } from "next/font/google";
 import { BagProvider } from './utility/contexts/BagContext';
 import { WishlistProvider } from "./utility/contexts/WishlistContext";
-import { DropdownProvider } from "./utility/contexts/DropdownContext";
+import { MenuProvider } from "./utility/contexts/MenuContext";
 import "./globals.css";
 
 const inter = Inter({ 
@@ -43,9 +43,9 @@ export default function RootLayout({
       <body className={`${inter.variable} ${montserrat.variable} ${roboto.variable} ${lora.variable}`}>
         <BagProvider>
           <WishlistProvider>
-            <DropdownProvider>
+            <MenuProvider>
               {children}
-            </DropdownProvider>
+            </MenuProvider>
           </WishlistProvider>
         </BagProvider>
       </body>

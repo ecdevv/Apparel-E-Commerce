@@ -8,32 +8,41 @@ import './AddToWishlist.css'
 interface WishlistProps {
   id: number;
   option: string;
+  icon?: boolean;
+  forceMenu?: boolean;
+  className?: string;
 }
 
-const AddToWishlistButton = ({ id, option }: WishlistProps) => {
-  const {wishItems, setWishItems, forceElementRef, scrollableRef} = useWishlistContext();
+const AddToWishlistButton = ({ id, option, icon = false, forceMenu = true, className = 'add-wish-btn' }: WishlistProps) => {
+  const { wishItems, setWishItems, setForceOpen, forceElementRef, scrollableRef } = useWishlistContext();
   const [isClicked, setIsClicked] = useState(false);
 
   const productResponse = validateWishlistProduct(id, option);
   
   const handleClick = (duration: number) => {
+    setForceOpen(true);
+    // Used to set the duration of the clicked button and prevent it from being clicked again; for transition/animation purposes
     setIsClicked(true);
     setTimeout(() => {
       setIsClicked(false);
     }, duration);
-    
+
+    // Find the product from the "api" response
     const product = productResponse.wishlistProduct
     
+    // Check if the product already exists in the wishItems array
     const existingItemIndex = wishItems.findIndex((item) => 
       item.id === product.id &&
       item.selectedOption == product.selectedOption
     );
+
+    // If the product exists, update its index and update the wishItems array.
     if (existingItemIndex !== -1) {
       product.index = wishItems[existingItemIndex].index;
       const newWishItems = [...wishItems as WishlistProduct[]];
       setWishItems(newWishItems);
       localStorage.setItem('wishItems', JSON.stringify(newWishItems));
-    } else {
+    } else { // If the product doesn't exist, add it to the wishItems array and update the wishItems array.
       product.index = wishItems.length;
       const newWishItems = [...wishItems as WishlistProduct[], product];
       setWishItems(newWishItems);
@@ -59,7 +68,21 @@ const AddToWishlistButton = ({ id, option }: WishlistProps) => {
   }
 
   return (
-    <button ref={forceElementRef} onClick={() => {handleClick(100)}} className={`add-wish-btn ${isClicked ? 'active' : ''}`} style={{'--duration': '100ms'} as React.CSSProperties}>Wishlist</button>
+    <button ref={forceMenu ? forceElementRef : null} onClick={() => {handleClick(100)}} aria-label={`Add ${productResponse.wishlistProduct.name} to wishlist`} className={`${className} ${isClicked ? 'active' : ''}`} style={{'--duration': '100ms'} as React.CSSProperties}>
+      {icon &&
+        <svg
+          aria-hidden
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          width={20}
+          height={20}
+        >
+          <path fillRule="evenodd" clipRule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      }
+      Wishlist
+    </button>
   )
 }
 

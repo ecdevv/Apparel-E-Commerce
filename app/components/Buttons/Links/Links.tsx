@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import Link from 'next/link';
-import { useDropdownContext } from '@/app/utility/contexts/DropdownContext'
+import { useMenuContext } from '@/app/utility/contexts/MenuContext'
 import './Links.css'
 
 interface CustomLinkProps {
@@ -13,7 +13,7 @@ interface CustomLinkProps {
 }
 
 const CustomLink = ({children, href, NEW, productID, className}:CustomLinkProps) => {
-  const { setGlobalMenuToggle } = useDropdownContext();
+  const { setGlobalMenuToggle } = useMenuContext();
   const fixedHref = href.replace(/[ ,]+/g, '-').toLowerCase();
   const link = productID !== undefined
     ? `/store/p?${new URLSearchParams({ name: fixedHref, id: productID?.toString() || '' })}`

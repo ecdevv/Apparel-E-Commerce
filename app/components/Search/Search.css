@@ -49,7 +49,7 @@
 }
 
 /*** Mobile & Media Queries ***/
-@media (max-width: 1536px) {
+@media (max-width: 1280px) {
   .search-box {
     width: 150px;
   }

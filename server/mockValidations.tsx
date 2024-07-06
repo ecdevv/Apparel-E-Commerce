@@ -107,7 +107,7 @@ const getSelectedOption = (searchParams: URLSearchParams, product: Product): { n
    *  Find the option element in the array that is equivalent to the 'option' url param and set the name, 
    *  then validate and set the size from the 'size' url param or set the first size that has stock > 0 or set 'oos' if all sizes are stock <= 0, 
    *  then set the images for the selected option,
-   *  and finally set the ogPrice, discount, and price of the selected option 
+   *  and finally set the ogPrice, discount and price of the discount of the selected option 
   */
   const selectedOptionElement = product.options.find(option => option.name === (searchParams.get('option') as string)) || product.options[0];
   const name = selectedOptionElement.name.toLowerCase();
@@ -117,11 +117,11 @@ const getSelectedOption = (searchParams: URLSearchParams, product: Product): { n
   const discount = selectedOptionElement.discount;
 
   let price = ogPrice - (ogPrice * discount / 100);
-  if (discount != 0) {
-    price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
-  } else {
-    price = parseFloat((ogPrice).toFixed(2));
-  }
+    if (discount != 0) {
+      price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
+    } else {
+      price = parseFloat((ogPrice).toFixed(2));
+    }
   
   return {name, size, images, ogPrice, discount, price};
 }
@@ -133,17 +133,17 @@ const validateBagProduct = (id: number, option: string, size: string, quantity: 
   const inStock = currentOption.sizes.find(sizeObj => sizeObj.size.toLowerCase() === size.toLowerCase() && sizeObj.stock > 0)
   const discount = currentOption.discount;
   const ogPrice = currentOption.price;
-  
-  let price = ogPrice - (ogPrice * discount / 100);
-  if (discount != 0) {
-    price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
-  } else {
-    price = parseFloat((ogPrice).toFixed(2));
-  }
 
   if (!inStock) {
     return { inStock: false, bagProduct: {} as BagProduct };
   }
+
+  let price = ogPrice - (ogPrice * discount / 100);
+    if (discount != 0) {
+      price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
+    } else {
+      price = parseFloat((ogPrice).toFixed(2));
+    }
 
   const bagProduct: BagProduct = {
     index: 0,
@@ -168,13 +168,13 @@ const validateWishlistProduct = (id: number, option: string): { inStock: boolean
   const currentOption = product.options.find(opt => opt.name === option) as Option;
   const discount = currentOption.discount;
   const ogPrice = currentOption.price;
-  
+
   let price = ogPrice - (ogPrice * discount / 100);
-  if (discount != 0) {
-    price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
-  } else {
-    price = parseFloat((ogPrice).toFixed(2));
-  }
+    if (discount != 0) {
+      price = parseFloat((ogPrice * (1 - discount)).toFixed(2));
+    } else {
+      price = parseFloat((ogPrice).toFixed(2));
+    }
 
   const wishlistProduct: WishlistProduct = {
     index: 0,
@@ -191,4 +191,18 @@ const validateWishlistProduct = (id: number, option: string): { inStock: boolean
   return { inStock: true, wishlistProduct };
 }
 
-export { validateBag, validateWishlist, validateProduct, getSelectedOption, validateBagProduct, validateWishlistProduct };
+const calculateCosts = (bagItems: BagProduct[]): {subTotal: number, totalDiscount: number, total: number, taxAmount: number, shippingCost: number, grandTotal: number} => {
+  // Get the tax rate and shipping somehow in this backend (get user shipping location?)
+  const taxRate = 0.0825;
+  const subTotal = bagItems.reduce((acc, item) => acc + item.ogPrice * item.selectedQuantity, 0);
+  const totalDiscount = bagItems.reduce((acc, item) => acc + (item.ogPrice - item.price)  * item.selectedQuantity, 0);
+  const total = bagItems.reduce((acc, item) => acc + item.price * item.selectedQuantity, 0);
+  const taxAmount = total * taxRate;
+  const shippingCost = 0.00;
+  const grandTotal = (total + taxAmount + shippingCost);
+
+  return { subTotal: subTotal, totalDiscount: totalDiscount, total: total, taxAmount: taxAmount, shippingCost: shippingCost, grandTotal: grandTotal };
+}
+
+export { validateBag, validateWishlist, validateProduct, getSelectedOption, validateBagProduct, validateWishlistProduct, calculateCosts };
+

@@ -2,6 +2,7 @@ import React from "react"
 import './Rating.css'
 
 const Rating = ({ rating, reviewCount }: { rating: number, reviewCount: number }) => {
+  // Wholestars is the number of whole stars in the rating (0-5); fraction is the decimal part of the rating (0-1)
   const wholeStars = Math.floor(rating);
   const fraction = rating % 1;
 

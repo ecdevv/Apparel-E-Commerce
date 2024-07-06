@@ -5,11 +5,10 @@ import { DropdownItem } from '@/app/utility/types';
 
 interface DropdownMenuProps  {
   items: DropdownItem[];
-  globalMenuToggle?: boolean;
   menuToggle: boolean;
-  setTransitionState: (value: boolean) => void;
   orientation: string;
   showPointer: boolean;
+  setTransitionState: (value: boolean) => void;
 }
 
 const MenuCard = ({items}: {items: DropdownItem[]}) => {
@@ -31,9 +30,10 @@ const MenuCard = ({items}: {items: DropdownItem[]}) => {
   )
 }
 
-const DropdownMenu = ({items, globalMenuToggle, menuToggle, setTransitionState, orientation, showPointer} : DropdownMenuProps) => {
+const DropdownMenu = ({items, menuToggle, orientation, showPointer, setTransitionState } : DropdownMenuProps) => {
   const [timeoutDuration, setTimeoutDuration] = useState(0);
 
+  // Just a simple useEffect to set the timeoutDuration based on the orientation to my liking
   useEffect(() => {
     if (orientation === 'mega') {
       setTimeoutDuration(300)
@@ -46,10 +46,10 @@ const DropdownMenu = ({items, globalMenuToggle, menuToggle, setTransitionState, 
     <>
       {/* Dropdown Menu ----- Get's transitioned whenever the menuToggle variable changes/toggled */}
       <CSSTransition
-        in={globalMenuToggle !== undefined ? globalMenuToggle && menuToggle : menuToggle}
+        in={menuToggle}
         timeout={timeoutDuration}
         classNames='menu'
-        onEnter={() => setTransitionState(false)}
+        onEnter={() => setTransitionState(true)}
         onExit={() => setTransitionState(true)}
         onExited={() => setTransitionState(false)}
         unmountOnExit

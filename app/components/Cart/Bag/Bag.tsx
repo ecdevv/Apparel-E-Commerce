@@ -3,11 +3,13 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
+import { CustomLink } from '../../Buttons/Links/Links';
 import DropdownButton from '../../Buttons/Dropdown/DropdownButton';
 import NumberStepper from '../../Input/NumberStepper/NumberStepper';
 import { DropdownItem, BagProduct } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import { useBagContext } from '@/app/utility/contexts/BagContext';
+import { calculateCosts } from '@/server/mockValidations';
 import '../Cart.css'
 
 const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: BagProduct[] | []; setBagItems: React.Dispatch<React.SetStateAction<BagProduct[] | []>>}) => {
@@ -26,6 +28,7 @@ const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Bag
     localStorage.setItem('bagItems', JSON.stringify(newBagItems));
   }
 
+  // This function updates the quantity of the item in the bagItems array.
   const handleQuantityStepper = (value: number) => {
     const newBagItems = [...bagItems as BagProduct[]];
     const itemIndex = newBagItems.indexOf(item);
@@ -36,7 +39,7 @@ const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Bag
 
   return (
     <div id={item.index.toString()} className='cart-card'>
-      <Link 
+      <CustomLink 
         href={`/store/p?${new URLSearchParams({
           name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
           id: item.id.toString() || '', 
@@ -52,11 +55,11 @@ const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Bag
           sizes="(100vw)"
           className='cart-image'
         />
-      </Link>
+      </CustomLink>
       <div className='cart-info-container'>
         {item.discount > 0 && <div className='cart-info'><div className='cart-discount-badge'>{(item.discount * 100).toFixed(0)}% OFF</div></div> }
         <div className='cart-info'>
-          <Link 
+          <CustomLink 
             href={`/store/p?${new URLSearchParams({
               name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
               id: item.id.toString() || '', 
@@ -66,7 +69,7 @@ const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Bag
             className='cart-image-wrapper'
           >
             <h2>{item.name}</h2>
-          </Link>
+          </CustomLink>
         </div>
         <div className='cart-info'>
           <h3>{capitalizeFirstLetter(item.optionType)}: {capitalizeFirstLetter(item.selectedOption)}</h3>
@@ -78,15 +81,15 @@ const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Bag
           {item.discount <= 0 
             ? <div className='cart-price-wrapper'>
                <h4 className='cart-price'>
-                  <span className='dollar-sign'>$</span>{item.price}
+                  <span className='dollar-sign'>$</span>{(item.price * Math.max(1, item.selectedQuantity)).toFixed(2)}
                 </h4> 
               </div>
             : <div className='cart-price-wrapper'>
                 <h4 className='cart-price-strike'>
-                  <span className='dollar-sign'>$</span>{item.ogPrice}
+                  <span className='dollar-sign'>$</span>{(item.ogPrice * Math.max(1, item.selectedQuantity)).toFixed(2)}
                 </h4>
                 <h4 className='cart-price-discounted'>
-                  <span className='dollar-sign'>$</span>{item.price}
+                  <span className='dollar-sign'>$</span>{(item.price * Math.max(1, item.selectedQuantity)).toFixed(2)}
                 </h4>
               </div>
           }
@@ -113,7 +116,7 @@ const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Bag
 }
 
 const BagItemList = ({bagItems, setBagItems}: {bagItems: BagProduct[] | []; setBagItems: React.Dispatch<React.SetStateAction<BagProduct[] | []>>}) => {
-  const {scrollableRef} = useBagContext();
+  const { scrollableRef } = useBagContext();
 
   // Check if the "bagItems" array is empty or undefined.
   if (!bagItems || bagItems.length === 0) {
@@ -131,24 +134,25 @@ const BagItemList = ({bagItems, setBagItems}: {bagItems: BagProduct[] | []; setB
 }
 
 const Bag = () => {
-  const {bagItems, setBagItems, forceElementRef} = useBagContext();
+  const {bagItems, setBagItems, forceOpen, forceElementRef} = useBagContext();
+  const calculateCostsResponse = calculateCosts(bagItems);
+  const roundedTotal = calculateCostsResponse.total.toFixed(2);
   const totalQuantity = bagItems.some(item => item.selectedQuantity === 0)
     ? '!'
     : bagItems.reduce((acc, item) => acc + item.selectedQuantity, 0);
-  const subTotal = bagItems.reduce((acc, item) => acc + Number((item.price * item.selectedQuantity).toFixed(2)), 0.00).toFixed(2);
 
   // This is an array of DropdownItem objects (the content of the dropdown) that will be passed to the DropdownButton component.
   const items: DropdownItem[] = [
-    { name: 'Shopping Bag', type: 'component', component: <div className='cart-header'><h2>Your Bag</h2><h3>Subtotal: <span className='dollar-sign'>$</span>{subTotal}</h3></div> },
+    { name: 'Shopping Bag', type: 'component', component: <div className='cart-header'><h2>Your Bag</h2><h3>Total: <span className='dollar-sign'>$</span>{roundedTotal}</h3></div> },
     { name: 'Bag Items', type: 'component', component: <BagItemList bagItems={bagItems} setBagItems={setBagItems}/> },
-    { name: 'View Bag', type: 'component', component: <Link href='/bag' className='cart-dropdown-btn'>View Bag</Link> },
-    { name: 'Checkout', type: 'component', component: <Link href='/checkout' className='cart-dropdown-btn'>Checkout</Link> },
+    { name: 'View Bag', type: 'component', component: <CustomLink href='/cart' className='cart-dropdown-btn'>View Bag</CustomLink> },
+    { name: 'Checkout', type: 'component', component: <CustomLink href='/checkout' className='cart-dropdown-btn'>Checkout</CustomLink> },
     // { name: 'Log', type: 'component', component: <button onClick={() => console.log(bagItems)}>Log</button>}
   ]
 
   return (
     <>
-      <DropdownButton label={'Bag'} forceRef={forceElementRef} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['cart-btn', 'cart-btn-focus']}>
+      <DropdownButton label={'Bag'} forceOpen={forceOpen} forceRef={forceElementRef} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['cart-btn', 'cart-btn-focus']}>
         <span className='cart-icon-wrapper'>
           <svg
             aria-hidden
@@ -167,10 +171,10 @@ const Bag = () => {
             <span className='cart-badge'>{totalQuantity !== '!' && totalQuantity > 99 ? '99+' : totalQuantity}</span>
           </CSSTransition>
         </span>
-        <h2 className='cart-dropdown-header'>Bag</h2>
+        <h2>Bag</h2>
       </DropdownButton>
 
-      <Link href='/bag' aria-label='View Bag' className='cart-btn-mobile'>
+      <Link href='/cart' aria-label='View Bag' className='cart-btn-mobile'>
         <svg
           aria-hidden
           viewBox="0 0 32 32"

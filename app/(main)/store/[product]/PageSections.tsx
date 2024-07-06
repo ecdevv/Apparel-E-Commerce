@@ -104,7 +104,7 @@ const ProductDetails = () => {
               </div>
             : <div className='product-price-wrapper'>
                 <h2 className='product-price-strike'>
-                  <span className='dollar-sign'>$</span>{ogPrice}
+                  <span className='dollar-sign'>$</span>{ogPrice.toFixed(2)}
                 </h2>
                 <h2 className='product-price-discounted'>
                   <span className='dollar-sign'>$</span>{price}

@@ -64,6 +64,16 @@
 }
 
 /*** Mobile & Media Queries ***/
+@media (max-width: 1536px) {
+  .dropdown-wrapper {
+    display: none;
+  }
+
+  .nohover {
+    display: none;
+  }
+}
+
 @media (max-width: 1024px) {
   .dropdown-display {
     display: none;

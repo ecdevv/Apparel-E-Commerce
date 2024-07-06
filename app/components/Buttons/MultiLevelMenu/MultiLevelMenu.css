@@ -1,9 +1,14 @@
 /****************** MuliLevelMenu Button ******************/
+.absolute {
+  position: absolute;
+}
+
 .multi-button {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.75rem 0;
 }
 
 .multi-sub {
@@ -11,20 +16,38 @@
 }
 
 /*** CSSTransition ***/
-.multi-menu-enter {
+.slide-in-enter {
   transform: translateX(340px);
 }
 
-.multi-menu-enter-active {
+.slide-in-enter-active {
   transform: translateX(0px);
   transition: transform 300ms ease-in-out;
 }
 
-.multi-menu-exit {
+.slide-in-exit {
+  opacity: 1;
+}
+
+.slide-in-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.slide-out-enter {
+  opacity: 0;
+}
+
+.slide-out-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.slide-out-exit {
   transform: translateX(0px);
 }
 
-.multi-menu-exit-active {
-  transform: translateX(-340px);
+.slide-out-exit-active {
+  transform: translateX(340px);
   transition: transform 300ms ease-in-out;
 }

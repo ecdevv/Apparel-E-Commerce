@@ -81,3 +81,16 @@
   object-fit: contain;
   object-position: center;
 }
+
+/*** Mobile & Media Queries ***/
+@media (max-width: 1770px) {
+  .mega-menu-container {
+    max-width: 65vw;
+  }
+}
+
+@media (max-width: 1536px) {
+  .mega-menu-container {
+    max-width: 100vw;
+  }
+}

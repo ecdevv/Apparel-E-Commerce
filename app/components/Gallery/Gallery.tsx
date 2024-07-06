@@ -8,19 +8,19 @@ interface GalleryProps {
 
 const Gallery = ({ Images }: GalleryProps) => {
   return (
-      <div className='gallery'>
-        {Images.map((image, index) => (
-          <div key={index} className="gallery-image-wrapper">
-            <Image
-              src={image}
-              alt={image + ' ' + index}
-              fill
-              sizes='(100vw, 100vh)'
-              className="gallery-image"
-            />
-          </div>
-        ))}
-      </div>
+    <div className='gallery'>
+      {Images.map((image, index) => (
+        <div key={index} className="gallery-image-wrapper">
+          <Image
+            src={image}
+            alt={image + ' ' + index}
+            fill
+            sizes='(100vw, 100vh)'
+            className="gallery-image"
+          />
+        </div>
+      ))}
+    </div>
   )
 }
 

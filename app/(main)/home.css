@@ -7,7 +7,6 @@
 .carousel-container {
   aspect-ratio: 2.25/1;
   width: 100%;
-  /* height: 52rem; */
   position: relative;
   animation: fade-in-up 500ms 200ms backwards;
   overflow: hidden;
@@ -91,6 +90,10 @@
   display: block;
 }
 
+.mobile-md {
+  display: none;
+}
+
 .mobile {
   display: none;
 }
@@ -100,12 +103,17 @@
     display: none;
   }
 
-  .mobile {
+  .mobile-md {
     display: block;
+  }
+
+  .mobile {
+    display: none;
   }
 
   .carousel-container {
     height: calc(100dvh - 104px);
+    min-height: 500px;
   }
 }
 
@@ -114,11 +122,16 @@
     display: none;
   }
 
+  .mobile-md {
+    display: none;
+  }
+
   .mobile {
     display: block;
   }
 
   .carousel-container {
-    height: calc(100dvh - 65px);
+    height: calc(100dvh - 66px);
+    min-height: 500px;
   }
 }

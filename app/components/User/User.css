@@ -25,21 +25,17 @@
   display: none;
 }
 
-.user-dropdown-header {
-  display: block;
-}
-
 @media (max-width: 1536px) {
-  .user-dropdown-header {
+  .user-btn, .user-btn-focus {
     display: none;
   }
-}
 
-@media (max-width: 1024px) {
   .user-btn-mobile{
     display: block;
+    position: relative;
   }
 }
+
 
 /****************** Dropdown Content ******************/
 .user-dropdown-btn {

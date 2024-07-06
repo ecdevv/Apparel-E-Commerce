@@ -17,7 +17,7 @@
 }
 
 .navbar-header, .navbar-header-logo {
-  width: 97.5%;
+  width: 90%;
   margin: auto;
   display: flex;
   justify-content: space-around;
@@ -119,13 +119,16 @@
 /*** Mobile & Media Queries ***/
 @media (max-width: 1536px) {
   .navbar-header {
-    width: 94%;
     justify-content: space-between;
   }
 
   .navbar-icons-container-wrapper, .navbar-theme-icons-container {
     min-width: 333px;
     gap: 1rem;
+  }
+
+  .navbar-icons-container {
+    gap: 1.5rem;
   }
 }
 

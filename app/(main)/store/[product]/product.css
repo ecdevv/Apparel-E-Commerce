@@ -256,3 +256,14 @@
   opacity: 0;
   transition: opacity 200ms ease-in-out;
 }
+
+/*** Scrollbar ***/
+@supports selector(::-webkit-scrollbar) {
+  .product-gallery-container::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .product-gallery-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}

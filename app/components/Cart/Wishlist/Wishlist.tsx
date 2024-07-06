@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
+import { CustomLink } from '../../Buttons/Links/Links';
 import DropdownButton from '../../Buttons/Dropdown/DropdownButton';
 import { DropdownItem, WishlistProduct } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
@@ -27,7 +28,7 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
 
   return (
     <div id={item.index.toString()} className='cart-card wish'>
-      <Link 
+      <CustomLink 
         href={`/store/p?${new URLSearchParams({
           name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
           id: item.id.toString() || '', 
@@ -42,11 +43,11 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
           sizes="(100vw)"
           className='cart-image'
         />
-      </Link>
+      </CustomLink>
       <div className='cart-info-container'>
         {item.discount > 0 && <div className='cart-info'><div className='cart-discount-badge'>{(item.discount * 100).toFixed(0)}% OFF</div></div> }
         <div className='cart-info'>
-          <Link 
+          <CustomLink 
             href={`/store/p?${new URLSearchParams({
               name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
               id: item.id.toString() || '', 
@@ -55,7 +56,7 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
             className='cart-image-wrapper'
           >
             <h2>{item.name}</h2>
-          </Link>
+          </CustomLink>
         </div>
         <div className='cart-info'>
           <h3>{capitalizeFirstLetter(item.optionType)}: {capitalizeFirstLetter(item.selectedOption)}</h3>
@@ -69,7 +70,7 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
               </div>
             : <div className='cart-price-wrapper'>
                 <h4 className='cart-price-strike'>
-                  <span className='dollar-sign'>$</span>{item.ogPrice}
+                  <span className='dollar-sign'>$</span>{item.ogPrice.toFixed(2)}
                 </h4>
                 <h4 className='cart-price-discounted'>
                   <span className='dollar-sign'>$</span>{item.price}
@@ -83,10 +84,11 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
           aria-hidden
           viewBox="0 0 25 25" 
           fill="currentColor"
+          stroke="currentColor"
           width={25}
           height={25}
         > 
-          <path d="M18 7L7 18M7 7L18 18" stroke="#121923" strokeWidth="1.2" />
+          <path d="M18 7L7 18M7 7L18 18" strokeWidth="1.2" />
         </svg>
       </button>
     </div>
@@ -94,7 +96,7 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
 }
 
 const WishlistItemList = ({wishItems, setWishItems}: {wishItems: WishlistProduct[] | []; setWishItems: React.Dispatch<React.SetStateAction<WishlistProduct[] | []>>}) => {
-  const {scrollableRef} = useWishlistContext();
+  const { scrollableRef } = useWishlistContext();
 
   // Check if the "wishItems" array is empty or undefined.
   if (!wishItems || wishItems.length === 0) {
@@ -112,28 +114,29 @@ const WishlistItemList = ({wishItems, setWishItems}: {wishItems: WishlistProduct
 }
 
 const Wishlist = () => {
-  const {wishItems, setWishItems, forceElementRef} = useWishlistContext();
+  const {wishItems, setWishItems, forceOpen, forceElementRef} = useWishlistContext();
   const totalItems = wishItems.length;
 
   // This is an array of DropdownItem objects (the content of the dropdown) that will be passed to the DropdownButton component.
   const items: DropdownItem[] = [
     { name: 'Wishlist', type: 'component', component: <div className='cart-header'><h2>Your Wishlist</h2></div> },
     { name: 'Wish Items', type: 'component', component: <WishlistItemList wishItems={wishItems} setWishItems={setWishItems}/> },
-    { name: 'View Wishlist', type: 'component', component: <Link href='/wishlist' className='cart-dropdown-btn'>View Wishlist</Link> },
+    { name: 'View Wishlist', type: 'component', component: <CustomLink href='/wishlist' className='cart-dropdown-btn'>View Wishlist</CustomLink> },
     // { name: 'Log', type: 'component', component: <button onClick={() => console.log(wishItems)}>Log</button>}
   ]
 
   return (
     <>
-      <DropdownButton label={'Wishlist'} forceRef={forceElementRef} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['wish-btn', 'cart-btn-focus']}>
+      <DropdownButton label={'Wishlist'} forceOpen={forceOpen} forceRef={forceElementRef} items={items} hover={false} orientation={'left'} showPointer={true} classNames={['wish-btn', 'cart-btn-focus']}>
         <span className='cart-icon-wrapper'>
           <svg
             aria-hidden
             viewBox="0 0 24 24"
             fill="none"
+            stroke="currentColor"
             className='cart-icon'
           >
-            <path fillRule="evenodd" clipRule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path fillRule="evenodd" clipRule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           <CSSTransition
             in={totalItems > 0}
@@ -144,7 +147,7 @@ const Wishlist = () => {
             <span className='cart-badge'>{totalItems}</span>
           </CSSTransition>
         </span>
-        <h2 className='cart-dropdown-header'>Wishlist</h2>
+        <h2>Wishlist</h2>
       </DropdownButton>
   
       <Link href='/wishlist' aria-label='View Wishlist' className='cart-btn-mobile'>
@@ -152,9 +155,10 @@ const Wishlist = () => {
           aria-hidden
           viewBox="0 0 24 24"
           fill="none"
+          stroke="currentColor"
           className='cart-icon'
         >
-          <path fillRule="evenodd" clipRule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path fillRule="evenodd" clipRule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         <CSSTransition
           in={totalItems > 0}

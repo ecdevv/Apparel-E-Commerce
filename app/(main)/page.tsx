@@ -13,6 +13,7 @@ export default function Home() {
     <div className='home'>
       <section className="carousel-container">
         <div className='desktop'><Carousel Images={Images} Width={75} BorderWidth={0.25} ShowNavArrows={true} ShowDotBtns={true} /></div>
+        <div className='mobile-md'><Carousel Images={Images} Width={100} BorderWidth={0} ShowNavArrows={false} ShowDotBtns={true} /></div>
         <div className='mobile'><Carousel Images={Images} Width={100} BorderWidth={0} ShowNavArrows={false} ShowDotBtns={true} dotSmall={true} /></div>
         {/* <div className='slide-content'>
           <h1 className='slide-h1' data-text="NEW SUMMER COLLECTION">NEW SUMMER COLLECTION</h1>

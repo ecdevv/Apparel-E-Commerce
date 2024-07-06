@@ -16,8 +16,10 @@ const AccordionMenu = ({ title, content }: AccordionMenuProps) => {
     setIsOpen(false);
     if (contentRef.current) {
       const updateHeight = () => {
-        if (contentRef.current) {const { height } = contentRef.current.getBoundingClientRect();
-        setContentHeight(height);}
+        if (contentRef.current) {
+          const { height } = contentRef.current.getBoundingClientRect();
+          setContentHeight(height);
+        }
       };
 
       updateHeight();
@@ -32,6 +34,7 @@ const AccordionMenu = ({ title, content }: AccordionMenuProps) => {
     }
   }, [content]);
 
+  // Toggle the menu; also checks for keyboard event "Enter" or "Space" to toggle the menu when focused and ignore "Tab"
   const toggleMenu = (event: React.KeyboardEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>) => {
     // Check if the event is a keyboard event
     if ('key' in event) {

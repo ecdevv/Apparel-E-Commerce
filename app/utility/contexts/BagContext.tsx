@@ -10,17 +10,24 @@ type ContextProviderProps = {
 type BagContext = {
   bagItems: BagProduct[] | [];
   setBagItems: React.Dispatch<React.SetStateAction<BagProduct[] | []>>;
-  scrollableRef: React.RefObject<HTMLDivElement>;
+  forceOpen: boolean;
+  setForceOpen: React.Dispatch<React.SetStateAction<boolean>>;
   forceElementRef: React.RefObject<HTMLButtonElement>;
+  scrollableRef: React.RefObject<HTMLDivElement>;
 }
 
 const BagContext = createContext<BagContext | null>(null);
 
+// The bagItems states are used to store the items in the bag, 
+// the scrollableRef is used to scroll to the element in the bag, 
+// and the forceElementRef is used to force the bag menu to open when a button (AddToBag) is clicked.
 export function BagProvider({children}:ContextProviderProps) {
   const [bagItems, setBagItems] = useState<BagProduct[] | []>([]);
-  const scrollableRef = useRef<HTMLDivElement>(null);
+  const [forceOpen, setForceOpen] = useState(false);
   const forceElementRef = useRef<HTMLButtonElement>(null);
+  const scrollableRef = useRef<HTMLDivElement>(null);
 
+  // Set the bagItems from localStorage
   useEffect(() => {
     const savedBagItems = JSON.parse(localStorage.getItem('bagItems') || '[]') as BagProduct[];
     const validBagItems = validateBag(savedBagItems);
@@ -28,8 +35,15 @@ export function BagProvider({children}:ContextProviderProps) {
     localStorage.setItem('bagItems', JSON.stringify(validBagItems));
   }, []);
 
+  // Reset the forceOpen state after it is used
+  useEffect(() => {
+    if (forceOpen) {
+      setForceOpen(false);
+    }
+  }, [forceOpen]);
+
   return (
-    <BagContext.Provider value={{bagItems, setBagItems, scrollableRef, forceElementRef}}>
+    <BagContext.Provider value={{bagItems, setBagItems, forceElementRef, forceOpen, setForceOpen, scrollableRef }}>
       {children}
     </BagContext.Provider>
   )

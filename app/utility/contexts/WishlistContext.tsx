@@ -10,17 +10,24 @@ type ContextProviderProps = {
 type WishlistContext = {
   wishItems: WishlistProduct[] | [];
   setWishItems: React.Dispatch<React.SetStateAction<WishlistProduct[] | []>>;
-  scrollableRef: React.RefObject<HTMLDivElement>;
+  forceOpen: boolean;
+  setForceOpen: React.Dispatch<React.SetStateAction<boolean>>;
   forceElementRef: React.RefObject<HTMLButtonElement>;
+  scrollableRef: React.RefObject<HTMLDivElement>;
 }
 
 const WishlistContext = createContext<WishlistContext | null>(null);
 
+// The wishlistItems states are used to store the items in the wishlist, 
+// the scrollableRef is used to scroll to the element in the wishlist, 
+// and the forceElementRef is used to force the wishlist menu to open when a button (AddToWishlist) is clicked.
 export function WishlistProvider({children}:ContextProviderProps) {
   const [wishItems, setWishItems] = useState<WishlistProduct[] | []>([]);
-  const scrollableRef = useRef<HTMLDivElement>(null);
+  const [forceOpen, setForceOpen] = useState(false);
   const forceElementRef = useRef<HTMLButtonElement>(null);
+  const scrollableRef = useRef<HTMLDivElement>(null);
 
+  // Set the wishlistItems from localStorage
   useEffect(() => {
     const savedWishItems = JSON.parse(localStorage.getItem('wishItems') || '[]') as WishlistProduct[];
     const validWishItems = validateWishlist(savedWishItems);
@@ -28,8 +35,15 @@ export function WishlistProvider({children}:ContextProviderProps) {
     localStorage.setItem('wishItems', JSON.stringify(validWishItems));
   }, []);
 
+  // Reset the forceOpen state after it is used
+  useEffect(() => {
+    if (forceOpen) {
+      setForceOpen(false);
+    }
+  }, [forceOpen]);
+
   return (
-    <WishlistContext.Provider value={{wishItems, setWishItems, scrollableRef, forceElementRef}}>
+    <WishlistContext.Provider value={{wishItems, setWishItems, forceOpen, setForceOpen, forceElementRef, scrollableRef }}>
       {children}
     </WishlistContext.Provider>
   )

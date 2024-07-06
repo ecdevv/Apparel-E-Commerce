@@ -70,12 +70,6 @@
   scrollbar-gutter: stable;
 }
 
-@supports selector(::-webkit-scrollbar) {
-  .cart-container::-webkit-scrollbar {
-    width: 4px;
-  }
-}
-
 .cart-container > *:not(:last-child) {
   margin-bottom: 1.5rem; 
 }
@@ -202,17 +196,11 @@
   display: none;
 }
 
-.cart-dropdown-header {
-  display: block;
-}
-
 @media (max-width: 1536px) {
-  .cart-dropdown-header {
+  .cart-btn, .cart-btn-focus, .wish-btn {
     display: none;
   }
-}
 
-@media (max-width: 1024px) {
   .cart-btn-mobile {
     position: relative;
     display: block;
@@ -269,4 +257,15 @@
 .badge-exit-active {
   opacity: 0;
   animation: fade-out-up 300ms;
+}
+
+/*** Scrollbar ***/
+@supports selector(::-webkit-scrollbar) {
+  .cart-container::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .cart-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
 }

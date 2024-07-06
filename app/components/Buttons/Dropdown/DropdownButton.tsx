@@ -3,11 +3,12 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Dropdown from './DropdownMenu'
 import { DropdownItem } from '@/app/utility/types'
-import { useDropdownContext } from '@/app/utility/contexts/DropdownContext'
+import { useMenuContext } from '@/app/utility/contexts/MenuContext'
 import './Dropdown.css'
 
 interface DropdownButtonProps  {
   children?: React.ReactNode;
+  forceOpen?: boolean;
   forceRef?: React.RefObject<HTMLButtonElement>;
   label?: string;
   items: DropdownItem[];
@@ -17,9 +18,9 @@ interface DropdownButtonProps  {
   classNames: string[];
 }
 
-// Navigation section with the links of this navbar component
-const DropdownButton = ({children, forceRef, label, items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
-  const { globalMenuToggle, setGlobalMenuToggle } = useDropdownContext();
+// Navigation section with the links of this navbar component (globalMenu used to toggle all menus forcefully by other means)
+const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
+  const { globalMenuToggle, setGlobalMenuToggle } = useMenuContext();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -58,65 +59,62 @@ const DropdownButton = ({children, forceRef, label, items, hover, orientation, s
     };
   }, []);
 
-  const onHover = () => {
-    if (!isTransitioning) {setMenuToggle(true); setGlobalMenuToggle(true);}
-  }
+  // If the forceOpen value changes, open the menu
+  useEffect(() => {
+    if (forceOpen) {setMenuToggle(true);}
+  }, [forceOpen])
 
-  const onUnhover = () => {
-    setMenuToggle(false);
-    setGlobalMenuToggle(false);
-  }
+  // Force close the menu if the globalMenuToggle gets set to false from elsewhere
+  useEffect(() => {
+    if (globalMenuToggle === false) {setMenuToggle(false);}
+  }, [globalMenuToggle])
 
-  const onHoverLinkOnly = () => {
-    setMenuToggle(true);
-    setGlobalMenuToggle(true);
-  }
-
-  // Handle toggling the menu on icon clicked
-  const handleClick = () => {
-    setMenuToggle(!menuToggle);
-  }
-
+  // Set transition state from the DropdownMenu based on the animation's duration/unmounting
   const setTransitionState = (value : boolean) => {
     setIsTransitioning(value);
   }
 
+  // Handle toggling the menu on hover (can only be triggered when not transitioning to prevent repetitive toggles; globalMenuToggle needs to be set true to be set false from elsewhere)
+  const onHover = () => {
+    if (!isTransitioning) {setMenuToggle(true); setGlobalMenuToggle(true);}
+  }
+
+  // Handle toggling the menu on unhover
+  const onUnhover = () => {
+    setMenuToggle(false);
+  }
+
+  // Handle toggling the menu on icon clicked (globalMenuToggle always true until set false from elsewhere)
+  const handleClick = () => {
+    setMenuToggle(!menuToggle);
+    setGlobalMenuToggle(true);
+  }
+
   return (
-    <div ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined} className='dropdown-display'>
+    <>
       {hover 
-      ? <>
+      ? <div ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined} className='dropdown-display hover'>
           <Link href = {`/${label?.toLowerCase()}`} aria-label={`${label}`}
-            onMouseEnter={onHoverLinkOnly}
-            className={`${menuToggle && globalMenuToggle
+            className={`${menuToggle
             ? classNames[1] ? classNames[1] : classNames[0] 
             : classNames[0]}`}
           >
             {children}
           </Link> 
-          <Dropdown items={items} globalMenuToggle={globalMenuToggle} menuToggle={menuToggle} setTransitionState={setTransitionState} orientation={orientation} showPointer={showPointer}/>
-        </>
-      : <>
+          <Dropdown items={items} menuToggle={menuToggle} orientation={orientation} showPointer={showPointer} setTransitionState={setTransitionState} />
+        </div>
+      : <div ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined} className='dropdown-display nohover'>
           <button onClick={handleClick} aria-label={`${label}`}
             className={`${menuToggle
             ? classNames[1] ? classNames[1] : classNames[0] 
             : classNames[0]}`}
           >
             {children}
-            {/* <svg 
-              aria-hidden
-              fill="currentColor" 
-              viewBox="0 0 24 24" 
-              height="1em" 
-              width="1em"
-              className={`${menuToggle ? 'dropdown-chevron-rotated' : 'dropdown-chevron'}`}
-            >
-              <path d="M6.343 7.757L4.93 9.172 12 16.242l7.071-7.07-1.414-1.415L12 13.414 6.343 7.757z" />
-            </svg> */}
           </button>
-          <Dropdown items={items} menuToggle={menuToggle} setTransitionState={setTransitionState} orientation={orientation} showPointer={showPointer}/>
-        </>
+          <Dropdown items={items} menuToggle={menuToggle} orientation={orientation} showPointer={showPointer} setTransitionState={setTransitionState} />
+        </div>
       }
-    </div>
+    </>
   )
 }
 
