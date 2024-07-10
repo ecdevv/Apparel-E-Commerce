@@ -8,6 +8,7 @@ type ContextProviderProps = {
 }
 
 type BagContext = {
+  isLoading: boolean;
   bagItems: BagProduct[] | [];
   setBagItems: React.Dispatch<React.SetStateAction<BagProduct[] | []>>;
   forceOpen: boolean;
@@ -22,6 +23,7 @@ const BagContext = createContext<BagContext | null>(null);
 // the scrollableRef is used to scroll to the element in the bag, 
 // and the forceElementRef is used to force the bag menu to open when a button (AddToBag) is clicked.
 export function BagProvider({children}:ContextProviderProps) {
+  const [isLoading, setIsLoading] = useState(true);
   const [bagItems, setBagItems] = useState<BagProduct[] | []>([]);
   const [forceOpen, setForceOpen] = useState(false);
   const forceElementRef = useRef<HTMLButtonElement>(null);
@@ -33,6 +35,7 @@ export function BagProvider({children}:ContextProviderProps) {
     const validBagItems = validateBag(savedBagItems);
     setBagItems(validBagItems);
     localStorage.setItem('bagItems', JSON.stringify(validBagItems));
+    setIsLoading(false);
   }, []);
 
   // Reset the forceOpen state after it is used
@@ -43,7 +46,7 @@ export function BagProvider({children}:ContextProviderProps) {
   }, [forceOpen]);
 
   return (
-    <BagContext.Provider value={{bagItems, setBagItems, forceElementRef, forceOpen, setForceOpen, scrollableRef }}>
+    <BagContext.Provider value={{isLoading, bagItems, setBagItems, forceElementRef, forceOpen, setForceOpen, scrollableRef }}>
       {children}
     </BagContext.Provider>
   )

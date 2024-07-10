@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
-import { CustomLink } from '../Buttons/Links/Links';
+import { CustomLink } from '../Buttons/General/General';
 import { CSSTransition } from 'react-transition-group';
 import MultiLevelMenu from '../Buttons/MultiLevelMenu/MultiLevelMenu';
 import { useMenuContext } from '@/app/utility/contexts/MenuContext';

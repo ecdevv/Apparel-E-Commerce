@@ -61,7 +61,7 @@ const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, ori
 
   // If the forceOpen value changes, open the menu
   useEffect(() => {
-    if (forceOpen) {setMenuToggle(true);}
+    if (forceOpen) {setMenuToggle(true); setGlobalMenuToggle(true);}
   }, [forceOpen])
 
   // Force close the menu if the globalMenuToggle gets set to false from elsewhere

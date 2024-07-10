@@ -191,18 +191,17 @@ const validateWishlistProduct = (id: number, option: string): { inStock: boolean
   return { inStock: true, wishlistProduct };
 }
 
-const calculateCosts = (bagItems: BagProduct[]): {subTotal: number, totalDiscount: number, total: number, taxAmount: number, shippingCost: number, grandTotal: number} => {
+const calculateCosts = (bagItems: BagProduct[]): {subTotal: number, totalDiscount: number, total: number, taxCost: number, shippingCost: number, grandTotal: number} => {
   // Get the tax rate and shipping somehow in this backend (get user shipping location?)
   const taxRate = 0.0825;
-  const subTotal = bagItems.reduce((acc, item) => acc + item.ogPrice * item.selectedQuantity, 0);
-  const totalDiscount = bagItems.reduce((acc, item) => acc + (item.ogPrice - item.price)  * item.selectedQuantity, 0);
-  const total = bagItems.reduce((acc, item) => acc + item.price * item.selectedQuantity, 0);
-  const taxAmount = total * taxRate;
-  const shippingCost = 0.00;
-  const grandTotal = (total + taxAmount + shippingCost);
+  const subTotal = parseFloat((bagItems.reduce((acc, item) => acc + item.ogPrice * item.selectedQuantity, 0)).toFixed(2));
+  const totalDiscount = parseFloat((bagItems.reduce((acc, item) => acc + (item.ogPrice - item.price)  * item.selectedQuantity, 0)).toFixed(2));
+  const total = parseFloat((bagItems.reduce((acc, item) => acc + item.price * item.selectedQuantity, 0)).toFixed(2));
+  const taxCost = parseFloat((total * taxRate).toFixed(2));
+  const shippingCost = parseFloat((0.00).toFixed(2));
+  const grandTotal = parseFloat((total + taxCost + shippingCost).toFixed(2));
 
-  return { subTotal: subTotal, totalDiscount: totalDiscount, total: total, taxAmount: taxAmount, shippingCost: shippingCost, grandTotal: grandTotal };
+  return { subTotal: subTotal, totalDiscount: totalDiscount, total: total, taxCost: taxCost, shippingCost: shippingCost, grandTotal: grandTotal };
 }
 
 export { validateBag, validateWishlist, validateProduct, getSelectedOption, validateBagProduct, validateWishlistProduct, calculateCosts };
-

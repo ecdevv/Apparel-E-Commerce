@@ -3,7 +3,7 @@
 /* DropdownButton Types */
 export interface DropdownItem {
   name: string;
-  type: 'component' | 'button' | 'link';
+  type: 'component';
   component?: React.ReactElement;
   svg?: React.ReactElement;
 }

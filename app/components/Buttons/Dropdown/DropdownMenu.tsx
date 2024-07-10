@@ -18,12 +18,7 @@ const MenuCard = ({items}: {items: DropdownItem[]}) => {
         <React.Fragment key={index}>
           {item.type === 'component'
           ? item.component
-          : item.type === 'button' || item.type === 'link' 
-            ? <Link href={`/${item.name.split(/[ ,]+/).join('').toLowerCase()}`} aria-label={`${item.name}`} className={`${item.type === 'button' ? 'dropdown-btn' : 'dropdown-link'}`}>
-                {item.svg && item.svg}
-                {`${item.name}`}
-              </Link>
-            : <></>}
+          : <></>}
         </React.Fragment>
       ))}
     </>

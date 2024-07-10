@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
-import { CustomLink } from '../../Buttons/Links/Links';
+import { CustomLink } from '../../Buttons/General/General';
 import DropdownButton from '../../Buttons/Dropdown/DropdownButton';
 import { DropdownItem, WishlistProduct } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
@@ -65,7 +65,7 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
           {item.discount <= 0 
             ? <div className='cart-price-wrapper'>
                <h4 className='cart-price'>
-                  <span className='dollar-sign'>$</span>{item.price}
+                  <span className='dollar-sign'>$</span>{item.price.toFixed(2)}
                 </h4> 
               </div>
             : <div className='cart-price-wrapper'>
@@ -73,7 +73,7 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
                   <span className='dollar-sign'>$</span>{item.ogPrice.toFixed(2)}
                 </h4>
                 <h4 className='cart-price-discounted'>
-                  <span className='dollar-sign'>$</span>{item.price}
+                  <span className='dollar-sign'>$</span>{item.price.toFixed(2)}
                 </h4>
               </div>
           }
@@ -121,7 +121,7 @@ const Wishlist = () => {
   const items: DropdownItem[] = [
     { name: 'Wishlist', type: 'component', component: <div className='cart-header'><h2>Your Wishlist</h2></div> },
     { name: 'Wish Items', type: 'component', component: <WishlistItemList wishItems={wishItems} setWishItems={setWishItems}/> },
-    { name: 'View Wishlist', type: 'component', component: <CustomLink href='/wishlist' className='cart-dropdown-btn'>View Wishlist</CustomLink> },
+    { name: 'View Wishlist', type: 'component', component: <CustomLink href='/wishlist' className='btn'>View Wishlist</CustomLink> },
     // { name: 'Log', type: 'component', component: <button onClick={() => console.log(wishItems)}>Log</button>}
   ]
 

@@ -1,4 +1,19 @@
-/****************** AddToBag ******************/
+/****************** Custom Link ******************/
+.link {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.content-icon {
+  width: 25px;
+  height: 25px;
+  margin-top: -2.5px;
+  margin-bottom: -2.5px;
+}
+
+/****************** Link & Button Styling ******************/
 @keyframes shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
@@ -7,40 +22,48 @@
   100% { transform: translateX(0); }
 }
 
-.add-btn, .add-btn-disabled {
+.btn, .btn-disabled {
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
-  padding: 12px;
+  padding: 10px;
   cursor: pointer;
   font-family: var(--font-montserrat);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 15px;
   color: rgba(var(--secondary-text-color));
   border-width: 1px;
   border-color: black;
   background-color: rgba(var(--primary-button-color));
-  transform: scale(1);
-  transition: transform var(--duration) linear, color 200ms ease-in-out, background-color 200ms ease-in-out;
+  transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
 }
 
-.add-btn-disabled {
+.btn-disabled {
   background-color: rgba(var(--inverse-color), 0.65);
   cursor: default;
 }
 
-.add-btn:hover {
+.btn.padding-lg, .btn-disabled.padding-lg {
+  padding: 12px;
+}
+
+.btn.second {
+  color: rgba(var(--primary-text-color));
+  background-color: rgba(var(--tertiary-button-color));
+}
+
+.btn:hover {
   color: rgba(var(--primary-text-color));
   background-color: rgba(var(--primary-hover-button-color))
 }
 
-.active {
-  transform: scale(0.9);
+.btn.active {
+  animation: button-click 300ms ease forwards;
 }
 
-.fail {
+.btn.fail {
   animation: shake var(--duration) ease-in-out;
 }

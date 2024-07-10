@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link';
 import { useMenuContext } from '@/app/utility/contexts/MenuContext'
-import './Links.css'
+import './General.css'
 
 interface CustomLinkProps {
   children?: React.ReactNode;
@@ -12,15 +12,25 @@ interface CustomLinkProps {
   className?: string;
 }
 
-const CustomLink = ({children, href, NEW, productID, className}:CustomLinkProps) => {
+const CustomLink = ({children, href, NEW, productID, className = 'link'}: CustomLinkProps) => {
   const { setGlobalMenuToggle } = useMenuContext();
+  const [isClicked, setIsClicked] = React.useState(false);
   const fixedHref = href.replace(/[ ,]+/g, '-').toLowerCase();
   const link = productID !== undefined
     ? `/store/p?${new URLSearchParams({ name: fixedHref, id: productID?.toString() || '' })}`
     : fixedHref;
 
+  const handleClick = () => {
+    setIsClicked(true);
+    setGlobalMenuToggle(false);
+  }
+
+  const onAnimationEnd = () => {
+    setIsClicked(false);
+  }
+
   return (
-    <span className='link-wrapper'>
+    <Link href={link} onClick={handleClick} onAnimationEnd={onAnimationEnd} className={`${className} ${isClicked ? 'active' : ''}`} >
       {NEW 
       ? <svg 
           aria-hidden
@@ -32,9 +42,24 @@ const CustomLink = ({children, href, NEW, productID, className}:CustomLinkProps)
         </svg>
       : <></>
       }
-      <Link href={link} onClick={() => setGlobalMenuToggle(false)} className={className}>{children}</Link>
-    </span>
+      {children}
+    </Link>
   )
 }
 
-export { CustomLink };
+interface GeneralButtonProps {
+  children: React.ReactNode;
+  refProp?: React.RefObject<HTMLButtonElement> | null;
+  onClick?: () => void;
+  disabled?: boolean;
+  onAnimationEnd?: () => void;
+  ariaLabel?: string;
+  className?: string;
+}
+const GeneralButton = ({children, refProp, onClick, disabled, onAnimationEnd, ariaLabel, className = 'btn'}: GeneralButtonProps) => {
+  return (
+    <button ref={refProp} onClick={onClick} disabled={disabled} onAnimationEnd={onAnimationEnd} aria-label={ariaLabel} className={className}>{children}</button>
+  )
+}
+
+export { CustomLink, GeneralButton }
