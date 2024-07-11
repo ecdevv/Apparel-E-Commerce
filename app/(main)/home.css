@@ -5,8 +5,8 @@
 }
 
 .carousel-container {
-  aspect-ratio: 2.25/1;
   width: 100%;
+  height: calc(100dvh - 104px);
   position: relative;
   animation: fade-in-up 500ms 200ms backwards;
   overflow: hidden;

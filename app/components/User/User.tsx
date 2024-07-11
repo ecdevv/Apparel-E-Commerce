@@ -1,19 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import { CustomLink } from '../Buttons/General/General';
 import DropdownButton from '../Buttons/Dropdown/DropdownButton';
+import { DropdownItem } from '@/app/utility/types';
 import './User.css'
 
-interface Item {
-  name: string;
-  type: 'component' | 'button' | 'link';
-  component?: React.ReactElement;
-  svg?: React.ReactElement;
-}
-
 const User = () => {
-  const items:Item[] = [
-    { name: 'Login', type: 'component', component: <Link href='/login' className='user-dropdown-btn'>Login</Link> },
-    { name: 'Register', type: 'component', component: <Link href='/register' className='user-dropdown-btn'>Register</Link> },
+  const items:DropdownItem[] = [
+    { name: 'Login', type: 'component', component: <CustomLink href='/login' className='btn'>Login</CustomLink> },
+    { name: 'Register', type: 'component', component: <CustomLink href='/register' className='btn'>Register</CustomLink> },
   ]
 
   return (

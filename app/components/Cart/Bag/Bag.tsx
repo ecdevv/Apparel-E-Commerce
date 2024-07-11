@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
-import { CustomLink } from '../../Buttons/Links/Links';
+import { CustomLink } from '../../Buttons/General/General';
 import DropdownButton from '../../Buttons/Dropdown/DropdownButton';
 import NumberStepper from '../../Input/NumberStepper/NumberStepper';
 import { DropdownItem, BagProduct } from '@/app/utility/types';
@@ -145,8 +145,8 @@ const Bag = () => {
   const items: DropdownItem[] = [
     { name: 'Shopping Bag', type: 'component', component: <div className='cart-header'><h2>Your Bag</h2><h3>Total: <span className='dollar-sign'>$</span>{roundedTotal}</h3></div> },
     { name: 'Bag Items', type: 'component', component: <BagItemList bagItems={bagItems} setBagItems={setBagItems}/> },
-    { name: 'View Bag', type: 'component', component: <CustomLink href='/cart' className='cart-dropdown-btn'>View Bag</CustomLink> },
-    { name: 'Checkout', type: 'component', component: <CustomLink href='/checkout' className='cart-dropdown-btn'>Checkout</CustomLink> },
+    { name: 'View Bag', type: 'component', component: <CustomLink href='/cart' className='btn'>View Bag</CustomLink> },
+    { name: 'Checkout', type: 'component', component: <CustomLink href='/checkout' className='btn'>Checkout</CustomLink> },
     // { name: 'Log', type: 'component', component: <button onClick={() => console.log(bagItems)}>Log</button>}
   ]
 

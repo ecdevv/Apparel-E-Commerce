@@ -1,9 +1,4 @@
 /****************** Cart ******************/
-.empty-cart {
-  text-align: center;
-  animation: fade-in-up 400ms 200ms backwards;
-}
-
 .cart-page-container {
   position: relative;
   width: 100%;
@@ -16,6 +11,25 @@
   grid-template-columns: minmax(0, 66.66%) minmax(0, 33.33%);
   background-color: rgba(var(--secondary-color));
 }
+
+.empty-cart {
+  position: relative;
+  width: 400px;
+  height: calc(100vh - 208px);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  animation: fade-in-up 400ms 200ms backwards;
+}
+
+.circle-background {
+  position: relative;
+}
+
 
 /****************** Cart Content Info Card ******************/
 .cart-page-card-container {
@@ -189,19 +203,18 @@
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
-  transform: scale(1);
-  transition: color 200ms ease, transform 200ms ease;
+  transition: color 200ms ease;
 }
 
 .cart-page-btn:hover {
   color: rgba(var(--link-text-color));
 }
 
-.cart-page-btn:active {
-  transform: scale(0.9);
+.cart-page-btn.active {
+  animation: button-click 300ms ease forwards;
 }
 
-/****************** Cart Content Info Card ******************/
+/****************** Summary Content ******************/
 .cart-page-summary-container {
   position: sticky;
   top: 104px;
@@ -259,48 +272,12 @@
 
 .grand-total {
   margin-top: 1rem;
-  font-weight: 500; 
+  font-weight: 600; 
   font-size: 16px;
 }
 
 .margin-right {
   margin-right: 0.15rem;
-}
-
-/****************** Dropdown Content ******************/
-.cart-page-dropdown-btn {
-  width: 100%;
-  margin: auto;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 10px;
-  cursor: pointer;
-  font-family: var(--font-montserrat);
-  font-weight: 400;
-  font-size: 15px;
-  color: rgba(var(--secondary-text-color));
-  border-width: 1px;
-  border-color: black;
-  background-color: rgba(var(--primary-button-color));
-  transform: scale(1);
-  transition: color 200ms ease-in-out, background-color 200ms ease-in-out, transform 200ms ease;
-}
-
-.cart-page-dropdown-btn.second {
-  color: rgba(var(--primary-text-color));
-  background-color: rgba(var(--tertiary-button-color));
-}
-
-.cart-page-dropdown-btn:hover {
-  color: rgba(var(--primary-text-color));
-  background-color: rgba(var(--primary-hover-button-color))
-}
-
-.cart-page-dropdown-btn:active {
-  transform: scale(0.9);
 }
 
 /*** Mobile & Media Queries ***/

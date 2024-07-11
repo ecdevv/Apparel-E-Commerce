@@ -1,9 +1,9 @@
 'use client'
 import React, { useState } from 'react'
+import { GeneralButton } from '../General/General'
 import { BagProduct } from '@/app/utility/types'
 import { useBagContext } from '@/app/utility/contexts/BagContext'
 import { validateBagProduct } from '@/server/mockValidations'
-import './AddToBag.css'
 
 interface AddToBagProps {
   id: number;
@@ -15,19 +15,16 @@ interface AddToBagProps {
   className?: string;
 }
 
-const AddToBagButton = ({ id, option, size, quantity, icon = false, forceMenu = true, className = 'add-btn' }: AddToBagProps) => {
+const AddToBagButton = ({ id, option, size, quantity, icon = false, forceMenu = true, className = 'btn padding-lg' }: AddToBagProps) => {
   const { bagItems, setBagItems, setForceOpen, forceElementRef, scrollableRef } = useBagContext();
   const [isClicked, setIsClicked] = useState(false);
 
   const productResponse = validateBagProduct(id, option, size, quantity);
   
-  const handleClick = (duration: number) => {
-    setForceOpen(true);
-    // Used to set the duration of the clicked button and prevent it from being clicked again; for transition/animation purposes
+  const handleClick = () => {
+    // If the button is clicked, set the isClicked state to true to show the loading animation and set the forceOpen state to true to open the menu
     setIsClicked(true);
-    setTimeout(() => {
-      setIsClicked(false);
-    }, duration);
+    setForceOpen(true);
     
     // If the product is out of stock, return
     if (productResponse.inStock === false) return;
@@ -74,10 +71,15 @@ const AddToBagButton = ({ id, option, size, quantity, icon = false, forceMenu = 
     }, 0)
   }
 
+  // Set the conditional to run the animation to false on animation end
+  const onAnimationEnd = () => {
+    setIsClicked(false);
+  }
+
   return (
     <>
       {productResponse.inStock
-        ? <button ref={forceMenu ? forceElementRef : null} onClick={() => {handleClick(100)}} aria-label={`Add ${productResponse.bagProduct.name} to bag`} className={`${className} ${isClicked ? 'active' : ''}`} style={{'--duration': '100ms'} as React.CSSProperties}>
+        ? <GeneralButton refProp={forceMenu ? forceElementRef : null} onClick={handleClick} onAnimationEnd={onAnimationEnd} aria-label={`Add ${productResponse.bagProduct.name} to bag`} className={`${className} ${isClicked ? 'active' : ''}`}>
             {icon &&
               <svg
                 aria-hidden
@@ -89,8 +91,8 @@ const AddToBagButton = ({ id, option, size, quantity, icon = false, forceMenu = 
               </svg>
             }
             Add to Bag
-          </button>
-        : <div aria-label='Add to bag disabled' className={'add-btn-disabled'}>
+          </GeneralButton>
+        : <GeneralButton aria-label='Add to bag disabled' className={'btn-disabled padding-lg'}>
             {icon &&
               <svg
                 aria-hidden
@@ -102,7 +104,7 @@ const AddToBagButton = ({ id, option, size, quantity, icon = false, forceMenu = 
               </svg>
             }
             Add to Bag
-          </div>
+          </GeneralButton>
       }
     </>
   )

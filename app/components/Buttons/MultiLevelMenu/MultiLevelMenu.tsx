@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState, useRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { CustomLink } from '../Links/Links';
+import { CustomLink } from '../General/General';
 import './MultiLevelMenu.css';
 
 interface MenuItem {

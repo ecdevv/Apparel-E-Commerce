@@ -1,9 +1,9 @@
 'use client'
 import React, { useState } from 'react'
+import { GeneralButton } from '../General/General'
 import { WishlistProduct } from '@/app/utility/types'
 import { useWishlistContext } from '@/app/utility/contexts/WishlistContext'
 import { validateWishlistProduct } from '@/server/mockValidations'
-import './AddToWishlist.css'
 
 interface WishlistProps {
   id: number;
@@ -13,19 +13,16 @@ interface WishlistProps {
   className?: string;
 }
 
-const AddToWishlistButton = ({ id, option, icon = false, forceMenu = true, className = 'add-wish-btn' }: WishlistProps) => {
+const AddToWishlistButton = ({ id, option, icon = false, forceMenu = true, className = 'btn second padding-lg' }: WishlistProps) => {
   const { wishItems, setWishItems, setForceOpen, forceElementRef, scrollableRef } = useWishlistContext();
   const [isClicked, setIsClicked] = useState(false);
 
   const productResponse = validateWishlistProduct(id, option);
   
-  const handleClick = (duration: number) => {
-    setForceOpen(true);
-    // Used to set the duration of the clicked button and prevent it from being clicked again; for transition/animation purposes
+  const handleClick = () => {
+    // If the button is clicked, set the isClicked state to true to show the loading animation and set the forceOpen state to true to open the menu
     setIsClicked(true);
-    setTimeout(() => {
-      setIsClicked(false);
-    }, duration);
+    setForceOpen(true);
 
     // Find the product from the "api" response
     const product = productResponse.wishlistProduct
@@ -67,8 +64,13 @@ const AddToWishlistButton = ({ id, option, icon = false, forceMenu = true, class
     }, 0)
   }
 
+  // Set the conditional to run the animation to false on animation end
+  const onAnimationEnd = () => {
+    setIsClicked(false);
+  }
+
   return (
-    <button ref={forceMenu ? forceElementRef : null} onClick={() => {handleClick(100)}} aria-label={`Add ${productResponse.wishlistProduct.name} to wishlist`} className={`${className} ${isClicked ? 'active' : ''}`} style={{'--duration': '100ms'} as React.CSSProperties}>
+    <GeneralButton refProp={forceMenu ? forceElementRef : null} onClick={handleClick} onAnimationEnd={onAnimationEnd} aria-label={`Add ${productResponse.wishlistProduct.name} to wishlist`} className={`${className} ${isClicked ? 'active' : ''}`} >
       {icon &&
         <svg
           aria-hidden
@@ -82,7 +84,7 @@ const AddToWishlistButton = ({ id, option, icon = false, forceMenu = true, class
         </svg>
       }
       Wishlist
-    </button>
+    </GeneralButton>
   )
 }
 

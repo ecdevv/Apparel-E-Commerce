@@ -99,7 +99,7 @@ const ProductDetails = () => {
           {discount <= 0 
             ? <div className='product-price-wrapper'>
                <h2 className='product-price'>
-                  <span className='dollar-sign'>$</span>{price}
+                  <span className='dollar-sign'>$</span>{price.toFixed(2)}
                 </h2> 
               </div>
             : <div className='product-price-wrapper'>
@@ -107,7 +107,7 @@ const ProductDetails = () => {
                   <span className='dollar-sign'>$</span>{ogPrice.toFixed(2)}
                 </h2>
                 <h2 className='product-price-discounted'>
-                  <span className='dollar-sign'>$</span>{price}
+                  <span className='dollar-sign'>$</span>{price.toFixed(2)}
                 </h2>
               </div>
           }
@@ -179,7 +179,7 @@ const ProductDetails = () => {
                  <NumberStepper min={1} value={selectedQuantity} onChange={handleQuantityStepper} />
                 </div>
               </>
-            : <div className='product-out-of-stock'>Sorry, we're out of stock.</div>
+            : <div className='product-out-of-stock'>Sorry, we&apos;re out of stock.</div>
           }
         </div>        
 

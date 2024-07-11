@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { CustomLink } from '../Buttons/Links/Links'
+import { CustomLink } from '../Buttons/General/General'
 import './NavMegaMenu.css'
 
 const NewMegaMenu = () => {
@@ -12,7 +12,7 @@ const NewMegaMenu = () => {
             src='/next.svg'
             alt='New Image'
             fill
-            sizes="(100vw, 100vh)"
+            sizes="(100vw)"
             className='mega-menu-content-image'
           />
         </CustomLink>
@@ -83,7 +83,7 @@ const SalesMegaMenu = () => {
             src='/vercel.svg'
             alt='Sales Image'
             fill
-            sizes="(100vw, 100vh)"
+            sizes="(100vw)"
             className='mega-menu-content-image'
           />
         </CustomLink>
@@ -277,7 +277,7 @@ const CollectionsMegaMenu = () => {
             src='/next.svg'
             alt='Collection Image 1'
             fill
-            sizes="(100vw, 100vh)"
+            sizes="(100vw)"
             className='mega-menu-content-image'
           />
         </CustomLink>
@@ -286,7 +286,7 @@ const CollectionsMegaMenu = () => {
             src='/vercel.svg'
             alt='Collection Image 2'
             fill
-            sizes="(100vw, 100vh)"
+            sizes="(100vw)"
             className='mega-menu-content-image'
           />
         </CustomLink>
@@ -297,7 +297,7 @@ const CollectionsMegaMenu = () => {
             src='/vercel.svg'
             alt='Collection Image 3'
             fill
-            sizes="(100vw, 100vh)"
+            sizes="(100vw)"
             className='mega-menu-content-image'
           />
         </CustomLink>
@@ -306,7 +306,7 @@ const CollectionsMegaMenu = () => {
             src='/next.svg'
             alt='Collection Image 4'
             fill
-            sizes="(100vw, 100vh)"
+            sizes="(100vw)"
             className='mega-menu-content-image'
           />
         </CustomLink>

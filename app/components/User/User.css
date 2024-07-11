@@ -35,35 +35,3 @@
     position: relative;
   }
 }
-
-
-/****************** Dropdown Content ******************/
-.user-dropdown-btn {
-  width: 100%;
-  margin: auto;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 10px;
-  cursor: pointer;
-  font-family: var(--font-montserrat);
-  font-weight: 400;
-  font-size: 15px;
-  color: rgba(var(--secondary-text-color));
-  border-width: 1px;
-  border-color: black;
-  background-color: rgba(var(--primary-button-color));
-  transform: scale(1);
-  transition: color 200ms ease-in-out, background-color 200ms ease-in-out, transform 200ms ease;
-}
-
-.user-dropdown-btn:hover {
-  color: rgba(var(--primary-text-color));
-  background-color: rgba(var(--primary-hover-button-color))
-}
-
-.user-dropdown-btn:active {
-  transform: scale(0.9);
-}
