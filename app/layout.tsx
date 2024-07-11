@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat, Roboto, Lora } from "next/font/google";
-import { BagProvider } from './utility/contexts/BagContext';
-import { WishlistProvider } from "./utility/contexts/WishlistContext";
-import { MenuProvider } from "./utility/contexts/MenuContext";
+import ContextProviders from "./utility/ContextProviders";
+import ScrollFix from "./utility/ScrollFix";
 import "./globals.css";
 
 const inter = Inter({ 
@@ -40,14 +39,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <ScrollFix />
       <body className={`${inter.variable} ${montserrat.variable} ${roboto.variable} ${lora.variable}`}>
-        <BagProvider>
-          <WishlistProvider>
-            <MenuProvider>
-              {children}
-            </MenuProvider>
-          </WishlistProvider>
-        </BagProvider>
+        <ContextProviders>{children}</ContextProviders>
       </body>
     </html>
   );

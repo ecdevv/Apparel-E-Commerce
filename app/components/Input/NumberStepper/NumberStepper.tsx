@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect, ChangeEvent } from 'react'
+import { useNumberStepperContext } from '../../../utility/contexts/NumberStepperContext'
 import './NumberStepper.css'
 
 interface NumberStepperProps {
@@ -7,21 +8,29 @@ interface NumberStepperProps {
   max?: number;
   value?: number;
   onChange?: (value: number) => void;
+  product?: boolean;
   size?: number;
   doubleWidth?: boolean;
 }
-const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, size = 40, doubleWidth = false}: NumberStepperProps) => {
+const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, product = false, size = 40, doubleWidth = false}: NumberStepperProps) => {
+  const { setProductQuantity } = useNumberStepperContext();
   const [value, setValue] = useState(initialValue);
-
+  
   useEffect(() => {
     setValue(initialValue);
   }, [initialValue]);
+
+  useEffect(() => {
+    if (product) {
+      setProductQuantity(value);
+    }
+    onChange && onChange(value);
+  }, [value]);
 
   // Handle decrementing the value
   const handleDecrement = () => {
     if (value > min) {
       setValue(value - 1);
-      onChange && onChange(value - 1);
     }
   };
 
@@ -29,7 +38,6 @@ const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, si
   const handleIncrement = () => {
     if (value < max) {
       setValue(value + 1);
-      onChange && onChange(value + 1);
     }
   };
 
@@ -37,7 +45,6 @@ const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, si
     const inputValue = e.target.value.replace(/[^0-9]/g, '');
     const newValue = inputValue === '' ? min : Math.min(Math.max(parseInt(inputValue, 10), min), max);
     setValue(newValue);
-    onChange && onChange(newValue);
   };
   
   return (

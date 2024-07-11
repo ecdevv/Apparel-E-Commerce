@@ -1,11 +1,11 @@
 import React from 'react';
-import { ProductDetails } from './PageSections';
+import { ProductDetails } from './ProductDetails';
 import './product.css'
 
-export default function Store() {
+export default function Store({ params, searchParams }: { params: { product: string }, searchParams: {name: string, id: string, option: string, size: string} }) {
   return (
     <div className='product'>
-      <ProductDetails />
+      <ProductDetails searchParams={searchParams} />
     </div>
   )
 }

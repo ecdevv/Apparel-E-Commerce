@@ -16,6 +16,7 @@ interface ImagesProps {
 
 const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowThumbnails = false, ShowDotBtns = false, dotSmall = false} : ImagesProps) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [hoverIndex, setHoverIndex] = useState(-1);
   const [prevIndex, setPrevIndex] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [difference, setDifference] = useState(0);
@@ -65,6 +66,17 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowTh
       setPrevIndex((prevIndex) => (prevIndex + 1) % Images.length);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % Images.length);  // Always positive, so just mod by total length of images to ensure the index wraps back around
     }, 0)
+  }
+
+  // Set the hover index to clear the blur on outer images
+  const handlePrevHover = () => {
+    setHoverIndex(0)
+  }
+  const handleNextHover = () => {
+    setHoverIndex(2);
+  }
+  const handleUnhover = () => {
+    setHoverIndex(-1);
   }
 
   const handleDotClick = (index:number) => {
@@ -170,7 +182,7 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowTh
             <div className='carousel-image-container'>
               {/* Only maps the primary image selected and the two surrounding images */}
               {getWrappedImages(currentIndex, Images, 3).map((image, index) => (
-                <div key={index} className='carousel-image-wrapper' style={{'--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
+                <div key={index} className={`carousel-image-wrapper ${hoverIndex === index ? 'no-blur' : ''}`} style={{'--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
                   <Image
                     key={index}
                     src={image}
@@ -181,6 +193,7 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowTh
                     placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
                     priority
                   />
+                  {index !== 1 && ShowNavArrows && <div className='blur-overlay'></div>}
                 </div>
               ))}
             </div>
@@ -190,7 +203,7 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowTh
       {/* The buttons on top of the surrounding images in order to go to the previous or next image in the carousel */}  
       {ShowNavArrows 
       ? <>
-          <button onClick={handlePrevClick} disabled={buttonDisabled} aria-label="View Previous Image" className='carousel-left-btn' style={{'--btn-size': `${Math.max((100 - Width) / 2, 8.25)}%`, '--border-width': `${BorderWidth}rem`, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
+          <button onClick={handlePrevClick} onMouseEnter={handlePrevHover} onMouseLeave={handleUnhover} disabled={buttonDisabled} aria-label="View Previous Image" className='carousel-left-btn' style={{'--btn-size': `${Math.max((100 - Width) / 2, 8.25)}%`, '--border-width': `${BorderWidth}rem`, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
             <svg
               aria-hidden
               fill="currentColor"
@@ -201,7 +214,7 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowTh
             </svg>
           </button>
 
-          <button onClick={handleNextClick} disabled={buttonDisabled} aria-label="View Next Image" className='carousel-right-btn' style={{'--btn-size': `${Math.max((100 - Width) / 2, 8.25)}%`, '--border-width': `${BorderWidth}rem`, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
+          <button onClick={handleNextClick} onMouseEnter={handleNextHover} onMouseLeave={handleUnhover} disabled={buttonDisabled} aria-label="View Next Image" className='carousel-right-btn' style={{'--btn-size': `${Math.max((100 - Width) / 2, 8.25)}%`, '--border-width': `${BorderWidth}rem`, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
             <svg
               aria-hidden
               fill="currentColor"

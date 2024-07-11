@@ -1,5 +1,6 @@
 import React from 'react';
-import CartDetails from './PageSections';
+import CartDetails from './CartDetails';
+import '../cart.css';
 
 const Cart = () => {
 

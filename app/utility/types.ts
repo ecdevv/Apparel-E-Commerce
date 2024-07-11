@@ -61,8 +61,10 @@ export interface WishlistProduct {
   name: string;
   optionType: string;
   selectedOption: string;
+  selectedSize: string;
   discount: number;
   ogPrice: number;
   price: number;
   defaultMedia: string;
+  inStock: boolean;
 }

@@ -2,11 +2,43 @@ import { BagProduct, WishlistProduct, Product, Option } from '@/app/utility/type
 import Products from '@/data/products.json'
 import Reviews from '@/data/reviews.json'
 
+type productSearchParams = {
+  name: string,
+  id: string,
+  option: string,
+  size: string
+}
+
 // Validate each item in the bag
 const validateBag = (bagItems: BagProduct[]): BagProduct[] => {
   return bagItems.map(item => {
     const product: Product = Products.find(p => p.product_id.toString() === item.id.toString()) as Product;
+    if (!product) {
+      return {
+        ...item,
+        name: 'Invalid Item',
+        selectedQuantity: 0,
+        discount: 0,
+        ogPrice: 0,
+        price: 0,
+        defaultMedia: ''
+      }
+    }
+    
     const currentOption = product.options.find(opt => opt.name === item.selectedOption) as Option;
+    if (!currentOption) {
+      return {
+        ...item,
+        name: product.name,
+        selectedOption: 'Invalid Option',
+        selectedQuantity: 0,
+        discount: 0,
+        ogPrice: 0,
+        price: 0,
+        defaultMedia: ''
+      }
+    }
+
     const inStock = currentOption.sizes.find(sizeObj => sizeObj.size.toLowerCase() === item.selectedSize.toLowerCase() && sizeObj.stock > 0)
     const discount = currentOption.discount;
     const ogPrice = currentOption.price;
@@ -45,7 +77,32 @@ const validateBag = (bagItems: BagProduct[]): BagProduct[] => {
 const validateWishlist = (wishItems: WishlistProduct[]): WishlistProduct[] => {
   return wishItems.map(item => {
     const product: Product = Products.find(p => p.product_id.toString() === item.id.toString()) as Product;
+    if (!product) {
+      return {
+        ...item,
+        name: 'Invalid Item',
+        selectedQuantity: 0,
+        discount: 0,
+        ogPrice: 0,
+        price: 0,
+        defaultMedia: ''
+      }
+    }
+
     const currentOption = product.options.find(opt => opt.name === item.selectedOption) as Option;
+    if (!currentOption) {
+      return {
+        ...item,
+        name: product.name,
+        selectedOption: 'Invalid Option',
+        selectedQuantity: 0,
+        discount: 0,
+        ogPrice: 0,
+        price: 0,
+        defaultMedia: ''
+      }
+    }
+
     const discount = currentOption.discount;
     const ogPrice = currentOption.price;
 
@@ -68,8 +125,9 @@ const validateWishlist = (wishItems: WishlistProduct[]): WishlistProduct[] => {
 }
 
 // Validate the product for product page
-const validateProduct = (searchParams: URLSearchParams): { error: boolean, product: Product, productReviews: any, averageRating: number } => {
-  const id = (parseInt(searchParams?.get('id') as string));
+const validateProduct = (searchParams: productSearchParams): { error: boolean, product: Product, productReviews: any, averageRating: number } => {
+  // const id = (parseInt(searchParams?.get('id') as string));
+  const id = parseInt(searchParams.id);
   const product: Product = Products.find(product => product.product_id === id) as Product;
   const productReviews = Reviews.filter(review => review.product_id === id);
   const averageRating = parseFloat((productReviews.reduce((acc, review) => acc + review.rating, 0) / productReviews.length).toFixed(2)) || -1;
@@ -102,16 +160,18 @@ const validateProduct = (searchParams: URLSearchParams): { error: boolean, produ
 };
 
 // Set the name, size, images, ogPrice, discount, and price of the selected option of a valid product from the above function
-const getSelectedOption = (searchParams: URLSearchParams, product: Product): { name: string, size: string, images: string[], ogPrice: number, discount: number, price: number } => {
+const getSelectedOption = (searchParams: productSearchParams, product: Product): { name: string, size: string, optionInStock: boolean, images: string[], ogPrice: number, discount: number, price: number } => {
   /*
    *  Find the option element in the array that is equivalent to the 'option' url param and set the name, 
    *  then validate and set the size from the 'size' url param or set the first size that has stock > 0 or set 'oos' if all sizes are stock <= 0, 
    *  then set the images for the selected option,
    *  and finally set the ogPrice, discount and price of the discount of the selected option 
   */
-  const selectedOptionElement = product.options.find(option => option.name === (searchParams.get('option') as string)) || product.options[0];
+  // const selectedOptionElement = product.options.find(option => option.name === (searchParams.get('option') as string)) || product.options[0];
+  const selectedOptionElement = product.options.find(option => option.name === (searchParams.option as string)) || product.options[0];
   const name = selectedOptionElement.name.toLowerCase();
-  const size = selectedOptionElement.sizes.find(sizeObj => sizeObj.size.toLowerCase() === (searchParams.get('size') as string) && sizeObj.stock > 0)?.size.toLowerCase() || selectedOptionElement.sizes.find(sizeObj => sizeObj.stock > 0)?.size.toLowerCase() || 'oos';
+  const size = selectedOptionElement.sizes.find(sizeObj => sizeObj.size.toLowerCase() === (searchParams.size as string))?.size.toLowerCase() || selectedOptionElement.sizes.find(sizeObj => sizeObj.stock > 0)?.size.toLowerCase() || selectedOptionElement.sizes[0].size.toLowerCase();
+  const optionInStock = selectedOptionElement.sizes.some(sizeObj => sizeObj.stock > 0);
   const images = selectedOptionElement.media.filter(item => item.type === "image").map(item => item.url);
   const ogPrice = selectedOptionElement.price;
   const discount = selectedOptionElement.discount;
@@ -123,20 +183,28 @@ const getSelectedOption = (searchParams: URLSearchParams, product: Product): { n
       price = parseFloat((ogPrice).toFixed(2));
     }
   
-  return {name, size, images, ogPrice, discount, price};
+  return {name, size, optionInStock, images, ogPrice, discount, price};
 }
 
 // Validate if product to be added to the bag is in stock
 const validateBagProduct = (id: number, option: string, size: string, quantity: number): { inStock: boolean, bagProduct: BagProduct } => {
   const product: Product = Products.find(product => product.product_id === id) as Product;
-  const currentOption = product.options.find(opt => opt.name === option) as Option;
-  const inStock = currentOption.sizes.find(sizeObj => sizeObj.size.toLowerCase() === size.toLowerCase() && sizeObj.stock > 0)
-  const discount = currentOption.discount;
-  const ogPrice = currentOption.price;
+  if (!product) {
+    return { inStock: false, bagProduct: {} as BagProduct };
+  }
 
+  const currentOption = product.options.find(opt => opt.name === option) as Option;
+  if (!currentOption) {
+    return { inStock: false, bagProduct: {} as BagProduct };
+  }
+
+  const inStock = currentOption.sizes.find(sizeObj => sizeObj.size.toLowerCase() === size.toLowerCase() && sizeObj.stock > 0)
   if (!inStock) {
     return { inStock: false, bagProduct: {} as BagProduct };
   }
+
+  const discount = currentOption.discount;
+  const ogPrice = currentOption.price;
 
   let price = ogPrice - (ogPrice * discount / 100);
     if (discount != 0) {
@@ -163,9 +231,23 @@ const validateBagProduct = (id: number, option: string, size: string, quantity: 
 }
 
 // Validate if product to be added to the bag is in stock
-const validateWishlistProduct = (id: number, option: string): { inStock: boolean, wishlistProduct: WishlistProduct } => {
+const validateWishlistProduct = (id: number, option: string, size: string): { error: boolean, wishlistProduct: WishlistProduct } => {
   const product: Product = Products.find(product => product.product_id === id) as Product;
+  if (!product) {
+    return { error: true, wishlistProduct: {} as WishlistProduct };
+  }
+
   const currentOption = product.options.find(opt => opt.name === option) as Option;
+  if (!currentOption) {
+    return { error: true, wishlistProduct: {} as WishlistProduct };
+  }
+
+  const validSize = currentOption.sizes.find(sizeObj => sizeObj.size.toLowerCase() === size.toLowerCase())
+  if (!validSize) {
+    return { error: true, wishlistProduct: {} as WishlistProduct };
+  }
+
+  const inStock = currentOption.sizes.some(sizeObj => sizeObj.size.toLowerCase() === size.toLowerCase() && sizeObj.stock > 0);
   const discount = currentOption.discount;
   const ogPrice = currentOption.price;
 
@@ -182,13 +264,15 @@ const validateWishlistProduct = (id: number, option: string): { inStock: boolean
     name: product.name,
     optionType: currentOption.type,
     selectedOption: option, 
+    selectedSize: size,
     discount: discount,
     ogPrice: ogPrice,
     price: price,
-    defaultMedia: currentOption.media[0].url
+    defaultMedia: currentOption.media[0].url,
+    inStock: inStock
   }
 
-  return { inStock: true, wishlistProduct };
+  return { error: false, wishlistProduct };
 }
 
 const calculateCosts = (bagItems: BagProduct[]): {subTotal: number, totalDiscount: number, total: number, taxCost: number, shippingCost: number, grandTotal: number} => {

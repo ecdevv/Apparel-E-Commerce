@@ -44,7 +44,7 @@ const DropdownMenu = ({items, menuToggle, orientation, showPointer, setTransitio
         in={menuToggle}
         timeout={timeoutDuration}
         classNames='menu'
-        onEnter={() => setTransitionState(true)}
+        onEnter={() => setTransitionState(false)}
         onExit={() => setTransitionState(true)}
         onExited={() => setTransitionState(false)}
         unmountOnExit

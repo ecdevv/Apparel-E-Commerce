@@ -5,8 +5,8 @@
 }
 
 .carousel-container {
+  aspect-ratio: 2.25/1;
   width: 100%;
-  height: calc(100dvh - 104px);
   position: relative;
   animation: fade-in-up 500ms 200ms backwards;
   overflow: hidden;
@@ -86,28 +86,28 @@
 }
 
 /*** Mobile & Media Queries ***/
-.desktop {
+.home-desktop {
   display: block;
 }
 
-.mobile-md {
+.home-mobile-md {
   display: none;
 }
 
-.mobile {
+.home-mobile {
   display: none;
 }
 
 @media (max-width: 1280px) {
-  .desktop {
+  .home-desktop {
     display: none;
   }
 
-  .mobile-md {
+  .home-mobile-md {
     display: block;
   }
 
-  .mobile {
+  .home-mobile {
     display: none;
   }
 
@@ -118,15 +118,15 @@
 }
 
 @media (max-width: 1024px) {
-  .desktop {
+  .home-desktop {
     display: none;
   }
 
-  .mobile-md {
+  .home-mobile-md {
     display: none;
   }
 
-  .mobile {
+  .home-mobile {
     display: block;
   }
 

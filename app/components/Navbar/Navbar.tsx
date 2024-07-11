@@ -26,16 +26,15 @@ const Header = () => {
           height='0'
           className='navbar-logo'
         /> */}
-        <h1>URBAN LUXE</h1>
+        <h1 className='full'>URBAN LUXE</h1>
+        <h1 className='mw-360'>UL</h1>
       </Link>
-      <div className ='navbar-icons-container-wrapper'>
+      <div className='navbar-icons-container'>
         <Search />
-        <div className='navbar-icons-container'>
-          <User />
-          <Wishlist />
-          <Bag />
-          <MobileNavigation />
-        </div>
+        <User />
+        <Wishlist />
+        <Bag />
+        <MobileNavigation />
       </div>
     </section>
   )

@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState, useRef } from "react";
+import { useMenuContext } from "@/app/utility/contexts/MenuContext";
 import './AccordionMenu.css';
 
 interface AccordionMenuProps {
@@ -8,12 +9,20 @@ interface AccordionMenuProps {
 }
 
 const AccordionMenu = ({ title, content }: AccordionMenuProps) => {
+  const { globalMenuToggle } = useMenuContext();
   const [isOpen, setIsOpen] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  // Collapse the menu when globalMenuToggle is false (i.e a CustomLink is clicked)
   useEffect(() => {
-    setIsOpen(false);
+    if (globalMenuToggle === false) {
+      setIsOpen(false);
+    }
+  }, [globalMenuToggle])
+
+  // Update the content height when the content changes to set the correct height of the menu container (used to transition/animate)
+  useEffect(() => {
     if (contentRef.current) {
       const updateHeight = () => {
         if (contentRef.current) {
@@ -96,4 +105,5 @@ const AccordionMenu = ({ title, content }: AccordionMenuProps) => {
 };
 
 export default AccordionMenu
+
 

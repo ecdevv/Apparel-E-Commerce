@@ -17,6 +17,25 @@
   position: relative;
 }
 
+.carousel-image-wrapper .blur-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(5px) grayscale(66.66%);
+  backdrop-filter: blur(5px) grayscale(66.66%);
+  transition: all 200ms ease-in-out;
+  pointer-events: none;
+  
+}
+
+.carousel-image-wrapper.no-blur .blur-overlay {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  transition: all 200ms ease-in-out;
+}
+
 .carousel-image {
   width: 100%;
   height: 100%;
@@ -27,8 +46,6 @@
 .carousel-left-btn, .carousel-right-btn {
   width: calc(var(--btn-size) - ((var(--border-width) / 2) + (var(--border-width) * 0.1)));
   height: calc(100% - var(--thumbnail-height));;
-  -webkit-backdrop-filter: blur(5px) grayscale(66.66%);
-  backdrop-filter: blur(5px) grayscale(66.66%);
   position: absolute;
   top: 0%;
   transition: all 200ms ease-in-out;
@@ -40,11 +57,6 @@
 
 .carousel-right-btn {
   right: 0%;
-}
-
-.carousel-left-btn:hover, .carousel-right-btn:hover {
-  -webkit-backdrop-filter: blur(0px) grayscale(0%);
-  backdrop-filter: blur(0px) grayscale(0%);
 }
 
 .carousel-left-btn:hover .carousel-left-arrow, .carousel-right-btn:hover .carousel-right-arrow {
@@ -82,8 +94,8 @@
   height: 15px;
   border-width: 1px;
   border-radius: 2rem;
-  border-color: rgba(var(--dot-button-color), 0.35);
-  background-color: rgba(var(--dot-button-color), 0.35);
+  border-color: rgba(var(--dot-button-color), 1);
+  background-color: rgba(var(--dot-button-color), 1);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.66);
   transform: scale(1);
   transition: all 200ms ease-in-out;
@@ -93,12 +105,19 @@
   width: 15px;
   height: 15px;
   border-radius: 100%;
+  border-color: rgba(var(--dot-button-color), 0.5);
+  background-color: rgba(var(--dot-button-color), 0.5);
 }
 
 .carousel-dot.selected {
+  border-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.15);
+}
+
+.carousel-dot.small.selected {
   border-color: rgba(255, 255, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.5);
-  transform: scale(1.15);
 }
 
 .carousel-dot:hover {

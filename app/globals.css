@@ -167,6 +167,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-roboto), sans-serif;
   color: rgba(var(--primary-text-color));
@@ -179,9 +183,16 @@ h1 {
 }
 
 .header {
+  width: 100%;
   position: sticky;
   top: 0%;
   z-index: 10;
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  z-index: 5;
 }
 
 .dollar-sign {
@@ -195,7 +206,6 @@ h1 {
     font-size: 22px;
   }
 }
-
 
 
 

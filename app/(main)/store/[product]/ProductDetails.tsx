@@ -1,8 +1,6 @@
-'use client'
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import Gallery from '@/app/components/Gallery/Gallery';
 import Carousel from '@/app/components/Carousel/Carousel';
 import Rating from '@/app/components/Rating/Rating';
@@ -41,24 +39,20 @@ const ProductError = ({text}: {text: string}) => {
   )
 }
 
-const ProductDetails = () => {
-  const [hoveredOption, setHoveredOption] = React.useState('');
-  const [selectedQuantity, setSelectedQuantity] = React.useState(1);
-  const searchParams = useSearchParams();
-
+const ProductDetails = ( {searchParams}: {searchParams: {name: string, id: string, option: string, size: string}}) => {
   // Find and validate the product and product reviews
   const productResponse = validateProduct(searchParams);
 
   // Update the url on page load/refresh if product is found when searchParams changes
-  React.useEffect(() => {
-    if (!productResponse.error) {
-      validateUrl(product, selectedOption, selectedSize);
-    }
-  }, [searchParams]);
-
+  // useEffect(() => {
+  //   if (!productResponse.error) {
+  //     validateUrl(product, selectedOption, selectedSize);
+  //     setHoveredOption(selectedOption);
+  //   }
+  // }, [searchParams]);
 
   if (productResponse.error) {
-    return <ProductError text="Product not found" />;
+    return <ProductError text={'Product not found'} />;
   }
   
   const product: Product = productResponse.product;
@@ -69,23 +63,16 @@ const ProductDetails = () => {
   const selectedOptionResponse = getSelectedOption(searchParams, product);
   const selectedOption = selectedOptionResponse.name;                  
   const selectedSize = selectedOptionResponse.size;
+  const optionInStock = selectedOptionResponse.optionInStock;
   const Images = selectedOptionResponse.images;
 
   const discount = selectedOptionResponse.discount;
   const ogPrice = selectedOptionResponse.ogPrice;
   const price = selectedOptionResponse.price;
-  
-  const handleOnHover = (value: string) => {
-    setHoveredOption(value);
-  }
 
-  const handleOnUnhover = () => {
-    setHoveredOption(selectedOption);
-  }
-
-  const handleQuantityStepper = (value: number) => {
-    setSelectedQuantity(value);
-  }
+  const detailsAccordion = product.details ? [product.description, product.details] : [product.description];
+  const careAccordion = product.care ? ['To maintain the luxurious quality of your leather jacket, we recommend following these care guidelines:', product.care] : [];
+  const shippingAccordion = ["Complimentary shipping on all orders.", "Free returns within 30 days, excluding final sale items, underwear, bottles, and swimwear."]
 
   return (
     <section className='product-container'>
@@ -115,7 +102,7 @@ const ProductDetails = () => {
         <div className='product-options-container'>
           <div className='product-options-header'>
             <h3 className='product-h3'>{`${capitalizeFirstLetter(product.options[0].type)}`}:</h3>
-            <h4 className='product-h4'>{`${hoveredOption === '' ? capitalizeFirstLetter(selectedOption) : capitalizeFirstLetter(hoveredOption)}`}</h4>
+            <h4 className='product-h4'>{`${capitalizeFirstLetter(selectedOption)}`}</h4>
           </div>
           <div className='product-options-btn-container'>
             {product.options.map((option, index) => (
@@ -125,11 +112,9 @@ const ProductDetails = () => {
                   name: product.name.split(/[ ,]+/).join('-').toLowerCase(), 
                   id: product.product_id.toString(), 
                   option: option.name.toLowerCase(), 
-                  size: option.sizes.find(sizeObj => sizeObj.size.toLowerCase() === selectedSize && sizeObj.stock > 0)?.size.toLowerCase() || option.sizes.find(sizeObj => sizeObj.stock > 0)?.size.toLowerCase() || 'oos'
+                  size: selectedSize.toLowerCase()
                 })}`}
                 scroll={false}
-                onMouseEnter={() => handleOnHover(option.name)}
-                onMouseLeave={handleOnUnhover}
                 aria-label={`Product ${capitalizeFirstLetter(option.type)} Option: ${option.name}`} 
                 className={`product-option-btn option ${selectedOption === option.name ? 'selected' : ''}`} 
                 style={{'--bs-opacity': '0.5'} as React.CSSProperties}
@@ -150,33 +135,31 @@ const ProductDetails = () => {
           <h3 className='product-h3'>Size:</h3>
           <div className='product-options-btn-container'>
             {product.options.find((option) => option.name === selectedOption)?.sizes.map((sizeObj, index) => (
-              sizeObj.stock > 0
-              ? <Link 
-                  key={index} 
-                  href={`?${new URLSearchParams({
-                    name: product.name.split(/[ ,]+/).join('-').toLowerCase(), 
-                    id: product.product_id.toString(), 
-                    option: selectedOption, 
-                    size: sizeObj.size.toLowerCase()
-                  })}`} 
-                  scroll={false} 
-                  aria-label={`Product Size Option: ${sizeObj.size}`} 
-                  className={`product-option-btn size ${selectedSize === sizeObj.size.toLowerCase() ? 'selected' : ''}`} 
-                  style={{'--bs-opacity': '0.15'} as React.CSSProperties}
-                >
-                  {sizeObj.size.toUpperCase()}
-                </Link>
-              : <div key={index} className='product-option-btn size disabled' style={{'--bs-opacity': '0.15'} as React.CSSProperties}>{sizeObj.size.toUpperCase()}</div>
+              <Link 
+                key={index} 
+                href={`?${new URLSearchParams({
+                  name: product.name.split(/[ ,]+/).join('-').toLowerCase(), 
+                  id: product.product_id.toString(), 
+                  option: selectedOption, 
+                  size: sizeObj.size.toLowerCase()
+                })}`} 
+                scroll={false} 
+                aria-label={`Product Size Option: ${sizeObj.size}`} 
+                className={`product-option-btn size ${selectedSize === sizeObj.size.toLowerCase() ? 'selected' : ''} ${sizeObj.stock <= 0 ? 'disabled' : ''}`} 
+                style={{'--bs-opacity': '0.15'} as React.CSSProperties}
+              >
+                {sizeObj.size.toUpperCase()}
+              </Link>
             ))}
           </div>
         </div>
 
         <div className='product-options-container'>
-          {selectedSize !== 'oos'
+          {optionInStock === true
             ? <>
                 <h3 className='product-h3'>Quantity:</h3>
                 <div className='product-options-btn-container'>
-                 <NumberStepper min={1} value={selectedQuantity} onChange={handleQuantityStepper} />
+                 <NumberStepper min={1} value={1} product={true} />
                 </div>
               </>
             : <div className='product-out-of-stock'>Sorry, we&apos;re out of stock.</div>
@@ -184,14 +167,14 @@ const ProductDetails = () => {
         </div>        
 
         <div className='product-btn-container'>
-          <AddToBagButton id={product.product_id} option={selectedOption} size={selectedSize} quantity={selectedQuantity} />
-          <AddToWishlistButton id={product.product_id} option={selectedOption} />
+          <AddToBagButton id={product.product_id} option={selectedOption} size={selectedSize}>Add to Bag</AddToBagButton>
+          <AddToWishlistButton id={product.product_id} option={selectedOption} size={selectedSize}>Add to Wishlist</AddToWishlistButton>
         </div>
 
         <div className='product-details-container'>
-          <AccordionMenu title={'Details'} content={product.details ? [product.description, product.details] : [product.description]} />
-          { product.care ? <AccordionMenu title={'Care'} content={['To maintain the luxurious quality of your leather jacket, we recommend following these care guidelines:', product.care]} /> : null }
-          <AccordionMenu title={'Shipping & Returns'} content={["Complimentary shipping on all orders.", "Free returns within 30 days, excluding final sale items, underwear, bottles, and swimwear."]} />
+          <AccordionMenu title={'Details'} content={detailsAccordion} />
+          { product.care ? <AccordionMenu title={'Care'} content={careAccordion} /> : null }
+          <AccordionMenu title={'Shipping & Returns'} content={shippingAccordion} />
         </div>
       </div>
     </section>

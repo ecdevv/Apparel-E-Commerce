@@ -24,7 +24,7 @@
   .nav-mobile-menu-container {
     display: block;
     width: 340px;
-    height: calc(100vh - 65px);
+    height: calc(100dvh - 65px);
     position: fixed;
     top: calc(0% + 65px);
     right: 0;

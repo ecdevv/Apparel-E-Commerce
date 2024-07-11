@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import Dropdown from './DropdownMenu'
 import { DropdownItem } from '@/app/utility/types'
 import { useMenuContext } from '@/app/utility/contexts/MenuContext'
@@ -24,6 +24,7 @@ const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, ori
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     // Function to handle clicks outside the element (mousedown)
@@ -79,9 +80,24 @@ const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, ori
     if (!isTransitioning) {setMenuToggle(true); setGlobalMenuToggle(true);}
   }
 
+  // Used on the link/dropdownbutton itself to prevent isTransitioning from preventing the menu from opening when the animation is onExit (exiting)
+  const onLinkHover = () => {
+    setMenuToggle(true); 
+    setGlobalMenuToggle(true);
+  }
+
   // Handle toggling the menu on unhover
   const onUnhover = () => {
     setMenuToggle(false);
+  }
+
+  // Handle opening the menu on click and if clicked again, it will link to the specified page; on desktop, hover sets menuToggle true so it will always navigate to the link
+  const handleHoverClick = () => {
+    if (menuToggle === true) {
+      router.push(`/${label?.toLowerCase()}`);
+    } else {
+      setMenuToggle(true);
+    }
   }
 
   // Handle toggling the menu on icon clicked (globalMenuToggle always true until set false from elsewhere)
@@ -94,20 +110,21 @@ const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, ori
     <>
       {hover 
       ? <div ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined} className='dropdown-display hover'>
-          <Link href = {`/${label?.toLowerCase()}`} aria-label={`${label}`}
-            className={`${menuToggle
-            ? classNames[1] ? classNames[1] : classNames[0] 
-            : classNames[0]}`}
+          <button 
+            onClick={handleHoverClick} 
+            onMouseEnter={onLinkHover} 
+            aria-label={label}
+            className={`${menuToggle ? (classNames[1] || classNames[0]) : classNames[0]}`}
           >
-            {children}
-          </Link> 
+              {children}
+          </button> 
           <Dropdown items={items} menuToggle={menuToggle} orientation={orientation} showPointer={showPointer} setTransitionState={setTransitionState} />
         </div>
       : <div ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined} className='dropdown-display nohover'>
-          <button onClick={handleClick} aria-label={`${label}`}
-            className={`${menuToggle
-            ? classNames[1] ? classNames[1] : classNames[0] 
-            : classNames[0]}`}
+          <button 
+            onClick={handleClick}
+            aria-label={label}
+            className={`${menuToggle ? (classNames[1] || classNames[0]) : classNames[0]}`}
           >
             {children}
           </button>

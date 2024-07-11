@@ -3,23 +3,25 @@ import React, { useState } from 'react'
 import { GeneralButton } from '../General/General'
 import { BagProduct } from '@/app/utility/types'
 import { useBagContext } from '@/app/utility/contexts/BagContext'
+import { useNumberStepperContext } from '@/app/utility/contexts/NumberStepperContext'
 import { validateBagProduct } from '@/server/mockValidations'
 
 interface AddToBagProps {
+  children?: React.ReactNode;
   id: number;
   option: string;
   size: string;
-  quantity: number;
   icon?: boolean;
   forceMenu?: boolean;
   className?: string;
 }
 
-const AddToBagButton = ({ id, option, size, quantity, icon = false, forceMenu = true, className = 'btn padding-lg' }: AddToBagProps) => {
+const AddToBagButton = ({ children, id, option, size, icon = false, forceMenu = true, className = 'btn padding-lg' }: AddToBagProps) => {
   const { bagItems, setBagItems, setForceOpen, forceElementRef, scrollableRef } = useBagContext();
+  const { productQuantity } = useNumberStepperContext();
   const [isClicked, setIsClicked] = useState(false);
 
-  const productResponse = validateBagProduct(id, option, size, quantity);
+  const productResponse = validateBagProduct(id, option, size, productQuantity);
   
   const handleClick = () => {
     // If the button is clicked, set the isClicked state to true to show the loading animation and set the forceOpen state to true to open the menu
@@ -85,25 +87,27 @@ const AddToBagButton = ({ id, option, size, quantity, icon = false, forceMenu = 
                 aria-hidden
                 viewBox="0 0 32 32"
                 fill="currentColor"
-                className='cart-icon'
+                width={20}
+                height={20}
               >
                 <path d="M 16 3 C 13.253906 3 11 5.253906 11 8 L 11 9 L 6.0625 9 L 6 9.9375 L 5 27.9375 L 4.9375 29 L 27.0625 29 L 27 27.9375 L 26 9.9375 L 25.9375 9 L 21 9 L 21 8 C 21 5.253906 18.746094 3 16 3 Z M 16 5 C 17.65625 5 19 6.34375 19 8 L 19 9 L 13 9 L 13 8 C 13 6.34375 14.34375 5 16 5 Z M 7.9375 11 L 11 11 L 11 14 L 13 14 L 13 11 L 19 11 L 19 14 L 21 14 L 21 11 L 24.0625 11 L 24.9375 27 L 7.0625 27 Z"/>
               </svg>
             }
-            Add to Bag
+            {children}
           </GeneralButton>
-        : <GeneralButton aria-label='Add to bag disabled' className={'btn-disabled padding-lg'}>
+        : <GeneralButton aria-label='Add to bag disabled' className={`disabled ${className}`}>
             {icon &&
               <svg
                 aria-hidden
                 viewBox="0 0 32 32"
                 fill="currentColor"
-                className='cart-icon'
+                width={20}
+                height={20}
               >
                 <path d="M 16 3 C 13.253906 3 11 5.253906 11 8 L 11 9 L 6.0625 9 L 6 9.9375 L 5 27.9375 L 4.9375 29 L 27.0625 29 L 27 27.9375 L 26 9.9375 L 25.9375 9 L 21 9 L 21 8 C 21 5.253906 18.746094 3 16 3 Z M 16 5 C 17.65625 5 19 6.34375 19 8 L 19 9 L 13 9 L 13 8 C 13 6.34375 14.34375 5 16 5 Z M 7.9375 11 L 11 11 L 11 14 L 13 14 L 13 11 L 19 11 L 19 14 L 21 14 L 21 11 L 24.0625 11 L 24.9375 27 L 7.0625 27 Z"/>
               </svg>
             }
-            Add to Bag
+            {children}
           </GeneralButton>
       }
     </>

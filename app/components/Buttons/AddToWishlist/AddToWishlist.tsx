@@ -6,18 +6,20 @@ import { useWishlistContext } from '@/app/utility/contexts/WishlistContext'
 import { validateWishlistProduct } from '@/server/mockValidations'
 
 interface WishlistProps {
+  children?: React.ReactNode;
   id: number;
   option: string;
+  size: string;
   icon?: boolean;
   forceMenu?: boolean;
   className?: string;
 }
 
-const AddToWishlistButton = ({ id, option, icon = false, forceMenu = true, className = 'btn second padding-lg' }: WishlistProps) => {
+const AddToWishlistButton = ({ children, id, option, size, icon = false, forceMenu = true, className = 'btn second padding-lg' }: WishlistProps) => {
   const { wishItems, setWishItems, setForceOpen, forceElementRef, scrollableRef } = useWishlistContext();
   const [isClicked, setIsClicked] = useState(false);
 
-  const productResponse = validateWishlistProduct(id, option);
+  const productResponse = validateWishlistProduct(id, option, size);
   
   const handleClick = () => {
     // If the button is clicked, set the isClicked state to true to show the loading animation and set the forceOpen state to true to open the menu
@@ -26,11 +28,14 @@ const AddToWishlistButton = ({ id, option, icon = false, forceMenu = true, class
 
     // Find the product from the "api" response
     const product = productResponse.wishlistProduct
+
+    if (productResponse.error === true) return
     
     // Check if the product already exists in the wishItems array
     const existingItemIndex = wishItems.findIndex((item) => 
       item.id === product.id &&
-      item.selectedOption == product.selectedOption
+      item.selectedOption === product.selectedOption &&
+      item.selectedSize === product.selectedSize
     );
 
     // If the product exists, update its index and update the wishItems array.
@@ -83,7 +88,7 @@ const AddToWishlistButton = ({ id, option, icon = false, forceMenu = true, class
           <path fillRule="evenodd" clipRule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       }
-      Wishlist
+      {children}
     </GeneralButton>
   )
 }

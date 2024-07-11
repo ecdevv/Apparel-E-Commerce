@@ -48,13 +48,26 @@
   z-index: 1;
 }
 
+.search-btn {
+  width: 25px;
+  height: 25px;
+}
+
 /*** Mobile & Media Queries ***/
+.mobile {
+  display: none;
+}
+
 @media (max-width: 1280px) {
   .search-box {
     width: 150px;
   }
 }
 @media (max-width: 1024px) {
+  .mobile {
+    display: block;
+  }
+
   .search-content {
     display: none;
   }

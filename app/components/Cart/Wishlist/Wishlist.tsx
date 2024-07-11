@@ -32,13 +32,14 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
         href={`/store/p?${new URLSearchParams({
           name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
           id: item.id.toString() || '', 
-          option: item.selectedOption
+          option: item.selectedOption,
+          size: item.selectedSize
         })}`} 
         className='cart-image-wrapper'
       >
         <Image
           src={item.defaultMedia}
-          alt='Logo'
+          alt={`${item.name} - option: ${item.selectedOption} - image`}
           fill
           sizes="(100vw)"
           className='cart-image'
@@ -52,15 +53,15 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
               name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
               id: item.id.toString() || '', 
               option: item.selectedOption, 
+              size: item.selectedSize
             })}`} 
             className='cart-image-wrapper'
           >
             <h2>{item.name}</h2>
           </CustomLink>
         </div>
-        <div className='cart-info'>
-          <h3>{capitalizeFirstLetter(item.optionType)}: {capitalizeFirstLetter(item.selectedOption)}</h3>
-        </div>
+        <h3>{capitalizeFirstLetter(item.optionType)}: {capitalizeFirstLetter(item.selectedOption)}</h3>
+        <h3>{capitalizeFirstLetter('size')}: {item.selectedSize.toUpperCase()}</h3>
         <div className='cart-info'>
           {item.discount <= 0 
             ? <div className='cart-price-wrapper'>

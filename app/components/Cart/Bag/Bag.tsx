@@ -50,7 +50,7 @@ const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Bag
       >
         <Image
           src={item.defaultMedia}
-          alt='Logo'
+          alt={`${item.name} - option: ${item.selectedOption} - image`}
           fill
           sizes="(100vw)"
           className='cart-image'
