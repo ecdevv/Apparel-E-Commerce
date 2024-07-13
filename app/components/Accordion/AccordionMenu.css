@@ -1,13 +1,13 @@
 /****************** Accordion Menu ******************/
 .accordion-menu-container {
   position: relative;
-  height: 50px;
+  height: var(--height);
   overflow: hidden;
   transition: height 300ms cubic-bezier(0.0, 0.7, 0.3, 1);
 }
 
 .open {
-  height: calc(50px + var(--height));
+  height: calc(var(--height) + var(--content-height));
 }
 
 .accordion-hr {
@@ -21,11 +21,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: var(--padding) 0;
   cursor: pointer;
 }
 
 .accordion-menu-title {
+  height: 25px;
+  display: flex;
+  align-items: center;
   font-family: var(--font-montserrat);
   font-size: 15px;
   font-weight: 600;
@@ -40,11 +43,16 @@
   transition: transform 200ms ease-in-out;
 }
 
+.accordion-menu-icon-svg {
+  width: 1rem;
+  height: 1rem;
+}
+
 .accordion-menu-content {
   display: block;
   cursor: default;
   text-align: start;
-  padding-bottom: 15px;
+  padding-bottom: var(--padding);
 }
 
 .ul-list-wrapper {

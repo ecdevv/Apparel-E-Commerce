@@ -9,9 +9,11 @@ import './MobileNavbar.css';
 const menuItems = [
   {
     label: 'New',
+    href: '/store/p?category=new',
     subMenu: [
       {
         label: 'Limited Exclusives',
+        href: '/store/p?category=limited-exclusives',
         subMenu: [
           { label: 'Atelier x Luxe Limited Edition Jacket',
             productID: 1,
@@ -32,6 +34,7 @@ const menuItems = [
       },
       {
         label: 'Best Sellers',
+        href: '/store/p?category=best-sellers',
         subMenu: [
           { label: 'Atelier x Luxe Limited Edition Jacket',
             productID: 1,
@@ -40,6 +43,7 @@ const menuItems = [
       },
       {
         label: 'Collections',
+        href: '/store/p?category=collections',
         subMenu: [
           { label: 'Atelier x Luxe Collection' },
           { label: 'Summer Breeze Collection' },
@@ -48,27 +52,31 @@ const menuItems = [
       },
       {
         label: 'Men',
+        href: '/store/p?category=men',
         subMenu: [
-          { label: 'Apparel' },
-          { label: 'Shoes' },
-          { label: 'Accessories' },
+          { label: 'Apparel', href: '/' },
+          { label: 'Shoes', href: '/' },
+          { label: 'Accessories', href: '/' },
         ],
       },
       {
         label: 'Women',
+        href: '/store/p?category=women',
         subMenu: [
-          { label: 'Apparel' },
-          { label: 'Shoes' },
-          { label: 'Accessories' },
+          { label: 'Apparel', href: '/' },
+          { label: 'Shoes', href: '/' },
+          { label: 'Accessories', href: '/' },
         ],
       },
     ],
   },
   {
     label: 'Sales',
+    href: '/store/p?category=sales',
     subMenu: [
       {
         label: 'Collections',
+        href: '/store/p?category=collections',
         subMenu: [
           { label: 'Office Elegance Collection' },
           { label: 'Spring Blossom Collection' },
@@ -77,38 +85,45 @@ const menuItems = [
       },
       {
         label: 'Men',
+        href: '/store/p?category=men',
         subMenu: [
-          { label: 'Apparel' },
-          { label: 'Shoes' },
-          { label: 'Accessories' },
+          { label: 'Apparel', href: '/' },
+          { label: 'Shoes', href: '/' },
+          { label: 'Accessories', href: '/' },
         ],
       },
       {
         label: 'Women',
+        href: '/store/p?category=women',
         subMenu: [
-          { label: 'Apparel' },
-          { label: 'Shoes' },
-          { label: 'Accessories' },
+          { label: 'Apparel', href: '/' },
+          { label: 'Shoes', href: '/' },
+          { label: 'Accessories', href: '/' },
         ],
       },
     ],
   },
   {
     label: 'Men',
+    href: '/store/p?category=men',
     subMenu: [
-      { label: 'Clothing' },
-      { label: 'Shoes' },
+      { label: 'Apparel', href: '/' },
+      { label: 'Shoes', href: '/' },
+      { label: 'Accessories', href: '/' },
     ],
   },
   {
     label: 'Women',
+    href: '/store/p?category=women',
     subMenu: [
-      { label: 'Clothing' },
-      { label: 'Shoes' },
+      { label: 'Apparel', href: '/' },
+      { label: 'Shoes', href: '/' },
+      { label: 'Accessories', href: '/' },
     ],
   },
   {
     label: 'Collections',
+    href: '/store/p?category=collections',
     subMenu: [
       { label: 'Atelier x Luxe Collection' },
       { label: 'Summer Breeze Collection' },
@@ -216,7 +231,7 @@ const MobileNavigation = () => {
             </div>
             <ul className='user-menu'>
               <li><CustomLink href='/login'>Sign-In</CustomLink></li>
-              <li><CustomLink href='/'>Wishlist</CustomLink></li>
+              <li><CustomLink href='/wishlist'>Wishlist</CustomLink></li>
               <li><CustomLink href='/cart'>Bag</CustomLink></li>
               <li><CustomLink href='/'>Contact</CustomLink></li>
             </ul>

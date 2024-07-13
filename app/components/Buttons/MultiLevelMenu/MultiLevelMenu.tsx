@@ -6,6 +6,7 @@ import './MultiLevelMenu.css';
 
 interface MenuItem {
   label: string;
+  href?: string;
   subMenu?: MenuItem[];
   productID?: number;
 }
@@ -13,6 +14,7 @@ interface MenuItem {
 interface MenuStackItem {
   items: MenuItem[];
   parentLabel: string | null;
+  parentHref?: string | null;
 }
 
 interface MultiLevelMenuProps {
@@ -27,7 +29,7 @@ const MultiLevelMenu = ({ menuItems, className, backClassName, setMultiMenuHeigh
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [slideDirection, setSlideDirection] = useState('');
   const [menuStack, setMenuStack] = useState<MenuStackItem[]>([
-    { items: menuItems, parentLabel: null }
+    { items: menuItems, parentLabel: null, parentHref: null },
   ]);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -67,7 +69,7 @@ const MultiLevelMenu = ({ menuItems, className, backClassName, setMultiMenuHeigh
     setSlideDirection('slide-in');
     setTimeout(() => {
       if (item.subMenu) {
-        setMenuStack((prevStack) => [...prevStack, { items: item.subMenu!, parentLabel: item.label }]);
+        setMenuStack((prevStack) => [...prevStack, { items: item.subMenu!, parentLabel: item.label, parentHref: item.href }]);
       }
     }, 0);
   };
@@ -111,13 +113,13 @@ const MultiLevelMenu = ({ menuItems, className, backClassName, setMultiMenuHeigh
             </button>
           )}
           <ul>
-            {menuStack.length > 1 && <CustomLink href={`/${menuStack[menuStack.length - 1].parentLabel}`} className='multi-button'>{menuStack[menuStack.length - 1].parentLabel}</CustomLink> }
+            {menuStack.length > 1 && <CustomLink href={`${menuStack[menuStack.length - 1].parentHref}`} className='multi-button'>{menuStack[menuStack.length - 1].parentLabel}</CustomLink> }
             {currentMenu.items.map((item, index) => (
               <li key={index}>
                 {isLastSubMenu && item.productID 
-                  ? <CustomLink href={`${item.label}`} productID={item.productID} className={`multi-button ${isLastSubMenu ? 'multi-sub' : ''}`}>{item.label}</CustomLink>
+                  ? <CustomLink href={item.label} product={{id: item.productID} as any} className={`multi-button ${isLastSubMenu ? 'multi-sub' : ''}`}>{item.label}</CustomLink>
                   : isLastSubMenu 
-                    ? <CustomLink href={`/${item.label}`} className={`multi-button ${isLastSubMenu ? 'multi-sub' : ''}`}>{item.label}</CustomLink>
+                    ? <CustomLink href={`${item.href}`} className={`multi-button ${isLastSubMenu ? 'multi-sub' : ''}`}>{item.label}</CustomLink>
                     : <button onClick={() => handleMenuClick(item)} disabled={buttonDisabled} aria-label='Open Submenu' className={`multi-button ${isLastSubMenu ? 'multi-sub' : ''}`}>
                         {item.label}
                         {item.subMenu && 

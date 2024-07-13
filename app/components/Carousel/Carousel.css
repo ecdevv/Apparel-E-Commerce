@@ -8,13 +8,12 @@
 }
 
 .carousel-image-wrapper {
+  position: relative;
   width: var(--width);
   height: 100%;
-  border-left-width: var(--border-width);
-  border-right-width: var(--border-width);
-  border-color: rgba(var(--inverse-color));
   flex-shrink: 0;
-  position: relative;
+  border-left: var(--border-width) solid rgba(var(--inverse-color));
+  border-right: var(--border-width) solid rgba(var(--inverse-color));
 }
 
 .carousel-image-wrapper .blur-overlay{

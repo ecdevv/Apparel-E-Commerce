@@ -8,8 +8,8 @@
 }
 
 .number-stepper button {
-  width: calc(var(--size) * 0.75);
-  height: var(--size);
+  width: var(--size);
+  height: calc(var(--size) * 1.3333);
   background-color: rgba(var(--primary-color)), transparent;
   cursor: pointer;
   transform: scale(1);
@@ -22,7 +22,7 @@
 
 .number-stepper input {
   width: calc(var(--size) + var(--size2));
-  height: var(--size);
+  height: calc(var(--size) * 1.25);
   text-align: center;
   padding: 5px;
   background-color: rgba(var(--primary-color));

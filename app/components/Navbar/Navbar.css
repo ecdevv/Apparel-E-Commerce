@@ -96,7 +96,7 @@
   height: 1px;
   background-color: rgba(var(--secondary-text-color));
   transform: translateX(-50%) scaleX(0);
-  transition: transform 200ms ease;
+  transition: background-color 200ms ease, transform 200ms ease;
   transform-origin: bottom;
 }
 

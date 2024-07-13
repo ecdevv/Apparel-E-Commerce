@@ -81,7 +81,7 @@ const CartCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Ba
       </div>
       <div className='cart-page-info-container-wrapper'>
         <div className='cart-page-info-header'>
-          <div className='cart-page-image-wrapper cart-mobile'>
+          <div className='cart-page-image-wrapper cart-mobile-1024'>
             <Link 
               href={`/store/p?${new URLSearchParams({
                 name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
@@ -126,10 +126,11 @@ const CartCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Ba
           <div className='cart-page-info qty'>
             {item.selectedQuantity > 0 
                 ? <>
-                  <div className='cart-desktop'><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={32} /></div>
-                  <div className='cart-mobile'><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={25} /></div>
+                  <div className='cart-desktop'><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={28} /></div>
+                  <div className='cart-mobile-1024 ns'><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={24} /></div>
+                  <div className='cart-mobile-450'><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={21} /></div>
                   </>
-                : <h3 className='cart-page-qty-oos'>Sorry, this item is unavailable</h3>
+                : <h3 className='cart-page-qty oos'>Sorry, this item is unavailable</h3>
             }
             {item.discount <= 0
               ? <div className='cart-page-price-wrapper'>

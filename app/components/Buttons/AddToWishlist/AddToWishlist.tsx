@@ -22,7 +22,7 @@ const AddToWishlistButton = ({ children, id, option, size, icon = false, forceMe
   const productResponse = validateWishlistProduct(id, option, size);
   
   const handleClick = () => {
-    // If the button is clicked, set the isClicked state to true to show the loading animation and set the forceOpen state to true to open the menu
+    // If the button is clicked, set the isClicked state to true to show the click animation and set the forceOpen state to true to open the menu
     setIsClicked(true);
     setForceOpen(true);
 

@@ -9,15 +9,16 @@
       {
         "type": "color",
         "name": "black",
+        "releaseDate": "2024-06-01",
         "price": 1999.99,
         "discount": 0.0,
         "sizes": [
-          { "size": "XS", "stock": 0 },
-          { "size": "S", "stock": 0 },
-          { "size": "MD", "stock": 0 },
-          { "size": "LG", "stock": 0 },
-          { "size": "XL", "stock": 0 },
-          { "size": "2XL", "stock": 0 }
+          { "size": "XS", "stock": 0, "sales": 100 },
+          { "size": "S", "stock": 0, "sales": 100 },
+          { "size": "MD", "stock": 0, "sales": 100 },
+          { "size": "LG", "stock": 0, "sales": 100 },
+          { "size": "XL", "stock": 0, "sales": 100 },
+          { "size": "2XL", "stock": 0, "sales": 100 }
         ],
         "media": [
           {
@@ -38,7 +39,7 @@
     "details": [
       ["Material", "Crafted from the finest Italian leather with rich suede accents, and lined with luxurious silk for an unmatched feel."],
       ["Design", "A sleek, modern silhouette with a tailored fit, featuring intricate stitching and bespoke detailing."],
-      ["Limited Edition", "Each jacket is individually numbered, with only 100 pieces available worldwide."],
+      ["Limited Edition", "Each jacket is individually numbered, with only 100 pieces per size available worldwide."],
       ["Functionality", "Discreet pockets, hidden zip closure, adjustable cuffs, and a removable fur collar for versatility."],
       ["Signature Elements", "Custom embroidered logos and a commemorative plaque celebrating the collaboration."],
       ["Eco-Friendly", "Made with ethically sourced materials and sustainable production processes."]
@@ -49,7 +50,7 @@
       ["Storage", "Store your jacket in a cool, dry place away from direct sunlight to prevent fading and moisture damage."],
       ["Avoid", "Avoid exposing your jacket to harsh chemicals, excessive moisture, or heat sources. Following these care instructions will help preserve the timeless elegance and durability of your exclusive leather jacket for years to come."]
     ],
-    "tags": ["tshirt", "summer", "cotton"]
+    "tags": ["men", "tshirt", "summer", "cotton"]
   },
   {
     "product_id": 2,
@@ -61,15 +62,16 @@
       {
         "type": "color",
         "name": "white",
+        "releaseDate": "2024-01-01",
         "price": 19.99,
         "discount": 0.45,
         "sizes": [
-          { "size": "XS", "stock": 42 },
-          { "size": "S", "stock": 24 },
-          { "size": "MD", "stock": 56 },
-          { "size": "LG", "stock": 4 },
-          { "size": "XL", "stock": 91 },
-          { "size": "2XL", "stock": 71 }
+          { "size": "XS", "stock": 42, "sales": 958 },
+          { "size": "S", "stock": 24, "sales": 976 },
+          { "size": "MD", "stock": 56, "sales": 944 },
+          { "size": "LG", "stock": 4, "sales": 996 },
+          { "size": "XL", "stock": 91, "sales": 909 },
+          { "size": "2XL", "stock": 71, "sales": 929 }
         ],
         "media": [
           {
@@ -85,15 +87,16 @@
       {
         "type": "color",
         "name": "black",
+        "releaseDate": "2024-01-01",
         "price": 19.99,
         "discount": 0.25,
         "sizes": [
-          { "size": "XS", "stock": 2 },
-          { "size": "S", "stock": 0 },
-          { "size": "MD", "stock": 0 },
-          { "size": "LG", "stock": 0 },
-          { "size": "XL", "stock": 0 },
-          { "size": "2XL", "stock": 4 }
+          { "size": "XS", "stock": 2, "sales": 998 },
+          { "size": "S", "stock": 0, "sales": 1000 },
+          { "size": "MD", "stock": 0, "sales": 1000 },
+          { "size": "LG", "stock": 0, "sales": 1000 },
+          { "size": "XL", "stock": 0, "sales": 1000 },
+          { "size": "2XL", "stock": 4, "sales": 996 }
         ],
         "media": [
           {
@@ -107,7 +110,7 @@
         ]
       }
     ],
-    "tags": ["tshirt", "summer", "cotton"]
+    "tags": ["men", "tshirt", "summer", "cotton"]
   },
   {
     "product_id": 3,
@@ -119,15 +122,16 @@
       {
         "type": "color",
         "name": "white",
+        "releaseDate": "2024-01-01",
         "price": 19.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 0 },
-          { "size": "S", "stock": 0 },
-          { "size": "MD", "stock": 10 },
-          { "size": "LG", "stock": 0 },
-          { "size": "XL", "stock": 0 },
-          { "size": "2XL", "stock": 0 }
+          { "size": "XS", "stock": 0, "sales": 1000 },
+          { "size": "S", "stock": 0, "sales": 1000 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 0, "sales": 1000 },
+          { "size": "XL", "stock": 0, "sales": 1000 },
+          { "size": "2XL", "stock": 0, "sales": 1000 }
         ],
         "media": [
           {
@@ -167,15 +171,16 @@
       {
         "type": "color",
         "name": "black",
+        "releaseDate": "2024-01-01",
         "price": 19.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 10 },
-          { "size": "S", "stock": 10 },
-          { "size": "MD", "stock": 10 },
-          { "size": "LG", "stock": 10 },
-          { "size": "XL", "stock": 10 },
-          { "size": "2XL", "stock": 10 }
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
         ],
         "media": [
           {
@@ -191,15 +196,16 @@
       {
         "type": "color",
         "name": "orange",
+        "releaseDate": "2024-01-01",
         "price": 19.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 10 },
-          { "size": "S", "stock": 10 },
-          { "size": "MD", "stock": 10 },
-          { "size": "LG", "stock": 10 },
-          { "size": "XL", "stock": 10 },
-          { "size": "2XL", "stock": 10 }
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
         ],
         "media": [
           {
@@ -215,15 +221,16 @@
       {
         "type": "color",
         "name": "red",
+        "releaseDate": "2024-01-01",
         "price": 19.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 10 },
-          { "size": "S", "stock": 10 },
-          { "size": "MD", "stock": 10 },
-          { "size": "LG", "stock": 10 },
-          { "size": "XL", "stock": 10 },
-          { "size": "2XL", "stock": 10 }
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
         ],
         "media": [
           {
@@ -244,15 +251,16 @@
       {
         "type": "color",
         "name": "e",
+        "releaseDate": "2024-01-01",
         "price": 19.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 10 },
-          { "size": "S", "stock": 10 },
-          { "size": "MD", "stock": 10 },
-          { "size": "LG", "stock": 10 },
-          { "size": "XL", "stock": 10 },
-          { "size": "2XL", "stock": 10 }
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
         ],
         "media": [
           {
@@ -265,19 +273,19 @@
           }
         ]
       },
-      
       {
         "type": "color",
         "name": "d",
+        "releaseDate": "2024-01-01",
         "price": 19.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 10 },
-          { "size": "S", "stock": 10 },
-          { "size": "MD", "stock": 10 },
-          { "size": "LG", "stock": 10 },
-          { "size": "XL", "stock": 10 },
-          { "size": "2XL", "stock": 10 }
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
         ],
         "media": [
           {
@@ -294,15 +302,16 @@
       {
         "type": "color",
         "name": "f",
+        "releaseDate": "2024-01-01",
         "price": 19.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 10 },
-          { "size": "S", "stock": 10 },
-          { "size": "MD", "stock": 10 },
-          { "size": "LG", "stock": 10 },
-          { "size": "XL", "stock": 10 },
-          { "size": "2XL", "stock": 10 }
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
         ],
         "media": [
           {
@@ -316,7 +325,222 @@
         ]
       }
     ],
-    "tags": ["tshirt", "summer", "cotton"]
+    "tags": ["men", "tshirt", "summer", "cotton"]
+  },
+  {
+    "product_id": 4,
+    "name": "Luxe Jupiter",
+    "description": "A comfortable cotton t-shirt",
+    "category": "apparel",
+    "subcategory": "tops",
+    "options": [
+      {
+        "type": "color",
+        "name": "white",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 0, "sales": 1000 },
+          { "size": "S", "stock": 0, "sales": 1000 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 0, "sales": 1000 },
+          { "size": "XL", "stock": 0, "sales": 1000 },
+          { "size": "2XL", "stock": 0, "sales": 1000 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "video",
+            "url": "https://example.com/videos/tshirt_red_promo.mp4"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "black",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "orange",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "red",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "e",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      
+      {
+        "type": "color",
+        "name": "d",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      
+      {
+        "type": "color",
+        "name": "f",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      }
+    ],
+    "tags": ["women", "tshirt", "summer", "cotton"]
   }
 ]
   

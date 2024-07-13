@@ -17,11 +17,13 @@ interface MediaItem {
 interface Size {
   size: string;
   stock: number;
+  sales: number;
 }
 
 export interface Option {
   type: string;
   name: string;
+  releaseDate?: string;
   price: number;
   discount: number;
   sizes: Size[];

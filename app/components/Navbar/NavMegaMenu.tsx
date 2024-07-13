@@ -19,11 +19,11 @@ const NewMegaMenu = () => {
         <div className='mega-menu-content'>
           <h2><CustomLink href='/'>LIMITED EXCLUSIVES</CustomLink></h2>
           <ul>
-            <li><CustomLink href='Atelier x Luxe Limited Edition Jacket' productID={1} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
-            <li><CustomLink href='Luxe Mercury' productID={2}>Luxe Mercury</CustomLink></li>
-            <li><CustomLink href='Luxe Jupiter' productID={3}>Luxe Jupiter</CustomLink></li>
-            <li><CustomLink href='Luxe Saturn' productID={4}>Luxe Saturn</CustomLink></li>
-            <li><CustomLink href='Luxe Neptune' productID={5}>Luxe Neptune</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 2} as any}>Luxe Mercury</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 3} as any}>Luxe Jupiter</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 4} as any}>Luxe Saturn</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 5} as any}>Luxe Neptune</CustomLink></li>
           </ul>
         </div>
       </div>
@@ -60,13 +60,13 @@ const NewMegaMenu = () => {
         <div className='mega-menu-content'>
           <h2><CustomLink href='/'>BEST SELLERS</CustomLink></h2>
           <ul>
-            <li><CustomLink href='Atelier x Luxe Limited Edition Jacket' productID={1} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
-            <li><CustomLink href='Luxe Mercury' productID={1}>Luxe Mercury</CustomLink></li>
-            <li><CustomLink href='Luxe Neptune' productID={1}>Luxe Neptune</CustomLink></li>
-            <li><CustomLink href='Atelier x Luxe Denim Jeans' productID={1} NEW={true}>Atelier x Luxe Denim Jeans</CustomLink></li>
-            <li><CustomLink href='Atelier x Luxe Joggers' productID={1} NEW={true}>Atelier x Luxe Joggers</CustomLink></li>
-            <li><CustomLink href='Luxe Jupiter' productID={1}>Luxe Jupiter</CustomLink></li>
-            <li><CustomLink href='Luxe Saturn' productID={1}>Luxe Saturn</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Mercury</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Neptune</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Denim Jeans</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Joggers</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Jupiter</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Saturn</CustomLink></li>
           </ul>
         </div>
       </div>   
@@ -132,11 +132,11 @@ const MenMegaMenu = () => {
         <div className='mega-menu-content'>
           <h2><CustomLink href='/'>TRENDING</CustomLink></h2>
           <ul>
-            <li><CustomLink href='Atelier x Luxe Limited Edition Jacket' productID={1} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
-            <li><CustomLink href='Atelier x Luxe Joggers' productID={1} NEW={true}>Atelier x Luxe Joggers</CustomLink></li>
-            <li><CustomLink href='Luxe Mercury' productID={1}>Luxe Mercury</CustomLink></li>
-            <li><CustomLink href='Luxe Neptune' productID={1}>Luxe Neptune</CustomLink></li>
-            <li><CustomLink href='Luxe Jupiter' productID={1}>Luxe Jupiter</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Joggers</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Mercury</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Neptune</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Jupiter</CustomLink></li>
           </ul>
         </div>
       </div>
@@ -201,11 +201,11 @@ const WomenMegaMenu = () => {
         <div className='mega-menu-content'>
           <h2><CustomLink href='/'>TRENDING</CustomLink></h2>
           <ul>
-            <li><CustomLink href='Atelier x Luxe Limited Edition Jacket' productID={1} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
-            <li><CustomLink href='Atelier x Luxe Denim Jeans' productID={1} NEW={true}>Atelier x Luxe Denim Jeans</CustomLink></li>
-            <li><CustomLink href='Luxe Saturn' productID={1}>Luxe Saturn</CustomLink></li>
-            <li><CustomLink href='Luxe Jupiter' productID={1}>Luxe Jupiter</CustomLink></li>
-            <li><CustomLink href='Luxe Neptune' productID={1}>Luxe Neptune</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Denim Jeans</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Saturn</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Jupiter</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Neptune</CustomLink></li>
           </ul>
         </div>
       </div>

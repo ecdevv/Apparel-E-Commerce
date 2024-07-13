@@ -4,14 +4,21 @@ import { useMenuContext } from "@/app/utility/contexts/MenuContext";
 import './AccordionMenu.css';
 
 interface AccordionMenuProps {
+  children?: React.ReactNode;
   title: string;
-  content: (string | [string, string][])[];
+  content?: (string | [string, string][])[];
+  headerPadding?: number;
+  titleClassName?: string;
+  svgClassName?: string;
+  hrClassName?: string;
 }
 
-const AccordionMenu = ({ title, content }: AccordionMenuProps) => {
+const AccordionMenu = ({ children, title, content, headerPadding=15, titleClassName='accordion-menu-title', svgClassName='accordion-menu-icon-svg', hrClassName='accordion-hr' }: AccordionMenuProps) => {
   const { globalMenuToggle } = useMenuContext();
   const [isOpen, setIsOpen] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const [contentHeight, setContentHeight] = useState(0);
+  const headerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   // Collapse the menu when globalMenuToggle is false (i.e a CustomLink is clicked)
@@ -23,11 +30,13 @@ const AccordionMenu = ({ title, content }: AccordionMenuProps) => {
 
   // Update the content height when the content changes to set the correct height of the menu container (used to transition/animate)
   useEffect(() => {
-    if (contentRef.current) {
+    if (headerRef.current &&contentRef.current) {
       const updateHeight = () => {
-        if (contentRef.current) {
-          const { height } = contentRef.current.getBoundingClientRect();
-          setContentHeight(height);
+        if (headerRef.current && contentRef.current) {
+          const { height: headerHeight } = headerRef.current.getBoundingClientRect();
+          const { height: contentHeight } = contentRef.current.getBoundingClientRect();
+          setHeaderHeight(headerHeight);
+          setContentHeight(contentHeight);
         }
       };
 
@@ -64,23 +73,22 @@ const AccordionMenu = ({ title, content }: AccordionMenuProps) => {
 
   return (
     <>
-      <div role='button' tabIndex={0} onKeyDown={toggleMenu} className={`accordion-menu-container ${isOpen ? 'open' : ''}`} style={{ '--height': `${contentHeight}px` } as React.CSSProperties}>
-        <div className="accordion-menu-header" onClick={toggleMenu} role='button' tabIndex={0}>
-          <h2 className="accordion-menu-title">{title}</h2>
+      <div role='button' tabIndex={0} onKeyDown={toggleMenu} className={`accordion-menu-container ${isOpen ? 'open' : ''}`} style={{ '--height': `${headerHeight}px`, '--content-height': `${contentHeight}px`, '--padding': `${headerPadding}px` } as React.CSSProperties}>
+        <div ref={headerRef} className='accordion-menu-header' onClick={toggleMenu} role='button' tabIndex={0}>
+          <h2 className={titleClassName}>{title}</h2>
           <div className={`${isOpen ? 'accordion-menu-icon-rotated' : 'accordion-menu-icon'}`}>
             <svg 
               aria-hidden
               fill="currentColor" 
               viewBox="0 0 24 24" 
-              height="1em" 
-              width="1em"
+              className={svgClassName}
             >
               <path d="M6.343 7.757L4.93 9.172 12 16.242l7.071-7.07-1.414-1.415L12 13.414 6.343 7.757z" />
             </svg>
           </div>
         </div>
-        <div ref={contentRef} className='accordion-menu-content'>
-          {content.map((item, index) => {
+        <div ref={contentRef} className={'accordion-menu-content'}>
+          {content?.map((item, index) => {
             if (typeof item === 'string') {
               return <p key={index} className='accordion-description'>{item}</p>;
             } else {
@@ -97,9 +105,10 @@ const AccordionMenu = ({ title, content }: AccordionMenuProps) => {
               )
             }
           })}
+          {children}
         </div>
       </div>
-      <hr className='accordion-hr'></hr>
+      <hr className={hrClassName}></hr>
     </>
   );
 };

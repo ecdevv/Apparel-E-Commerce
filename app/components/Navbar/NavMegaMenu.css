@@ -66,7 +66,7 @@
   left: 0;
   transform: scaleX(0);
   transform-origin: bottom;
-  transition: transform 200ms ease;
+  transition: background-color 200ms ease, transform 200ms ease;
 }
 
 .mega-menu-content a:not(:has(img)):hover::after {

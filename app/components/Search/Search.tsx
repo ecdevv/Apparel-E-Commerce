@@ -17,7 +17,7 @@ const Search = () => {
         </svg>
       </form>
 
-      <Link href='/' className='search-btn mobile'>
+      <Link href='/' aria-label='Search Button' className='search-btn mobile'>
         <svg
           aria-hidden
           viewBox="0 0 1024 1024"
