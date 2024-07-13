@@ -69,7 +69,7 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
       </div>
       <div className='cart-page-info-container-wrapper'>
         <div className='cart-page-info-header wishlist-card'>
-          <div className='cart-page-image-wrapper cart-mobile'>
+          <div className='cart-page-image-wrapper cart-mobile-1024'>
             <Link 
               href={`/store/p?${new URLSearchParams({
                 name: `${item.name.split(/[ ,]+/).join('-').toLowerCase()}`, 
@@ -115,8 +115,8 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
           </div>
           <div className='cart-page-info qty'>
             {item.inStock === true 
-                ? <h3 className='cart-page-qty'>This item is currently in stock!</h3>
-                : <h3 className='cart-page-qty oos'>Sorry, this item is unavailable</h3>
+              ? <h3 className='cart-page-qty'>This item is currently in stock!</h3>
+              : <h3 className='cart-page-qty oos'>Sorry, this item is unavailable</h3>
             }
             {item.discount <= 0
               ? <div className='cart-page-price-wrapper'>

@@ -73,6 +73,12 @@
   }
 }
 
+@media (max-width: 360px) {
+  .nav-mobile-menu-container {
+    width: 90%;
+  }
+}
+
 /*** CSSTransition ***/
 .mobile-enter {
   transform: translateX(340px);

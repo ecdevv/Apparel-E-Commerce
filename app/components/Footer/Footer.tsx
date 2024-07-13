@@ -2,12 +2,13 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import './Footer.css'
+import AccordionMenu from "../Accordion/AccordionMenu";
 
 const Footer = () => {
   return (
     <section className="footer-container">
       <div className='footer-between-container'>
-        <div className="footer-info-container">
+        <div className="footer-info-container footer-desktop">
           <div className="footer-section-container">
             <h3>ACCOUNT</h3>
             <ul className="footer-links-container">
@@ -36,6 +37,34 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+
+        <div className="footer-info-container footer-mobile">
+          <div className="footer-section-container">
+            <AccordionMenu title="ACCOUNT" headerPadding={20} titleClassName='footer-accordion-title' svgClassName="footer-accordion-svg" hrClassName="footer-accordion-hr">
+              <ul className="footer-links-container">
+                <li><Link href="/" className="footer-link">Your Account</Link></li>
+                <li><Link href="/" className="footer-link">Track Your Order</Link></li>
+              </ul>
+            </AccordionMenu>
+            <AccordionMenu title="ABOUT" headerPadding={20} titleClassName='footer-accordion-title' svgClassName="footer-accordion-svg" hrClassName="footer-accordion-hr">
+              <ul className="footer-links-container">
+                <li><Link href="/" className="footer-link">Urban Luxe Central</Link></li>
+                <li><Link href="/" className="footer-link">About Us</Link></li>
+                <li><Link href="/" className="footer-link">Careers</Link></li>
+              </ul>
+            </AccordionMenu>
+            <AccordionMenu title="HELP" headerPadding={20} titleClassName='footer-accordion-title' svgClassName="footer-accordion-svg" hrClassName="footer-accordion-hr">
+              <ul className="footer-links-container">
+                <li><Link href="/" className="footer-link">Help Center & FAQs</Link></li>
+                <li><Link href="/" className="footer-link">Shipping & Delivery</Link></li>
+                <li><Link href="/" className="footer-link">Returns & Refunds</Link></li>
+                <li><Link href="/" className="footer-link">Privacy Policy</Link></li>
+                <li><Link href="/" className="footer-link">Terms & Conditions</Link></li>
+              </ul>
+            </AccordionMenu>
+          </div>
+        </div>
+
         <ul className='footer-socials-container'>
           <li>
             <Link href="/" target="_blank" rel="noreferrer" className="footer-link">

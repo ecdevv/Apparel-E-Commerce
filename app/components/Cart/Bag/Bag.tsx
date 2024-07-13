@@ -94,7 +94,7 @@ const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Bag
               </div>
           }
           {item.selectedQuantity > 0 
-            ? <div className='cart-qty-container'><h3>Qty: </h3><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={20} doubleWidth={true} /></div>
+            ? <div className='cart-qty-container'><h3>Qty: </h3><NumberStepper min={1} value={item.selectedQuantity} onChange={handleQuantityStepper} size={15} doubleWidth={true} /></div>
             : <h3 className='cart-qty-oos'>Sorry, this item is unavailable</h3>
           }
         </div>

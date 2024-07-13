@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat, Roboto, Lora } from "next/font/google";
-import ContextProviders from "./utility/ContextProviders";
-import ScrollFix from "./utility/ScrollFix";
+import ContextProviders from "./utility/contexts/ContextProviders";
+import ScrollFix from "./utility/components/ScrollFix";
 import "./globals.css";
 
 const inter = Inter({ 

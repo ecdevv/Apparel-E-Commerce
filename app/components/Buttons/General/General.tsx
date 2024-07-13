@@ -4,20 +4,39 @@ import Link from 'next/link';
 import { useMenuContext } from '@/app/utility/contexts/MenuContext'
 import './General.css'
 
+interface productSearchParams {
+  id: number;
+  name?: string;
+  option?: string;
+  size?: string;
+}
+
 interface CustomLinkProps {
   children?: React.ReactNode;
-  href: string;
-  productID?: number;
+  href: string | null | undefined;
+  product?: productSearchParams;
   NEW?: boolean;
   className?: string;
 }
 
-const CustomLink = ({children, href, NEW, productID, className = 'link'}: CustomLinkProps) => {
+const CustomLink = ({children, href, NEW, product, className = 'link'}: CustomLinkProps) => {
   const { setGlobalMenuToggle } = useMenuContext();
   const [isClicked, setIsClicked] = React.useState(false);
-  const fixedHref = href.replace(/[ ,]+/g, '-').toLowerCase();
-  const link = productID !== undefined
-    ? `/store/p?${new URLSearchParams({ name: fixedHref, id: productID?.toString() || '' })}`
+
+  let fixedHref;
+  if (!href || href === 'undefined' || href === 'null') {
+    fixedHref = '/';
+  } else {
+    fixedHref = href.replace(/[ ,]+/g, '-').toLowerCase();
+  }
+  
+  const link = product !== undefined
+    ? `${fixedHref}${new URLSearchParams(
+      { name: product?.name?.toString() || '', 
+        id: product?.id.toString() || '', 
+        option: product?.option?.toString() || '', 
+        size: product?.size?.toString() || '' 
+      })}`
     : fixedHref;
 
   const handleClick = () => {

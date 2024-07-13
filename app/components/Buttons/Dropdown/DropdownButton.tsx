@@ -15,11 +15,12 @@ interface DropdownButtonProps  {
   hover: boolean;
   orientation: string;
   showPointer: boolean;
+  chevron?: boolean;
   classNames: string[];
 }
 
 // Navigation section with the links of this navbar component (globalMenu used to toggle all menus forcefully by other means)
-const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, orientation, showPointer, classNames} : DropdownButtonProps) => {
+const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, orientation, showPointer, chevron = false, classNames} : DropdownButtonProps) => {
   const { globalMenuToggle, setGlobalMenuToggle } = useMenuContext();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
@@ -94,9 +95,11 @@ const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, ori
   // Handle opening the menu on click and if clicked again, it will link to the specified page; on desktop, hover sets menuToggle true so it will always navigate to the link
   const handleHoverClick = () => {
     if (menuToggle === true) {
-      router.push(`/${label?.toLowerCase()}`);
+      router.push(`/store?category=${label?.toLowerCase()}`);
+      setGlobalMenuToggle(false);
     } else {
       setMenuToggle(true);
+      setGlobalMenuToggle(true);
     }
   }
 
@@ -106,6 +109,7 @@ const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, ori
     setGlobalMenuToggle(true);
   }
 
+  // NOTE: Hover and onLinkHover are running during MEdge's touch simulation even though they shouldn't be, which is causing router to push too early when clicking on a different handleHoverClick button
   return (
     <>
       {hover 
@@ -116,7 +120,18 @@ const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, ori
             aria-label={label}
             className={`${menuToggle ? (classNames[1] || classNames[0]) : classNames[0]}`}
           >
-              {children}
+            {children}
+            {chevron 
+              ? <svg 
+                  aria-hidden
+                  fill="currentColor" 
+                  viewBox="0 0 24 24" 
+                  className={`${menuToggle ? 'dropdown-chevron-rotated' : 'dropdown-chevron'}`}
+                >
+                  <path d="M6.343 7.757L4.93 9.172 12 16.242l7.071-7.07-1.414-1.415L12 13.414 6.343 7.757z" />
+                </svg>
+              : <></> 
+            }
           </button> 
           <Dropdown items={items} menuToggle={menuToggle} orientation={orientation} showPointer={showPointer} setTransitionState={setTransitionState} />
         </div>
@@ -127,6 +142,17 @@ const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, ori
             className={`${menuToggle ? (classNames[1] || classNames[0]) : classNames[0]}`}
           >
             {children}
+            {chevron 
+              ? <svg 
+                  aria-hidden
+                  fill="currentColor" 
+                  viewBox="0 0 24 24" 
+                  className={`${menuToggle ? 'dropdown-chevron-rotated' : 'dropdown-chevron'}`}
+                >
+                  <path d="M6.343 7.757L4.93 9.172 12 16.242l7.071-7.07-1.414-1.415L12 13.414 6.343 7.757z" />
+                </svg>
+              : <></> 
+            }
           </button>
           <Dropdown items={items} menuToggle={menuToggle} orientation={orientation} showPointer={showPointer} setTransitionState={setTransitionState} />
         </div>
