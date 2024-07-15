@@ -112,7 +112,7 @@
         ]
       }
     ],
-    "tags": ["tshirt", "summer", "cotton"]
+    "tags": ["men", "tshirt", "summer", "cotton"]
   },
   {
     "product_id": 3,
@@ -633,7 +633,222 @@
         ]
       }
     ],
-    "tags": ["tshirt", "summer", "cotton"]
+    "tags": ["men", "tshirt", "summer", "cotton"]
+  },
+  {
+    "product_id": 4,
+    "name": "Luxe Jupiter",
+    "description": "A comfortable cotton t-shirt",
+    "category": "apparel",
+    "subcategory": "tops",
+    "options": [
+      {
+        "type": "color",
+        "name": "white",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 0, "sales": 1000 },
+          { "size": "S", "stock": 0, "sales": 1000 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 0, "sales": 1000 },
+          { "size": "XL", "stock": 0, "sales": 1000 },
+          { "size": "2XL", "stock": 0, "sales": 1000 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+          },
+          {
+            "type": "video",
+            "url": "https://example.com/videos/tshirt_red_promo.mp4"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "black",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "orange",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "red",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/white/white1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "e",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      
+      {
+        "type": "color",
+        "name": "d",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      },
+      
+      {
+        "type": "color",
+        "name": "f",
+        "releaseDate": "2024-01-01",
+        "price": 19.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 10, "sales": 990 },
+          { "size": "S", "stock": 10, "sales": 990 },
+          { "size": "MD", "stock": 10, "sales": 990 },
+          { "size": "LG", "stock": 10, "sales": 990 },
+          { "size": "XL", "stock": 10, "sales": 990 },
+          { "size": "2XL", "stock": 10, "sales": 990 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+          }
+        ]
+      }
+    ],
+    "tags": ["women", "tshirt", "summer", "cotton"]
   }
 ]
   
