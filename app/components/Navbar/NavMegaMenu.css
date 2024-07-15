@@ -29,7 +29,6 @@
 
 .mega-menu-content {
   width: 100%;
-  height: 100%;
   position: relative;
 }
 
@@ -75,10 +74,16 @@
   background-color: rgba(var(--link-text-color));
 }
 
+.mega-menu-image-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
 .mega-menu-content-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 

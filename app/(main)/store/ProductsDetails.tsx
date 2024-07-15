@@ -1,10 +1,15 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { CustomLink } from '@/app/components/Buttons/General/General'
+import { CSSTransition } from 'react-transition-group'
+import { CustomLink, GeneralButton } from '@/app/components/Buttons/General/General'
+import Loading from '@/app/components/Loading/Loading'
 import { Product } from '@/app/utility/types'
-import { capitalizeFirstLetter } from '@/app/utility/helper'
+import { getTitle } from '@/app/utility/helper'
+import { filterProducts, sortProducts } from './Helper'
 import './store.css'
+import Select from '@/app/components/Buttons/Select/Select'
+import Carousel from '@/app/components/Carousel/Carousel'
 
 const ProductCard = ({ product, selectedOption, onClick }: { product: Product, selectedOption: number, onClick:(id: number, index: number) => void }) => {
   const currentOption = product.options[selectedOption];
@@ -20,15 +25,15 @@ const ProductCard = ({ product, selectedOption, onClick }: { product: Product, s
 
   return (
     <div className='product-card'>
-      <CustomLink href='/store/p?' product={{id: product.product_id, option: currentOption.name} as any} className='product-card-image-wrapper'>
-        <Image
-          src={images[0]}
-          alt={product.name}
-          fill
-          sizes='(100vw, 100vh)'
-          className='product-card-image'
+      <div className='product-card-image-wrapper'>
+        <Carousel
+          href={`/store/p?${new URLSearchParams({name: product.name.split(/[ ,]+/).join('-').toLowerCase(), id: product.product_id.toString(), option: currentOption.name, size: currentOption.sizes[0].size.toLowerCase()})}`} 
+          Images={images} 
+          Width={100} 
+          ShowNavArrows={true}
+          navArrowSize={35}
         />
-      </CustomLink>
+      </div>
       <div className='product-card-content'>
         <CustomLink href='/store/p?' product={{id: product.product_id, option: currentOption.name} as any} className='product-card-content-details'>
           <p className='product-card-name'>{product.name}</p>
@@ -67,93 +72,35 @@ enum SortCriteria {
   BEST_SELLERS
 }
 
-const ProductsDetails = ({searchParams, Products}: {searchParams: {category: string, tags: string}, Products: Product[]}) => {
+const ProductsDetails = ({parsedCategories, parsedTags, products}: {parsedCategories: string[], parsedTags: string[], products: Product[]}) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [filterOpen, setFilterOpen] = useState(false);
   const [sortCriteria, setSortCriteria] = useState<SortCriteria>(SortCriteria.NEW_ARRIVALS);
   const [selectedOptions, setSelectedOptions] = useState<{ [key: number]: number }>({});
+  const [rowsShown, setRowsShown] = useState(4);
+  
+  // Set the filtered products and then sort the products from the search parameters
+  const filteredProducts = filterProducts({parsedCategories, parsedTags, products: products});
+  const sortedProducts = sortProducts([...filteredProducts], selectedOptions, sortCriteria);
 
   useEffect(() => {
-    displayedProducts.forEach((product) => {
+    sortedProducts.forEach((product) => {
       setSelectedOptions((prev) => ({
         ...prev,
         [product.product_id]: 0
       }));
     });
-  }, [searchParams])
+    setFilterOpen(false);
+    setRowsShown(4);
+  }, [parsedCategories, parsedTags]);
 
-  const displayedProducts = (searchParams.category === 'all' || !searchParams.category)
-    ? Products.filter(product => {
-        const parsedTags = searchParams?.tags?.split(/[ ,\+\-]+/).filter(tag => tag !== '' && tag !== '-' && tag !== '+');
-        const hasTags = parsedTags ? parsedTags.every(tag => product.tags.includes(tag)) : false;
-        return parsedTags
-          ? hasTags
-          : true;
-    })
-    : Products.filter(product => {
-        const parsedTags = searchParams?.tags?.split(/[ ,\+\-]+/).filter(tag => tag !== '' && tag !== '-' && tag !== '+');
-        const hasCategory = product.gender === searchParams.category || product.gender === 'unisex';
-        const hasTags = parsedTags ? parsedTags.every(tag => product.tags.includes(tag)) : false;
+  useEffect(() => {
+    setIsLoading(false);
+  }, [sortProducts]);
 
-        if (searchParams.category === 'new') {
-          const now = new Date('07-02-2024');
-          const sixMonthsAgo = new Date(now.getFullYear(), now.getMonth() - 6, now.getDate());
-          
-          return parsedTags 
-            ? hasTags && product.options.some(option => option.releaseDate && new Date(option.releaseDate) >= sixMonthsAgo)
-            : product.options.some(option => option.releaseDate && new Date(option.releaseDate) >= sixMonthsAgo);
-        }
-
-        if (searchParams.category === 'sales') {
-          const hasDiscount = product.options.some(option => option.discount > 0);
-          return parsedTags
-            ? hasTags && hasDiscount
-            : hasDiscount;
-        }
-        
-        return parsedTags 
-          ? hasTags && hasCategory
-          : hasCategory;
-      });
-
-  const sortProducts = (products: Product[], criteria: SortCriteria): Product[] => {
-    switch (criteria) {
-      case SortCriteria.PRICE_ASC:
-        return products.sort((a, b) => 
-          (a.options[selectedOptions[a.product_id] || 0].price * (1 - a.options[selectedOptions[a.product_id] || 0].discount)) 
-          - (b.options[selectedOptions[b.product_id] || 0].price * (1 - b.options[selectedOptions[b.product_id] || 0].discount))
-        );
-      case SortCriteria.PRICE_DESC:
-        return products.sort((a, b) => 
-          (b.options[selectedOptions[b.product_id] || 0].price * (1 - b.options[selectedOptions[b.product_id] || 0].discount)) 
-          - (a.options[selectedOptions[a.product_id] || 0].price * (1 - a.options[selectedOptions[a.product_id] || 0].discount))
-        );
-      case SortCriteria.NEW_ARRIVALS:
-        return products.sort((a, b) => {
-          const dateA = new Date(a.options[selectedOptions[a.product_id] || 0].releaseDate || 0);
-          const dateB = new Date(b.options[selectedOptions[b.product_id] || 0].releaseDate || 0);
-          return dateB.getTime() - dateA.getTime();
-        });
-      case SortCriteria.BEST_SELLERS:
-        return products.sort((a, b) => {
-          const aBestSellingOption = a.options.reduce((best, option) => {
-            const optionSales = option.sizes.reduce((acc, size) => acc + (size.sales || 0), 0);
-            const optionStock = option.sizes.reduce((acc, size) => acc + size.stock, 0);
-            const percentageSales = (optionSales / optionStock) * 100;
-            return percentageSales > best.percentage ? { percentage: percentageSales, option } : best;
-          }, { percentage: 0, option: a.options[0] });
-          const bBestSellingOption = b.options.reduce((best, option) => {
-            const optionSales = option.sizes.reduce((acc, size) => acc + (size.sales || 0), 0);
-            const optionStock = option.sizes.reduce((acc, size) => acc + size.stock, 0);
-            const percentageSales = (optionSales / optionStock) * 100;
-            return percentageSales > best.percentage ? { percentage: percentageSales, option } : best;
-          }, { percentage: 0, option: b.options[0] });
-          return bBestSellingOption.percentage - aBestSellingOption.percentage;
-        });
-      default:
-        return products;
-    }
-  };
-
-  const sortedProducts = sortProducts([...displayedProducts], sortCriteria);
+  const handleFilterClick = () => {
+    setFilterOpen(prev => !prev);
+  }
 
   const handleSortClick = (criteria: SortCriteria) => {
     setSortCriteria(criteria);
@@ -166,11 +113,52 @@ const ProductsDetails = ({searchParams, Products}: {searchParams: {category: str
     }));
   };
 
+  const handleShowMoreClick = () => {
+    setRowsShown((prev) => prev + 4);
+  };
+
+  if (isLoading) {
+    return <section className='store-products-section'><div className='loading-page'>Loading...<Loading /></div></section>
+  }
+
   return (
     <section className='store-products-section'>
-      {!searchParams.category ? <h1 className='store-products-title'>All Products</h1> : <h1 className='store-products-title'>{capitalizeFirstLetter(searchParams.category)}</h1>}
+      <h1 className='store-products-title'>{getTitle(parsedCategories)}</h1>
       <div className='store-products-sort-container'>
-        <div className='sort-dropdown'>
+        <button onClick={handleFilterClick} aria-label='Filter' className='filter-btn'>
+          <svg 
+            aria-hidden
+            viewBox="0 0 64 64" 
+            xmlns="http://www.w3.org/2000/svg" 
+            strokeWidth="3" 
+            stroke="currentColor" 
+            fill="none"
+            width={20}
+            height={20}
+          >
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <line x1="50.69" y1="32" x2="56.32" y2="32"></line>
+                <line x1="7.68" y1="32" x2="38.69" y2="32"></line>
+                <line x1="26.54" y1="15.97" x2="56.32" y2="15.97"></line>
+                <line x1="7.68" y1="15.97" x2="14.56" y2="15.97"></line>
+                <line x1="35" y1="48.03" x2="56.32" y2="48.03"></line>
+                <line x1="7.68" y1="48.03" x2="23" y2="48.03"></line>
+                <circle cx="20.55" cy="15.66" r="6"></circle>
+                <circle cx="44.69" cy="32" r="6"></circle>
+                <circle cx="29" cy="48.03" r="6"></circle>
+              </g>
+          </svg>
+          Filter
+        </button>
+        <Select value={sortCriteria} onChange={handleSortClick as () => void}>
+          <option value={SortCriteria.NEW_ARRIVALS}>New Arrivals</option>
+          <option value={SortCriteria.BEST_SELLERS}>Best Sellers</option>
+          <option value={SortCriteria.PRICE_ASC}>Price (Low to High)</option>
+          <option value={SortCriteria.PRICE_DESC}>Price (High to Low)</option>
+        </Select>
+        {/* <div className='sort-dropdown'>
           <label htmlFor='sort' className='visually-hidden'>Sort By</label>
           <select id='sort' className='sort-select' value={sortCriteria} onChange={(e) => handleSortClick(Number(e.currentTarget.value))}>
             <option value={SortCriteria.NEW_ARRIVALS}>New Arrivals</option>
@@ -189,12 +177,33 @@ const ProductsDetails = ({searchParams, Products}: {searchParams: {category: str
               <path d="M6.343 7.757L4.93 9.172 12 16.242l7.071-7.07-1.414-1.415L12 13.414 6.343 7.757z" />
             </svg>
           </span>
-        </div>
+        </div> */}
       </div>
       <div className='store-products-container'>
-        {sortedProducts.map((product: any, index) => (
-          <ProductCard key={index} product={product} selectedOption={selectedOptions[product.product_id] || 0} onClick={handleOptionChange}/>
-        ))}
+        <CSSTransition in={filterOpen} timeout={200} classNames='filter' unmountOnExit>
+          <div className='filter-menu'><h2>Filter Menu</h2><div>2</div></div>
+        </CSSTransition>
+        <div className={`store-products-wrapper ${filterOpen ? 'with-filter' : ''}`}>
+          <div className='product-cards-container'>
+            {sortedProducts.length === 0 ? (
+              <div className='products-none-found'>No results found.</div>
+            ) : (
+              sortedProducts.slice(0, rowsShown).map((product: any, index) => (
+                <ProductCard 
+                  key={index} 
+                  product={product} 
+                  selectedOption={selectedOptions[product.product_id] || 0} 
+                  onClick={handleOptionChange}
+                />
+              ))
+            )}
+          </div>
+          {rowsShown < sortedProducts.length && (
+            <div className='show-more-btn-wrapper'>
+              <GeneralButton onClick={handleShowMoreClick} className='btn second'>Show More</GeneralButton>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   )

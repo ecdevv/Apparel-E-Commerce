@@ -123,7 +123,7 @@
   justify-content: space-between;
 }
 
-.cart-info h2 {
+.cart-info a, .cart-info h2 {
   font-weight: 600;
   white-space: nowrap;
   text-overflow: ellipsis;

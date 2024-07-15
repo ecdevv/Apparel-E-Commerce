@@ -7,9 +7,9 @@ const NewMegaMenu = () => {
   return (
     <div className='mega-menu-container' style={{'--num-columns': '3'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
-        <CustomLink href='/' className='mega-menu-content'>
+        <CustomLink href='/store/p?' product={{id: 1} as any} className='mega-menu-image-wrapper'>
           <Image 
-            src='/next.svg'
+            src='/images/products/apparel/tshirts_tops/product1/black/black1.webp'
             alt='New Image'
             fill
             sizes="(100vw)"
@@ -17,7 +17,7 @@ const NewMegaMenu = () => {
           />
         </CustomLink>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>LIMITED EXCLUSIVES</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'exclusive'}}>LIMITED EXCLUSIVES</CustomLink></h2>
           <ul>
             <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
             <li><CustomLink href='/store/p?' product={{id: 2} as any}>Luxe Mercury</CustomLink></li>
@@ -29,7 +29,7 @@ const NewMegaMenu = () => {
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>NEW ARRIVALS</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'new'}}>NEW ARRIVALS</CustomLink></h2>
           <div className='mega-menu-content'>
             <h3><CustomLink href='/'>Collections</CustomLink></h3>
             <ul>
@@ -40,25 +40,25 @@ const NewMegaMenu = () => {
           </div>
         </div>
         <div className='mega-menu-content'>
-          <h3><CustomLink href='/'>New In Men&apos;s Clothing</CustomLink></h3>
+          <h3><CustomLink href='/store' searchParams={{category: 'new, men'}}>New In Men&apos;s Clothing</CustomLink></h3>
           <ul>
-            <li><CustomLink href='/'>Apparel</CustomLink></li>
-            <li><CustomLink href='/'>Shoes</CustomLink></li>
-            <li><CustomLink href='/'>Accessories</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'new, men, apparel'}}>Apparel</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'new, men, shoes'}}>Shoes</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'new, men, accessories'}}>Accessories</CustomLink></li>
           </ul>
         </div>
         <div className='mega-menu-content'>
-          <h3><CustomLink href='/'>New In Women&apos;s Clothing</CustomLink></h3>
+          <h3><CustomLink href='/store' searchParams={{category: 'new, women'}}>New In Women&apos;s Clothing</CustomLink></h3>
           <ul>
-            <li><CustomLink href='/'>Apparel</CustomLink></li>
-            <li><CustomLink href='/'>Shoes</CustomLink></li>
-            <li><CustomLink href='/'>Accessories</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'new, women, apparel'}}>Apparel</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'new, women, shoes'}}>Shoes</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'new, women, accessories'}}>Accessories</CustomLink></li>
           </ul>
         </div>
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>BEST SELLERS</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'trending'}}>BEST SELLERS</CustomLink></h2>
           <ul>
             <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
             <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Mercury</CustomLink></li>
@@ -78,7 +78,7 @@ const SalesMegaMenu = () => {
   return (
     <div className='mega-menu-container' style={{'--num-columns': '4'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
-        <CustomLink href='/' className='mega-menu-content'>
+        <CustomLink href='/store' searchParams={{category: 'sales'}} className='mega-menu-image-wrapper'>
           <Image 
             src='/vercel.svg'
             alt='Sales Image'
@@ -90,7 +90,7 @@ const SalesMegaMenu = () => {
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>FEATURED SALES</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'sales'}}>FEATURED SALES</CustomLink></h2>
           <div className='mega-menu-content'>
             <h3><CustomLink href='/'>Collections</CustomLink></h3>
             <ul>
@@ -103,21 +103,21 @@ const SalesMegaMenu = () => {
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h3><CustomLink href='/'>MEN&apos;S SALES</CustomLink></h3>
+          <h3><CustomLink href='/store' searchParams={{category: 'sales, men'}}>MEN&apos;S SALES</CustomLink></h3>
           <ul>
-            <li><CustomLink href='/'>Apparel</CustomLink></li>
-            <li><CustomLink href='/'>Shoes</CustomLink></li>
-            <li><CustomLink href='/'>Accessories</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'sales, men, apparel'}}>Apparel</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'sales, men, shoes'}}>Shoes</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'sales, men, accessories'}}>Accessories</CustomLink></li>
           </ul>
         </div>
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h3><CustomLink href='/'>WOMEN&apos;S SALES</CustomLink></h3>
+          <h3><CustomLink href='/store' searchParams={{category: 'sales, women'}}>WOMEN&apos;S SALES</CustomLink></h3>
           <ul>
-            <li><CustomLink href='/'>Apparel</CustomLink></li>
-            <li><CustomLink href='/'>Shoes</CustomLink></li>
-            <li><CustomLink href='/'>Accessories</CustomLink></li>
+          <li><CustomLink href='/store' searchParams={{category: 'sales, women, apparel'}}>Apparel</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'sales, women, shoes'}}>Shoes</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'sales, women, accessories'}}>Accessories</CustomLink></li>
           </ul>
         </div>
       </div>
@@ -130,7 +130,7 @@ const MenMegaMenu = () => {
     <div className='mega-menu-container' style={{'--num-columns': '4'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>TRENDING</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'men, popular'}}>TRENDING</CustomLink></h2>
           <ul>
             <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
             <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Joggers</CustomLink></li>
@@ -142,51 +142,51 @@ const MenMegaMenu = () => {
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>APPAREL</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'men, apparel'}}>APPAREL</CustomLink></h2>
           <ul>
-            <li><CustomLink href='/'>T-Shirts & Tops</CustomLink></li>
-            <li><CustomLink href='/'>Hoodies & Sweatshirts</CustomLink></li>
-            <li><CustomLink href='/'>Jackets & Coats</CustomLink></li>
-            <li><CustomLink href='/'>Pants & Tights</CustomLink></li>
-            <li><CustomLink href='/'>Shorts</CustomLink></li>
-            <li><CustomLink href='/'>Tracksuits</CustomLink></li>
-            <li><CustomLink href='/'>Jerseys</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, apparel', tags: 'tshirts, tops'}}>T-Shirts & Tops</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, apparel', tags: 'hoodies, sweatshirts'}}>Hoodies & Sweatshirts</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, apparel', tags: 'jackets, coats'}}>Jackets & Coats</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, apparel', tags: 'pants, tights'}}>Pants & Tights</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, apparel', tags: 'shorts'}}>Shorts</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, apparel', tags: 'tracksuits'}}>Tracksuits</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, apparel', tags: 'jerseys'}}>Jerseys</CustomLink></li>
           </ul>
         </div>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>UNDERWEAR</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'men, underwear'}}>UNDERWEAR</CustomLink></h2>
           <ul>
-            <li><CustomLink href='/'>Briefs</CustomLink></li>
-            <li><CustomLink href='/'>Boxers</CustomLink></li>
-            <li><CustomLink href='/'>Trunks</CustomLink></li>
-          </ul>
-        </div>
-      </div>
-      <div className='mega-menu-content-wrapper'>
-        <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>SHOES</CustomLink></h2>
-          <ul>
-            <li><CustomLink href='/'>Slides & Sandals</CustomLink></li>
-            <li><CustomLink href='/'>Sneakers</CustomLink></li>
-            <li><CustomLink href='/'>Running</CustomLink></li>
-            <li><CustomLink href='/'>Gym</CustomLink></li>
-            <li><CustomLink href='/'>Soccer</CustomLink></li>
-            <li><CustomLink href='/'>Basketball</CustomLink></li>
-            <li><CustomLink href='/'>Hiking</CustomLink></li>
-            <li><CustomLink href='/'>Golf</CustomLink></li>
-            <li><CustomLink href='/'>Football</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, underwear', tags: 'briefs'}}>Briefs</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, underwear', tags: 'boxers'}}>Boxers</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, underwear', tags: 'trunks'}}>Trunks</CustomLink></li>
           </ul>
         </div>
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>ACCESSORIES</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'men, shoes'}}>SHOES</CustomLink></h2>
           <ul>
-            <li><CustomLink href='/'>Hats & Caps</CustomLink></li>
-            <li><CustomLink href='/'>Bags & Backpacks</CustomLink></li>
-            <li><CustomLink href='/'>Gloves</CustomLink></li>
-            <li><CustomLink href='/'>Belts</CustomLink></li>
-            <li><CustomLink href='/'>Socks</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, shoes', tags: 'slides, sandals'}}>Slides & Sandals</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, shoes', tags: 'sneakers'}}>Sneakers</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, shoes', tags: 'running'}}>Running</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, shoes', tags: 'gym'}}>Gym</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, shoes', tags: 'soccer'}}>Soccer</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, shoes', tags: 'basketball'}}>Basketball</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, shoes', tags: 'hiking'}}>Hiking</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, shoes', tags: 'golf'}}>Golf</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, shoes', tags: 'football'}}>Football</CustomLink></li>
+          </ul>
+        </div>
+      </div>
+      <div className='mega-menu-content-wrapper'>
+        <div className='mega-menu-content'>
+          <h2><CustomLink href='/store' searchParams={{category: 'men, accessories'}}>ACCESSORIES</CustomLink></h2>
+          <ul>
+            <li><CustomLink href='/store' searchParams={{category: 'men, accessories', tags: 'hats, caps'}}>Hats & Caps</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, accessories', tags: 'bags, backpacks'}}>Bags & Backpacks</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, accessories', tags: 'gloves'}}>Gloves</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, accessories', tags: 'belts'}}>Belts</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'men, accessories', tags: 'socks'}}>Socks</CustomLink></li>
           </ul>
         </div>
       </div>
@@ -199,7 +199,7 @@ const WomenMegaMenu = () => {
     <div className='mega-menu-container' style={{'--num-columns': '4'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>TRENDING</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'women, popular'}}>TRENDING</CustomLink></h2>
           <ul>
             <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
             <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Denim Jeans</CustomLink></li>
@@ -211,56 +211,56 @@ const WomenMegaMenu = () => {
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>APPAREL</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'women, apparel'}}>APPAREL</CustomLink></h2>
           <ul>
-            <li><CustomLink href='/'>T-Shirts & Tops</CustomLink></li>
-            <li><CustomLink href='/'>Hoodies & Sweatshirts</CustomLink></li>
-            <li><CustomLink href='/'>Jackets & Coats</CustomLink></li>
-            <li><CustomLink href='/'>Dresses</CustomLink></li>
-            <li><CustomLink href='/'>Pants</CustomLink></li>
-            <li><CustomLink href='/'>Shorts</CustomLink></li>
-            <li><CustomLink href='/'>Tights & Leggings</CustomLink></li>
-            <li><CustomLink href='/'>Skirts</CustomLink></li>
-            <li><CustomLink href='/'>Tracksuits</CustomLink></li>
-            <li><CustomLink href='/'>Jerseys</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, apparel', tags: 'tshirts, tops'}}>T-Shirts & Tops</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, apparel', tags: 'hoodies, sweatshirts'}}>Hoodies & Sweatshirts</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, apparel', tags: 'jackets, coats'}}>Jackets & Coats</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, apparel', tags: 'dresses'}}>Dresses</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, apparel', tags: 'pants, tights'}}>Pants</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, apparel', tags: 'shorts'}}>Shorts</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, apparel', tags: 'tights, leggings'}}>Tights & Leggings</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, apparel', tags: 'skirts'}}>Skirts</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, apparel', tags: 'tracksuits'}}>Tracksuits</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, apparel', tags: 'jerseys'}}>Jerseys</CustomLink></li>
           </ul>
         </div>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>UNDERWEAR</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'women, underwear'}}>UNDERWEAR</CustomLink></h2>
           <ul>
-            <li><CustomLink href='/'>Everyday Bras</CustomLink></li>
-            <li><CustomLink href='/'>Sports Bras</CustomLink></li>
-            <li><CustomLink href='/'>Briefs</CustomLink></li>
-            <li><CustomLink href='/'>Bikinis</CustomLink></li>
-          </ul>
-        </div>
-      </div>
-      <div className='mega-menu-content-wrapper'>
-        <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>SHOES</CustomLink></h2>
-          <ul>
-            <li><CustomLink href='/'>Slides & Sandals</CustomLink></li>
-            <li><CustomLink href='/'>Sneakers</CustomLink></li>
-            <li><CustomLink href='/'>Running</CustomLink></li>
-            <li><CustomLink href='/'>Gym</CustomLink></li>
-            <li><CustomLink href='/'>Soccer</CustomLink></li>
-            <li><CustomLink href='/'>Basketball</CustomLink></li>
-            <li><CustomLink href='/'>Hiking</CustomLink></li>
-            <li><CustomLink href='/'>Golf</CustomLink></li>
-            <li><CustomLink href='/'>Football</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, underwear', tags: 'everyday, bras'}}>Everyday Bras</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, underwear', tags: 'sports, bras'}}>Sports Bras</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, underwear', tags: 'briefs'}}>Briefs</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, underwear', tags: 'bikinis'}}>Bikinis</CustomLink></li>
           </ul>
         </div>
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/'>ACCESSORIES</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'women, shoes'}}>SHOES</CustomLink></h2>
           <ul>
-            <li><CustomLink href='/'>Hats & Caps</CustomLink></li>
-            <li><CustomLink href='/'>Handbags</CustomLink></li>
-            <li><CustomLink href='/'>Backpacks</CustomLink></li>
-            <li><CustomLink href='/'>Gloves</CustomLink></li>
-            <li><CustomLink href='/'>Belts</CustomLink></li>
-            <li><CustomLink href='/'>Socks</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, shoes', tags: 'slides, sandals'}}>Slides & Sandals</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, shoes', tags: 'sneakers'}}>Sneakers</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, shoes', tags: 'running'}}>Running</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, shoes', tags: 'gym'}}>Gym</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, shoes', tags: 'soccer'}}>Soccer</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, shoes', tags: 'basketball'}}>Basketball</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, shoes', tags: 'hiking'}}>Hiking</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, shoes', tags: 'golf'}}>Golf</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, shoes', tags: 'football'}}>Football</CustomLink></li>
+          </ul>
+        </div>
+      </div>
+      <div className='mega-menu-content-wrapper'>
+        <div className='mega-menu-content'>
+          <h2><CustomLink href='/store' searchParams={{category: 'women, accessories'}}>ACCESSORIES</CustomLink></h2>
+          <ul>
+            <li><CustomLink href='/store' searchParams={{category: 'women, accessories', tags: 'hats, caps'}}>Hats & Caps</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, accessories', tags: 'handbags'}}>Handbags</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, accessories', tags: 'backpacks'}}>Backpacks</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, accessories', tags: 'gloves'}}>Gloves</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, accessories', tags: 'belts'}}>Belts</CustomLink></li>
+            <li><CustomLink href='/store' searchParams={{category: 'women, accessories', tags: 'socks'}}>Socks</CustomLink></li>
           </ul>
         </div>
       </div>
@@ -272,7 +272,7 @@ const CollectionsMegaMenu = () => {
   return (
     <div className='mega-menu-container' style={{'--num-columns': '3'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
-        <CustomLink href='/' className='mega-menu-content'>
+        <CustomLink href='/' className='mega-menu-image-wrapper'>
           <Image 
             src='/next.svg'
             alt='Collection Image 1'
@@ -281,7 +281,7 @@ const CollectionsMegaMenu = () => {
             className='mega-menu-content-image'
           />
         </CustomLink>
-        <CustomLink href='/' className='mega-menu-content'>
+        <CustomLink href='/' className='mega-menu-image-wrapper'>
           <Image 
             src='/vercel.svg'
             alt='Collection Image 2'
@@ -292,7 +292,7 @@ const CollectionsMegaMenu = () => {
         </CustomLink>
       </div>
       <div className='mega-menu-content-wrapper'>
-        <CustomLink href='/' className='mega-menu-content'>
+        <CustomLink href='/' className='mega-menu-image-wrapper'>
           <Image 
             src='/vercel.svg'
             alt='Collection Image 3'
@@ -301,7 +301,7 @@ const CollectionsMegaMenu = () => {
             className='mega-menu-content-image'
           />
         </CustomLink>
-        <CustomLink href='/' className='mega-menu-content'>
+        <CustomLink href='/' className='mega-menu-image-wrapper'>
           <Image 
             src='/next.svg'
             alt='Collection Image 4'

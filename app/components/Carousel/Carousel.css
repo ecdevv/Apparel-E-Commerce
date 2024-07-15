@@ -1,4 +1,10 @@
 /****************** Carousel ******************/
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .carousel-image-container {
   width: 100%;
   height: calc(100% - var(--thumbnail-height));
@@ -58,18 +64,19 @@
   right: 0%;
 }
 
-.carousel-left-btn:hover .carousel-left-arrow, .carousel-right-btn:hover .carousel-right-arrow {
-  transform: scale(1.25);
+.carousel-left-arrow, .carousel-right-arrow {
+  width: var(--nav-arrow-size);
+  height: var(--nav-arrow-size);
+  margin: auto;
+  opacity: 0;
+  fill: rgba(255, 255, 255, 0.65);
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 1));
+  transition: all 200ms ease-in-out;
 }
 
-.carousel-left-arrow, .carousel-right-arrow {
-  width: 50px;
-  height: 50px;
-  opacity: 80%;
-  fill: white;
-  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 1));
-  margin: auto;
-  transition: all 200ms ease-in-out;
+.carousel-container:hover .carousel-left-btn .carousel-left-arrow, .carousel-container:hover .carousel-right-btn .carousel-right-arrow {
+  opacity: 1;
+  /* transform: scale(1.25); */
 }
 
 .carousel-dots-wrapper {
@@ -167,6 +174,16 @@
   transform: scale(1.05);
   border: 1px solid rgba(0, 0, 0, 1);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 640px) {
+  .carousel-dots-wrapper {
+    width: 100%;
+  }
+
+  .carousel-dots-wrapper.small {
+    gap: 4%;
+  }
 }
 
 /*** CSSTransition ***/

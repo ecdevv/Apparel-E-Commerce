@@ -42,6 +42,47 @@ const getProducts = (): { error: boolean, products: Product[] } => {
   return { error: false, products };
 }
 
+// Validation for refreshing the page and the url is invalid (incorrect name, options, and sizes)
+const validateStoreURL = (categories: string[], tags: string[]): { error: boolean, url: string} => {
+  // Create a new URL object and update the search params
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+  if (!baseUrl) return { error: true, url: '' };
+
+  const newUrl = new URL('/store', baseUrl);
+  let newSearchParams = new URLSearchParams({
+    category: 'all',
+  });
+  
+  if (!categories) {
+    newUrl.search = newSearchParams.toString();
+    return { error: false, url: newUrl.toString() }
+  }
+
+  const validCategories = ['all', 'new', 'sales', 'men', 'women', 'trending', 'popular', 'collections', 'exclusive', 'apparel', 'shoes', 'accessories', 'underwear'];
+  const newCategorySearchParam = categories.some(param => validCategories.includes(param.toLowerCase()));
+  if (newCategorySearchParam) {
+    const newCategoryStrings = categories.filter(param => validCategories.includes(param.toLowerCase())).join(' ').toLowerCase();
+    const newTagStrings = tags?.join(' ').toLowerCase();
+
+    if (tags && newTagStrings.length > 0) {
+      newSearchParams = new URLSearchParams({
+        category: newCategoryStrings,
+        tags: newTagStrings,
+      });
+    } else {
+      newSearchParams = new URLSearchParams({
+        category: newCategoryStrings,
+      });
+    }
+  }
+
+  // Update the search params in the URL
+  newUrl.search = newSearchParams.toString();
+  
+  // Replace the current URL with the updated one
+  return { error: false, url: newUrl.toString() }
+};
+
 // Validate the product for product page
 const validateProduct = (searchParams: productSearchParams): { error: boolean, product: Product, productReviews: any, averageRating: number } => {
   const id = parseInt(searchParams.id);
@@ -103,7 +144,7 @@ const getSelectedOption = (searchParams: productSearchParams, product: Product):
 }
 
 // Validation for refreshing the page and the url is invalid (incorrect name, options, and sizes)
-const validateURL = (product: Product, selectedOption: string, selectedSize: string): { error: boolean, url: string} => {
+const validateProductURL = (product: Product, selectedOption: string, selectedSize: string): { error: boolean, url: string} => {
   // Create a new URL object and update the search params
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
   if (!baseUrl) return { error: true, url: '' };
@@ -350,4 +391,4 @@ const calculateCosts = (bagItems: BagProduct[]): {subTotal: number, totalDiscoun
   return { subTotal: subTotal, totalDiscount: totalDiscount, total: total, taxCost: taxCost, shippingCost: shippingCost, grandTotal: grandTotal };
 }
 
-export { getProducts, validateProduct, getSelectedOption, validateURL, validateBagProduct, validateWishlistProduct, calculateCosts, validateBag, validateWishlist  };
+export { getProducts, validateStoreURL, validateProduct, getSelectedOption, validateProductURL, validateBagProduct, validateWishlistProduct, calculateCosts, validateBag, validateWishlist  };

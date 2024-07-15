@@ -55,7 +55,6 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
               option: item.selectedOption, 
               size: item.selectedSize
             })}`} 
-            className='cart-image-wrapper'
           >
             <h2>{item.name}</h2>
           </CustomLink>

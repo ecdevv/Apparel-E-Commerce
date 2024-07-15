@@ -1,20 +1,24 @@
 'use client'
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './Carousel.css'
 
 interface ImagesProps {
+  href?: string;
   Images: StaticImageData[] | string[]
   Width: number;
   BorderWidth?: number;
   ShowNavArrows?: boolean;
   ShowThumbnails?: boolean;
   ShowDotBtns?: boolean;
+  navArrowSize?: number;
   dotSmall?: boolean;
 }
 
-const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowThumbnails = false, ShowDotBtns = false, dotSmall = false} : ImagesProps) => {
+const Carousel = ({href = '', Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowThumbnails = false, ShowDotBtns = false, navArrowSize = 30, dotSmall = false } : ImagesProps) => {
+  const [prevImages, setPrevImages] = useState(Images);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(-1);
   const [prevIndex, setPrevIndex] = useState(0);
@@ -24,11 +28,19 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowTh
   const [slideDirection, setSlideDirection] = useState('');
   const thumbnailHeight = 20;
 
+  // FIXME: Resetting the current index to 0 every time new images are set is causing the transition to occur; current solution flickers the wrong indexed image on images change before the correct index is set
   // Set the current index to the first image every time new images are set
-  useEffect(() => {
-    setPrevIndex(0);
-    setCurrentIndex(0);
-  }, [Images])
+  // useEffect(() => {
+  //   setTimeoutDuration(0); // Reset the timeout duration
+  //   setSlideDirection(''); // Reset the slide direction
+  //   setDifference(0);
+    
+  //   // Set timeout to make sure the above runs before setting the indices
+  //   setTimeout(() => {
+  //     setPrevIndex(0);
+  //     setCurrentIndex(0);
+  //   }, 0);
+  // }, [Images])
 
   const handlePrevClick = () => {
     // Disable and then re-enable the button after 300 milliseconds
@@ -166,7 +178,7 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowTh
   };
   
   return (
-    <>
+    <div className='carousel-container'>
       {/* ACCESSIBILITY LINK to skip the carousel/image track component */}
       <a href='#skip-link' aria-label='Skip Past This Carousel Section' className='skip-link'>Skip Carousel</a> {/* Link does not work as intended for tab navigation so using <a> tag instead */}
 
@@ -182,19 +194,33 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowTh
             <div className='carousel-image-container'>
               {/* Only maps the primary image selected and the two surrounding images */}
               {getWrappedImages(currentIndex, Images, 3).map((image, index) => (
-                <div key={index} className={`carousel-image-wrapper ${hoverIndex === index ? 'no-blur' : ''}`} style={{'--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
-                  <Image
-                    key={index}
-                    src={image}
-                    alt={`Current Carousel Item - ${index + 1}`}
-                    fill
-                    sizes="(100vw, 100vh)"
-                    className='carousel-image'
-                    placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
-                    priority
-                  />
-                  {index !== 1 && ShowNavArrows && <div className='blur-overlay'></div>}
-                </div>
+                href 
+                ? <Link key={index} href={href} className={`carousel-image-wrapper ${hoverIndex === index ? 'no-blur' : ''}`} style={{'--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
+                    <Image
+                      key={index}
+                      src={image}
+                      alt={`Current Carousel Item - ${index + 1}`}
+                      fill
+                      sizes="(100vw, 100vh)"
+                      className='carousel-image'
+                      placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
+                      priority
+                    />
+                    {index !== 1 && ShowNavArrows && Width !== 100 && <div className='blur-overlay'></div>}
+                  </Link>
+                : <div key={index} className={`carousel-image-wrapper ${hoverIndex === index ? 'no-blur' : ''}`} style={{'--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
+                    <Image
+                      key={index}
+                      src={image}
+                      alt={`Current Carousel Item - ${index + 1}`}
+                      fill
+                      sizes="(100vw, 100vh)"
+                      className='carousel-image'
+                      placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
+                      priority
+                    />
+                    {index !== 1 && ShowNavArrows && Width !== 100 && <div className='blur-overlay'></div>}
+                  </div>
               ))}
             </div>
         </CSSTransition>
@@ -203,23 +229,25 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowTh
       {/* The buttons on top of the surrounding images in order to go to the previous or next image in the carousel */}  
       {ShowNavArrows 
       ? <>
-          <button onClick={handlePrevClick} onMouseEnter={handlePrevHover} onMouseLeave={handleUnhover} disabled={buttonDisabled} aria-label="View Previous Image" className='carousel-left-btn' style={{'--btn-size': `${Math.max((100 - Width) / 2, 8.25)}%`, '--border-width': `${BorderWidth}rem`, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
+          <button onClick={handlePrevClick} onMouseEnter={handlePrevHover} onMouseLeave={handleUnhover} disabled={buttonDisabled} aria-label="View Previous Image" className='carousel-left-btn' style={{'--btn-size': `${Math.max((100 - Width) / 2, 12.5)}%`, '--border-width': `${BorderWidth}rem`, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
             <svg
               aria-hidden
               fill="currentColor"
               viewBox="0 0 24 24"
               className='carousel-left-arrow'
+              style={{'--nav-arrow-size': `${navArrowSize}px`} as React.CSSProperties}
             >
               <path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z"/>
             </svg>
           </button>
 
-          <button onClick={handleNextClick} onMouseEnter={handleNextHover} onMouseLeave={handleUnhover} disabled={buttonDisabled} aria-label="View Next Image" className='carousel-right-btn' style={{'--btn-size': `${Math.max((100 - Width) / 2, 8.25)}%`, '--border-width': `${BorderWidth}rem`, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
+          <button onClick={handleNextClick} onMouseEnter={handleNextHover} onMouseLeave={handleUnhover} disabled={buttonDisabled} aria-label="View Next Image" className='carousel-right-btn' style={{'--btn-size': `${Math.max((100 - Width) / 2, 12.5)}%`, '--border-width': `${BorderWidth}rem`, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}>
             <svg
               aria-hidden
               fill="currentColor"
               viewBox="0 0 24 24"
               className='carousel-right-arrow'
+              style={{'--nav-arrow-size': `${navArrowSize}px`} as React.CSSProperties}
             >
               <path d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z"/>
             </svg>
@@ -263,7 +291,7 @@ const Carousel = ({Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowTh
       
       {/* ACCESSIBILITY ELEMENT that's skipped to from the skip <a> tag at the beginning of this component */}
       <div id="skip-link"/>
-    </>
+    </div>
   )
 }
 

@@ -117,7 +117,7 @@ const MultiLevelMenu = ({ menuItems, className, backClassName, setMultiMenuHeigh
             {currentMenu.items.map((item, index) => (
               <li key={index}>
                 {isLastSubMenu && item.productID 
-                  ? <CustomLink href={item.label} product={{id: item.productID} as any} className={`multi-button ${isLastSubMenu ? 'multi-sub' : ''}`}>{item.label}</CustomLink>
+                  ? <CustomLink href='/store/p?' product={{id: item.productID} as any} className={`multi-button ${isLastSubMenu ? 'multi-sub' : ''}`}>{item.label}</CustomLink>
                   : isLastSubMenu 
                     ? <CustomLink href={`${item.href}`} className={`multi-button ${isLastSubMenu ? 'multi-sub' : ''}`}>{item.label}</CustomLink>
                     : <button onClick={() => handleMenuClick(item)} disabled={buttonDisabled} aria-label='Open Submenu' className={`multi-button ${isLastSubMenu ? 'multi-sub' : ''}`}>

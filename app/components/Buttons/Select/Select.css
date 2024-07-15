@@ -1,0 +1,74 @@
+.select-menu {
+  position: relative;
+  width: 300px;
+}
+
+.select-btn {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: transparent;
+  box-shadow: 0 0 5px rgba(var(--inverse-color), 0.2);
+  font-family: var(--font-montserrate);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer
+}
+
+.select-chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 200ms ease-in-out;
+}
+
+.select-chevron.rotated {
+  transform: rotate(180deg);
+  transition: transform 200ms ease-in-out;
+}
+
+.select-menu .options {
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  background: white;
+  box-shadow: 0 0 5px rgba(var(--inverse-color), 0.2);
+  z-index: 1;
+}
+
+.options .option {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 200ms ease-in-out;
+}
+
+.options .option:hover {
+  background: rgba(var(--secondary-color), 0.75);
+}
+
+/*** CSSTransition ***/
+.options-menu-enter {
+  opacity: 0;
+}
+
+.options-menu-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in-out;
+}
+
+.options-menu-exit {
+  opacity: 1;
+}
+
+.options-menu-exit-active {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}

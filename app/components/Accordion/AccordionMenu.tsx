@@ -63,11 +63,11 @@ const AccordionMenu = ({ children, title, content, headerPadding=15, titleClassN
       // Toggle menu on "Enter" or "Space"
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        setIsOpen(!isOpen);
+        setIsOpen(prev => !prev);
       }
     } else {
       // Handle click events (the default)
-      setIsOpen(!isOpen);
+      setIsOpen(prev => !prev);
     }
   };
 

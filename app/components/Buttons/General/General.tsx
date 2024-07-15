@@ -14,12 +14,16 @@ interface productSearchParams {
 interface CustomLinkProps {
   children?: React.ReactNode;
   href: string | null | undefined;
+  replace?: boolean;
+  searchParams?: {
+    [key: string]: string
+  };
   product?: productSearchParams;
   NEW?: boolean;
   className?: string;
 }
 
-const CustomLink = ({children, href, NEW, product, className = 'link'}: CustomLinkProps) => {
+const CustomLink = ({children, href, replace = false, NEW, searchParams, product, className = 'link'}: CustomLinkProps) => {
   const { setGlobalMenuToggle } = useMenuContext();
   const [isClicked, setIsClicked] = React.useState(false);
 
@@ -29,15 +33,21 @@ const CustomLink = ({children, href, NEW, product, className = 'link'}: CustomLi
   } else {
     fixedHref = href.replace(/[ ,]+/g, '-').toLowerCase();
   }
+
+  if (searchParams) {
+    Object.keys(searchParams).forEach(key => {
+      searchParams[key] = searchParams[key].replace(/[ ,]+/g, ' ');
+    })
+  }
   
   const link = product !== undefined
-    ? `${fixedHref}${new URLSearchParams(
-      { name: product?.name?.toString() || '', 
+    ? `${fixedHref}${new URLSearchParams({
+        name: product?.name?.toString() || '', 
         id: product?.id.toString() || '', 
         option: product?.option?.toString() || '', 
         size: product?.size?.toString() || '' 
       })}`
-    : fixedHref;
+    : fixedHref + (searchParams ? `?${new URLSearchParams(searchParams)}` : '');
 
   const handleClick = () => {
     setIsClicked(true);
@@ -49,7 +59,7 @@ const CustomLink = ({children, href, NEW, product, className = 'link'}: CustomLi
   }
 
   return (
-    <Link href={link} onClick={handleClick} onAnimationEnd={onAnimationEnd} className={`${className} ${isClicked ? 'active' : ''}`} >
+    <Link href={link} replace={replace} onClick={handleClick} onAnimationEnd={onAnimationEnd} className={`${className} ${isClicked ? 'active' : ''}`} >
       {NEW 
       ? <svg 
           aria-hidden

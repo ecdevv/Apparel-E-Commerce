@@ -5,7 +5,7 @@
     "description": "Introducing the Atelier x Luxe Limited Edition Jacket",
     "gender": "unisex",
     "category": "apparel",
-    "subcategory": "tops",
+    "subcategory": "jackets",
     "options": [
       {
         "type": "color",
@@ -24,15 +24,15 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       }
@@ -51,7 +51,7 @@
       ["Storage", "Store your jacket in a cool, dry place away from direct sunlight to prevent fading and moisture damage."],
       ["Avoid", "Avoid exposing your jacket to harsh chemicals, excessive moisture, or heat sources. Following these care instructions will help preserve the timeless elegance and durability of your exclusive leather jacket for years to come."]
     ],
-    "tags": ["tshirt", "summer", "cotton", "yolo"]
+    "tags": ["exclusive"]
   },
   {
     "product_id": 2,
@@ -59,7 +59,7 @@
     "description": "A comfortable cotton t-shirt",
     "gender": "men",
     "category": "apparel",
-    "subcategory": "tops",
+    "subcategory": "tshirts",
     "options": [
       {
         "type": "color",
@@ -78,11 +78,11 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           }
         ]
       },
@@ -103,16 +103,16 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       }
     ],
-    "tags": ["men", "tshirt", "summer", "cotton"]
+    "tags": ["exclusive"]
   },
   {
     "product_id": 3,
@@ -120,7 +120,7 @@
     "description": "A comfortable cotton t-shirt",
     "gender": "men",
     "category": "apparel",
-    "subcategory": "tops",
+    "subcategory": "tshirts",
     "options": [
       {
         "type": "color",
@@ -139,31 +139,31 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "video",
@@ -188,11 +188,11 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       },
@@ -213,11 +213,11 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       },
@@ -238,15 +238,15 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           }
         ]
       },
@@ -268,11 +268,11 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       },
@@ -293,11 +293,11 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       },
@@ -319,16 +319,16 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       }
     ],
-    "tags": ["tshirt", "summer", "cotton"]
+    "tags": ["exclusive"]
   },
   {
     "product_id": 4,
@@ -336,7 +336,7 @@
     "description": "A comfortable cotton t-shirt",
     "gender": "women",
     "category": "apparel",
-    "subcategory": "tops",
+    "subcategory": "tshirts",
     "options": [
       {
         "type": "color",
@@ -355,31 +355,31 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "video",
@@ -404,16 +404,16 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       }
     ],
-    "tags": ["tshirt", "summer", "cotton"]
+    "tags": ["exclusive"]
   },
   {
     "product_id": 5,
@@ -421,7 +421,7 @@
     "description": "A comfortable cotton t-shirt",
     "gender": "men",
     "category": "apparel",
-    "subcategory": "tops",
+    "subcategory": "tshirts",
     "options": [
       {
         "type": "color",
@@ -440,31 +440,31 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "video",
@@ -489,11 +489,11 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       },
@@ -514,16 +514,16 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       }
     ],
-    "tags": ["tshirt", "summer", "cotton"]
+    "tags": ["exclusive"]
   },
   {
     "product_id": 6,
@@ -531,7 +531,7 @@
     "description": "A comfortable cotton t-shirt",
     "gender": "women",
     "category": "apparel",
-    "subcategory": "tops",
+    "subcategory": "tshirts",
     "options": [
       {
         "type": "color",
@@ -550,31 +550,31 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "video",
@@ -599,11 +599,11 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       },
@@ -624,66 +624,67 @@
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       }
     ],
-    "tags": ["men", "tshirt", "summer", "cotton"]
+    "tags": ["exclusive"]
   },
   {
-    "product_id": 4,
-    "name": "Luxe Jupiter",
+    "product_id": 100,
+    "name": "T-Shirt",
     "description": "A comfortable cotton t-shirt",
+    "gender": "unisex",
     "category": "apparel",
-    "subcategory": "tops",
+    "subcategory": "tshirts",
     "options": [
       {
         "type": "color",
         "name": "white",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
+        "releaseDate": "2022-01-01",
+        "price": 9.99,
+        "discount": 0.15, 
         "sizes": [
-          { "size": "XS", "stock": 0, "sales": 1000 },
-          { "size": "S", "stock": 0, "sales": 1000 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 0, "sales": 1000 },
-          { "size": "XL", "stock": 0, "sales": 1000 },
-          { "size": "2XL", "stock": 0, "sales": 1000 }
+          { "size": "XS", "stock": 1000, "sales": 1000 },
+          { "size": "S", "stock": 1000, "sales": 1000 },
+          { "size": "MD", "stock": 994, "sales": 1004 },
+          { "size": "LG", "stock": 1000, "sales": 1000 },
+          { "size": "XL", "stock": 990, "sales": 1010},
+          { "size": "2XL", "stock": 1000, "sales": 1000 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
           },
           {
             "type": "video",
@@ -694,161 +695,115 @@
       {
         "type": "color",
         "name": "black",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
+        "releaseDate": "2022-01-01",
+        "price": 9.99,
+        "discount": 0.1, 
         "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
+          { "size": "XS", "stock": 1000, "sales": 1000 },
+          { "size": "S", "stock": 1000, "sales": 1000 },
+          { "size": "MD", "stock": 994, "sales": 1004 },
+          { "size": "LG", "stock": 1000, "sales": 1000 },
+          { "size": "XL", "stock": 990, "sales": 1010},
+          { "size": "2XL", "stock": 1000, "sales": 1000 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "name": "orange",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "name": "red",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/white/white1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "name": "e",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
-          }
-        ]
-      },
-      
-      {
-        "type": "color",
-        "name": "d",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
-          }
-        ]
-      },
-      
-      {
-        "type": "color",
-        "name": "f",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
           }
         ]
       }
     ],
-    "tags": ["women", "tshirt", "summer", "cotton"]
+    "tags": []
+  },
+  {
+    "product_id": 105,
+    "name": "Generic Shoe",
+    "description": "A comfortable pair of running shoes",
+    "gender": "men",
+    "category": "shoes",
+    "subcategory": "running",
+    "options": [
+      {
+        "type": "color",
+        "name": "white",
+        "releaseDate": "2022-01-01",
+        "price": 199.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 1000, "sales": 1000 },
+          { "size": "S", "stock": 1000, "sales": 1000 },
+          { "size": "MD", "stock": 994, "sales": 1004 },
+          { "size": "LG", "stock": 1000, "sales": 1000 },
+          { "size": "XL", "stock": 990, "sales": 1010},
+          { "size": "2XL", "stock": 1000, "sales": 1000 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
+          },
+          {
+            "type": "video",
+            "url": "https://example.com/videos/tshirt_red_promo.mp4"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "black",
+        "releaseDate": "2022-01-01",
+        "price": 199.99,
+        "discount": 0.0, 
+        "sizes": [
+          { "size": "XS", "stock": 1000, "sales": 1000 },
+          { "size": "S", "stock": 1000, "sales": 1000 },
+          { "size": "MD", "stock": 994, "sales": 1004 },
+          { "size": "LG", "stock": 1000, "sales": 1000 },
+          { "size": "XL", "stock": 990, "sales": 1010},
+          { "size": "2XL", "stock": 1000, "sales": 1000 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
+          }
+        ]
+      }
+    ],
+    "tags": []
   }
 ]
   

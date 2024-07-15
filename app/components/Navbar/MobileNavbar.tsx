@@ -9,11 +9,11 @@ import './MobileNavbar.css';
 const menuItems = [
   {
     label: 'New',
-    href: '/store/p?category=new',
+    href: '/store?category=new',
     subMenu: [
       {
         label: 'Limited Exclusives',
-        href: '/store/p?category=limited-exclusives',
+        href: '/store?category=limited-exclusives',
         subMenu: [
           { label: 'Atelier x Luxe Limited Edition Jacket',
             productID: 1,
@@ -34,7 +34,7 @@ const menuItems = [
       },
       {
         label: 'Best Sellers',
-        href: '/store/p?category=best-sellers',
+        href: '/store?category=popular',
         subMenu: [
           { label: 'Atelier x Luxe Limited Edition Jacket',
             productID: 1,
@@ -43,7 +43,7 @@ const menuItems = [
       },
       {
         label: 'Collections',
-        href: '/store/p?category=collections',
+        href: '/store?category=collections',
         subMenu: [
           { label: 'Atelier x Luxe Collection' },
           { label: 'Summer Breeze Collection' },
@@ -52,31 +52,31 @@ const menuItems = [
       },
       {
         label: 'Men',
-        href: '/store/p?category=men',
+        href: '/store?category=men',
         subMenu: [
-          { label: 'Apparel', href: '/' },
-          { label: 'Shoes', href: '/' },
-          { label: 'Accessories', href: '/' },
+          { label: 'Apparel', href: '/store?category=new+men+apparel' },
+          { label: 'Shoes', href: '/store?category=new+men+shoes' },
+          { label: 'Accessories', href: '/store?category=new+men+accessories' },
         ],
       },
       {
         label: 'Women',
-        href: '/store/p?category=women',
+        href: '/store?category=women',
         subMenu: [
-          { label: 'Apparel', href: '/' },
-          { label: 'Shoes', href: '/' },
-          { label: 'Accessories', href: '/' },
+          { label: 'Apparel', href: '/store?category=new+women+apparel' },
+          { label: 'Shoes', href: '/store?category=new+women+shoes' },
+          { label: 'Accessories', href: '/store?category=new+women+accessories' },
         ],
       },
     ],
   },
   {
     label: 'Sales',
-    href: '/store/p?category=sales',
+    href: '/store?category=sales',
     subMenu: [
       {
         label: 'Collections',
-        href: '/store/p?category=collections',
+        href: '/store?category=collections',
         subMenu: [
           { label: 'Office Elegance Collection' },
           { label: 'Spring Blossom Collection' },
@@ -85,45 +85,45 @@ const menuItems = [
       },
       {
         label: 'Men',
-        href: '/store/p?category=men',
+        href: '/store?category=men',
         subMenu: [
-          { label: 'Apparel', href: '/' },
-          { label: 'Shoes', href: '/' },
-          { label: 'Accessories', href: '/' },
+          { label: 'Apparel', href: '/store?category=sales+men+apparel' },
+          { label: 'Shoes', href: '/store?category=sales+men+shoes' },
+          { label: 'Accessories', href: '/store?category=sales+men+accessories' },
         ],
       },
       {
         label: 'Women',
-        href: '/store/p?category=women',
+        href: '/store?category=women',
         subMenu: [
-          { label: 'Apparel', href: '/' },
-          { label: 'Shoes', href: '/' },
-          { label: 'Accessories', href: '/' },
+          { label: 'Apparel', href: '/store?category=sales+women+apparel' },
+          { label: 'Shoes', href: '/store?category=sales+women+shoes' },
+          { label: 'Accessories', href: '/store?category=sales+women+accessories' },
         ],
       },
     ],
   },
   {
     label: 'Men',
-    href: '/store/p?category=men',
+    href: '/store?category=men',
     subMenu: [
-      { label: 'Apparel', href: '/' },
-      { label: 'Shoes', href: '/' },
-      { label: 'Accessories', href: '/' },
+      { label: 'Apparel', href: '/store?category=men+apparel' },
+      { label: 'Shoes', href: '/store?category=men+shoes' },
+      { label: 'Accessories', href: '/store?category=men+accessories' },
     ],
   },
   {
     label: 'Women',
-    href: '/store/p?category=women',
+    href: '/store?category=women',
     subMenu: [
-      { label: 'Apparel', href: '/' },
-      { label: 'Shoes', href: '/' },
-      { label: 'Accessories', href: '/' },
+      { label: 'Apparel', href: '/store?category=women+apparel' },
+      { label: 'Shoes', href: '/store?category=women+shoes' },
+      { label: 'Accessories', href: '/store?category=women+accessories' },
     ],
   },
   {
     label: 'Collections',
-    href: '/store/p?category=collections',
+    href: '/store?category=collections',
     subMenu: [
       { label: 'Atelier x Luxe Collection' },
       { label: 'Summer Breeze Collection' },
@@ -183,8 +183,8 @@ const MobileNavigation = () => {
 
   // Handle toggling the menu on icon clicked (globalMenuToggle needs to be toggled to be set false from elsewhere)
   const handleClick = () => {
-    setMenuToggle(!menuToggle);
-    setGlobalMenuToggle(!menuToggle);
+    setMenuToggle(prev => !prev)
+    setGlobalMenuToggle(prev => !prev);
   }
 
   return (

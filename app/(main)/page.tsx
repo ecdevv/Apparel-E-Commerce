@@ -11,10 +11,10 @@ export default function Home() {
 
   return (
     <div className='home'>
-      <section className="carousel-container">
-        <div className='home-desktop'><Carousel Images={Images} Width={75} BorderWidth={0.25} ShowNavArrows={true} ShowDotBtns={true} /></div>
-        <div className='home-mobile-md'><Carousel Images={Images} Width={100} BorderWidth={0} ShowNavArrows={false} ShowDotBtns={true} /></div>
-        <div className='home-mobile'><Carousel Images={Images} Width={100} BorderWidth={0} ShowNavArrows={false} ShowDotBtns={true} dotSmall={true} /></div>
+      <section className="home-carousel-container">
+        <div className='home-desktop'><Carousel Images={Images} Width={75} BorderWidth={0.25} ShowNavArrows={true} ShowDotBtns={true} navArrowSize={50} /></div>
+        <div className='home-mobile-md'><Carousel Images={Images} Width={100} BorderWidth={0} ShowDotBtns={true} /></div>
+        <div className='home-mobile'><Carousel Images={Images} Width={100} BorderWidth={0} ShowDotBtns={true} dotSmall={true} /></div>
         {/* <div className='slide-content'>
           <h1 className='slide-h1' data-text="NEW SUMMER COLLECTION">NEW SUMMER COLLECTION</h1>
           <Link href='/' aria-label='New' className='slide-btn'>Shop Now</Link>

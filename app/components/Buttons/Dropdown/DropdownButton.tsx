@@ -105,7 +105,7 @@ const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, ori
 
   // Handle toggling the menu on icon clicked (globalMenuToggle always true until set false from elsewhere)
   const handleClick = () => {
-    setMenuToggle(!menuToggle);
+    setMenuToggle(prev => !prev)
     setGlobalMenuToggle(true);
   }
 

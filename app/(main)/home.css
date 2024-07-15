@@ -4,7 +4,7 @@
   background-color: rgba(var(--primary-color));
 }
 
-.carousel-container {
+.home-carousel-container {
   aspect-ratio: 2.25/1;
   width: 100%;
   position: relative;
@@ -88,6 +88,8 @@
 /*** Mobile & Media Queries ***/
 .home-desktop {
   display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .home-mobile-md {
@@ -105,13 +107,15 @@
 
   .home-mobile-md {
     display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .home-mobile {
     display: none;
   }
 
-  .carousel-container {
+  .home-carousel-container {
     height: calc(100dvh - 104px);
     min-height: 500px;
   }
@@ -128,9 +132,11 @@
 
   .home-mobile {
     display: block;
+    width: 100%;
+    height: 100%;
   }
 
-  .carousel-container {
+  .home-carousel-container {
     height: calc(100dvh - 66px);
     min-height: 500px;
   }
