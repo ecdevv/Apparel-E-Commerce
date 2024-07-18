@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
-import Loading from '@/app/components/Loading/Loading';
+import Loading from '@/app/components/Generic/Loading/Loading';
 import { CustomLink } from '@/app/components/Buttons/General/General';
 import NumberStepper from '@/app/components/Input/NumberStepper/NumberStepper';
 import AddToWishlistButton from '@/app/components/Buttons/AddToWishlist/AddToWishlist';
@@ -166,7 +166,7 @@ const CartCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Ba
                 </svg>
                 Remove from Wishlist
               </button>
-            : <AddToWishlistButton id={item.id} option={item.selectedOption} size={item.selectedSize} icon={true} className='cart-page-btn'>Add to Bag</AddToWishlistButton>
+            : <AddToWishlistButton id={item.id} option={item.selectedOption} size={item.selectedSize} icon={true} className='cart-page-btn'>Add to Wishlist</AddToWishlistButton>
           }
           <button onClick={handleRemoveClick} aria-label={`Remove ${item.name} from bag`} className='cart-page-btn'>
             <svg
@@ -201,6 +201,7 @@ const CartDetails = () => {
     ? 'An Item is Unavailable'
     : bagItems.reduce((acc, item) => acc + item.selectedQuantity, 0);
 
+  // Wait for bagItems to be loaded before displaying the cart.
   if (isLoading) {
     return <section className='cart-page-container'><div className='loading-page'>Loading...<Loading /></div></section>
   }

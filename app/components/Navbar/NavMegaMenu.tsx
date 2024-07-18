@@ -9,7 +9,7 @@ const NewMegaMenu = () => {
       <div className='mega-menu-content-wrapper'>
         <CustomLink href='/store/p?' product={{id: 1} as any} className='mega-menu-image-wrapper'>
           <Image 
-            src='/images/products/apparel/tshirts_tops/product1/black/black1.webp'
+            src='/images/products/apparel/jackets_coats/product_1/black/item3.webp'
             alt='New Image'
             fill
             sizes="(100vw)"
@@ -33,9 +33,9 @@ const NewMegaMenu = () => {
           <div className='mega-menu-content'>
             <h3><CustomLink href='/'>Collections</CustomLink></h3>
             <ul>
-              <li><CustomLink href='/Atelier x Luxe Collection' NEW={true}>Atelier x Luxe Collection</CustomLink></li>
-              <li><CustomLink href='/Summer Breeze Collection' NEW={true}>Summer Breeze Collection</CustomLink></li>
-              <li><CustomLink href='/Atelier x Luxe Collection' NEW={true}>Urban Edge Collection</CustomLink></li>
+              <li><CustomLink href='/' NEW={true}>Atelier x Luxe Collection</CustomLink></li>
+              <li><CustomLink href='/' NEW={true}>Summer Breeze Collection</CustomLink></li>
+              <li><CustomLink href='/' NEW={true}>Urban Edge Collection</CustomLink></li>
             </ul>
           </div>
         </div>
@@ -58,15 +58,15 @@ const NewMegaMenu = () => {
       </div>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/store' searchParams={{category: 'trending'}}>BEST SELLERS</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'new, trending'}}>BEST SELLERS</CustomLink></h2>
           <ul>
             <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Mercury</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Neptune</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Denim Jeans</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Joggers</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Jupiter</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Saturn</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 2} as any}>Luxe Mercury</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 5} as any}>Luxe Neptune</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: -1} as any} NEW={true}>Atelier x Luxe Denim Jeans</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: -1} as any} NEW={true}>Atelier x Luxe Joggers</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 3} as any}>Luxe Jupiter</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 5} as any}>Luxe Saturn</CustomLink></li>
           </ul>
         </div>
       </div>   
@@ -130,13 +130,13 @@ const MenMegaMenu = () => {
     <div className='mega-menu-container' style={{'--num-columns': '4'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/store' searchParams={{category: 'men, popular'}}>TRENDING</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'men, trending'}}>TRENDING</CustomLink></h2>
           <ul>
             <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Joggers</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Mercury</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Neptune</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Jupiter</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: -1} as any} NEW={true}>Atelier x Luxe Joggers</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 2} as any}>Luxe Mercury</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 5} as any}>Luxe Neptune</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 3} as any}>Luxe Jupiter</CustomLink></li>
           </ul>
         </div>
       </div>
@@ -199,13 +199,13 @@ const WomenMegaMenu = () => {
     <div className='mega-menu-container' style={{'--num-columns': '4'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
         <div className='mega-menu-content'>
-          <h2><CustomLink href='/store' searchParams={{category: 'women, popular'}}>TRENDING</CustomLink></h2>
+          <h2><CustomLink href='/store' searchParams={{category: 'women, trending'}}>TRENDING</CustomLink></h2>
           <ul>
             <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Limited Edition Jacket</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any} NEW={true}>Atelier x Luxe Denim Jeans</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Saturn</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Jupiter</CustomLink></li>
-            <li><CustomLink href='/store/p?' product={{id: 1} as any}>Luxe Neptune</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: -1} as any} NEW={true}>Atelier x Luxe Denim Jeans</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 6} as any}>Luxe Saturn</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 4} as any}>Luxe Jupiter</CustomLink></li>
+            <li><CustomLink href='/store/p?' product={{id: 7} as any}>Luxe Neptune</CustomLink></li>
           </ul>
         </div>
       </div>
@@ -315,9 +315,9 @@ const CollectionsMegaMenu = () => {
         <div className='mega-menu-content'>
           <h2><CustomLink href='/'>CURRENT COLLECTIONS</CustomLink></h2>
           <ul>
-            <li><CustomLink href='/Atelier x Luxe Collection' NEW={true}>Atelier x Luxe Collection</CustomLink></li>
-            <li><CustomLink href='/Summer Breeze Collection' NEW={true}>Summer Breeze Collection</CustomLink></li>
-            <li><CustomLink href='/Urban Edge Collection' NEW={true}>Urban Edge Collection</CustomLink></li>
+            <li><CustomLink href='/' NEW={true}>Atelier x Luxe Collection</CustomLink></li>
+            <li><CustomLink href='/' NEW={true}>Summer Breeze Collection</CustomLink></li>
+            <li><CustomLink href='/' NEW={true}>Urban Edge Collection</CustomLink></li>
             <li><CustomLink href='/'>Vox Luxe Collection</CustomLink></li>
             <li><CustomLink href='/'>Royal Elegance Collection</CustomLink></li>
             <li><CustomLink href='/'>Haute Couture Collection</CustomLink></li>

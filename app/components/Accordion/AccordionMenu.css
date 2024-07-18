@@ -49,10 +49,13 @@
 }
 
 .accordion-menu-content {
-  display: block;
   cursor: default;
-  text-align: start;
   padding-bottom: var(--padding);
+}
+
+.accordion-menu-content.default {
+  display: block;
+  text-align: start;
 }
 
 .ul-list-wrapper {

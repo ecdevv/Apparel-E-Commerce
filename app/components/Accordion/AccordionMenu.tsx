@@ -8,12 +8,13 @@ interface AccordionMenuProps {
   title: string;
   content?: (string | [string, string][])[];
   headerPadding?: number;
+  className?: string;
   titleClassName?: string;
   svgClassName?: string;
   hrClassName?: string;
 }
 
-const AccordionMenu = ({ children, title, content, headerPadding=15, titleClassName='accordion-menu-title', svgClassName='accordion-menu-icon-svg', hrClassName='accordion-hr' }: AccordionMenuProps) => {
+const AccordionMenu = ({ children, title, content, headerPadding=15, className='default', titleClassName='accordion-menu-title', svgClassName='accordion-menu-icon-svg', hrClassName='accordion-hr' }: AccordionMenuProps) => {
   const { globalMenuToggle } = useMenuContext();
   const [isOpen, setIsOpen] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -30,7 +31,7 @@ const AccordionMenu = ({ children, title, content, headerPadding=15, titleClassN
 
   // Update the content height when the content changes to set the correct height of the menu container (used to transition/animate)
   useEffect(() => {
-    if (headerRef.current &&contentRef.current) {
+    if (headerRef.current && contentRef.current) {
       const updateHeight = () => {
         if (headerRef.current && contentRef.current) {
           const { height: headerHeight } = headerRef.current.getBoundingClientRect();
@@ -50,7 +51,7 @@ const AccordionMenu = ({ children, title, content, headerPadding=15, titleClassN
         window.removeEventListener('resize', updateHeight);
       };
     }
-  }, [content]);
+  }, [content, children]);
 
   // Toggle the menu; also checks for keyboard event "Enter" or "Space" to toggle the menu when focused and ignore "Tab"
   const toggleMenu = (event: React.KeyboardEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>) => {
@@ -87,7 +88,7 @@ const AccordionMenu = ({ children, title, content, headerPadding=15, titleClassN
             </svg>
           </div>
         </div>
-        <div ref={contentRef} className={'accordion-menu-content'}>
+        <div ref={contentRef} className={`accordion-menu-content ${className}`}>
           {content?.map((item, index) => {
             if (typeof item === 'string') {
               return <p key={index} className='accordion-description'>{item}</p>;

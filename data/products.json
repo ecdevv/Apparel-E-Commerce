@@ -5,7 +5,7 @@
     "description": "Introducing the Atelier x Luxe Limited Edition Jacket",
     "gender": "unisex",
     "category": "apparel",
-    "subcategory": "jackets",
+    "subcategory": "coats",
     "options": [
       {
         "type": "color",
@@ -14,25 +14,25 @@
         "price": 1999.99,
         "discount": 0.0,
         "sizes": [
-          { "size": "XS", "stock": 0, "sales": 100 },
-          { "size": "S", "stock": 0, "sales": 100 },
-          { "size": "MD", "stock": 0, "sales": 100 },
-          { "size": "LG", "stock": 0, "sales": 100 },
-          { "size": "XL", "stock": 0, "sales": 100 },
-          { "size": "2XL", "stock": 0, "sales": 100 }
+          { "type": "size", "name": "XS", "stock": 0, "sales": 100 },
+          { "type": "size", "name": "S", "stock": 0, "sales": 100 },
+          { "type": "size", "name": "MD", "stock": 0, "sales": 100 },
+          { "type": "size", "name": "LG", "stock": 0, "sales": 100 },
+          { "type": "size", "name": "XL", "stock": 0, "sales": 100 },
+          { "type": "size", "name": "2XL", "stock": 0, "sales": 100 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/jackets_coats/product_1/black/item1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/jackets_coats/product_1/black/item2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/jackets_coats/product_1/black/item3.webp"
           }
         ]
       }
@@ -56,58 +56,37 @@
   {
     "product_id": 2,
     "name": "Luxe Mercury",
-    "description": "A comfortable cotton t-shirt",
+    "description": "A sleek and stylish dark grey mercury top that exudes sophistication and elegance.",
     "gender": "men",
     "category": "apparel",
-    "subcategory": "tshirts",
+    "subcategory": "hoodies",
     "options": [
       {
         "type": "color",
-        "name": "white",
+        "name": "grey",
         "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.45,
+        "price": 199.99,
+        "discount": 0.0,
         "sizes": [
-          { "size": "XS", "stock": 42, "sales": 958 },
-          { "size": "S", "stock": 24, "sales": 976 },
-          { "size": "MD", "stock": 56, "sales": 944 },
-          { "size": "LG", "stock": 4, "sales": 996 },
-          { "size": "XL", "stock": 91, "sales": 909 },
-          { "size": "2XL", "stock": 71, "sales": 929 }
+          { "type": "size", "name": "XS", "stock": 2, "sales": 998 },
+          { "type": "size", "name": "S", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "LG", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "2XL", "stock": 3, "sales": 997 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_2/grey/item1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "name": "black",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.25,
-        "sizes": [
-          { "size": "XS", "stock": 2, "sales": 998 },
-          { "size": "S", "stock": 0, "sales": 1000 },
-          { "size": "MD", "stock": 0, "sales": 1000 },
-          { "size": "LG", "stock": 0, "sales": 1000 },
-          { "size": "XL", "stock": 0, "sales": 1000 },
-          { "size": "2XL", "stock": 4, "sales": 996 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_2/grey/item2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_2/grey/item3.webp"
           }
         ]
       }
@@ -117,213 +96,37 @@
   {
     "product_id": 3,
     "name": "Luxe Jupiter",
-    "description": "A comfortable cotton t-shirt",
+    "description": "A stunning orange hoodie inspired by the majestic planet Jupiter, boasting a spacious design and a touch of luxury.",
     "gender": "men",
     "category": "apparel",
-    "subcategory": "tshirts",
+    "subcategory": "hoodies",
     "options": [
-      {
-        "type": "color",
-        "name": "white",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 0, "sales": 1000 },
-          { "size": "S", "stock": 0, "sales": 1000 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 0, "sales": 1000 },
-          { "size": "XL", "stock": 0, "sales": 1000 },
-          { "size": "2XL", "stock": 9, "sales": 991 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "video",
-            "url": "https://example.com/videos/tshirt_red_promo.mp4"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "name": "black",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
-          }
-        ]
-      },
       {
         "type": "color",
         "name": "orange",
         "releaseDate": "2024-01-01",
-        "price": 19.99,
+        "price": 199.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
+          { "type": "size", "name": "XS", "stock": 10, "sales": 990 },
+          { "type": "size", "name": "S", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "LG", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "2XL", "stock": 7, "sales": 993 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_3/orange/item1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "name": "red",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_3/orange/item2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
-          }
-        ]
-      },
-      
-      {
-        "type": "color",
-        "name": "e",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "name": "d",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
-          }
-        ]
-      },
-      
-      {
-        "type": "color",
-        "name": "f",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_3/orange/item3.webp"
           }
         ]
       }
@@ -333,82 +136,37 @@
   {
     "product_id": 4,
     "name": "Luxe Jupiter",
-    "description": "A comfortable cotton t-shirt",
+    "description": "A stunning orange hoodie inspired by the majestic planet Jupiter, boasting a spacious design and a touch of luxury.",
     "gender": "women",
     "category": "apparel",
-    "subcategory": "tshirts",
+    "subcategory": "hoodies",
     "options": [
       {
         "type": "color",
-        "name": "white",
+        "name": "orange",
         "releaseDate": "2024-01-01",
-        "price": 19.99,
+        "price": 199.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 0, "sales": 1000 },
-          { "size": "S", "stock": 0, "sales": 1000 },
-          { "size": "MD", "stock": 5, "sales": 995 },
-          { "size": "LG", "stock": 0, "sales": 1000 },
-          { "size": "XL", "stock": 10, "sales": 990},
-          { "size": "2XL", "stock": 5, "sales": 995 }
+          { "type": "size", "name": "XS", "stock": 1, "sales": 999 },
+          { "type": "size", "name": "S", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 5, "sales": 995 },
+          { "type": "size", "name": "LG", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 10, "sales": 990},
+          { "type": "size", "name": "2XL", "stock": 5, "sales": 995 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_4/orange/item1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_4/orange/item2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "video",
-            "url": "https://example.com/videos/tshirt_red_promo.mp4"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "name": "black",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_4/orange/item3.webp"
           }
         ]
       }
@@ -418,107 +176,37 @@
   {
     "product_id": 5,
     "name": "Luxe Neptune",
-    "description": "A comfortable cotton t-shirt",
+    "description": "An elegant and comfortable hoodie inspired by the deep blue colors of Neptune, featuring a soft and cozy fabric with a hint of luxury.",
     "gender": "men",
     "category": "apparel",
-    "subcategory": "tshirts",
+    "subcategory": "hoodies",
     "options": [
-      {
-        "type": "color",
-        "name": "white",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 0, "sales": 1000 },
-          { "size": "S", "stock": 0, "sales": 1000 },
-          { "size": "MD", "stock": 5, "sales": 995 },
-          { "size": "LG", "stock": 0, "sales": 1000 },
-          { "size": "XL", "stock": 10, "sales": 990},
-          { "size": "2XL", "stock": 5, "sales": 995 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "video",
-            "url": "https://example.com/videos/tshirt_red_promo.mp4"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "name": "black",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
-          }
-        ]
-      },
       {
         "type": "color",
         "name": "blue",
         "releaseDate": "2024-01-01",
-        "price": 19.99,
+        "price": 199.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 5, "sales": 995 },
-          { "size": "MD", "stock": 0, "sales": 1000 },
-          { "size": "LG", "stock": 5, "sales": 995 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
+          { "type": "size", "name": "XS", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 5, "sales": 995 },
+          { "type": "size", "name": "LG", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 5, "sales": 995},
+          { "type": "size", "name": "2XL", "stock": 5, "sales": 995 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_5/blue/item1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_5/blue/item2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_5/blue/item3.webp"
           }
         ]
       }
@@ -528,107 +216,37 @@
   {
     "product_id": 6,
     "name": "Luxe Saturn",
-    "description": "A comfortable cotton t-shirt",
+    "description": "A luxurious golden-rich cropped hooded top for chilly mornings and evenings. Soft and cozy, it's perfect for rainy days or for a stylish evening out.",
     "gender": "women",
     "category": "apparel",
-    "subcategory": "tshirts",
+    "subcategory": "hoodies",
     "options": [
       {
         "type": "color",
-        "name": "white",
+        "name": "gold",
         "releaseDate": "2024-01-01",
-        "price": 19.99,
+        "price": 199.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 0, "sales": 1000 },
-          { "size": "S", "stock": 0, "sales": 1000 },
-          { "size": "MD", "stock": 4, "sales": 996 },
-          { "size": "LG", "stock": 0, "sales": 1000 },
-          { "size": "XL", "stock": 10, "sales": 990},
-          { "size": "2XL", "stock": 5, "sales": 995 }
+          { "type": "size", "name": "XS", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 0, "sales": 1000 },
+          { "type": "size", "name": "LG", "stock": 5, "sales": 995 },
+          { "type": "size", "name": "XL", "stock": 8, "sales": 992},
+          { "type": "size", "name": "2XL", "stock": 7, "sales": 993 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_6/gold/item1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_6/gold/item2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "video",
-            "url": "https://example.com/videos/tshirt_red_promo.mp4"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "name": "black",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 10, "sales": 990 },
-          { "size": "S", "stock": 10, "sales": 990 },
-          { "size": "MD", "stock": 10, "sales": 990 },
-          { "size": "LG", "stock": 10, "sales": 990 },
-          { "size": "XL", "stock": 10, "sales": 990 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
-          }
-        ]
-      },
-      {
-        "type": "color",
-        "name": "brown",
-        "releaseDate": "2024-01-01",
-        "price": 19.99,
-        "discount": 0.0, 
-        "sizes": [
-          { "size": "XS", "stock": 5, "sales": 995 },
-          { "size": "S", "stock": 5, "sales": 995 },
-          { "size": "MD", "stock": 0, "sales": 1000 },
-          { "size": "LG", "stock": 5, "sales": 995 },
-          { "size": "XL", "stock": 5, "sales": 995 },
-          { "size": "2XL", "stock": 10, "sales": 990 }
-        ],
-        "media": [
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/hoodies_sweatshirts/product_6/gold/item3.webp"
           }
         ]
       }
@@ -637,7 +255,7 @@
   },
   {
     "product_id": 100,
-    "name": "T-Shirt",
+    "name": "Generic T-Shirt",
     "description": "A comfortable cotton t-shirt",
     "gender": "unisex",
     "category": "apparel",
@@ -650,45 +268,25 @@
         "price": 9.99,
         "discount": 0.15, 
         "sizes": [
-          { "size": "XS", "stock": 1000, "sales": 1000 },
-          { "size": "S", "stock": 1000, "sales": 1000 },
-          { "size": "MD", "stock": 994, "sales": 1004 },
-          { "size": "LG", "stock": 1000, "sales": 1000 },
-          { "size": "XL", "stock": 990, "sales": 1010},
-          { "size": "2XL", "stock": 1000, "sales": 1000 }
+          { "type": "size", "name": "XS", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 1994, "sales": 1004 },
+          { "type": "size", "name": "LG", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 1990, "sales": 1010},
+          { "type": "size", "name": "2XL", "stock": 2000, "sales": 1000 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product_100/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product_100/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "video",
-            "url": "https://example.com/videos/tshirt_red_promo.mp4"
+            "url": "/images/products/apparel/tshirts_tops/product_100/white/white2.webp"
           }
         ]
       },
@@ -699,21 +297,228 @@
         "price": 9.99,
         "discount": 0.1, 
         "sizes": [
-          { "size": "XS", "stock": 1000, "sales": 1000 },
-          { "size": "S", "stock": 1000, "sales": 1000 },
-          { "size": "MD", "stock": 994, "sales": 1004 },
-          { "size": "LG", "stock": 1000, "sales": 1000 },
-          { "size": "XL", "stock": 990, "sales": 1010},
-          { "size": "2XL", "stock": 1000, "sales": 1000 }
+          { "type": "size", "name": "XS", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 1994, "sales": 1004 },
+          { "type": "size", "name": "LG", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 1990, "sales": 1010},
+          { "type": "size", "name": "2XL", "stock": 2000, "sales": 1000 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "red",
+        "releaseDate": "2022-01-01",
+        "price": 9.99,
+        "discount": 0.2, 
+        "sizes": [
+          { "type": "size", "name": "XS", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 1994, "sales": 1004 },
+          { "type": "size", "name": "LG", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 1990, "sales": 1010},
+          { "type": "size", "name": "2XL", "stock": 2000, "sales": 1000 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "orange",
+        "releaseDate": "2022-01-01",
+        "price": 9.99,
+        "discount": 0.2, 
+        "sizes": [
+          { "type": "size", "name": "XS", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 1994, "sales": 1004 },
+          { "type": "size", "name": "LG", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 1990, "sales": 1010},
+          { "type": "size", "name": "2XL", "stock": 2000, "sales": 1000 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "yellow",
+        "releaseDate": "2022-01-01",
+        "price": 9.99,
+        "discount": 0.25, 
+        "sizes": [
+          { "type": "size", "name": "XS", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 1994, "sales": 1004 },
+          { "type": "size", "name": "LG", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 1990, "sales": 1010},
+          { "type": "size", "name": "2XL", "stock": 2000, "sales": 1000 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "green",
+        "releaseDate": "2022-01-01",
+        "price": 9.99,
+        "discount": 0.333, 
+        "sizes": [
+          { "type": "size", "name": "XS", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 1994, "sales": 1004 },
+          { "type": "size", "name": "LG", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 1990, "sales": 1010},
+          { "type": "size", "name": "2XL", "stock": 2000, "sales": 1000 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "blue",
+        "releaseDate": "2022-01-01",
+        "price": 9.99,
+        "discount": 0.15, 
+        "sizes": [
+          { "type": "size", "name": "XS", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 1994, "sales": 1004 },
+          { "type": "size", "name": "LG", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 1990, "sales": 1010},
+          { "type": "size", "name": "2XL", "stock": 2000, "sales": 1000 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "violet",
+        "releaseDate": "2022-01-01",
+        "price": 9.99,
+        "discount": 0.15, 
+        "sizes": [
+          { "type": "size", "name": "XS", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 1994, "sales": 1004 },
+          { "type": "size", "name": "LG", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 1990, "sales": 1010},
+          { "type": "size", "name": "2XL", "stock": 2000, "sales": 1000 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "name": "pink",
+        "releaseDate": "2022-01-01",
+        "price": 9.99,
+        "discount": 0.1, 
+        "sizes": [
+          { "type": "size", "name": "XS", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 1994, "sales": 1004 },
+          { "type": "size", "name": "LG", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 1990, "sales": 1010},
+          { "type": "size", "name": "2XL", "stock": 2000, "sales": 1000 }
+        ],
+        "media": [
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black1.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
+          },
+          {
+            "type": "image",
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
           }
         ]
       }
@@ -732,48 +537,28 @@
         "type": "color",
         "name": "white",
         "releaseDate": "2022-01-01",
-        "price": 199.99,
+        "price": 69.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 1000, "sales": 1000 },
-          { "size": "S", "stock": 1000, "sales": 1000 },
-          { "size": "MD", "stock": 994, "sales": 1004 },
-          { "size": "LG", "stock": 1000, "sales": 1000 },
-          { "size": "XL", "stock": 990, "sales": 1010},
-          { "size": "2XL", "stock": 1000, "sales": 1000 }
+          { "type": "size", "name": "XS", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 1994, "sales": 1004 },
+          { "type": "size", "name": "LG", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 1990, "sales": 1010},
+          { "type": "size", "name": "2XL", "stock": 2000, "sales": 1000 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product_100/white/white1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product_100/white/white2.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/white/white2.webp"
-          },
-          {
-            "type": "video",
-            "url": "https://example.com/videos/tshirt_red_promo.mp4"
+            "url": "/images/products/apparel/tshirts_tops/product_100/white/white2.webp"
           }
         ]
       },
@@ -781,24 +566,24 @@
         "type": "color",
         "name": "black",
         "releaseDate": "2022-01-01",
-        "price": 199.99,
+        "price": 69.99,
         "discount": 0.0, 
         "sizes": [
-          { "size": "XS", "stock": 1000, "sales": 1000 },
-          { "size": "S", "stock": 1000, "sales": 1000 },
-          { "size": "MD", "stock": 994, "sales": 1004 },
-          { "size": "LG", "stock": 1000, "sales": 1000 },
-          { "size": "XL", "stock": 990, "sales": 1010},
-          { "size": "2XL", "stock": 1000, "sales": 1000 }
+          { "type": "size", "name": "XS", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "S", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "MD", "stock": 1994, "sales": 1004 },
+          { "type": "size", "name": "LG", "stock": 2000, "sales": 1000 },
+          { "type": "size", "name": "XL", "stock": 1990, "sales": 1010},
+          { "type": "size", "name": "2XL", "stock": 2000, "sales": 1000 }
         ],
         "media": [
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black1.webp"
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black1.webp"
           },
           {
             "type": "image",
-            "url": "/images/products/apparel/tshirts_tops/product1/black/black2.webp"
+            "url": "/images/products/apparel/tshirts_tops/product_100/black/black2.webp"
           }
         ]
       }

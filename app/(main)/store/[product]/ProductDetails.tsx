@@ -28,6 +28,8 @@ interface ProductDetailsProps {
 const ProductDetails = ( {
   product, productReviews, averageRating, selectedOption, selectedSize, optionInStock, Images, discount, ogPrice, price
 }: ProductDetailsProps ) => {  
+
+  // Accordion menu items
   const detailsAccordion = product.details ? [product.description, product.details] : [product.description];
   const careAccordion = product.care ? ['To maintain the luxurious quality of your leather jacket, we recommend following these care guidelines:', product.care] : [];
   const shippingAccordion = ["Complimentary shipping on all orders.", "Free returns within 30 days, excluding final sale items, underwear, bottles, and swimwear."];
@@ -100,15 +102,15 @@ const ProductDetails = ( {
                   name: product.name.split(/[ ,]+/).join('-').toLowerCase(), 
                   id: product.product_id.toString(), 
                   option: selectedOption, 
-                  size: sizeObj.size.toLowerCase()
+                  size: sizeObj.name.toLowerCase()
                 })}`} 
                 scroll={false} 
                 replace
-                aria-label={`Product Size Option: ${sizeObj.size}`} 
-                className={`product-option-btn size ${selectedSize === sizeObj.size.toLowerCase() ? 'selected' : ''} ${sizeObj.stock <= 0 ? 'disabled' : ''}`} 
+                aria-label={`Product Size Option: ${sizeObj.name}`} 
+                className={`product-option-btn size ${selectedSize === sizeObj.name.toLowerCase() ? 'selected' : ''} ${sizeObj.stock <= 0 ? 'disabled' : ''}`} 
                 style={{'--bs-opacity': '0.15'} as React.CSSProperties}
               >
-                {sizeObj.size.toUpperCase()}
+                {sizeObj.name.toUpperCase()}
               </Link>
             ))}
           </div>
@@ -142,11 +144,4 @@ const ProductDetails = ( {
 }
 
 export default ProductDetails
-
-
-// Photo by <a href="https://unsplash.com/@anomaly?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Anomaly</a> on <a href="https://unsplash.com/photos/man-wearing-white-crew-neck-t-shirts-WWesmHEgXDs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-// Photo by <a href="https://unsplash.com/@uyk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Haryo Setyadi</a> on <a href="https://unsplash.com/photos/white-crew-neck-t-shirt-acn5ERAeSb4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
- 
-// Photo by <a href="https://unsplash.com/@jibarox?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Luis Quintero</a> on <a href="https://unsplash.com/photos/man-wearing-black-crew-neck-t-shirt-3qqiMT2LdR8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-// Photo by <a href="https://unsplash.com/@svenciupkab?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Sven Ciupka</a> on <a href="https://unsplash.com/photos/man-in-black-crew-neck-t-shirt-standing-near-brick-wall-x8Vg7Up6TUc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 

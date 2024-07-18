@@ -12,6 +12,7 @@
   background-color: rgba(var(--secondary-color));
 }
 
+/************ Not Found ************/
 .loading-page {
   width: 100%;
   height: calc(100dvh - 104px + 5rem);
@@ -29,6 +30,7 @@
 .empty-cart {
   width: 375px;
   height: calc(100dvh - 104px - 250px);
+  min-height: 500px;
   position: relative;
   display: flex;
   flex-direction: column;

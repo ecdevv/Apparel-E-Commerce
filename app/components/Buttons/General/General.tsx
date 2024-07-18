@@ -27,6 +27,7 @@ const CustomLink = ({children, href, replace = false, NEW, searchParams, product
   const { setGlobalMenuToggle } = useMenuContext();
   const [isClicked, setIsClicked] = React.useState(false);
 
+  // If the href is null, undefined, or 'undefined', set the fixedHref to '/', otherwise replace spaces and commas with dashes
   let fixedHref;
   if (!href || href === 'undefined' || href === 'null') {
     fixedHref = '/';
@@ -34,12 +35,14 @@ const CustomLink = ({children, href, replace = false, NEW, searchParams, product
     fixedHref = href.replace(/[ ,]+/g, '-').toLowerCase();
   }
 
+  // Replace spaces and commas with dashes in searchParams
   if (searchParams) {
     Object.keys(searchParams).forEach(key => {
       searchParams[key] = searchParams[key].replace(/[ ,]+/g, ' ');
     })
   }
   
+  // Set the final href/link
   const link = product !== undefined
     ? `${fixedHref}${new URLSearchParams({
         name: product?.name?.toString() || '', 
@@ -49,11 +52,13 @@ const CustomLink = ({children, href, replace = false, NEW, searchParams, product
       })}`
     : fixedHref + (searchParams ? `?${new URLSearchParams(searchParams)}` : '');
 
+    // Set the global menu toggle to false to close all menus and setIsClicked to true to enable animation;
   const handleClick = () => {
     setIsClicked(true);
     setGlobalMenuToggle(false);
   }
 
+  // SetIsClicked to false on animation end to disable animations
   const onAnimationEnd = () => {
     setIsClicked(false);
   }

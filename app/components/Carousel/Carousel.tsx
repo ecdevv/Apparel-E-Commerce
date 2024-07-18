@@ -18,7 +18,6 @@ interface ImagesProps {
 }
 
 const Carousel = ({href = '', Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowThumbnails = false, ShowDotBtns = false, navArrowSize = 30, dotSmall = false } : ImagesProps) => {
-  const [prevImages, setPrevImages] = useState(Images);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(-1);
   const [prevIndex, setPrevIndex] = useState(0);
@@ -30,17 +29,17 @@ const Carousel = ({href = '', Images, Width, BorderWidth = 0, ShowNavArrows = fa
 
   // FIXME: Resetting the current index to 0 every time new images are set is causing the transition to occur; current solution flickers the wrong indexed image on images change before the correct index is set
   // Set the current index to the first image every time new images are set
-  // useEffect(() => {
-  //   setTimeoutDuration(0); // Reset the timeout duration
-  //   setSlideDirection(''); // Reset the slide direction
-  //   setDifference(0);
+  useEffect(() => {
+    setTimeoutDuration(0); // Reset the timeout duration
+    setSlideDirection(''); // Reset the slide direction
+    setDifference(0);
     
-  //   // Set timeout to make sure the above runs before setting the indices
-  //   setTimeout(() => {
-  //     setPrevIndex(0);
-  //     setCurrentIndex(0);
-  //   }, 0);
-  // }, [Images])
+    // Set timeout to make sure the above runs before resetting the indices
+    setTimeout(() => {
+      setPrevIndex(0);
+      setCurrentIndex(0);
+    }, 0);
+  }, [Images]);
 
   const handlePrevClick = () => {
     // Disable and then re-enable the button after 300 milliseconds

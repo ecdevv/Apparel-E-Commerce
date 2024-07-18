@@ -24,6 +24,7 @@ const Select = ({ children, value, onChange }: SelectProps) => {
     React.isValidElement(child) && (child as React.ReactElement).props.value === value
   ) as React.ReactElement | undefined;
 
+  // Close the menu if the user clicks outside of it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuToggle && !menuRef.current?.contains(event.target as Node)) {
@@ -37,10 +38,12 @@ const Select = ({ children, value, onChange }: SelectProps) => {
     }
   }, [menuToggle, menuRef])
 
+  // Toggle the menu on click
   const handleClick = () => {
     setMenuToggle(prev => !prev)
   }
 
+  // Close the menu when a menu item is clicked and call the onChange function to handle parent's changes
   const handleOptionClick = (value: SortCriteria) => {
     setMenuToggle(false)
     onChange && onChange(value)

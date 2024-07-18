@@ -25,7 +25,7 @@ const menuItems = [
             productID: 3,
           },
           { label: 'Luxe Saturn',
-            productID: 4,
+            productID: 6,
           },
           { label: 'Luxe Neptune',
             productID: 5,
@@ -34,16 +34,34 @@ const menuItems = [
       },
       {
         label: 'Best Sellers',
-        href: '/store?category=popular',
+        href: '/store?category=trending',
         subMenu: [
           { label: 'Atelier x Luxe Limited Edition Jacket',
             productID: 1,
+          },
+          { label: 'Luxe Mercury',
+            productID: 2,
+          },
+          { label: 'Luxe Neptune',
+            productID: 5,
+          },
+          { label: 'Atelier x Luxe Denim Jeans',
+            productID: -1,
+          },
+          { label: 'Atelier x Luxe Joggers',
+            productID: -1,
+          },
+          { label: 'Luxe Jupiter',
+            productID: 3,
+          },
+          { label: 'Luxe Saturn',
+            productID: 6,
           },
         ],
       },
       {
         label: 'Collections',
-        href: '/store?category=collections',
+        href: '/',
         subMenu: [
           { label: 'Atelier x Luxe Collection' },
           { label: 'Summer Breeze Collection' },
@@ -76,7 +94,7 @@ const menuItems = [
     subMenu: [
       {
         label: 'Collections',
-        href: '/store?category=collections',
+        href: '/',
         subMenu: [
           { label: 'Office Elegance Collection' },
           { label: 'Spring Blossom Collection' },
@@ -123,7 +141,7 @@ const menuItems = [
   },
   {
     label: 'Collections',
-    href: '/store?category=collections',
+    href: '/',
     subMenu: [
       { label: 'Atelier x Luxe Collection' },
       { label: 'Summer Breeze Collection' },
@@ -152,7 +170,6 @@ const MobileNavigation = () => {
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && buttonRef.current && (!menuRef.current.contains(e.target as Node) && !buttonRef.current.contains(e.target as Node))) {  // If the mouse click is not in the menu, close the menu
         setMenuToggle(false);
-        setGlobalMenuToggle(false);
       }
     };
     
@@ -164,6 +181,10 @@ const MobileNavigation = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    console.log(menuToggle, globalMenuToggle)
+  }, [menuToggle, globalMenuToggle])
 
   // Toggle the menu to close if the globalMenuToggle gets set to false from elsewhere
   useEffect(() => {
@@ -184,7 +205,7 @@ const MobileNavigation = () => {
   // Handle toggling the menu on icon clicked (globalMenuToggle needs to be toggled to be set false from elsewhere)
   const handleClick = () => {
     setMenuToggle(prev => !prev)
-    setGlobalMenuToggle(prev => !prev);
+    setGlobalMenuToggle(true);
   }
 
   return (

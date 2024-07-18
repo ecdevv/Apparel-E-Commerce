@@ -1,0 +1,7 @@
+/*** Checkmark ***/
+.checkmark {
+  width: 14px;
+  height: 14px;
+  fill: var(--checkmark-color);
+  filter: invert(var(--checkmark-color));
+}

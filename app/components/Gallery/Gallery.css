@@ -9,12 +9,12 @@
 
 .gallery-image-wrapper {
   position: relative;
-  aspect-ratio: 1 / 1.2;
+  aspect-ratio: 1 / 1.25;
   width: calc(50% - 0.33rem);
 }
 
 .gallery-image-wrapper:nth-child(3n) {
-  aspect-ratio: 1 / 1.2;
+  aspect-ratio: 1 / 1.25;
   width: calc(100% - 0.33rem);
 }
 

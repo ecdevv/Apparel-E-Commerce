@@ -16,10 +16,12 @@ const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, pr
   const { setProductQuantity } = useNumberStepperContext();
   const [value, setValue] = useState(initialValue);
   
+  // Set the initial value
   useEffect(() => {
     setValue(initialValue);
   }, [initialValue]);
 
+  // Set the product quantity and call the onChange function for the parent component states
   useEffect(() => {
     if (product) {
       setProductQuantity(value);

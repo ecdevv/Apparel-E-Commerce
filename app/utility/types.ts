@@ -15,7 +15,8 @@ interface MediaItem {
 }
 
 interface Size {
-  size: string;
+  type: string;
+  name: string;
   stock: number;
   sales: number;
 }

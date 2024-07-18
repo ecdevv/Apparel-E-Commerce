@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
-import Loading from '@/app/components/Loading/Loading';
+import Loading from '@/app/components/Generic/Loading/Loading';
 import { CustomLink } from '@/app/components/Buttons/General/General';
 import AddToBagButton from '@/app/components/Buttons/AddToBag/AddToBag';
 import { BagProduct, WishlistProduct } from '@/app/utility/types';
@@ -194,6 +194,7 @@ const WishlistDetails = () => {
   const { wishItems, setWishItems, isLoading } = useWishlistContext();
   const totalQuantity = wishItems.length;
 
+  // Wait for wishItems to be loaded before displaying the cart.
   if (isLoading) {
     return <section className='cart-page-container'><div className='loading-page'>Loading...<Loading /></div></section>
   }
