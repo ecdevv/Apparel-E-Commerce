@@ -15,6 +15,9 @@ interface CustomLinkProps {
   children?: React.ReactNode;
   href: string | null | undefined;
   replace?: boolean;
+  target?: string;
+  ariaLabel?: string;
+  onClick?: () => void;
   searchParams?: {
     [key: string]: string
   };
@@ -23,7 +26,7 @@ interface CustomLinkProps {
   className?: string;
 }
 
-const CustomLink = ({children, href, replace = false, NEW, searchParams, product, className = 'link'}: CustomLinkProps) => {
+const CustomLink = ({children, href, replace = false, ariaLabel, target = '_self', onClick, searchParams, product, NEW, className = 'link'}: CustomLinkProps) => {
   const { setGlobalMenuToggle } = useMenuContext();
   const [isClicked, setIsClicked] = React.useState(false);
 
@@ -56,6 +59,7 @@ const CustomLink = ({children, href, replace = false, NEW, searchParams, product
   const handleClick = () => {
     setIsClicked(true);
     setGlobalMenuToggle(false);
+    onClick && onClick();
   }
 
   // SetIsClicked to false on animation end to disable animations
@@ -64,7 +68,7 @@ const CustomLink = ({children, href, replace = false, NEW, searchParams, product
   }
 
   return (
-    <Link href={link} replace={replace} onClick={handleClick} onAnimationEnd={onAnimationEnd} className={`${className} ${isClicked ? 'active' : ''}`} >
+    <Link href={link} replace={replace} aria-label={ariaLabel ? ariaLabel : undefined} target={target} onClick={handleClick} onAnimationEnd={onAnimationEnd} className={`${className} ${isClicked ? 'active' : ''}`} >
       {NEW 
       ? <svg 
           aria-hidden

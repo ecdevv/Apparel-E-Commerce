@@ -36,6 +36,7 @@
     scrollbar-width: thin;
     scrollbar-color: rgba(var(--scrollbar-color), 1) transparent;
     scrollbar-gutter: stable;
+    z-index: 10;
   }
 
   .multi-menu-wrapper {
@@ -70,6 +71,25 @@
     background-color: rgba(var(--secondary-color));
     font-weight: 400;
     font-size: 15px;
+  }
+
+  .mobile-nav-custom-link {
+    width: fit-content;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 200ms ease-in-out;
+  }
+
+  .mobile-nav-svg-icon {
+    width: 22.5px;
+    height: 22.5px;
+    transition: color 200ms ease-in-out;
+  }
+  
+  .mobile-nav-custom-link:hover {
+    color: rgba(var(--link-text-color));
   }
 }
 

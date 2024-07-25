@@ -13,13 +13,13 @@ This is a fictional e-commerce apparel website project designed to enhance and r
 ## Installation
 
 1. Clone the repository:
-    git clone https://github.com/ecdevv/Apparel-E-Commerce.git
+      git clone https://github.com/ecdevv/Apparel-E-Commerce.git
 2. Navigate into the repository:
-    cd /your_directory/apparel-e-commerce
+      cd /your_directory/apparel-e-commerce
 3. Install Dependencies:
-    npm install
+      npm install
 4. Run the app:
-    npm start or npm run dev
+      npm start or npm run dev
 
 ## Notes/Potential Improvements/Known Issues
 
@@ -33,6 +33,7 @@ This is a fictional e-commerce apparel website project designed to enhance and r
 - Mock data may not be the most scalable and should likely be split into different schemas/tables.
 - A lot of logic can definitely be done more optimally and efficiently.
 - I tried to make everything reusable and from scratch; I only used two libraries: react-transition-group and react-swipables (for mobile swiping).
+- Collections do not do anything and just relink to the homepage.
 
 ## Credits
 

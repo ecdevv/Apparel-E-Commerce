@@ -46,15 +46,15 @@ const ProductDetails = ( {
           {discount <= 0 
             ? <div className='product-price-wrapper'>
                 <h2 className='product-price'>
-                  <span className='dollar-sign'>$</span>{price.toFixed(2)}
+                  ${price.toFixed(2)}
                 </h2> 
               </div>
             : <div className='product-price-wrapper'>
                 <h2 className='product-price-strike'>
-                  <span className='dollar-sign'>$</span>{ogPrice.toFixed(2)}
+                  ${ogPrice.toFixed(2)}
                 </h2>
                 <h2 className='product-price-discounted'>
-                  <span className='dollar-sign'>$</span>{price.toFixed(2)}
+                  ${price.toFixed(2)}
                 </h2>
               </div>
           }

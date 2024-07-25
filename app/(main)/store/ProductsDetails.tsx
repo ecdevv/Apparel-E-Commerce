@@ -10,7 +10,7 @@ import Carousel from '@/app/components/Carousel/Carousel'
 import AccordionMenu from '@/app/components/Accordion/AccordionMenu'
 import { Product } from '@/app/utility/types'
 import { capitalizeFirstLetter, getTitle, getCustomColor } from '@/app/utility/helper'
-import { filterProductsBySearch, filterProductsByFilters, sortProducts, validateStoreProduct, getStoreProductOption } from '@/server/mockValidations'
+import { filterProductsByParams, filterProductsByFilters, sortProducts, validateStoreProduct, getStoreProductOption } from '@/server/mockValidations'
 import './store.css'
 import AddToWishlistButton from '@/app/components/Buttons/AddToWishlist/AddToWishlist'
 
@@ -54,14 +54,14 @@ const ProductCard = React.memo(({ product, selectedOption, onClick }: { product:
           <CustomLink href='/store/p?' product={{id: validatedProduct.product_id, option: currentOption.name} as any} className='product-card-name'>{validatedProduct.name}</CustomLink>
           {currentOption.discount <= 0
             ? <p>
-                <span className='dollar-sign'>$</span>{(price).toFixed(2)}
+                ${(price).toFixed(2)}
               </p> 
             : <div className='product-card-price-wrapper'>
                 <p className='product-card-price-strike'>
-                  <span className='dollar-sign'>$</span>{(ogPrice).toFixed(2)}
+                  ${(ogPrice).toFixed(2)}
                 </p>
                 <p className='product-card-price-discounted'>
-                  <span className='dollar-sign'>$</span>{(price).toFixed(2)}
+                  ${(price).toFixed(2)}
                 </p>
               </div>
               
@@ -208,7 +208,7 @@ const ProductsDetails = ({parsedCategories, parsedTags, products}: {parsedCatego
   const mobileButtonRef = useRef<HTMLButtonElement>(null);
   
   // Set the filtered products by search parameters, then filter products by user filters, and then sort the products from the search parameters
-  const filteredProducts = filterProductsBySearch({products: products, parsedCategories, parsedTags});
+  const filteredProducts = filterProductsByParams({products: products, parsedCategories, parsedTags});
   const fullyFilteredProducts = filterProductsByFilters({products: filteredProducts, filters});
   const sortedProducts = sortProducts([...fullyFilteredProducts], selectedOptions, sortCriteria);
 
@@ -391,7 +391,9 @@ const ProductsDetails = ({parsedCategories, parsedTags, products}: {parsedCatego
         <div className={`store-products-wrapper ${filterOpen ? 'with-filter' : ''}`}>
           <div className='product-cards-container'>
             {sortedProducts.length === 0 ? (
-              <div className='products-none-found'>No results found.</div>
+              <div className='products-not-found'>
+                <p>No results found.</p>
+              </div>
             ) : (
               sortedProducts.slice(0, rowsShown).map((product: any, index) => (
                 <ProductCard 
@@ -415,11 +417,14 @@ const ProductsDetails = ({parsedCategories, parsedTags, products}: {parsedCatego
       </div>
 
       {/* Filter Menu Mobile*/}
-      <div ref={mobileMenuRef} className='store-mobile'>
-        <CSSTransition in={filterOpenMobile} timeout={200} classNames='filter' unmountOnExit>
-          <FilterMenu products={filteredProducts} categories={parsedCategories} tags={parsedTags} selectedFilters={filters} onClick={handleAddFilterClick} onClear={handleFilterClearAll} onClose={handleFilterMobileClick}/>
-        </CSSTransition>
-      </div>
+      <>
+        <div className={`dimmer ${filterOpenMobile ? 'toggled' : ''}`}></div>
+        <div ref={mobileMenuRef} className='store-mobile'>
+          <CSSTransition in={filterOpenMobile} timeout={200} classNames='filter' unmountOnExit>
+            <FilterMenu products={filteredProducts} categories={parsedCategories} tags={parsedTags} selectedFilters={filters} onClick={handleAddFilterClick} onClear={handleFilterClearAll} onClose={handleFilterMobileClick}/>
+          </CSSTransition>
+        </div>
+      </>
     </section>
   )
 }

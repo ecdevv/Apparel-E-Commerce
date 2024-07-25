@@ -2,7 +2,6 @@
 .navbar {
   width: 100%;
   background-color: rgba(var(--primary-color));
-  z-index: 10;
   position: relative;
 }
 
@@ -47,6 +46,16 @@
 .navbar-theme-icons-container{
   min-width: 530px;
   justify-content: start;
+}
+
+.navbar-svg-icon {
+  width: 25px;
+  height: 25px;
+  transition: color 200ms ease-in-out;
+}
+
+.navbar-svg-icon:hover {
+  color: rgba(var(--link-text-color));
 }
 
 .navbar-logo-container {

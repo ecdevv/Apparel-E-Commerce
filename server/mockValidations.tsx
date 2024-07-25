@@ -29,14 +29,26 @@ const validateStoreURL = (categories: string[], tags: string[]): { error: boolea
     category: 'all',
   });
   
-  // Return no categories if no categories are provided
-  if (!categories) {
+  // Return based url if no categories or tags
+  if (!categories && !tags) {
+    return { error: false, url: newUrl.toString() }
+  }
+
+  // Return based url if only tags
+  if (!categories && tags) {
+    const newTagStrings = tags?.join(' ').toLowerCase();
+    if (newTagStrings.length > 0) {
+      newSearchParams = new URLSearchParams({
+        tags: newTagStrings,
+      });
+    }
+    newUrl.search = newSearchParams.toString();
     return { error: false, url: newUrl.toString() }
   }
 
   // Validate categories and tags if they exist
   const validCategories = ['all', 'new', 'sales', 'men', 'women', 'trending', 'popular', 'collections', 'exclusive', 'apparel', 'shoes', 'accessories', 'underwear'];
-  const newCategorySearchParam = categories.some(param => validCategories.includes(param.toLowerCase()));
+  const newCategorySearchParam = categories?.some(param => validCategories.includes(param.toLowerCase()));
   if (newCategorySearchParam) {
     const newCategoryStrings = categories.filter(param => validCategories.includes(param.toLowerCase())).join(' ').toLowerCase();
     const newTagStrings = tags?.join(' ').toLowerCase();
@@ -96,8 +108,33 @@ const getProducts = (): { error: boolean, products: Product[] } => {
   return { error: false, products };
 }
 
+// Filtered products array based on the search query
+const filterProductsBySearch = ({ products, query }: { products: Product[], query: string }): Product[] => {
+  if (!query) return [];
+  const queryLower = query.toLowerCase();
+  return products.filter(product =>
+    product.tags.some(tag => tag.includes(queryLower) || queryLower.includes(tag.toLowerCase())) ||
+    product.name.toLowerCase().includes(queryLower) ||
+    product.options.some(option => option.name.toLowerCase().includes(queryLower) || queryLower.includes(option.name.toLowerCase())) ||
+    queryLower.includes(product.category.toLowerCase()) ||
+    queryLower.includes(product.subcategory.toLowerCase()) ||
+    queryLower.includes(product.gender.toLowerCase())
+  );
+  // return products.filter(product =>
+  //   product.tags.some(tag => tag.toLowerCase().includes(queryLower)) ||
+  //   product.name.toLowerCase().includes(queryLower) ||
+  //   product.category.toLowerCase().includes(queryLower) ||
+  //   product.subcategory.toLowerCase().includes(queryLower) ||
+  //   product.gender.toLowerCase().includes(queryLower) ||
+  //   product.options.some(option =>
+  //     option.name.toLowerCase().includes(queryLower) ||
+  //     option.sizes.some(size => size.name.toLowerCase().includes(queryLower))
+  //   )
+  // );
+}
+
 // Filtered products array based on the parsed categories and tags
-const filterProductsBySearch = ({ products, parsedCategories, parsedTags }: { products: Product[], parsedCategories: string[], parsedTags: string[] }): Product[] => {
+const filterProductsByParams = ({ products, parsedCategories, parsedTags }: { products: Product[], parsedCategories: string[], parsedTags: string[] }): Product[] => {
   // If no categories or tags are provided, return the original array of products
   if (!parsedCategories && !parsedTags) return products;
 
@@ -105,7 +142,7 @@ const filterProductsBySearch = ({ products, parsedCategories, parsedTags }: { pr
   const displayedProducts = products.filter(product => {
       // Check if product matches every category in the parsed categories; a category can be is exclusive, within 6 months of release, has discount, has category, has gender, or is best seller
       const meetsCategories = parsedCategories?.every(category => {
-        const isExclusive = product.tags.includes('exclusive');
+        const isExclusive = product.tags.includes('exclusive') || product.tags.includes('limited');
         const now = new Date('07-02-2024'); // Using a static date since this is a project and not a real store
         const sixMonthsAgo = new Date(now.getFullYear(), now.getMonth() - 6, now.getDate());
         const withinSixMonths = product.options.some(option => option.releaseDate && new Date(option.releaseDate) >= sixMonthsAgo);
@@ -601,7 +638,8 @@ const calculateCosts = (bagItems: BagProduct[]): {subTotal: number, totalDiscoun
 export {
   validateStoreURL, 
   getProducts, 
-  filterProductsBySearch, 
+  filterProductsBySearch,
+  filterProductsByParams, 
   filterProductsByFilters, 
   sortProducts, 
   validateStoreProduct,

@@ -135,17 +135,17 @@ const CartCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Ba
             {item.discount <= 0
               ? <div className='cart-page-price-wrapper'>
                   <h4 className='cart-page-price'>
-                    <span className='dollar-sign'>$</span>{(item.price * Math.max(1, item.selectedQuantity)).toFixed(2)}
+                    ${(item.price * Math.max(1, item.selectedQuantity)).toFixed(2)}
                   </h4> 
                 </div>
               : <div className='cart-page-price-container'>
                   <div className='cart-page-discount-badge'>{(item.discount * 100).toFixed(0)}% OFF</div>
                   <div className='cart-page-price-wrapper'>
                     <h4 className='cart-page-price-strike'>
-                      <span className='dollar-sign'>$</span>{(item.ogPrice * Math.max(1, item.selectedQuantity)).toFixed(2)}
+                      ${(item.ogPrice * Math.max(1, item.selectedQuantity)).toFixed(2)}
                     </h4>
                     <h4 className='cart-page-price-discounted'>
-                      <span className='dollar-sign'>$</span>{(item.price * Math.max(1, item.selectedQuantity)).toFixed(2)}
+                      ${(item.price * Math.max(1, item.selectedQuantity)).toFixed(2)}
                     </h4>
                   </div>
                 </div>
@@ -223,18 +223,18 @@ const CartDetails = () => {
             <div className='cart-page-summary-container'>
               <h1 id='summary' className='cart-page-summary-header'>Summary</h1>
               <div className='cart-page-summary-content'>
-                <div className='cart-page-costs-info'><h2>Subtotal</h2><h2><span className='dollar-sign margin-right'>$</span>{subTotal}</h2></div>
-                <div className='cart-page-costs-info'><h2>Discount</h2><h2 className='discount'><span className='dollar-sign margin-right'>-$</span>{totalDiscount}</h2></div>
-                <div className='cart-page-costs-info'><h2>Total</h2><h2><span className='dollar-sign margin-right'>$</span>{totalCost}</h2></div>
+                <div className='cart-page-costs-info'><h2>Subtotal</h2><h2>${subTotal}</h2></div>
+                <div className='cart-page-costs-info'><h2>Discount</h2><h2 className='discount'>-${totalDiscount}</h2></div>
+                <div className='cart-page-costs-info'><h2>Total</h2><h2>${totalCost}</h2></div>
                 <div>
-                  <div className='cart-page-costs-info'><h2>Tax</h2><h2><span className='dollar-sign margin-right'>$</span>{taxCost}</h2></div>
+                  <div className='cart-page-costs-info'><h2>Tax</h2><h2>${taxCost}</h2></div>
                   <div className='cart-page-tax-info'>Will be calculated based on the delivery location</div>
                 </div>
                 <div>
-                  <div className='cart-page-costs-info'><h2>Shipping</h2><h2><span className='dollar-sign margin-right'>$</span>{shippingCost}</h2></div>
+                  <div className='cart-page-costs-info'><h2>Shipping</h2><h2>${shippingCost}</h2></div>
                   <div className='cart-page-tax-info'>Will be calculated based on the delivery location</div>
                 </div>
-                <div className='cart-page-costs-info grand-total'><h2>Grand Total</h2><h2><span className='dollar-sign margin-right'>$</span>{grandTotal}</h2></div>
+                <div className='cart-page-costs-info grand-total'><h2>Grand Total</h2><h2>${grandTotal}</h2></div>
                 <div className='cart-page-summary-btns'>
                   <CustomLink href='/checkout' className='btn'>Checkout</CustomLink>
                   <CustomLink href='/store' className='btn second'>Continue Shopping</CustomLink>

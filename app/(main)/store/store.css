@@ -174,7 +174,7 @@
 .store-products-container {
   position: relative;
   width: 92.5%;
-  min-height: calc(100dvh - 104px);
+  min-height: calc(100dvh - 104px); /* Setting min-height because the filter-menu sort of has a fixed height */
   display: flex;
   margin: auto;
   padding: 0.65rem 0 0 0;
@@ -215,8 +215,11 @@
   animation: fade-in-up 400ms 500ms backwards;
 }
 
-.products-none-found {
+.products-not-found {
+  width: 375px;
   margin: auto;
+  text-align: center;
+  font-size: 18px;
   animation: fade-in-up 400ms 400ms backwards;
 }
 

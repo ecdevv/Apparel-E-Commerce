@@ -65,15 +65,15 @@ const WishlistCard = ({item, wishItems, setWishItems}: {item: WishlistProduct; w
           {item.discount <= 0 
             ? <div className='cart-price-wrapper'>
                <h4 className='cart-price'>
-                  <span className='dollar-sign'>$</span>{item.price.toFixed(2)}
+                  ${item.price.toFixed(2)}
                 </h4> 
               </div>
             : <div className='cart-price-wrapper'>
                 <h4 className='cart-price-strike'>
-                  <span className='dollar-sign'>$</span>{item.ogPrice.toFixed(2)}
+                  ${item.ogPrice.toFixed(2)}
                 </h4>
                 <h4 className='cart-price-discounted'>
-                  <span className='dollar-sign'>$</span>{item.price.toFixed(2)}
+                  ${item.price.toFixed(2)}
                 </h4>
               </div>
           }

@@ -51,7 +51,7 @@
       ["Storage", "Store your jacket in a cool, dry place away from direct sunlight to prevent fading and moisture damage."],
       ["Avoid", "Avoid exposing your jacket to harsh chemicals, excessive moisture, or heat sources. Following these care instructions will help preserve the timeless elegance and durability of your exclusive leather jacket for years to come."]
     ],
-    "tags": ["exclusive"]
+    "tags": ["exclusive", "limited"]
   },
   {
     "product_id": 2,
@@ -91,7 +91,7 @@
         ]
       }
     ],
-    "tags": ["exclusive"]
+    "tags": ["exclusive", "limited", "gray"]
   },
   {
     "product_id": 3,
@@ -131,7 +131,7 @@
         ]
       }
     ],
-    "tags": ["exclusive"]
+    "tags": ["exclusive", "limited"]
   },
   {
     "product_id": 4,
@@ -171,7 +171,7 @@
         ]
       }
     ],
-    "tags": ["exclusive"]
+    "tags": ["exclusive", "limited"]
   },
   {
     "product_id": 5,
@@ -211,7 +211,7 @@
         ]
       }
     ],
-    "tags": ["exclusive"]
+    "tags": ["exclusive", "limited"]
   },
   {
     "product_id": 6,
@@ -251,7 +251,7 @@
         ]
       }
     ],
-    "tags": ["exclusive"]
+    "tags": ["exclusive", "limited", "golden"]
   },
   {
     "product_id": 100,

@@ -212,15 +212,33 @@ h1 {
   z-index: 5;
 }
 
-.dollar-sign {
-  font-family: var(--font-roboto);
-  margin-right: 0.075rem;
+.dimmer {
+  display: none;
+  width: 100dvw;
+  height: 100dvh;
+  position: fixed;
+  top: calc(0% + 65px);
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease-in-out;
+  z-index: 6;
+}
+
+.dimmer.toggled {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /*** Mobile & Media Queries ***/
 @media (max-width: 1024px) {
   h1 {
     font-size: 22px;
+  }
+
+  .dimmer {
+    display: block;
   }
 }
 

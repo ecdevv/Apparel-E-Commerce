@@ -80,15 +80,15 @@ const BagCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: Bag
           {item.discount <= 0 
             ? <div className='cart-price-wrapper'>
                <h4 className='cart-price'>
-                  <span className='dollar-sign'>$</span>{(item.price * Math.max(1, item.selectedQuantity)).toFixed(2)}
+                  ${(item.price * Math.max(1, item.selectedQuantity)).toFixed(2)}
                 </h4> 
               </div>
             : <div className='cart-price-wrapper'>
                 <h4 className='cart-price-strike'>
-                  <span className='dollar-sign'>$</span>{(item.ogPrice * Math.max(1, item.selectedQuantity)).toFixed(2)}
+                  ${(item.ogPrice * Math.max(1, item.selectedQuantity)).toFixed(2)}
                 </h4>
                 <h4 className='cart-price-discounted'>
-                  <span className='dollar-sign'>$</span>{(item.price * Math.max(1, item.selectedQuantity)).toFixed(2)}
+                  ${(item.price * Math.max(1, item.selectedQuantity)).toFixed(2)}
                 </h4>
               </div>
           }
@@ -142,7 +142,7 @@ const Bag = () => {
 
   // This is an array of DropdownItem objects (the content of the dropdown) that will be passed to the DropdownButton component.
   const items: DropdownItem[] = [
-    { name: 'Shopping Bag', type: 'component', component: <div className='cart-header'><h2>Your Bag</h2><h3>Total: <span className='dollar-sign'>$</span>{roundedTotal}</h3></div> },
+    { name: 'Shopping Bag', type: 'component', component: <div className='cart-header'><h2>Your Bag</h2><h3>Total: ${roundedTotal}</h3></div> },
     { name: 'Bag Items', type: 'component', component: <BagItemList bagItems={bagItems} setBagItems={setBagItems}/> },
     { name: 'View Bag', type: 'component', component: <CustomLink href='/cart' className='btn'>View Bag</CustomLink> },
     { name: 'Checkout', type: 'component', component: <CustomLink href='/checkout' className='btn'>Checkout</CustomLink> },
