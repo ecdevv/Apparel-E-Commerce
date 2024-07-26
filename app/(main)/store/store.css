@@ -217,7 +217,10 @@
 
 .products-not-found {
   width: 375px;
+  height: auto;
+  min-height: 275px;
   margin: auto;
+  margin-top: 2rem;
   text-align: center;
   font-size: 18px;
   animation: fade-in-up 400ms 400ms backwards;
@@ -449,6 +452,11 @@
     display: block;
   }
 
+  .products-not-found {
+    width: 275px;
+    height: calc(100dvh - (2rem + 66px + 2.5rem + 52.4px + 56.2px + 0.65rem + 336px)); /* Subtracting the padding, navbar, heading, and footer (not working as intended but it works) */
+  }
+
   .store-products-section {
     padding: 1.5rem 0 2rem 0;
   }
@@ -507,7 +515,12 @@
 
 }
 
-@media (max-width: 450px) {
+@media (max-width: 460px) {
+  .products-not-found {
+    min-height: 50px;
+    height: calc(100dvh - (2rem + 66px + 2.5rem + 52.4px + 56.2px + 0.65rem + 357px)); /* Subtracting the padding, navbar, heading, and footer (not working as intended but it works) */
+  }
+
   .product-card-content-details {
     width: 68.5%;
     gap: 0;

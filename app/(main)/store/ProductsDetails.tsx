@@ -389,22 +389,22 @@ const ProductsDetails = ({parsedCategories, parsedTags, products}: {parsedCatego
           </CSSTransition>
         </div>
         <div className={`store-products-wrapper ${filterOpen ? 'with-filter' : ''}`}>
-          <div className='product-cards-container'>
-            {sortedProducts.length === 0 ? (
-              <div className='products-not-found'>
-                <p>No results found.</p>
-              </div>
-            ) : (
-              sortedProducts.slice(0, rowsShown).map((product: any, index) => (
+          {sortedProducts.length === 0 ? (
+            <div className='products-not-found'>
+              <p>No results found.</p>
+            </div>
+          ) : (
+            <div className='product-cards-container'>
+              {sortedProducts.slice(0, rowsShown).map((product: any, index) => (
                 <ProductCard 
                   key={index} 
                   product={product} 
                   selectedOption={selectedOptions[product.product_id] || 0} 
                   onClick={handleOptionChange}
                 />
-              ))
-            )}
-          </div>
+              ))}
+            </div>
+          )}
           {rowsShown < sortedProducts.length 
             ? (
             <div className='show-more-btn-wrapper'>

@@ -80,11 +80,11 @@ const Navigation = () => {
   return (
     <section className='navbar-navigation-wrapper'>
       <ul className='navbar-navigation-list'>
-        <li><DropdownButton label={'New'} items={NewItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>NEW</DropdownButton></li>
-        <li><DropdownButton label={'Sales'} items={SalesItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>SALES</DropdownButton></li>
-        <li><DropdownButton label={'Men'} items={MenItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>MEN</DropdownButton></li>
-        <li><DropdownButton label={'Women'} items={WomenItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>WOMEN</DropdownButton></li>
-        <li><DropdownButton label={'Collections'} items={CollectionItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>COLLECTIONS</DropdownButton></li>
+        <li><DropdownButton label={'New'} href={`/store?${new URLSearchParams({ category: 'new' })}`} items={NewItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>NEW</DropdownButton></li>
+        <li><DropdownButton label={'Sales'} href={`/store?${new URLSearchParams({ category: 'sales' })}`} items={SalesItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>SALES</DropdownButton></li>
+        <li><DropdownButton label={'Men'} href={`/store?${new URLSearchParams({ category: 'men' })}`} items={MenItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>MEN</DropdownButton></li>
+        <li><DropdownButton label={'Women'} href={`/store?${new URLSearchParams({ category: 'women' })}`} items={WomenItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>WOMEN</DropdownButton></li>
+        <li><DropdownButton label={'Collections'} href='/' items={CollectionItems} hover={true} orientation={'mega'} showPointer={false} classNames={['navbar-navigation-link', 'navbar-navigation-link-focus']}>COLLECTIONS</DropdownButton></li>
       </ul>
     </section>
   )

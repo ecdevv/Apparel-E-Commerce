@@ -11,6 +11,7 @@ interface DropdownButtonProps  {
   forceOpen?: boolean;
   forceRef?: React.RefObject<HTMLButtonElement>;
   label?: string;
+  href?: string;
   items: DropdownItem[];
   hover: boolean;
   orientation: string;
@@ -20,7 +21,7 @@ interface DropdownButtonProps  {
 }
 
 // Navigation section with the links of this navbar component (globalMenu used to toggle all menus forcefully by other means)
-const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, orientation, showPointer, chevron = false, classNames} : DropdownButtonProps) => {
+const DropdownButton = ({children, forceOpen, forceRef, label, href, items, hover, orientation, showPointer, chevron = false, classNames} : DropdownButtonProps) => {
   const { globalMenuToggle, setGlobalMenuToggle } = useMenuContext();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [menuToggle, setMenuToggle] = useState(false);
@@ -93,9 +94,9 @@ const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, ori
   }
 
   // Handle opening the menu on click and if clicked again, it will link to the specified page; on desktop, hover sets menuToggle true so it will always navigate to the link
-  const handleHoverClick = () => {
+  const handleHoverClick = (href: string) => {
     if (menuToggle === true) {
-      router.push(`/store?category=${label?.toLowerCase()}`);
+      router.push(href);
       setGlobalMenuToggle(false);
     } else {
       setMenuToggle(true);
@@ -115,7 +116,7 @@ const DropdownButton = ({children, forceOpen, forceRef, label, items, hover, ori
       {hover 
       ? <div ref={menuRef} onMouseEnter={hover ? onHover : undefined} onMouseLeave={hover ? onUnhover : undefined} className='dropdown-display hover'>
           <button 
-            onClick={handleHoverClick} 
+            onClick={() => handleHoverClick(href || '')} 
             onMouseEnter={onLinkHover} 
             aria-label={label}
             className={`${menuToggle ? (classNames[1] || classNames[0]) : classNames[0]}`}

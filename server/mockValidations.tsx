@@ -18,9 +18,9 @@ enum SortCriteria {
 
 /********************************** STORE PAGE VALIDATIONS (PRODUCTS) **************************************** */
 // Validation for refreshing the page and the url is invalid (incorrect name, options, and sizes)
-const validateStoreURL = (categories: string[], tags: string[]): { error: boolean, url: string} => {
+const validateStoreURL = (headers: Readonly<Headers>, categories: string[], tags: string[]): { error: boolean, url: string} => {
   // Create a new URL object and update the search params
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+  const baseUrl = headers.get('x-base-url') || '';
   if (!baseUrl) return { error: true, url: '' };
 
   // Create a new URL object and set the default category parameter
@@ -307,9 +307,9 @@ const getStoreProductOption = (product: Product, selectedOption: number): {curre
 
 /********************************** PRODUCT PAGE VALIDATIONS (PRODUCT) **************************************** */
 // Validation for refreshing the page and the url is invalid (incorrect name, options, and sizes)
-const validateProductURL = (product: Product, selectedOption: string, selectedSize: string): { error: boolean, url: string} => {
+const validateProductURL = (headers: Readonly<Headers>, product: Product, selectedOption: string, selectedSize: string): { error: boolean, url: string} => {
   // Create a new URL object and update the search params
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+  const baseUrl = (headers.get('x-base-url')) || '';
   if (!baseUrl) return { error: true, url: '' };
   
   // Create a new URL object and update the search params

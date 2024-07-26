@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductDetails from './ProductDetails';
+import { headers } from 'next/headers';
 import { CustomLink } from '@/app/components/Buttons/General/General';
 import { UpdateURL } from '@/app/utility/components/UpdateURL';
 import { Product } from '@/app/utility/types';
@@ -38,7 +39,7 @@ const ProductError = ({text}: {text: string}) => {
 export default function DynamicProduct({ searchParams }: { searchParams: {name: string, id: string, option: string, size: string} }) {
   // Find and validate the product and product reviews
   const productResponse = validateProduct(searchParams);
-  if (productResponse.error) return <ProductError text={'Product not found'} />;
+  if (productResponse.error) return <ProductError text={'Product Not Found'} />;
   const product: Product = productResponse.product;
   const productReviews = productResponse.productReviews;
   const averageRating = productResponse.averageRating;
@@ -54,8 +55,9 @@ export default function DynamicProduct({ searchParams }: { searchParams: {name: 
   const ogPrice = selectedOptionResponse.ogPrice;
   const price = selectedOptionResponse.price;
 
-  // Call for URL validation to run the UpdateURL component
-  const validateURLResponse = validateProductURL(product, selectedOption, selectedSize);
+  // Call for URL validation to run the UpdateURL component using headers for the base URL
+  const headerList = headers();
+  const validateURLResponse = validateProductURL(headerList, product, selectedOption, selectedSize);
 
   return (
     <>

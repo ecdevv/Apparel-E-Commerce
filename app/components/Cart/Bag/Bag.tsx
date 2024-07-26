@@ -145,7 +145,7 @@ const Bag = () => {
     { name: 'Shopping Bag', type: 'component', component: <div className='cart-header'><h2>Your Bag</h2><h3>Total: ${roundedTotal}</h3></div> },
     { name: 'Bag Items', type: 'component', component: <BagItemList bagItems={bagItems} setBagItems={setBagItems}/> },
     { name: 'View Bag', type: 'component', component: <CustomLink href='/cart' className='btn'>View Bag</CustomLink> },
-    { name: 'Checkout', type: 'component', component: <CustomLink href='/checkout' className='btn'>Checkout</CustomLink> },
+    { name: 'Checkout', type: 'component', component: <CustomLink href='/cart' className='btn'>Checkout</CustomLink> }, // No checkout page
     // { name: 'Log', type: 'component', component: <button onClick={() => console.log(bagItems)}>Log</button>}
   ]
 

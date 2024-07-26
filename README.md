@@ -12,28 +12,41 @@ This is a fictional e-commerce apparel website project designed to enhance and r
 
 ## Installation
 
-1. Clone the repository:
+    1. Clone the repository:
       git clone https://github.com/ecdevv/Apparel-E-Commerce.git
-2. Navigate into the repository:
-      cd /your_directory/apparel-e-commerce
-3. Install Dependencies:
+    2. Navigate into the repository:
+      cd /Apparel-E-Commerce
+    3. Install Dependencies:
       npm install
-4. Run the app:
+    4. Run the app:
       npm start or npm run dev
 
 ## Notes/Potential Improvements/Known Issues
+
+### Notes
+
+- I tried to make everything reusable and from scratch; I only used two libraries: react-transition-group and react-swipables (for mobile swiping).
+- I didn't use any Tailwind, but removing it seems to remove some default styling so I just kept it in.
+- Collections do not do anything and just relink to the homepage.
+- Checkout page just links to cart.
+- Search functionality on the front-end is very simple and likely would not work as well on a much larger scale.
+- Mobile Navbar/Menu is a separate component instead of just reusing the original component.
+- Mock data may not be the most scalable and should likely be split into different schemas/tables.
+
+### Potential Improvements
 
 - Improve the emphasis on user actions such as adding products to a shopping cart or signing up for a newsletter.
 - Consider adding more visual elements to various pages such as sliders or showcases for a better user experience. 
   - The current simplicity of the front page, for example, makes it a good starting point, but there's room for more engaging and interactive elements.
   - Product page could definitely use something like a review section.
 - Could add additional headers/navigation to store and product pages.
+
+### Known Issues
+
 - On the Store page, the transitions on the filter menu are buggy on Firefox.
 - On the Product page, real products would likely be using lighter and more consistent backgrounds for images, which would allow for the dark border on selected options to stand out more.
-- Mock data may not be the most scalable and should likely be split into different schemas/tables.
-- A lot of logic can definitely be done more optimally and efficiently.
-- I tried to make everything reusable and from scratch; I only used two libraries: react-transition-group and react-swipables (for mobile swiping).
-- Collections do not do anything and just relink to the homepage.
+- Image Carousels on the store page does not properly set the first index correctly whenever user changes the images in the carousel and then selects from or to the FIRST option only.
+- Repeatedly changing the URL/clicking on the link to store/product pages that is not exactly the same as the validated URLs will cause it to be pushed in to the browser history (using UpdateURL component).
 
 ## Credits
 
@@ -106,3 +119,10 @@ This is a fictional e-commerce apparel website project designed to enhance and r
   - (Black Option)
     - Photo 1 by [Luis Quintero](https://unsplash.com/photos/man-wearing-black-crew-neck-t-shirt-3qqiMT2LdR8)
     - Photo 2 by [Sven Ciupka](https://unsplash.com/photos/man-in-black-crew-neck-t-shirt-standing-near-brick-wall-x8Vg7Up6TUc)
+
+#### Not Found
+
+- Desktop
+  - Photo by [Yuriy Bogdanov](https://unsplash.com/photos/man-wearing-black-coat-leaning-on-brown-brick-wall-MIkxc6WV9QA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- Mobile
+  - Photo by [Jeremy Beadle](https://unsplash.com/photos/man-holding-his-black-suit-qnU-UR0o5X8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)

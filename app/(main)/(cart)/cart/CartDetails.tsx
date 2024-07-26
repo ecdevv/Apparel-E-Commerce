@@ -236,7 +236,7 @@ const CartDetails = () => {
                 </div>
                 <div className='cart-page-costs-info grand-total'><h2>Grand Total</h2><h2>${grandTotal}</h2></div>
                 <div className='cart-page-summary-btns'>
-                  <CustomLink href='/checkout' className='btn'>Checkout</CustomLink>
+                  <CustomLink href='/cart' className='btn'>Checkout</CustomLink> {/* No checkout page */}
                   <CustomLink href='/store' className='btn second'>Continue Shopping</CustomLink>
                 </div>
                 <div className='cart-page-payment-icons'>
