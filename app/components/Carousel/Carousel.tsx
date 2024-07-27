@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { useSwipeable } from 'react-swipeable';
 import './Carousel.css'
 
 interface ImagesProps {
   href?: string;
   Images: StaticImageData[] | string[]
+  Content?: React.ReactElement
   Width: number;
   BorderWidth?: number;
   ShowNavArrows?: boolean;
@@ -17,7 +19,7 @@ interface ImagesProps {
   dotSmall?: boolean;
 }
 
-const Carousel = ({href = '', Images, Width, BorderWidth = 0, ShowNavArrows = false, ShowThumbnails = false, ShowDotBtns = false, navArrowSize = 30, dotSmall = false } : ImagesProps) => {
+const Carousel = ({href = '', Images, Content, Width, BorderWidth = 0, ShowNavArrows = false, ShowThumbnails = false, ShowDotBtns = false, navArrowSize = 30, dotSmall = false } : ImagesProps) => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(-1);
   const [prevIndex, setPrevIndex] = useState(0);
@@ -163,6 +165,14 @@ const Carousel = ({href = '', Images, Width, BorderWidth = 0, ShowNavArrows = fa
     }
   }
 
+  // Swipe handlers using react-swipeable (just uses my standard prev and next functions to set the indices)
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleNextClick,
+    onSwipedRight: handlePrevClick,
+    preventScrollOnSwipe: true,
+    swipeDuration: 500,
+  });
+
   // Helper function to get the wrapped images (first index here will correspond to the the image at currentIndex - 1)
   const getWrappedImages = (currentIndex:number, images:(StaticImageData | string)[], numberOfVisibleImages:number) => {
     const totalImages = images.length;
@@ -190,7 +200,7 @@ const Carousel = ({href = '', Images, Width, BorderWidth = 0, ShowNavArrows = fa
           style={{'--width': `${Width}%`, '--shift': `calc(${-Width}% + ((100% - ${Width}%) / 2))`, '--index': difference, '--thumbnail-height': ShowThumbnails ? `${thumbnailHeight}%` : '0%'} as React.CSSProperties}
           unmountOnExit
         >
-            <div className='carousel-image-container'>
+            <div {...swipeHandlers} className='carousel-image-container'>
               {/* Only maps the primary image selected and the two surrounding images */}
               {getWrappedImages(currentIndex, Images, 3).map((image, index) => (
                 href 
@@ -219,6 +229,7 @@ const Carousel = ({href = '', Images, Width, BorderWidth = 0, ShowNavArrows = fa
                       priority
                     />
                     {index !== 1 && ShowNavArrows && Width !== 100 && <div className='blur-overlay'></div>}
+                    {Content ? <>{Content}</> : null}
                   </div>
               ))}
             </div>

@@ -34,6 +34,9 @@ const DropdownMenu = ({items, menuToggle, orientation, showPointer, setTransitio
     } else {
       setTimeoutDuration(200)
     }
+
+    // Disable eslint rule for missing dependency orientation
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

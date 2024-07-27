@@ -223,21 +223,21 @@ const ProductsDetails = ({parsedCategories, parsedTags, products}: {parsedCatego
     setFilters({});
     setFilterOpen(false);
     setRowsShown(4);
-  }, [parsedCategories, parsedTags]);
 
-  // Set the loading state when the products are sorted
-  useEffect(() => {
-    setIsLoading(false);
-  }, [sortProducts]);
+    // Disable eslint rule for missing dependency sortedProducts
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [parsedCategories, parsedTags]);
 
   // Function to update the absolute filter-menu height based on the store-products-container height for animation/transition purposes
   useEffect(() => {
     updateHeight();
   }, [rowsShown, sortedProducts]);
 
-  // Function to handle clicks outside the element (mousedown) (used for the mobile filter menu)
+  // On page load, set the loading state to false and check for clicks outside the filter menu (mobile)
   useEffect(() => {
-    // Function to handle clicks outside the element (mousedown)
+    // Set the loading state when the products are sorted
+    setIsLoading(false);
+    // Function to handle clicks outside the element (mousedown) (used for the mobile filter menu)
     const handleClickOutside = (e: MouseEvent) => {
       if (mobileMenuRef.current && mobileButtonRef.current && (!mobileMenuRef.current.contains(e.target as Node) && !mobileButtonRef.current.contains(e.target as Node))) {  // If the mouse click is not in the menu, close the menu
         setFilterOpenMobile(false);
@@ -427,7 +427,11 @@ const ProductsDetails = ({parsedCategories, parsedTags, products}: {parsedCatego
       </>
     </section>
   )
-}
+};
 
-export default ProductsDetails
+ProductsDetails.displayName = 'ProductsDetails';
+FilterMenu.displayName = 'FilterMenu';
+ProductCard.displayName = 'ProductCard';
+
+export default ProductsDetails;
 

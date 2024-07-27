@@ -55,6 +55,9 @@ const MultiLevelMenu = ({ menuItems, className, backClassName, setMultiMenuHeigh
         window.removeEventListener('resize', updateHeight);
       };
     }
+
+  // Disable eslint rule for missing dependency setMultiMenuHeight
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menuStack]);
 
   // Add to the submenu of the clicked button to the menu stack (will display the current menu/submenu)

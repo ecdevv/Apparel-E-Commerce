@@ -60,11 +60,17 @@ const DropdownButton = ({children, forceOpen, forceRef, label, href, items, hove
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('mouseup', handleClickOutsideMouseUp);
     };
+
+    // Disable eslint rule for missing dependency forceRef
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // If the forceOpen value changes, open the menu
   useEffect(() => {
     if (forceOpen) {setMenuToggle(true); setGlobalMenuToggle(true);}
+
+    // Disable eslint rule for missing dependency setGlobalMenuToggle
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [forceOpen])
 
   // Force close the menu if the globalMenuToggle gets set to false from elsewhere

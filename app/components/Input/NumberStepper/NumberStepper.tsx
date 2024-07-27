@@ -27,6 +27,9 @@ const NumberStepper = ({min = 0, max = 99, value: initialValue = 0, onChange, pr
       setProductQuantity(value);
     }
     onChange && onChange(value);
+
+    // Disable eslint rule for missing dependency onChange, product, and setProductQuantity
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   // Handle decrementing the value

@@ -15,6 +15,9 @@ export const UpdateURL = ({searchParams, urlResponse}: {searchParams: any, urlRe
       window.history.replaceState({}, '', urlResponse.url);
       router.replace(urlResponse.url, { scroll: false });
     }
+
+    // Disable eslint rule for missing dependency router, urlResponse.error, and urlResponse.url
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams])
   return <></>
 }

@@ -122,7 +122,6 @@ const Wishlist = () => {
     { name: 'Wishlist', type: 'component', component: <div className='cart-header'><h2>Your Wishlist</h2></div> },
     { name: 'Wish Items', type: 'component', component: <WishlistItemList wishItems={wishItems} setWishItems={setWishItems}/> },
     { name: 'View Wishlist', type: 'component', component: <CustomLink href='/wishlist' className='btn'>View Wishlist</CustomLink> },
-    // { name: 'Log', type: 'component', component: <button onClick={() => console.log(wishItems)}>Log</button>}
   ]
 
   return (

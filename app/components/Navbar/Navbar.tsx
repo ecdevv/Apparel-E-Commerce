@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link'
+import Image from 'next/image';
 import Search from '../Search/Search';
 import User from '../User/User';
 import Bag from '../Cart/Bag/Bag';
@@ -29,15 +30,24 @@ const Header = () => {
         </Link>
       </div>
       <Link href='/' aria-label='Home' className='navbar-logo-container'>
-        {/* <Image
-          src="/next.svg"
-          alt='Logo'
-          width='0'
-          height='0'
-          className='navbar-logo'
-        /> */}
-        <h1 className='full'>URBAN LUXE</h1>
-        <h1 className='mw-360'>UL</h1>
+        <div className='full'>
+          <Image
+            src="/images/logo.webp"
+            alt='Logo'
+            width={54}
+            height={54}
+            className='navbar-logo'
+          />
+        </div>
+        <div className='mw-1024'>
+          <Image
+            src="/images/logo.webp"
+            alt='Logo'
+            width={33}
+            height={33}
+            className='navbar-logo'
+          />
+        </div>
       </Link>
       <div className='navbar-icons-container'>
         <Search />
@@ -56,14 +66,13 @@ const HeaderLogo = () => {
     <section className='navbar-header-logo'>
       <div className='hidden-theme'><Theme/></div> {/*Theme button required so that it sets the theme/CSS colors of the page, but display set to none so it won't be shown.*/}
       <Link href='/' aria-label='Home' className='navbar-logo-container'>
-        {/* <Image
-          src="/next.svg"
+        <Image
+          src="/images/logo.webp"
           alt='Logo'
-          width='0'
-          height='0'
+          width={54}
+          height={54}
           className='navbar-logo'
-        /> */}
-        <h1>URBAN LUXE</h1>
+        />
       </Link>
     </section>
   )

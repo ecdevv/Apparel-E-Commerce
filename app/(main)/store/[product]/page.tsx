@@ -1,11 +1,57 @@
 import React from 'react';
 import ProductDetails from './ProductDetails';
+import { Metadata, ResolvingMetadata } from 'next';
 import { headers } from 'next/headers';
 import { CustomLink } from '@/app/components/Buttons/General/General';
 import { UpdateURL } from '@/app/utility/components/UpdateURL';
 import { Product } from '@/app/utility/types';
+import { capitalizeFirstLetter } from '@/app/utility/helper';
 import { validateProduct, getSelectedOption, validateProductURL } from '@/server/mockValidations';
 import './product.css'
+
+export async function generateMetadata({ searchParams }: { searchParams: {name: string, id: string, option: string, size: string} }, 
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || []
+
+  // Get the current product from the server
+  const productResponse = validateProduct(searchParams);
+  if (productResponse.error === true) {
+    return {
+      title: 'Product Not Found',
+      openGraph: {
+        images: [...previousImages],
+      },
+    }
+  }
+  const product = productResponse.product as Product;
+
+  //Get the headers
+  const headersList = headers();
+
+  return {
+    title: `${product.name} - ${capitalizeFirstLetter(product.gender)}`,
+    description: product.description,
+    openGraph: {
+      title: `${product.name} - ${capitalizeFirstLetter(product.gender)}`,
+      description: product.description,
+      type: 'website',
+      locale: 'en-US',
+      url: `${headersList.get('x-pathname')}?${new URLSearchParams(searchParams).toString()}`,
+      siteName: 'Urban Luxe',
+      images: [ 
+        {
+          url: (product.options.find(option => option.name === searchParams?.option) || { media: [] }).media[0]?.url || '/images/opengraph/opengraph-image.webp',
+          alt: `${product.name} - ${capitalizeFirstLetter(product.gender)}`,
+          width: 1200,
+          height: 630
+        },
+        ...previousImages
+      ],
+    },
+  }
+}
 
 const ProductError = ({text}: {text: string}) => {
   return (
