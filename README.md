@@ -9,17 +9,23 @@ This is a FICTIONAL mock e-commerce apparel web project designed to enhance and 
 - Responsive design for optimal viewing on various devices
 - Smooth animations and transitions for enhanced user experience
 - Effective state management by utilizing local browser storage and context APIs.
+- Implemented metadata and sitemap to improve SEO by providing crucial information about the website to search engines, such as the title, description, and keywords. This allows search engines to better understand the content of the website and rank it more appropriately in search results.
 
 ## Installation
 
-    # Clone the repository:
-    $ git clone https://github.com/ecdevv/urban-luxe.git
-    # Navigate into the repository:
-    $ cd /urban-luxe
-    # Install dependencies:
-    $ npm install
-    # Run the app:
-    $ npm start or npm run dev
+```bash
+# Clone the repository:
+$ git clone https://github.com/ecdevv/urban-luxe.git
+
+# Navigate into the repository:
+$ cd /urban-luxe
+
+# Install dependencies:
+$ npm install
+
+# Run the app:
+$ npm start or npm run dev
+```
 
 ## Notes/Potential Improvements/Known Issues
 
@@ -28,11 +34,11 @@ This is a FICTIONAL mock e-commerce apparel web project designed to enhance and 
 - I tried to make everything reusable and from scratch; I only used two libraries: react-transition-group and react-swipables (for mobile swiping).
 - I didn't use any Tailwind, but removing it seems to remove some default styling so I just kept it in.
 - Collections and Checkout buttons do not do anything and just relink to the homepage.
+- Login and Registration pages are also not functional.
 - Search functionality on the front-end is very simple and likely would not work as well on a much larger scale.
 - Mobile Navbar/Menu is a separate component instead of just reusing the original component.
 - Mock data may not be the most scalable and should likely be split into different schemas/tables.
 - On the Product page, real products would likely be using lighter and more consistent backgrounds for images, which would allow for the dark border on selected options to stand out more.
-- Added metadata and sitemap to enhance SEO.
 
 ### Potential Improvements
 
