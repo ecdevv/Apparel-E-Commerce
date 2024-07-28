@@ -13,9 +13,9 @@ This is a FICTIONAL mock e-commerce apparel web project designed to enhance and 
 ## Installation
 
     # Clone the repository:
-    $ git clone https://github.com/ecdevv/Apparel-E-Commerce.git
+    $ git clone https://github.com/ecdevv/urban-luxe.git
     # Navigate into the repository:
-    $ cd /Apparel-E-Commerce
+    $ cd /urban-luxe
     # Install dependencies:
     $ npm install
     # Run the app:

@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <section className='navbar-header'>
       <div className='navbar-theme-icons-container'>
-        <Link href='https://github.com/ecdevv/Apparel-E-Commerce/tree/main' aria-label='Github' target='_blank'>
+        <Link href='https://github.com/ecdevv/urban-luxe' aria-label='Github' target='_blank'>
           <svg 
             aria-hidden
             xmlns="http://www.w3.org/2000/svg" 

@@ -309,7 +309,7 @@ const MobileNavigation = () => {
               </CustomLink>
             </li>
             <li>
-              <CustomLink href='https://github.com/ecdevv/Apparel-E-Commerce/tree/main' ariaLabel='Github' target='_blank' className='mobile-nav-custom-link'>
+              <CustomLink href='https://github.com/ecdevv/urban-luxe' ariaLabel='Github' target='_blank' className='mobile-nav-custom-link'>
                 <svg 
                   aria-hidden
                   xmlns="http://www.w3.org/2000/svg" 
