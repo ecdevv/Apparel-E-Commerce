@@ -28,7 +28,7 @@ const lora = Lora ({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.urbanluxe.vercel.app/"),
+  metadataBase: new URL("https://urbanluxe.vercel.app/"),
   title: {
     default: "Urban Luxe | Elegance and Sophistication",
     template: "%s | Urban Luxe"
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "Urban Luxe | Elegance and Sophistication",
     description: "Experience the epitome of elegance and sophistication with Urban Luxe.",
     type: "website",
-    url: "https://www.urbanluxe.vercel.app/",
+    url: "https://urbanluxe.vercel.app/",
     siteName: "Urban Luxe",
     locale: "en_US",
     images: [
