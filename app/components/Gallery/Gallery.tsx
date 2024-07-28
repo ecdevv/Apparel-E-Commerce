@@ -1,6 +1,6 @@
 import React from 'react'
 import Image, { StaticImageData} from 'next/image'
-import './gallery.css'
+import './Gallery.css'
 
 interface GalleryProps {
   Images: StaticImageData[] | string[]
