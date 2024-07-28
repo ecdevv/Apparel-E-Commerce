@@ -9,8 +9,8 @@ const NewMegaMenu = () => {
       <div className='mega-menu-content-wrapper'>
         <CustomLink href='/store/p?' product={{id: 1} as any} className='mega-menu-image-wrapper'>
           <Image 
-            src='/images/products/apparel/jackets_coats/product_1/black/item3.webp'
-            alt='New Image'
+            src='/images/products/apparel/jackets_coats/product_1/black/item2.webp'
+            alt='Atelier x Luxe Limited Edition Jacket - Unisex'
             fill
             sizes="(100vw)"
             className='mega-menu-content-image'
@@ -78,10 +78,10 @@ const SalesMegaMenu = () => {
   return (
     <div className='mega-menu-container' style={{'--num-columns': '4'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
-        <CustomLink href='/store' searchParams={{category: 'sales'}} className='mega-menu-image-wrapper'>
+        <CustomLink href='/store/p?' product={{id: 100} as any} className='mega-menu-image-wrapper'>
           <Image 
-            src='/vercel.svg'
-            alt='Sales Image'
+            src='/images/products/apparel/tshirts_tops/product_100/white/white1.webp'
+            alt='Generic T-Shirt - Unisex'
             fill
             sizes="(100vw)"
             className='mega-menu-content-image'
@@ -272,19 +272,19 @@ const CollectionsMegaMenu = () => {
   return (
     <div className='mega-menu-container' style={{'--num-columns': '3'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
-        <CustomLink href='/' className='mega-menu-image-wrapper'>
+        <CustomLink href='/store/p?' product={{id: 2} as any} className='mega-menu-image-wrapper'>
           <Image 
-            src='/next.svg'
-            alt='Collection Image 1'
+            src='/images/products/apparel/hoodies_sweatshirts/product_2/grey/item3.webp'
+            alt='Luxe Mercury - Men'
             fill
             sizes="(100vw)"
             className='mega-menu-content-image'
           />
         </CustomLink>
-        <CustomLink href='/' className='mega-menu-image-wrapper'>
+        <CustomLink href='/store/p?' product={{id: 3} as any} className='mega-menu-image-wrapper'>
           <Image 
-            src='/vercel.svg'
-            alt='Collection Image 2'
+            src='/images/products/apparel/hoodies_sweatshirts/product_3/orange/item2.webp'
+            alt='Luxe Jupiter - Men'
             fill
             sizes="(100vw)"
             className='mega-menu-content-image'
@@ -292,19 +292,19 @@ const CollectionsMegaMenu = () => {
         </CustomLink>
       </div>
       <div className='mega-menu-content-wrapper'>
-        <CustomLink href='/' className='mega-menu-image-wrapper'>
+        <CustomLink href='/store/p?' product={{id: 6} as any} className='mega-menu-image-wrapper'>
           <Image 
-            src='/vercel.svg'
-            alt='Collection Image 3'
+            src='/images/products/apparel/hoodies_sweatshirts/product_6/gold/item2.webp'
+            alt='Luxe Saturn - Women'
             fill
             sizes="(100vw)"
             className='mega-menu-content-image'
           />
         </CustomLink>
-        <CustomLink href='/' className='mega-menu-image-wrapper'>
+        <CustomLink href='/store/p?' product={{id: 5} as any} className='mega-menu-image-wrapper'>
           <Image 
-            src='/next.svg'
-            alt='Collection Image 4'
+            src='/images/products/apparel/hoodies_sweatshirts/product_5/blue/item2.webp'
+            alt='Luxe Neptune - Men'
             fill
             sizes="(100vw)"
             className='mega-menu-content-image'
