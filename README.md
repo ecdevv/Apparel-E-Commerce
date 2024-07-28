@@ -1,15 +1,15 @@
 # Urban Luxe - E-Commerce Apparel Store
 
-This is a FICTIONAL mock e-commerce apparel web project designed to enhance and refine my front-end development skills. The project's goal was to create a fully functional and aesthetically pleasing online store from scratch, leveraging frameworks like Next.js and React with as minimal libraries as possible.
+Urban Luxe is a <u>fictional</u> and comprehensive e-commerce apparel web project aimed at honing my front-end development skills. The objective was to build a fully functional and visually appealing online store from the ground up, utilizing frameworks such as Next.js and React while minimizing the use of external libraries. Additionally, the project focused on developing with backend integration in mind to achieve a robust and scalable architecture, while also emphasizing learning and implementing SEO best practices.
 
 ### Features
 
-- Simulates a real-world project by using mock data and implementing backend logic to handle user interactions and data processing
+- Simulates a real-world project by using mock data and mock backend logic to handle user interactions and data processing
 - User-friendly product search and filtering functionality
 - Responsive design for optimal viewing on various devices
 - Smooth animations and transitions for enhanced user experience
-- Effective state management by utilizing local browser storage and context APIs.
-- Implemented metadata and sitemap to improve SEO by providing crucial information about the website to search engines, such as the title, description, and keywords. This allows search engines to better understand the content of the website and rank it more appropriately in search results.
+- Effective state management by utilizing local browser storage and context APIs
+- Implemented metadata and sitemap to improve SEO by providing crucial information about the website to search engines, such as the title, description, and keywords. This allows search engines to better understand the content of the website and rank it more appropriately in search results
 
 ## Installation
 
@@ -31,52 +31,40 @@ $ npm start or npm run dev
 
 ### Notes
 
-- I tried to make everything reusable and from scratch; I only used two libraries: react-transition-group and react-swipables (for mobile swiping).
-- I didn't use any Tailwind, but removing it seems to remove some default styling so I just kept it in.
-- Collections and Checkout buttons do not do anything and just relink to the homepage.
-- Login and Registration pages are also not functional.
-- Search functionality on the front-end is very simple and likely would not work as well on a much larger scale.
-- Mobile Navbar/Menu is a separate component instead of just reusing the original component.
-- Mock data may not be the most scalable and should likely be split into different schemas/tables.
-- On the Product page, real products would likely be using lighter and more consistent backgrounds for images, which would allow for the dark border on selected options to stand out more.
+- Attempted to make everything reusable and from scratch
+- I limited the use of external libraries to two: react-transition-group and react-swipeable (for mobile swiping)
+- I didn't use any Tailwind, but removing it seems to remove some default styling so I just kept it in
+- Collections and Checkout buttons do not do anything and just relink to the homepage
+- Login and Registration pages do not have any functionality
+- Search functionality on the front-end is very simple and likely would not work as well on a much larger scale
+- Mobile Navbar/Menu is a separate component instead of just reusing the original component
+- Mock data may not be the most scalable and should likely be split into different schemas/tables (I only used 2 .json files)
+- On the Product page, real products would likely be using lighter and more consistent backgrounds for images, which would allow for the dark border on selected options to stand out more
 
 ### Potential Improvements
 
-- Improve the emphasis on user actions such as adding products to a shopping cart or signing up for a newsletter.
-- Consider adding more visual elements to various pages such as sliders or showcases for a better user experience. 
-  - The current simplicity of the front page, for example, makes it a good starting point, but there's room for more engaging and interactive elements.
-  - Product page could definitely use something like a review section.
-- Could add additional headers/navigation to store and product pages.
+- Improve the emphasis on user actions such as adding products to a shopping cart or signing up for a newsletter
+- Consider adding more visual elements to various pages such as sliders or showcases for a better user experience 
+  - The current simplicity of the front page, for example, makes it a good starting point, but there's room for more engaging and interactive elements
+  - Product page could definitely use something like a review section
+  - Could add additional headers/navigation to store and product pages
 
 ### Known Issues
 
-- On the Store page, the transitions on the filter menu are buggy on Firefox.
-- Carousel on Front page has weird lines in the borders on Microsoft Edge (haven't tested on other browsers besides Firefox).
-- Image Carousels on the store page does not properly set the first index correctly whenever user changes the images in the carousel and then selects from or to the FIRST option only.
-- Repeatedly changing the URL/clicking on the link to store/product pages that is not exactly the same as the validated URLs will cause it to be pushed in to the browser history (using UpdateURL component).
+- On the Store page, the transitions on the filter menu are buggy on Firefox
+- Carousel on Front page has weird lines in the borders on Microsoft Edge (haven't tested on other browsers besides Firefox)
+- Image Carousels on the store page does not properly set the first index correctly whenever user changes the images in the carousel and then selects from or to the FIRST option only
+- Repeatedly changing the URL/clicking on the link to store/product pages that is not exactly the same as the validated URLs will cause it to be pushed in to the browser history (using UpdateURL component)
 
 ## Credits
 
-- Tools & Frameworks:
-  - HTML
-  - CSS
-  - Typescript
-  - Next.js
-  - React
+<strong>Tools & Frameworks:</strong> HTML, CSS, Typescript, Next.js, React
 
-- Libraries Used:
-  - react-transition-group
-  - react-swipable
+<strong>Libraries Used:</strong> react-transition-group, react-swipeable
 
-- Design Inspiration:
-  - Louis Vuitton
-  - Versace
-  - Gymshark
-  - Nike
-  - Adidas
+<strong>Design Inspiration:</strong> Louis Vuitton, Versace, Gymshark, Nike, Adidas
 
-- Images:
-  - Unsplash
+<strong>Images:</strong> Unsplash
 
 ### Images
 

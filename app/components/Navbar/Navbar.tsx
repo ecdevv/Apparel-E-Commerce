@@ -5,7 +5,6 @@ import Search from '../Search/Search';
 import User from '../User/User';
 import Bag from '../Cart/Bag/Bag';
 import Wishlist from '../Cart/Wishlist/Wishlist';
-import Theme from '../Theme/Theme';
 import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import MobileNavigation from './MobileNavbar';
 import { CollectionsMegaMenu, MenMegaMenu, NewMegaMenu, SalesMegaMenu, WomenMegaMenu } from './NavMegaMenu';
@@ -37,6 +36,8 @@ const Header = () => {
             width={54}
             height={54}
             className='navbar-logo'
+            priority
+            loading='eager'
           />
         </div>
         <div className='mw-1024'>
@@ -46,6 +47,8 @@ const Header = () => {
             width={33}
             height={33}
             className='navbar-logo'
+            priority
+            loading='eager'
           />
         </div>
       </Link>
@@ -64,7 +67,6 @@ const Header = () => {
 const HeaderLogo = () => {
   return (
     <section className='navbar-header-logo'>
-      <div className='hidden-theme'><Theme/></div> {/*Theme button required so that it sets the theme/CSS colors of the page, but display set to none so it won't be shown.*/}
       <Link href='/' aria-label='Home' className='navbar-logo-container'>
         <Image
           src="/images/logo.webp"
@@ -72,6 +74,8 @@ const HeaderLogo = () => {
           width={54}
           height={54}
           className='navbar-logo'
+          priority
+          loading='eager'
         />
       </Link>
     </section>

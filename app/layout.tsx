@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat, Roboto, Lora } from "next/font/google";
+import { Montserrat, Roboto } from "next/font/google";
 import ContextProviders from "./utility/contexts/ContextProviders";
 import ScrollFix from "./utility/components/ScrollFix";
 import "./globals.css";
-
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -20,11 +15,6 @@ const roboto = Roboto({
   style: ['normal', 'italic'],
   display: 'swap',
   variable: "--font-roboto",
-})
-
-const lora = Lora ({
-  subsets: ["latin"],
-  variable: "--font-lora"
 })
 
 export const metadata: Metadata = {
@@ -70,7 +60,7 @@ export default function RootLayout({
       <meta name="theme-color" content="#909090" />
 
       <ScrollFix />
-      <body className={`${inter.variable} ${montserrat.variable} ${roboto.variable} ${lora.variable}`}>
+      <body className={`${montserrat.variable} ${roboto.variable}`}>
         <ContextProviders>{children}</ContextProviders>
       </body>
     </html>

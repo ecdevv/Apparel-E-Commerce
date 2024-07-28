@@ -454,7 +454,7 @@
 
   .products-not-found {
     width: 275px;
-    height: calc(100dvh - (2rem + 66px + 2.5rem + 52.4px + 56.2px + 0.65rem + 336px)); /* Subtracting the padding, navbar, heading, and footer (not working as intended but it works) */
+    height: calc(100dvh - (2rem + 66px + 2.5rem + 52.4px + 56.2px + 0.65rem + 338px)); /* Subtracting the padding, navbar, heading, and footer (not working as intended but it works) */
   }
 
   .store-products-section {
@@ -518,7 +518,7 @@
 @media (max-width: 460px) {
   .products-not-found {
     min-height: 50px;
-    height: calc(100dvh - (2rem + 66px + 2.5rem + 52.4px + 56.2px + 0.65rem + 357px)); /* Subtracting the padding, navbar, heading, and footer (not working as intended but it works) */
+    height: calc(100dvh - (2rem + 66px + 2.5rem + 52.4px + 56.2px + 0.65rem + 359px)); /* Subtracting the padding, navbar, heading, and footer (not working as intended but it works) */
   }
 
   .product-card-content-details {
