@@ -43,7 +43,10 @@ const ProductCard = React.memo(({ product, selectedOption, onClick }: { product:
           Images={images} 
           Width={100} 
           ShowNavArrows={true}
+          ShowDotBtns={true}
+          ShowDotBtnsMobileOnly={true}
           navArrowSize={35}
+          dotSlimStyle={true}
         />
         {currentOption.discount > 0 && <div className='product-card-discount-badge'>{(discount * 100).toFixed(0)}% OFF</div>}
         {/* <AddToWishlistButton id={validatedProduct.product_id} option={currentOption.name} size={currentOption.sizes[0].name} icon={true} className='product-wishlist-btn'/> */}

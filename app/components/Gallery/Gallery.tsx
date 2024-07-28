@@ -17,6 +17,7 @@ const Gallery = ({ Images }: GalleryProps) => {
             fill
             sizes='(100vw, 100vh)'
             className="gallery-image"
+            priority
           />
         </div>
       ))}

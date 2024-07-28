@@ -67,35 +67,14 @@
 }
 
 /*** Mobile & Media Queries ***/
-.home-desktop {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.home-mobile-md {
-  display: none;
-}
-
-.home-mobile {
-  display: none;
+@media (max-width: 1536px) {
+  .home-carousel-container {
+    height: calc(100dvh - 104px - 50px);
+    min-height: 500px;
+  }
 }
 
 @media (max-width: 1280px) {
-  .home-desktop {
-    display: none;
-  }
-
-  .home-mobile-md {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .home-mobile {
-    display: none;
-  }
-
   .home-carousel-container {
     height: calc(100dvh - 104px);
     min-height: 500px;
@@ -103,20 +82,6 @@
 }
 
 @media (max-width: 1024px) {
-  .home-desktop {
-    display: none;
-  }
-
-  .home-mobile-md {
-    display: none;
-  }
-
-  .home-mobile {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
   .home-carousel-container {
     height: calc(100dvh - 66px);
     min-height: 500px;

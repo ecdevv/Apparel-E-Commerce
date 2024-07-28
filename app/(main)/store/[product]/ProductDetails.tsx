@@ -37,7 +37,7 @@ const ProductDetails = ( {
   return (
     <section className='product-container'>
       <div className='product-gallery-container'><Gallery Images={Images as (string[])} /></div>
-      <div className='product-carousel-container'><Carousel Images={Images} Width={100} BorderWidth={0} ShowDotBtns={true} dotSmall={true} /></div>
+      <div className='product-carousel-container'><Carousel Images={Images} Width={100} BorderWidth={0} ShowDotBtns={true} /></div>
       <div className='product-content'>
         <div className='product-content-header'>
           {discount > 0 ? <div className='product-discount-badge'>{(discount * 100).toFixed(0)}% OFF</div> : <></>}
