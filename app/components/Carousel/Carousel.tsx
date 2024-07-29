@@ -20,25 +20,13 @@ interface ImagesProps {
 }
 
 const Carousel = ({href = '', Images, Content, Width, BorderWidth = 0, ShowNavArrows = false, ShowDotBtns = false, ShowDotBtnsMobileOnly = false, dotSlimStyle = false, navArrowSize = 30 } : ImagesProps) => {
-  const [width, setDynamicWidth] = useState(Width);
-  const [shift, setShift] = useState(-Width + ((100% - Width) / 2));
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(-1);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [difference, setDifference] = useState(0);
   const [timeoutDuration, setTimeoutDuration] = useState(0);
   const [slideDirection, setSlideDirection] = useState('');
-
-  // Default the width to 100% if the viewport is less than or equal to 1280px
-  useEffect (() => {
-    const updateDimensions = () => {
-      setDynamicWidth(window.innerWidth <= 1280 ? 100 : Width);
-      setShift(window.innerWidth <= 1280 ? -100 : -Width + ((100% - Width) / 2));
-    };
-
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
-  }, [Width]);
+  const shift = -Width + ((100% - Width) / 2);
 
   // FIXME: Resetting the current index to 0 every time new images are set is causing the transition to occur; current solution flickers the wrong indexed image on images change before the correct index is set
   // Set the current index to the first image every time new images are set
@@ -157,7 +145,7 @@ const Carousel = ({href = '', Images, Content, Width, BorderWidth = 0, ShowNavAr
           key={currentIndex}
           timeout={timeoutDuration}
           classNames={slideDirection}
-          style={{'--width': `${width}%`, '--shift': `${shift}%`, '--index': difference} as React.CSSProperties}
+          style={{'--width': `${Width}%`, '--shift': `${shift}%`, '--index': difference} as React.CSSProperties}
           unmountOnExit
         >
             <div {...swipeHandlers} className='carousel-image-container'>
@@ -175,7 +163,7 @@ const Carousel = ({href = '', Images, Content, Width, BorderWidth = 0, ShowNavAr
                       placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
                       priority={index === 1}
                     />
-                    {index !== 1 && ShowNavArrows && width !== 100 && <div className='blur-overlay'></div>}
+                    {index !== 1 && ShowNavArrows && Width !== 100 && <div className='blur-overlay'></div>}
                   </Link>
                 : <div key={index} className={`carousel-image-wrapper ${hoverIndex === index ? 'no-blur' : ''}`} style={{'--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
                     <Image
@@ -188,7 +176,7 @@ const Carousel = ({href = '', Images, Content, Width, BorderWidth = 0, ShowNavAr
                       placeholder={typeof image === 'object' && (image as StaticImageData) ? 'blur' : 'empty'}
                       priority={index === 1}
                     />
-                    {index !== 1 && ShowNavArrows && width !== 100 && <div className='blur-overlay'></div>}
+                    {index !== 1 && ShowNavArrows && Width !== 100 && <div className='blur-overlay'></div>}
                     {Content ? <>{Content}</> : null}
                   </div>
               ))}
@@ -199,7 +187,7 @@ const Carousel = ({href = '', Images, Content, Width, BorderWidth = 0, ShowNavAr
       {/* The buttons on top of the surrounding images in order to go to the previous or next image in the carousel */}  
       {ShowNavArrows 
         ? <>
-            <button onClick={handlePrevClick} onMouseEnter={handlePrevHover} onMouseLeave={handleUnhover} disabled={buttonDisabled} aria-label="View Previous Image" className='carousel-left-btn' style={{'--btn-size': `${width <= 75 ? ((100 - width) / 2) : 15}%`, '--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
+            <button onClick={handlePrevClick} onMouseEnter={handlePrevHover} onMouseLeave={handleUnhover} disabled={buttonDisabled} aria-label="View Previous Image" className='carousel-left-btn' style={{'--btn-size': `${Width <= 75 ? ((100 - Width) / 2) : 15}%`, '--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
               <svg
                 aria-hidden
                 fill="currentColor"
@@ -211,7 +199,7 @@ const Carousel = ({href = '', Images, Content, Width, BorderWidth = 0, ShowNavAr
               </svg>
             </button>
 
-            <button onClick={handleNextClick} onMouseEnter={handleNextHover} onMouseLeave={handleUnhover} disabled={buttonDisabled} aria-label="View Next Image" className='carousel-right-btn' style={{'--btn-size': `${width <= 75 ? ((100 - width) / 2) : 15}%`, '--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
+            <button onClick={handleNextClick} onMouseEnter={handleNextHover} onMouseLeave={handleUnhover} disabled={buttonDisabled} aria-label="View Next Image" className='carousel-right-btn' style={{'--btn-size': `${Width <= 75 ? ((100 - Width) / 2) : 15}%`, '--border-width': `${BorderWidth}rem`} as React.CSSProperties}>
               <svg
                 aria-hidden
                 fill="currentColor"
