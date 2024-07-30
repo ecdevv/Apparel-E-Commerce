@@ -4,10 +4,10 @@ import { CustomLink } from '../Buttons/General/General'
 import getBlurDataUrls from '@/app/utility/getBlurDataUrls';
 import './NavMegaMenu.css'
 
-// Load the Blur Data URLs from the JSON file from the public directory
-const blurDataUrls = getBlurDataUrls();
-
 const NewMegaMenu = async () => {
+  // Load the Blur Data URLs from the JSON file from the public directory
+  const blurDataUrls = await getBlurDataUrls();
+
   return (
     <div className='mega-menu-container' style={{'--num-columns': '3'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
@@ -81,6 +81,9 @@ const NewMegaMenu = async () => {
 }
 
 const SalesMegaMenu = async () => {
+  // Load the Blur Data URLs from the JSON file from the public directory
+  const blurDataUrls = await getBlurDataUrls();
+
   return (
     <div className='mega-menu-container' style={{'--num-columns': '4'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>
@@ -277,6 +280,9 @@ const WomenMegaMenu = () => {
 }
 
 const CollectionsMegaMenu = async () => {
+  // Load the Blur Data URLs from the JSON file from the public directory
+  const blurDataUrls = await getBlurDataUrls();
+  
   return (
     <div className='mega-menu-container' style={{'--num-columns': '3'} as React.CSSProperties}>
       <div className='mega-menu-content-wrapper'>

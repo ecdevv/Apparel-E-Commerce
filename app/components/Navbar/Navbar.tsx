@@ -12,11 +12,11 @@ import { DropdownItem } from '@/app/utility/types';
 import getBlurDataUrls from '@/app/utility/getBlurDataUrls';
 import './Navbar.css'
 
-// Load the Blur Data URLs from the JSON file from the public directory
-const blurDataUrls = getBlurDataUrls();
-
 // The top section of the navbar with the logo, icons, search box, and etc.
 const Header = async () => {
+  // Load the Blur Data URLs from the JSON file from the public directory
+  const blurDataUrls = await getBlurDataUrls();
+
   return (
     <section className='navbar-header'>
       <div className='navbar-theme-icons-container'>
@@ -71,6 +71,9 @@ const Header = async () => {
 
 // For pages where the header and navigation sections are not shown (/login, /register)
 const HeaderLogo = async () => {
+  // Load the Blur Data URLs from the JSON file from the public directory
+  const blurDataUrls = await getBlurDataUrls();
+  
   return (
     <section className='navbar-header-logo'>
       <Link href='/' aria-label='Home' className='navbar-logo-container'>

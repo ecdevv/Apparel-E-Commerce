@@ -44,7 +44,7 @@ export default async function Store({searchParams}: {searchParams: {category: st
   const productsResponse = getProducts();
   if (productsResponse.error === true) return <div>Error, check server console</div>;
   const Products = productsResponse.products as Product[];
-  const blurDataUrls = getBlurDataUrls();
+  const blurDataUrls = await getBlurDataUrls();
  
   // Parse the searchParams call for URL validation to run the UpdateURL component, and get headers for base URL validation
   const parsedCategories = searchParams?.category?.split(/[ ,\+\-]+/).filter(category => category !== '' && category !== '-' && category !== '+');

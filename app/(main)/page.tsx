@@ -5,7 +5,7 @@ import getBlurDataUrls from '../utility/getBlurDataUrls';
 import './home.css'
 
 export default async function Home() {
-  const blurDataUrls = getBlurDataUrls();
+  const blurDataUrls = await getBlurDataUrls();
 
   const Image1: ImageData = {
     src: '/images/home/carousel-item1.webp',
