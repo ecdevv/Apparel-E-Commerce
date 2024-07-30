@@ -9,7 +9,6 @@ import { UpdateURL } from '@/app/utility/components/UpdateURL'
 import { validateStoreURL } from '@/server/mockValidations'
 import './store.css'
 
-
 export async function generateMetadata({ searchParams }: { searchParams: {category: string, tags: string} }, 
   parent: ResolvingMetadata
 ): Promise<Metadata> {
@@ -39,7 +38,7 @@ export async function generateMetadata({ searchParams }: { searchParams: {catego
   }
 }
 
-export default function Store({searchParams}: {searchParams: {category: string, tags: string}}) {
+export default async function Store({searchParams}: {searchParams: {category: string, tags: string}}) {
   // Get validated products
   const productsResponse = getProducts();
   if (productsResponse.error === true) return <div>Error, check server console</div>;
@@ -49,7 +48,7 @@ export default function Store({searchParams}: {searchParams: {category: string, 
   const parsedCategories = searchParams?.category?.split(/[ ,\+\-]+/).filter(category => category !== '' && category !== '-' && category !== '+');
   const parsedTags = searchParams?.tags?.split(/[ ,\+\-]+/).filter(tag => tag !== '' && tag !== '-' && tag !== '+');
   const headerList = headers();
-  const validateURLResponse = validateStoreURL(headerList, parsedCategories, parsedTags);
+  const validateURLResponse = await validateStoreURL(headerList, parsedCategories, parsedTags);
 
   return (
     <>

@@ -1,5 +1,4 @@
 /*** Helper Functions ***/
-
 /*
  * Capitalizes the first letter of a string.
  * @param str - The string to capitalize.
@@ -10,10 +9,21 @@ export const capitalizeFirstLetter = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+/*
+ * Returns the color of the button based on the color passed in.
+ * @param color - The color of the button.
+ * @returns The color of the button.
+ */
 export function getCustomColor(color: string) {
   return window.getComputedStyle(document.documentElement).getPropertyValue(`--${color}-button-color`) ? `rgba(var(--${color}-button-color))` : 'rgba(var(--secondary-color))';
 };
 
+/*
+ * Returns the title of the page based on the search params.
+ * @param searchParams - The search params.
+ * @returns The title of the page.
+ * @default 'All Products'
+ */
 const titleDisplay = {
   new: 'New Arrivals',
   sales: 'Sales',

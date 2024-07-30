@@ -31,11 +31,15 @@ export function WishlistProvider({children}:ContextProviderProps) {
 
   // Set the wishlistItems from localStorage
   useEffect(() => {
-    const savedWishItems = JSON.parse(localStorage.getItem('wishItems') || '[]') as WishlistProduct[];
-    const validWishItems = validateWishlist(savedWishItems);
-    setWishItems(validWishItems);
-    localStorage.setItem('wishItems', JSON.stringify(validWishItems));
-    setIsLoading(false);
+    const fetchAndValidateWishlist = async () => {
+      const savedWishItems = JSON.parse(localStorage.getItem('wishItems') || '[]') as WishlistProduct[];
+      const validWishItems = await validateWishlist(savedWishItems);
+      setWishItems(validWishItems);
+      localStorage.setItem('wishItems', JSON.stringify(validWishItems));
+      setIsLoading(false);
+    }
+
+    fetchAndValidateWishlist();
   }, []);
 
   // Reset the forceOpen state after it is used

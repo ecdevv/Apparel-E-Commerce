@@ -12,7 +12,6 @@ import { useBagContext } from '@/app/utility/contexts/BagContext';
 import { useWishlistContext } from '@/app/utility/contexts/WishlistContext';
 import { calculateCosts } from '@/server/mockValidations';
 
-
 const CartCard = ({item, bagItems, setBagItems}: {item: BagProduct; bagItems: BagProduct[] | []; setBagItems: React.Dispatch<React.SetStateAction<BagProduct[] | []>>}) => {
   const { wishItems, setWishItems, setForceOpen } = useWishlistContext();
 

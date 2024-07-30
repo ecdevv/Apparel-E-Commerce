@@ -9,10 +9,11 @@ import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import MobileNavigation from './MobileNavbar';
 import { CollectionsMegaMenu, MenMegaMenu, NewMegaMenu, SalesMegaMenu, WomenMegaMenu } from './NavMegaMenu';
 import { DropdownItem } from '@/app/utility/types';
+import { generateBlurDataUrl } from '@/app/utility/generateBlurDataUrl';
 import './Navbar.css'
 
 // The top section of the navbar with the logo, icons, search box, and etc.
-const Header = () => {
+const Header = async () => {
   return (
     <section className='navbar-header'>
       <div className='navbar-theme-icons-container'>
@@ -36,6 +37,8 @@ const Header = () => {
             width={54}
             height={54}
             className='navbar-logo'
+            placeholder='blur'
+            blurDataURL={await generateBlurDataUrl('/images/logo.webp')}
             priority
             loading='eager'
           />
@@ -47,6 +50,8 @@ const Header = () => {
             width={33}
             height={33}
             className='navbar-logo'
+            placeholder='blur'
+            blurDataURL={await generateBlurDataUrl('/images/logo.webp')}
             priority
             loading='eager'
           />
@@ -64,7 +69,7 @@ const Header = () => {
 }
 
 // For pages where the header and navigation sections are not shown (/login, /register)
-const HeaderLogo = () => {
+const HeaderLogo = async () => {
   return (
     <section className='navbar-header-logo'>
       <Link href='/' aria-label='Home' className='navbar-logo-container'>
@@ -74,6 +79,7 @@ const HeaderLogo = () => {
           width={54}
           height={54}
           className='navbar-logo'
+          blurDataURL={await generateBlurDataUrl('/images/logo.webp')}
           priority
           loading='eager'
         />

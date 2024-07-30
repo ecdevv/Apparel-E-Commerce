@@ -1,9 +1,10 @@
 import React from 'react'
-import Image, { StaticImageData} from 'next/image'
+import Image from 'next/image'
+import { ImageData } from '@/app/utility/types'
 import './Gallery.css'
 
 interface GalleryProps {
-  Images: StaticImageData[] | string[]
+  Images: ImageData[]
 }
 
 const Gallery = ({ Images }: GalleryProps) => {
@@ -12,11 +13,13 @@ const Gallery = ({ Images }: GalleryProps) => {
       {Images.map((image, index) => (
         <div key={index} className="gallery-image-wrapper">
           <Image
-            src={image}
-            alt={image + ' ' + index}
+            src={image.src}
+            alt={image.alt}
             fill
             sizes='(100vw, 100vh)'
             className="gallery-image"
+            placeholder='blur'
+            blurDataURL={image.blurDataUrl}
             priority
           />
         </div>

@@ -18,7 +18,7 @@ enum SortCriteria {
 
 /********************************** STORE PAGE VALIDATIONS (PRODUCTS) **************************************** */
 // Validation for refreshing the page and the url is invalid (incorrect name, options, and sizes)
-const validateStoreURL = (headers: Readonly<Headers>, categories: string[], tags: string[]): { error: boolean, url: string} => {
+const validateStoreURL = async (headers: Readonly<Headers>, categories: string[], tags: string[]): Promise<{ error: boolean, url: string}> => {
   // Create a new URL object and update the search params
   const baseUrl = headers.get('x-base-url') || '';
   if (!baseUrl) return { error: true, url: '' };
@@ -281,8 +281,12 @@ const sortProducts = (products: Product[], selectedOptions: {[key: number]: numb
 
 const validateStoreProduct = (product: Product, selectedOption: number): { error: boolean, product: Product } => {
   const validatedProduct = Products.find(p => p.product_id === product.product_id) || null;
-
   if (!validatedProduct) {
+    return { error: true, product: product };
+  }
+
+  const optionsValid = product.options[selectedOption] ? true : false;
+  if (!optionsValid) {
     return { error: true, product: product };
   }
 
@@ -307,7 +311,7 @@ const getStoreProductOption = (product: Product, selectedOption: number): {curre
 
 /********************************** PRODUCT PAGE VALIDATIONS (PRODUCT) **************************************** */
 // Validation for refreshing the page and the url is invalid (incorrect name, options, and sizes)
-const validateProductURL = (headers: Readonly<Headers>, product: Product, selectedOption: string, selectedSize: string): { error: boolean, url: string} => {
+const validateProductURL = async (headers: Readonly<Headers>, product: Product, selectedOption: string, selectedSize: string): Promise<{ error: boolean, url: string}> => {
   // Create a new URL object and update the search params
   const baseUrl = (headers.get('x-base-url')) || '';
   if (!baseUrl) return { error: true, url: '' };
@@ -329,7 +333,7 @@ const validateProductURL = (headers: Readonly<Headers>, product: Product, select
 };
 
 // Validate the product for product page
-const validateProduct = (searchParams: productSearchParams): { error: boolean, product: Product, productReviews: any, averageRating: number } => {
+const validateProduct = async (searchParams: productSearchParams): Promise<{ error: boolean, product: Product, productReviews: any, averageRating: number }> => {
   const id = parseInt(searchParams.id);
   const product: Product = Products.find(product => product.product_id === id) as Product;
   const productReviews = Reviews.filter(review => review.product_id === id);
@@ -363,7 +367,7 @@ const validateProduct = (searchParams: productSearchParams): { error: boolean, p
 };
 
 // Set the name, size, images, ogPrice, discount, and price of the selected option of a valid product from the above function
-const getSelectedOption = (searchParams: productSearchParams, product: Product): { name: string, size: string, optionInStock: boolean, images: string[], ogPrice: number, discount: number, price: number } => {
+const getSelectedOption = async (searchParams: productSearchParams, product: Product): Promise<{ name: string, size: string, optionInStock: boolean, images: string[], ogPrice: number, discount: number, price: number }> => {
   /*
    *  Find the option element in the array that is equivalent to the 'option' url param and set the name, 
    *  then validate and set the size from the 'size' url param or set the first size that has stock > 0 or set 'oos' if all sizes are stock <= 0, 
@@ -375,7 +379,6 @@ const getSelectedOption = (searchParams: productSearchParams, product: Product):
   const name = selectedOptionElement.name.toLowerCase();
   const size = selectedOptionElement.sizes.find(sizeObj => sizeObj.name.toLowerCase() === (searchParams.size as string))?.name.toLowerCase() || selectedOptionElement.sizes.find(sizeObj => sizeObj.stock > 0)?.name.toLowerCase() || selectedOptionElement.sizes[0].name.toLowerCase();
   const optionInStock = selectedOptionElement.sizes.some(sizeObj => sizeObj.stock > 0);
-  const images = selectedOptionElement.media.filter(item => item.type === "image").map(item => item.url);
   const ogPrice = selectedOptionElement.price;
   const discount = selectedOptionElement.discount;
   let price = ogPrice - (ogPrice * discount / 100);
@@ -384,6 +387,7 @@ const getSelectedOption = (searchParams: productSearchParams, product: Product):
   } else {
     price = parseFloat((ogPrice).toFixed(2));
   }
+  const images = selectedOptionElement.media.filter(item => item.type === "image").map(item => item.url);
 
   return {name, size, optionInStock, images, ogPrice, discount, price};
 }
@@ -486,7 +490,7 @@ const validateWishlistProduct = (id: number, option: string, size: string): { er
 }
 
 // Validate each item in the bag
-const validateBag = (bagItems: BagProduct[]): BagProduct[] => {
+const validateBag = async (bagItems: BagProduct[]): Promise<BagProduct[]> => {
   return bagItems.map(item => {
     // Find the product in the array that is equivalent to the 'id' url param, return error if not found
     const product: Product = Products.find(p => p.product_id.toString() === item.id.toString()) as Product;
@@ -554,7 +558,7 @@ const validateBag = (bagItems: BagProduct[]): BagProduct[] => {
 }
 
 // Validate each item in the bag
-const validateWishlist = (wishItems: WishlistProduct[]): WishlistProduct[] => {
+const validateWishlist = async (wishItems: WishlistProduct[]): Promise<WishlistProduct[]> => {
   return wishItems.map(item => {
     // Find the product in the array that is equivalent to the 'id' url param, return error if not found
     const product: Product = Products.find(p => p.product_id.toString() === item.id.toString()) as Product;

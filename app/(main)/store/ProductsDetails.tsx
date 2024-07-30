@@ -8,12 +8,11 @@ import ScrollToTop from '@/app/components/Generic/ScrollToTop/ScrollToTop'
 import Select from '@/app/components/Buttons/Select/Select'
 import Carousel from '@/app/components/Carousel/Carousel'
 import AccordionMenu from '@/app/components/Accordion/AccordionMenu'
-import { Product } from '@/app/utility/types'
+import { Product, ImageData } from '@/app/utility/types'
 import { capitalizeFirstLetter, getTitle, getCustomColor } from '@/app/utility/helper'
 import { filterProductsByParams, filterProductsByFilters, sortProducts, validateStoreProduct, getStoreProductOption } from '@/server/mockValidations'
 import './store.css'
 import AddToWishlistButton from '@/app/components/Buttons/AddToWishlist/AddToWishlist'
-
 
 const ProductCard = React.memo(({ product, selectedOption, onClick }: { product: Product, selectedOption: number, onClick:(id: number, index: number) => void }) => {
   // Validate the product (shouldn't really be needed since the products themselves are validated)
@@ -24,11 +23,16 @@ const ProductCard = React.memo(({ product, selectedOption, onClick }: { product:
   // Find the current option based on the selectedOption prop for this product card and set all of the selected option's details
   const currentOptionResponse = getStoreProductOption(validatedProduct, selectedOption);
   const currentOption = currentOptionResponse.currentOption;
-  const images = currentOptionResponse.images;
   const inStock = currentOptionResponse.inStock;
   const discount = currentOptionResponse.discount;
   const ogPrice = currentOptionResponse.ogPrice;
   const price = currentOptionResponse.price;
+  const imageUrls = currentOptionResponse.images;
+  const Images: ImageData[] = imageUrls.map((image) => ({
+    src: image,
+    alt: `${product.name} - ${capitalizeFirstLetter(product.gender)}`,
+    blurDataUrl: ' ' // Empty string to keep typescript happy (can't generate blurDataUrl since we are in a client component)
+  }));
 
   return (
     <div className='product-card'>
@@ -40,7 +44,7 @@ const ProductCard = React.memo(({ product, selectedOption, onClick }: { product:
             currentOption.name, size: 
             currentOption.sizes[0].name.toLowerCase()
           })}`} 
-          Images={images} 
+          Images={Images} 
           Width={100} 
           ShowNavArrows={true}
           ShowDotBtns={true}

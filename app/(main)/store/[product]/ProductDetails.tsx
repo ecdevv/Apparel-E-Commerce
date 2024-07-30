@@ -8,8 +8,9 @@ import NumberStepper from '@/app/components/Input/NumberStepper/NumberStepper';
 import AddToBagButton from '@/app/components/Buttons/AddToBag/AddToBag';
 import AddToWishlistButton from '@/app/components/Buttons/AddToWishlist/AddToWishlist';
 import AccordionMenu from '@/app/components/Accordion/AccordionMenu';
-import { Product } from '@/app/utility/types';
+import { Product, ImageData } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
+import { generateBlurDataUrl } from '@/app/utility/generateBlurDataUrl';
 import './product.css'
 
 interface ProductDetailsProps {
@@ -19,15 +20,25 @@ interface ProductDetailsProps {
   selectedOption: string
   selectedSize: string
   optionInStock: boolean
-  Images: string[]
+  Images: ImageData[]
   discount: number
   ogPrice: number
   price: number
 }
 
-const ProductDetails = ( {
+const ProductDetails = async ( {
   product, productReviews, averageRating, selectedOption, selectedSize, optionInStock, Images, discount, ogPrice, price
 }: ProductDetailsProps ) => {  
+  // Prepare blur data URLs before rendering
+  const blurDataOptions = await Promise.all(
+    product.options.map(async (option) => {
+      const blurDataUrl = await generateBlurDataUrl(option.media[0].url);
+      return {
+        ...option,
+        blurDataUrl,
+      };
+    })
+  );
 
   // Accordion menu items
   const detailsAccordion = product.details ? [product.description, product.details] : [product.description];
@@ -36,7 +47,7 @@ const ProductDetails = ( {
 
   return (
     <section className='product-container'>
-      <div className='product-gallery-container'><Gallery Images={Images as (string[])} /></div>
+      <div className='product-gallery-container'><Gallery Images={Images} /></div>
       <div className='product-carousel-container'><Carousel Images={Images} Width={100} BorderWidth={0} ShowDotBtns={true} /></div>
       <div className='product-content'>
         <div className='product-content-header'>
@@ -86,6 +97,8 @@ const ProductDetails = ( {
                   fill
                   sizes="(100vw, 100vh)"
                   className='product-option-image'
+                  placeholder='blur'
+                  blurDataURL={blurDataOptions[index].blurDataUrl}
                   priority
                 />
               </Link>

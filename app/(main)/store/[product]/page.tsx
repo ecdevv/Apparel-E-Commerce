@@ -4,8 +4,9 @@ import { Metadata, ResolvingMetadata } from 'next';
 import { headers } from 'next/headers';
 import { CustomLink } from '@/app/components/Buttons/General/General';
 import { UpdateURL } from '@/app/utility/components/UpdateURL';
-import { Product } from '@/app/utility/types';
+import { Product, ImageData } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
+import { generateBlurDataUrl } from '@/app/utility/generateBlurDataUrl';
 import { validateProduct, getSelectedOption, validateProductURL } from '@/server/mockValidations';
 import './product.css'
 
@@ -16,7 +17,7 @@ export async function generateMetadata({ searchParams }: { searchParams: {name: 
   const previousImages = (await parent).openGraph?.images || []
 
   // Get the current product from the server
-  const productResponse = validateProduct(searchParams);
+  const productResponse = await validateProduct(searchParams);
   if (productResponse.error === true) {
     return {
       title: 'Product Not Found',
@@ -82,28 +83,34 @@ const ProductError = ({text}: {text: string}) => {
   )
 }
 
-export default function DynamicProduct({ searchParams }: { searchParams: {name: string, id: string, option: string, size: string} }) {
+export default async function DynamicProduct({ searchParams }: { searchParams: {name: string, id: string, option: string, size: string} }) {
   // Find and validate the product and product reviews
-  const productResponse = validateProduct(searchParams);
+  const productResponse = await validateProduct(searchParams);
   if (productResponse.error) return <ProductError text={'Product Not Found'} />;
   const product: Product = productResponse.product;
   const productReviews = productResponse.productReviews;
   const averageRating = productResponse.averageRating;
 
   // Setting all of the selected option's details (and validates based on the search param)
-  const selectedOptionResponse = getSelectedOption(searchParams, product);
+  const selectedOptionResponse = await getSelectedOption(searchParams, product);
   const selectedOption = selectedOptionResponse.name;                  
   const selectedSize = selectedOptionResponse.size;
   const optionInStock = selectedOptionResponse.optionInStock;
-  const Images = selectedOptionResponse.images;
-
   const discount = selectedOptionResponse.discount;
   const ogPrice = selectedOptionResponse.ogPrice;
   const price = selectedOptionResponse.price;
 
+  // Get the imagesUrls and set the Images and its data for the current product
+  const imageUrls = selectedOptionResponse.images;
+  const Images: ImageData[] = await Promise.all(imageUrls.map(async(image, index) => ({
+    src: image,
+    alt: `${product.name} - ${capitalizeFirstLetter(selectedOption)} - ${capitalizeFirstLetter(product.gender)} | Image ${index + 1}`,
+    blurDataUrl: await generateBlurDataUrl(image)
+  })));
+
   // Call for URL validation to run the UpdateURL component using headers for the base URL
   const headerList = headers();
-  const validateURLResponse = validateProductURL(headerList, product, selectedOption, selectedSize);
+  const validateURLResponse = await validateProductURL(headerList, product, selectedOption, selectedSize);
 
   return (
     <>

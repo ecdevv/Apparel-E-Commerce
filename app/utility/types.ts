@@ -1,4 +1,12 @@
 /*** Custom Types ***/
+import { StaticImageData } from 'next/image';
+
+/* Image Type */
+export interface ImageData {
+  src: StaticImageData | string;
+  alt: string;
+  blurDataUrl?: string;
+}
 
 /* DropdownButton Types */
 export interface DropdownItem {

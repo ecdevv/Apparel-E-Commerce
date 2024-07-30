@@ -31,11 +31,15 @@ export function BagProvider({children}:ContextProviderProps) {
 
   // Set the bagItems from localStorage
   useEffect(() => {
-    const savedBagItems = JSON.parse(localStorage.getItem('bagItems') || '[]') as BagProduct[];
-    const validBagItems = validateBag(savedBagItems);
-    setBagItems(validBagItems);
-    localStorage.setItem('bagItems', JSON.stringify(validBagItems));
-    setIsLoading(false);
+    const fetchAndValidateBag = async () => {
+      const savedBagItems = JSON.parse(localStorage.getItem('bagItems') || '[]') as BagProduct[];
+      const validBagItems = await validateBag(savedBagItems);
+      setBagItems(validBagItems);
+      localStorage.setItem('bagItems', JSON.stringify(validBagItems));
+      setIsLoading(false);
+    }
+
+    fetchAndValidateBag();
   }, []);
 
   // Reset the forceOpen state after it is used
