@@ -1,8 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
 import { CustomLink } from '../Buttons/General/General'
-import { generateBlurDataUrl } from '@/app/utility/generateBlurDataUrl';
+import getBlurDataUrls from '@/app/utility/getBlurDataUrls';
 import './NavMegaMenu.css'
+
+// Load the Blur Data URLs from the JSON file from the public directory
+const blurDataUrls = getBlurDataUrls();
 
 const NewMegaMenu = async () => {
   return (
@@ -16,7 +19,7 @@ const NewMegaMenu = async () => {
             sizes="(100vw)"
             className='mega-menu-content-image'
             placeholder='blur'
-            blurDataURL={await generateBlurDataUrl('/images/products/apparel/jackets_coats/product_1/black/item2.webp')}
+            blurDataURL={blurDataUrls['/images/products/apparel/jackets_coats/product_1/black/item2.webp']}
           />
         </CustomLink>
         <div className='mega-menu-content'>
@@ -89,7 +92,7 @@ const SalesMegaMenu = async () => {
             sizes="(100vw)"
             className='mega-menu-content-image'
             placeholder='blur'
-            blurDataURL={await generateBlurDataUrl('/images/products/apparel/tshirts_tops/product_100/white/white1.webp')}
+            blurDataURL={blurDataUrls['/images/products/apparel/tshirts_tops/product_100/white/white1.webp']}
           />
         </CustomLink>
       </div>
@@ -285,7 +288,7 @@ const CollectionsMegaMenu = async () => {
             sizes="(100vw)"
             className='mega-menu-content-image'
             placeholder='blur'
-            blurDataURL={await generateBlurDataUrl('/images/products/apparel/hoodies_sweatshirts/product_2/grey/item3.webp')}
+            blurDataURL={blurDataUrls['/images/products/apparel/hoodies_sweatshirts/product_2/grey/item3.webp']}
           />
         </CustomLink>
         <CustomLink href='/store/p?' product={{id: 3} as any} className='mega-menu-image-wrapper'>
@@ -296,7 +299,7 @@ const CollectionsMegaMenu = async () => {
             sizes="(100vw)"
             className='mega-menu-content-image'
             placeholder='blur'
-            blurDataURL={await generateBlurDataUrl('/images/products/apparel/hoodies_sweatshirts/product_3/orange/item2.webp')}
+            blurDataURL={blurDataUrls['/images/products/apparel/hoodies_sweatshirts/product_3/orange/item2.webp']}
           />
         </CustomLink>
       </div>
@@ -309,7 +312,7 @@ const CollectionsMegaMenu = async () => {
             sizes="(100vw)"
             className='mega-menu-content-image'
             placeholder='blur'
-            blurDataURL={await generateBlurDataUrl('/images/products/apparel/hoodies_sweatshirts/product_6/gold/item2.webp')}
+            blurDataURL={blurDataUrls['/images/products/apparel/hoodies_sweatshirts/product_6/gold/item2.webp']}
           />
         </CustomLink>
         <CustomLink href='/store/p?' product={{id: 5} as any} className='mega-menu-image-wrapper'>
@@ -320,7 +323,7 @@ const CollectionsMegaMenu = async () => {
             sizes="(100vw)"
             className='mega-menu-content-image'
             placeholder='blur'
-            blurDataURL={await generateBlurDataUrl('/images/products/apparel/hoodies_sweatshirts/product_5/blue/item2.webp')}
+            blurDataURL={blurDataUrls['/images/products/apparel/hoodies_sweatshirts/product_5/blue/item2.webp']}
           />
         </CustomLink>
       </div>

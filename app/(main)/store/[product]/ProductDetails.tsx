@@ -10,36 +10,25 @@ import AddToWishlistButton from '@/app/components/Buttons/AddToWishlist/AddToWis
 import AccordionMenu from '@/app/components/Accordion/AccordionMenu';
 import { Product, ImageData } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
-import { generateBlurDataUrl } from '@/app/utility/generateBlurDataUrl';
 import './product.css'
 
 interface ProductDetailsProps {
-  product: Product,
-  productReviews: any,
-  averageRating: number
-  selectedOption: string
-  selectedSize: string
-  optionInStock: boolean
-  Images: ImageData[]
-  discount: number
-  ogPrice: number
-  price: number
+  product: Product;
+  productReviews: any;
+  averageRating: number;
+  selectedOption: string;
+  selectedSize: string;
+  optionInStock: boolean;
+  blurDataUrls: { [key: string]: string };
+  Images: ImageData[];
+  discount: number;
+  ogPrice: number;
+  price: number;
 }
 
 const ProductDetails = async ( {
-  product, productReviews, averageRating, selectedOption, selectedSize, optionInStock, Images, discount, ogPrice, price
+  product, productReviews, averageRating, selectedOption, selectedSize, optionInStock, blurDataUrls, Images, discount, ogPrice, price
 }: ProductDetailsProps ) => {  
-  // Prepare blur data URLs before rendering
-  const blurDataOptions = await Promise.all(
-    product.options.map(async (option) => {
-      const blurDataUrl = await generateBlurDataUrl(option.media[0].url);
-      return {
-        ...option,
-        blurDataUrl,
-      };
-    })
-  );
-
   // Accordion menu items
   const detailsAccordion = product.details ? [product.description, product.details] : [product.description];
   const careAccordion = product.care ? ['To maintain the luxurious quality of your leather jacket, we recommend following these care guidelines:', product.care] : [];
@@ -98,7 +87,7 @@ const ProductDetails = async ( {
                   sizes="(100vw, 100vh)"
                   className='product-option-image'
                   placeholder='blur'
-                  blurDataURL={blurDataOptions[index].blurDataUrl}
+                  blurDataURL={blurDataUrls[option.media[0].url]}
                   priority
                 />
               </Link>

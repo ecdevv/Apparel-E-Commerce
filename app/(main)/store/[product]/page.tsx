@@ -6,7 +6,7 @@ import { CustomLink } from '@/app/components/Buttons/General/General';
 import { UpdateURL } from '@/app/utility/components/UpdateURL';
 import { Product, ImageData } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
-import { generateBlurDataUrl } from '@/app/utility/generateBlurDataUrl';
+import getBlurDataUrls from '@/app/utility/getBlurDataUrls';
 import { validateProduct, getSelectedOption, validateProductURL } from '@/server/mockValidations';
 import './product.css'
 
@@ -100,13 +100,14 @@ export default async function DynamicProduct({ searchParams }: { searchParams: {
   const ogPrice = selectedOptionResponse.ogPrice;
   const price = selectedOptionResponse.price;
 
-  // Get the imagesUrls and set the Images and its data for the current product
+  // Load the Blur Data URLs from the JSON file from the public directory and get the imagesUrls and set the Images and its data for the current product
+  const blurDataUrls = getBlurDataUrls();
   const imageUrls = selectedOptionResponse.images;
-  const Images: ImageData[] = await Promise.all(imageUrls.map(async(image, index) => ({
+  const Images: ImageData[] = imageUrls.map((image, index) => ({
     src: image,
     alt: `${product.name} - ${capitalizeFirstLetter(selectedOption)} - ${capitalizeFirstLetter(product.gender)} | Image ${index + 1}`,
-    blurDataUrl: await generateBlurDataUrl(image)
-  })));
+    blurDataUrl: blurDataUrls[image],
+  }));
 
   // Call for URL validation to run the UpdateURL component using headers for the base URL
   const headerList = headers();
@@ -123,6 +124,7 @@ export default async function DynamicProduct({ searchParams }: { searchParams: {
           selectedOption={selectedOption}
           selectedSize={selectedSize}
           optionInStock={optionInStock}
+          blurDataUrls={blurDataUrls}
           Images={Images}
           discount={discount}
           ogPrice={ogPrice}

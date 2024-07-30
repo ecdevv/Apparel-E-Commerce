@@ -9,8 +9,11 @@ import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import MobileNavigation from './MobileNavbar';
 import { CollectionsMegaMenu, MenMegaMenu, NewMegaMenu, SalesMegaMenu, WomenMegaMenu } from './NavMegaMenu';
 import { DropdownItem } from '@/app/utility/types';
-import { generateBlurDataUrl } from '@/app/utility/generateBlurDataUrl';
+import getBlurDataUrls from '@/app/utility/getBlurDataUrls';
 import './Navbar.css'
+
+// Load the Blur Data URLs from the JSON file from the public directory
+const blurDataUrls = getBlurDataUrls();
 
 // The top section of the navbar with the logo, icons, search box, and etc.
 const Header = async () => {
@@ -38,7 +41,7 @@ const Header = async () => {
             height={54}
             className='navbar-logo'
             placeholder='blur'
-            blurDataURL={await generateBlurDataUrl('/images/logo.webp')}
+            blurDataURL={blurDataUrls['/images/logo.webp']}
             priority
             loading='eager'
           />
@@ -77,7 +80,7 @@ const HeaderLogo = async () => {
           width={54}
           height={54}
           className='navbar-logo'
-          blurDataURL={await generateBlurDataUrl('/images/logo.webp')}
+          blurDataURL={blurDataUrls['/images/logo.webp']}
           priority
           loading='eager'
         />
