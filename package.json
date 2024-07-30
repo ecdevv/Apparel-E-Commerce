@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "ts-node scripts/generateBlurDataUrls.ts",
+    "prebuild": "npx ts-node scripts/generateBlurDataUrls.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -16,7 +16,8 @@
     "react-dom": "^18",
     "react-swipeable": "^7.0.1",
     "react-transition-group": "^4.4.5",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.4",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/node": "^20",

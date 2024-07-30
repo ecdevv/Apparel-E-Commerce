@@ -32,7 +32,7 @@ $ npm start or npm run dev
 ### Notes
 
 - Attempted to make everything reusable and from scratch
-- I limited the use of external libraries to two: react-transition-group and react-swipeable (for mobile swiping)
+- I limited the use of external libraries to these: react-transition-group, react-swipeable (for mobile swiping), sharp for more optimized image processing, and ts-node to execute the BlurData .ts script at build time
 - I didn't use any Tailwind, but removing it seems to remove some default styling so I just kept it in
 - Collections and Checkout buttons do not do anything and just relink to the homepage
 - Login and Registration pages do not have any functionality
@@ -60,7 +60,7 @@ $ npm start or npm run dev
 
 <strong>Tools & Frameworks:</strong> HTML, CSS, Typescript, Next.js, React
 
-<strong>Libraries Used:</strong> react-transition-group, react-swipeable
+<strong>Libraries Used:</strong> react-transition-group, react-swipeable, sharp, ts-node
 
 <strong>Design Inspiration:</strong> Louis Vuitton, Versace, Gymshark, Nike, Adidas
 

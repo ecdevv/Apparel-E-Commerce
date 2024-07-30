@@ -6,6 +6,7 @@ import { Product } from '@/app/utility/types'
 import { getTitle } from '@/app/utility/helper'
 import { getProducts } from '@/server/mockValidations'
 import { UpdateURL } from '@/app/utility/components/UpdateURL'
+import getBlurDataUrls from '@/app/utility/getBlurDataUrls'
 import { validateStoreURL } from '@/server/mockValidations'
 import './store.css'
 
@@ -43,7 +44,8 @@ export default async function Store({searchParams}: {searchParams: {category: st
   const productsResponse = getProducts();
   if (productsResponse.error === true) return <div>Error, check server console</div>;
   const Products = productsResponse.products as Product[];
-
+  const blurDataUrls = getBlurDataUrls();
+ 
   // Parse the searchParams call for URL validation to run the UpdateURL component, and get headers for base URL validation
   const parsedCategories = searchParams?.category?.split(/[ ,\+\-]+/).filter(category => category !== '' && category !== '-' && category !== '+');
   const parsedTags = searchParams?.tags?.split(/[ ,\+\-]+/).filter(tag => tag !== '' && tag !== '-' && tag !== '+');
@@ -54,7 +56,7 @@ export default async function Store({searchParams}: {searchParams: {category: st
     <>
       <UpdateURL searchParams={searchParams} urlResponse={validateURLResponse} />
       <div className='store'>
-        <ProductsDetails parsedCategories={parsedCategories} parsedTags={parsedTags} products={Products} />
+        <ProductsDetails parsedCategories={parsedCategories} parsedTags={parsedTags} products={Products} blurDataUrls={blurDataUrls} />
       </div>
     </>
   )

@@ -14,7 +14,7 @@ import { filterProductsByParams, filterProductsByFilters, sortProducts, validate
 import './store.css'
 import AddToWishlistButton from '@/app/components/Buttons/AddToWishlist/AddToWishlist'
 
-const ProductCard = React.memo(({ product, selectedOption, onClick }: { product: Product, selectedOption: number, onClick:(id: number, index: number) => void }) => {
+const ProductCard = React.memo(({ product, selectedOption, blurDataUrls, onClick }: { product: Product, selectedOption: number, blurDataUrls: { [key: string]: string }, onClick:(id: number, index: number) => void }) => {
   // Validate the product (shouldn't really be needed since the products themselves are validated)
   const validatedProductResponse = validateStoreProduct(product, selectedOption);
   const validatedProduct = validatedProductResponse.product;
@@ -31,7 +31,7 @@ const ProductCard = React.memo(({ product, selectedOption, onClick }: { product:
   const Images: ImageData[] = imageUrls.map((image) => ({
     src: image,
     alt: `${product.name} - ${capitalizeFirstLetter(product.gender)}`,
-    blurDataUrl: ' ' // Empty string to keep typescript happy (can't generate blurDataUrl since we are in a client component)
+    blurDataUrl: blurDataUrls[image] // Empty string to keep typescript happy (can't generate blurDataUrl since we are in a client component)
   }));
 
   return (
@@ -201,7 +201,7 @@ enum SortCriteria {
   BEST_SELLERS
 }
 
-const ProductsDetails = ({parsedCategories, parsedTags, products}: {parsedCategories: string[], parsedTags: string[], products: Product[]}) => {
+const ProductsDetails = ({parsedCategories, parsedTags, products, blurDataUrls}: {parsedCategories: string[], parsedTags: string[], products: Product[], blurDataUrls: {[key: string]: string}}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [filterOpen, setFilterOpen] = useState(false);
   const [filterOpenMobile, setFilterOpenMobile] = useState(false);
@@ -406,7 +406,8 @@ const ProductsDetails = ({parsedCategories, parsedTags, products}: {parsedCatego
                 <ProductCard 
                   key={index} 
                   product={product} 
-                  selectedOption={selectedOptions[product.product_id] || 0} 
+                  selectedOption={selectedOptions[product.product_id] || 0}
+                  blurDataUrls={blurDataUrls}
                   onClick={handleOptionChange}
                 />
               ))}
