@@ -1,7 +1,7 @@
-import fs from 'fs';
-import os from 'os';
-import path from 'path';
-import sharp from 'sharp';
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const sharp = require('sharp');
 
 /*
  * Generates the blur data URL of an image.
@@ -14,7 +14,7 @@ import sharp from 'sharp';
 const imagesDirectory = path.join(process.cwd(), 'public', 'images');
 const excludedDirectories = ['favicon'];
 
-export async function generateBlurDataUrl(inputImagePath: string) {
+async function generateBlurDataUrl(inputImagePath: string) {
   const inputFilePath = path.join(process.cwd(), 'public', inputImagePath);
   const tempDir = os.tmpdir();
   const outputImagePath = path.join(tempDir, 'blurred.jpg');
