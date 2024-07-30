@@ -1,4 +1,5 @@
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import sharp from 'sharp';
 
@@ -9,7 +10,8 @@ import sharp from 'sharp';
  */
 export async function generateBlurDataUrl(inputImagePath: string) {
   const inputFilePath = path.join(process.cwd(), 'public', inputImagePath);
-  const outputImagePath = path.join(process.cwd(), 'public', 'blurred.jpg');
+  const tempDir = os.tmpdir();
+  const outputImagePath = path.join(tempDir, 'blurred.jpg');
 
   // Check if the input file exists
   if (!fs.existsSync(inputFilePath)) {
