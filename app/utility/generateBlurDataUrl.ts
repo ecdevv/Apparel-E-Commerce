@@ -8,8 +8,8 @@ import sharp from 'sharp';
  * @returns The blurred data URL of the image.
  */
 export async function generateBlurDataUrl(inputImagePath: string) {
-  const inputFilePath = path.join('public', inputImagePath);
-  const outputImagePath = path.join('public', 'blurred.jpg');
+  const inputFilePath = path.join(process.cwd(), 'public', inputImagePath);
+  const outputImagePath = path.join(process.cwd(), 'public', 'blurred.jpg');
 
   // Check if the input file exists
   if (!fs.existsSync(inputFilePath)) {

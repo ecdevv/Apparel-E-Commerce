@@ -50,8 +50,6 @@ const Header = async () => {
             width={33}
             height={33}
             className='navbar-logo'
-            placeholder='blur'
-            blurDataURL={await generateBlurDataUrl('/images/logo.webp')}
             priority
             loading='eager'
           />
