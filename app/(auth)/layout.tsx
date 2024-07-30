@@ -6,9 +6,9 @@ export default function AuthLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <header className='margin'><HeaderLogo /></header>
+    <div className='auth-page-wrapper'>
+      <header className='auth-page-header'><HeaderLogo /></header>
       <main>{children}</main>
-    </>
+    </div>
     )
 }

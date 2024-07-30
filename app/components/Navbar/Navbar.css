@@ -67,7 +67,9 @@
   white-space: nowrap;
 }
 
-.navbar-logo {
+.navbar-logo, .navbar-logo-header {
+  width: 54px;
+  height: 54px;
   object-fit: contain;
   object-position: center;
 }
@@ -131,25 +133,7 @@
   }
 }
 
-.full {
-  display: flex;
-  align-items: center;
-}
-
-.mw-1024 {
-  display: none;
-}
-
 @media (max-width: 1024px) {
-  .full {
-    display: none;
-  }
-
-  .mw-1024 {
-    display: flex;
-    align-items: center;
-  }
-
   .navbar-navigation-wrapper {
     display: none;
   }
@@ -176,6 +160,11 @@
   .navbar-logo-container {
     min-width: auto;
     margin-left: 8px;
+  }
+
+  .navbar-logo {
+    width: 33px;
+    height: 33px;
   }
 
   .navbar-icons-container {

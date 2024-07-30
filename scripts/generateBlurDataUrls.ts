@@ -84,4 +84,12 @@ async function generateAllBlurDataUrls() {
   );
 }
 
-generateAllBlurDataUrls().catch(console.error);
+generateAllBlurDataUrls()
+  .then(() => {
+    console.log('Blur data URLs generated successfully.');
+    process.exit(0); // Exit successfully
+  })
+  .catch((error) => {
+    console.error('Error generating blur data URLs:', error);
+    process.exit(1); // Exit with error
+  });

@@ -101,7 +101,7 @@ export default async function DynamicProduct({ searchParams }: { searchParams: {
   const price = selectedOptionResponse.price;
 
   // Load the Blur Data URLs from the JSON file from the public directory and get the imagesUrls and set the Images and its data for the current product
-  const blurDataUrls = await getBlurDataUrls();
+  const blurDataUrls = getBlurDataUrls();
   const imageUrls = selectedOptionResponse.images;
   const Images: ImageData[] = imageUrls.map((image, index) => ({
     src: image,

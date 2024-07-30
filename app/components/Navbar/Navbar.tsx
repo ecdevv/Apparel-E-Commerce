@@ -9,14 +9,10 @@ import DropdownButton from '../Buttons/Dropdown/DropdownButton';
 import MobileNavigation from './MobileNavbar';
 import { CollectionsMegaMenu, MenMegaMenu, NewMegaMenu, SalesMegaMenu, WomenMegaMenu } from './NavMegaMenu';
 import { DropdownItem } from '@/app/utility/types';
-import getBlurDataUrls from '@/app/utility/getBlurDataUrls';
 import './Navbar.css'
 
 // The top section of the navbar with the logo, icons, search box, and etc.
-const Header = async () => {
-  // Load the Blur Data URLs from the JSON file from the public directory
-  const blurDataUrls = await getBlurDataUrls();
-
+const Header = () => {
   return (
     <section className='navbar-header'>
       <div className='navbar-theme-icons-container'>
@@ -33,30 +29,14 @@ const Header = async () => {
         </Link>
       </div>
       <Link href='/' aria-label='Home' className='navbar-logo-container'>
-        <div className='full'>
-          <Image
-            src="/images/logo.webp"
-            alt='Logo'
-            width={54}
-            height={54}
-            className='navbar-logo'
-            placeholder='blur'
-            blurDataURL={blurDataUrls['/images/logo.webp']}
-            priority
-            loading='eager'
-          />
-        </div>
-        <div className='mw-1024'>
-          <Image
-            src="/images/logo.webp"
-            alt='Logo'
-            width={33}
-            height={33}
-            className='navbar-logo'
-            priority
-            loading='eager'
-          />
-        </div>
+        <Image
+          src="/images/logo.webp"
+          alt='Logo'
+          width={54}
+          height={54}
+          className='navbar-logo'
+          priority
+        />
       </Link>
       <div className='navbar-icons-container'>
         <Search />
@@ -70,10 +50,7 @@ const Header = async () => {
 }
 
 // For pages where the header and navigation sections are not shown (/login, /register)
-const HeaderLogo = async () => {
-  // Load the Blur Data URLs from the JSON file from the public directory
-  const blurDataUrls = await getBlurDataUrls();
-  
+const HeaderLogo = () => {  
   return (
     <section className='navbar-header-logo'>
       <Link href='/' aria-label='Home' className='navbar-logo-container'>
@@ -82,10 +59,8 @@ const HeaderLogo = async () => {
           alt='Logo'
           width={54}
           height={54}
-          className='navbar-logo'
-          blurDataURL={blurDataUrls['/images/logo.webp']}
+          className='navbar-logo-header'
           priority
-          loading='eager'
         />
       </Link>
     </section>

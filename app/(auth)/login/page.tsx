@@ -6,7 +6,7 @@ export default function Login() {
   return (
     <section className='auth-section'>
       <div className='auth-container'>
-        <h1>LOGIN</h1>
+        <h1 className='auth-header'>LOGIN</h1>
 
         {/* Form for inputting the Username and Password */}
         <form id='auth-form' action='/auth' method='POST'>

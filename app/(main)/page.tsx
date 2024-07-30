@@ -4,8 +4,8 @@ import { ImageData } from '../utility/types';
 import getBlurDataUrls from '../utility/getBlurDataUrls';
 import './home.css'
 
-export default async function Home() {
-  const blurDataUrls = await getBlurDataUrls();
+export default function Home() {
+  const blurDataUrls = getBlurDataUrls();
 
   const Image1: ImageData = {
     src: '/images/home/carousel-item1.webp',

@@ -7,6 +7,7 @@ import { Product } from '@/app/utility/types';
 import { capitalizeFirstLetter } from '@/app/utility/helper';
 import { getProducts, filterProductsBySearch } from '@/server/mockValidations';
 import './Search.css'
+import { clear } from 'console';
 
 const Search = () => {
   const [query, setQuery] = useState('');
@@ -15,11 +16,22 @@ const Search = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const menuRef = useRef<HTMLUListElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const clearRef = useRef<HTMLButtonElement>(null);
+  const searchRef = useRef<HTMLButtonElement>(null);
 
   // Get products and filter them based on the query (probably not very scalable)
   const productsResponse = getProducts();
   const Products = productsResponse.products;
   const filteredItems = filterProductsBySearch({ products: Products, query }) as Product[];
+
+  // Handle search query clear 
+  const handleSearchClear = () => {
+    setQuery('');
+
+    if (inputRef.current) {
+      inputRef.current.focus(); // Focus the input field
+    }
+  }
 
   // Handle search query submission
   const handleSearch = (event: React.FormEvent) => {
@@ -29,12 +41,20 @@ const Search = () => {
     if (query.trim()) {
       const formattedQuery = query.replace(/[ ,]+/g, ' ').toLowerCase();
       router.push(`/store?tags=${encodeURIComponent(formattedQuery)}`);
-    }
 
-    // Reset the input field
-    setQuery('');
-    if (inputRef.current) {
-      inputRef.current.blur(); // Unfocus the input field
+      // Reset the input field
+      setQuery('');
+      if (inputRef.current && searchRef.current) {
+        inputRef.current.blur(); // Unfocus the input field
+        searchRef.current.blur(); // Unfocus the search button (needs this because its being clicked)
+      }
+
+      // Close the menu
+      setMobileMenuToggle(false);
+    } else {
+      if (inputRef.current) {
+        inputRef.current.focus(); // Focus the input field
+      }
     }
   };
 
@@ -56,15 +76,15 @@ const Search = () => {
   useEffect(() => {
     // Function to handle clicks outside the element (mousedown)
     const handleClickOutside = (e: MouseEvent) => {
-      // If the menu exists and the mouse click is not in the menu, the button, input field, and the input field is not focused, close the menu
-      if (menuRef.current && buttonRef.current && inputRef.current && 
-        (!menuRef.current.contains(e.target as Node) && !buttonRef.current.contains(e.target as Node) && !inputRef.current.contains(e.target as Node) && 
+      // If the menu exists and the mouse click is not in the menu, the button, input field, input field buttons, and the input field is not focused, close the menu
+      if (menuRef.current && buttonRef.current && inputRef.current && clearRef.current && searchRef.current &&
+        (!menuRef.current.contains(e.target as Node) && !buttonRef.current.contains(e.target as Node) && !inputRef.current.contains(e.target as Node) && !searchRef.current.contains(e.target as Node) && !clearRef.current.contains(e.target as Node) &&
           !(inputRef.current && inputRef.current === document.activeElement))) {
         setMobileMenuToggle(false);
       } 
-      // If the menu does not exist and the mouse click is not in the button, input field, and the input field is not focused, close the menu
-      else if (!menuRef.current && buttonRef.current && inputRef.current && 
-        (!buttonRef.current.contains(e.target as Node) && !inputRef.current.contains(e.target as Node) && 
+      // If the menu does not exist and the mouse click is not in the button, input field, input field buttons, and the input field is not focused, close the menu
+      else if (!menuRef.current && buttonRef.current && inputRef.current && clearRef.current && searchRef.current &&
+        (!buttonRef.current.contains(e.target as Node) && !inputRef.current.contains(e.target as Node) && !clearRef.current.contains(e.target as Node) && !searchRef.current.contains(e.target as Node) &&
           !(inputRef.current && inputRef.current === document.activeElement))) {
         setMobileMenuToggle(false);
       }
@@ -93,8 +113,24 @@ const Search = () => {
     <>
       <form id='searchForm' onSubmit={handleSearch} aria-label='Search Box' className={`search-container ${mobileMenuToggle ? 'search-container-mobile' : 'search-container-mobile-disabled'}`}>
         <div className='search-content'>
-          <input ref={inputRef} aria-labelledby='searchForm' className='search-box' type='search' placeholder='Search' value={query} onChange={(e) => setQuery(e.target.value)}/>
-          <button onClick={handleSearch} aria-label='Search Submission Button'>
+          <button ref={clearRef} onClick={handleSearchClear} aria-label='Search Clear Button' className={`search-icon-display ${query ? 'true' : 'false'}`}>
+            <svg
+              aria-hidden
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className={`search-icon clear`}
+            >
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+              <g id="SVGRepo_iconCarrier"> <g>
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-11.414L9.172 7.757 7.757 9.172 10.586 12l-2.829 2.828 1.415 1.415L12 13.414l2.828 2.829 1.415-1.415L13.414 12l2.829-2.828-1.415-1.415L12 10.586z"></path>
+                </g>
+              </g>
+            </svg>
+          </button>
+          <input ref={inputRef} aria-labelledby='searchForm' className={`search-box ${query ? 'queried' : ''}`} type='search' placeholder='Search' value={query} onChange={(e) => setQuery(e.target.value)}/>
+          <button ref={searchRef} onClick={handleSearch} aria-label='Search Submission Button'>
             <svg
               aria-hidden
               viewBox="0 0 1024 1024"

@@ -1,6 +1,14 @@
 /****************** Auth ******************/
-.margin {
-  margin-top: 10dvh;
+.auth-page-wrapper {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-page-header {
+  margin-top: -50px;
 }
 
 .auth-section {
@@ -20,7 +28,8 @@
   font-family: var(--font-montserrat);
 }
 
-.auth-container h1 {
+.auth-header {
+  font-size: 30px;
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -175,6 +184,18 @@
 
 /*** Mobile & Media Queries ***/
 @media (max-width: 450px) {
+  .auth-container {
+    width: 350px;
+  }
+}
+
+@media (max-width: 380px) {
+  .auth-container {
+    width: 335px;
+  }
+}
+
+@media (max-width: 350px) {
   .auth-container {
     width: 100%;
     border-radius: 0;

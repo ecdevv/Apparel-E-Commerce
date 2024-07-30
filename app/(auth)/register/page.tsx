@@ -6,7 +6,7 @@ export default function Register() {
   return (
     <section className='auth-section'>
       <div className='auth-container'>
-        <h1>REGISTER</h1>
+        <h1 className='auth-header'>REGISTER</h1>
 
         {/* Form for inputting the registration information */}
         <form id='auth-form' action='/register' method='POST'>
