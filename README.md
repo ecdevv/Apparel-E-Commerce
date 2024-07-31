@@ -9,7 +9,8 @@ Urban Luxe is a <u>fictional</u> and comprehensive e-commerce apparel web projec
 - Responsive design for optimal viewing on various devices
 - Smooth animations and transitions for enhanced user experience
 - Effective state management by utilizing local browser storage and context APIs
-- Implemented metadata and sitemap to improve SEO by providing crucial information about the website to search engines, such as the title, description, and keywords. This allows search engines to better understand the content of the website and rank it more appropriately in search results
+- Generated and used blur data to improve perceived performance by displaying low-resolution placeholders for images while high-resolution images load, enhancing the user experience with faster visual feedback
+- Implemented metadata and sitemap to improve SEO by providing crucial information about the website to search engines, such as the title, description, opengraph, and keywords. This allows search engines to better understand the content of the website and rank it more appropriately in search results
 
 ## Installation
 
@@ -32,7 +33,7 @@ $ npm start or npm run dev
 ### Notes
 
 - Attempted to make everything reusable and from scratch
-- I limited the use of external libraries to these: react-transition-group, react-swipeable (for mobile swiping), sharp for more optimized image processing, and ts-node to execute the BlurData .ts script at build time
+- I limited the use of external libraries to these: react-transition-group, react-swipeable (for mobile swiping), sharp for more optimized image processing and blur data, and ts-node to execute the generateBlurDataUrls.ts script at build time
 - I didn't use any Tailwind, but removing it seems to remove some default styling so I just kept it in
 - Collections and Checkout buttons do not do anything and just relink to the homepage
 - Login and Registration pages do not have any functionality
